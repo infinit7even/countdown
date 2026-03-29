@@ -27,13 +27,13 @@ class Notifier implements INotifier {
 
         if ($notification->getSubject() === 'timer_finished') {
             $notification->setParsedSubject(
-                (string)$this->l10n->t('Un countdown è terminato!')
+                (string)$this->l10n->t('A countdown has finished!')
             );
             
             $params = $notification->getSubjectParameters();
             if (isset($params['name'])) {
                 $notification->setParsedSubject(
-                    (string)$this->l10n->t('Countdown "%s" è terminato!', [$params['name']])
+                    (string)$this->l10n->t('Countdown "%s" has finished!', [$params['name']])
                 );
             }
         }

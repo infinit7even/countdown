@@ -80,10 +80,10 @@ class CountdownWidget implements IWidget, IButtonWidget, IIconWidget {
 
             $distance = $cd['targetDate'] - $now;
             if ($distance < 0) {
-                $subtitle = $this->l10n->t('Già Scaduto!');
+                $subtitle = $this->l10n->t('Already expired!');
             } else {
                 $days = floor($distance / (1000 * 60 * 60 * 24));
-                $subtitle = ($days > 0) ? $this->l10n->t('Scade tra %n giorni', [$days]) : $this->l10n->t('Scade oggi!');
+                $subtitle = ($days > 0) ? $this->l10n->t('Expires in %n days', [$days]) : $this->l10n->t('Expires today!');
             }
 
             $items[] = new WidgetItem(
@@ -104,7 +104,7 @@ class CountdownWidget implements IWidget, IButtonWidget, IIconWidget {
             new WidgetButton(
                 WidgetButton::TYPE_NEW,
                 $this->getUrl(),
-                $this->l10n->t('Apri App')
+                $this->l10n->t('Open App')
             ),
         ];
     }

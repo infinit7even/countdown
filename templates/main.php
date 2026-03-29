@@ -15,18 +15,18 @@
             </header>
 
             <div id="countdown-grid" class="countdown-grid">
-                <!-- La lista verrà inserita via Javascript -->
+                <!-- The list will be inserted via Javascript -->
             </div>
         </div>
         
-        <!-- Modale Nuova Voce -->
+        <!-- New Item Modal -->
         <div id="countdown-modal" class="modal-overlay hidden">
             <div class="modal-content glass-effect">
                 <h2 id="modal-title">Create a new Countdown</h2>
                 <input type="hidden" id="cd-id">
                 <div class="form-group">
                     <label for="cd-name">Event Name</label>
-                    <input type="text" id="cd-name" placeholder="Es. Japan Trip" />
+                    <input type="text" id="cd-name" placeholder="E.g. Japan Trip" />
                 </div>
                  <div class="form-group" id="date-group">
                     <label for="cd-date">Event Date and Time</label>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <!-- Modale Impostazioni (Grandezza) -->
+        <!-- Settings Modal (Size) -->
         <div id="settings-panel" class="settings-panel glass-effect">
             <label for="size-slider">Card Size</label>
             <input type="range" id="size-slider" min="0.7" max="1.5" step="0.05" value="1">

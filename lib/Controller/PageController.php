@@ -16,7 +16,7 @@ class PageController extends Controller {
      * @NoCSRFRequired
      */
     public function index() {
-        // Carica il file templates/main.php
+        // Load templates/main.php file
         return new TemplateResponse('countdown', 'main');
     }
 }

@@ -1,7 +1,7 @@
 /**
  * Nextcloud Countdown Logic
- * Dati salvati tramite API (Nextcloud Backend DB)
- * Funzioni: Modifica, Tutto il giorno, Particelle e Notifiche
+ * Data saved via API (Nextcloud Backend DB)
+ * Features: Edit, All Day, Particles and Notifications
  */
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('countdown-modal');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = OC.generateUrl('/apps/countdown/api/countdowns');
     const notifyUrl = OC.generateUrl('/apps/countdown/api/notify');
 
-    // Gestione visibilità orario per "Tutto il giorno"
+    // Time visibility management for "All Day"
     allDayCheckbox.addEventListener('change', () => {
         const currentVal = dateInput.value;
         if (allDayCheckbox.checked) {
@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             dateInput.type = 'datetime-local';
             if (currentVal && !currentVal.includes('T')) {
-                dateInput.value = currentVal + 'T12:00'; // Default a mezzogiorno
+                dateInput.value = currentVal + 'T12:00'; // Default to noon
             }
         }
     });
 
-    // Caricamento Dati Remoti
+    // Load Remote Data
     async function loadCountdowns() {
         try {
             const response = await fetch(apiUrl, {
@@ -51,11 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCountdowns();
             }
         } catch (e) {
-            console.error('Errore nel caricamento', e);
+            console.error('Error loading data', e);
         }
     }
 
-    // Salvataggio nel Database
+    // Save to Database
     async function saveCountdowns() {
         try {
             await fetch(apiUrl, {
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ countdowns: countdowns })
             });
         } catch (e) {
-            console.error('Errore di salvataggio', e);
+            console.error('Error saving data', e);
         }
     }
 
-    // Invio Notifica di Sistema
+    // Send System Notification
     async function triggerNotification(name) {
         try {
             await fetch(notifyUrl, {
@@ -83,13 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ name: name })
             });
         } catch (e) {
-            console.error('Errore invio notifica', e);
+            console.error('Error sending notification', e);
         }
     }
 
     loadCountdowns();
 
-    // Impostazione Grandezza
+    // Size Setting
     const savedScale = localStorage.getItem('countdown-scale') || 1;
     sizeSlider.value = savedScale;
     grid.style.setProperty('--cd-zoom', savedScale);
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     addBtn.addEventListener('click', () => {
-        modalTitle.textContent = 'Crea un nuovo Countdown';
+        modalTitle.textContent = 'Create a new Countdown';
         idInput.value = '';
         nameInput.value = '';
         dateInput.value = '';
@@ -118,13 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = nameInput.value.trim();
         const dateVal = dateInput.value;
         if (!name || !dateVal) {
-            OC.Notification.showTemporary('Compila tutti i campi!');
+            OC.Notification.showTemporary('Please fill in all fields!');
             return;
         }
 
         let targetDate;
         if (allDayCheckbox.checked) {
-            // Se tutto il giorno, impostiamo alla fine della giornata selezionata (23:59:59)
+            // If all day, set to the end of the selected day (23:59:59)
             targetDate = new Date(dateVal + 'T23:59:59').getTime();
         } else {
             targetDate = new Date(dateVal).getTime();
@@ -132,13 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const editingId = idInput.value;
         if (editingId) {
-            // Modifica esistente
+            // Existing modification
             const index = countdowns.findIndex(c => c.id == editingId);
             if (index !== -1) {
                 countdowns[index] = { ...countdowns[index], name, targetDate, allDay: allDayCheckbox.checked };
             }
         } else {
-            // Nuovo inserimento
+            // New insertion
             countdowns.push({
                 id: Date.now(),
                 name: name,
@@ -158,8 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const distance = cd.targetDate - now;
 
         if (distance <= 0) {
-            timerElement.innerHTML = '<div class="completed-box"><div class="completed-text">Completato!</div></div>';
-            if (!cd.notified && distance > -5000) { // Notifica e particelle solo se appena scaduto (entro 5 sec)
+            timerElement.innerHTML = '<div class="completed-box"><div class="completed-text">Completed!</div></div>';
+            if (!cd.notified && distance > -5000) { // Notification and particles only if just expired (within 5 sec)
                 cd.notified = true;
                 triggerNotification(cd.name);
                 launchConfetti();
@@ -175,8 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         timerElement.innerHTML = `
             <div class="cd-timer">
-                <div class="time-box"><div class="time-val">${days}</div><div class="time-lbl">Giorni</div></div>
-                <div class="time-box"><div class="time-val">${hours}</div><div class="time-lbl">Ore</div></div>
+                <div class="time-box"><div class="time-val">${days}</div><div class="time-lbl">Days</div></div>
+                <div class="time-box"><div class="time-val">${hours}</div><div class="time-lbl">Hours</div></div>
                 <div class="time-box"><div class="time-val">${minutes}</div><div class="time-lbl">Min</div></div>
                 <div class="time-box"><div class="time-val">${seconds}</div><div class="time-lbl">Sec</div></div>
             </div>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.innerHTML = '';
         
         if(countdowns.length === 0) {
-            grid.innerHTML = '<div class="empty-state">Non hai nessun countdown attivo.<br>Clicca in alto per crearne uno nuovo.</div>';
+            grid.innerHTML = '<div class="empty-state">You don\'t have any active countdowns.<br>Click above to create a new one.</div>';
             return;
         }
 
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             delBtn.className = 'cd-delete icon-delete';
             delBtn.onclick = (e) => {
                 e.stopPropagation();
-                if(confirm('Eliminare questo countdown?')) {
+                if(confirm('Delete this countdown?')) {
                     countdowns = countdowns.filter(item => item.id !== cd.id);
                     renderCountdowns(); 
                     saveCountdowns();
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openEditModal(cd) {
-        modalTitle.textContent = 'Modifica Countdown';
+        modalTitle.textContent = 'Edit Countdown';
         idInput.value = cd.id;
         nameInput.value = cd.name;
         
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('hidden');
     }
 
-    // EFFETTO PARTICELLE (CONFETTI)
+    // PARTICLE EFFECT (CONFETTI)
     function launchConfetti() {
         const canvas = document.getElementById('confetti-canvas');
         const ctx = canvas.getContext('2d');
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let start = Date.now();
         function loop() {
             draw();
-            if (Date.now() - start < 5000) { // Dura 5 secondi
+            if (Date.now() - start < 5000) { // Lasts 5 seconds
                 animationId = requestAnimationFrame(loop);
             } else {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
