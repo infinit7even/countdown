@@ -3,11 +3,11 @@
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>countdown</id>
     <name>Countdown</name>
-    <summary>Gestisci e visualizza countdown moderni e personalizzabili</summary>
-    <description><![CDATA[Crea facilmente timer e countdown con un'interfaccia moderna in stile Nextcloud.]]></description>
-    <version>1.0.5</version>
+    <summary>Manage and display modern and customizable countdowns</summary>
+    <description><![CDATA[Easily create timers and countdowns with a modern Nextcloud-style interface.]]></description>
+    <version>1.0.6</version>
     <licence>agpl</licence>
-    <author>Il tuo Nome</author>
+    <author>Felt</author>
     <namespace>Countdown</namespace>
     <category>tools</category>
     <dependencies>
