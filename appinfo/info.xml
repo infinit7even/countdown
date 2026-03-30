@@ -5,11 +5,13 @@
     <name>Countdown</name>
     <summary>Manage and display modern and customizable countdowns</summary>
     <description><![CDATA[Easily create timers and countdowns with a modern Nextcloud-style interface.]]></description>
-    <version>1.0.6</version>
-    <licence>agpl</licence>
+    <version>1.0.7</version>
+    <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
     <category>tools</category>
+    <bugs>https://github.com/infinit7even/countdown/issues</bugs>
+    <repository>https://github.com/infinit7even/countdown</repository>
     <dependencies>
         <nextcloud min-version="25" max-version="33" />
     </dependencies>
