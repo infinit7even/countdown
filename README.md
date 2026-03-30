@@ -6,6 +6,6 @@ Welcome to **Countdown**! This application is designed to help you manage, track
 
 Here is a glimpse of what the app looks like:
 
-![Countdown detail view](media/1.png)
+![Countdown detail view](media/preview1.png)
 
-![Countdown list view](media/2.png)
+![Countdown list view](media/preview2.png)
