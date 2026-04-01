@@ -5,9 +5,8 @@ use OCP\Dashboard\IWidget;
 use OCP\Dashboard\IButtonWidget;
 use OCP\Dashboard\IIconWidget;
 // Evitiamo interfacce V2 troppo nuove per compatibilità NC 25-26
-use OCP\DashboardModel\WidgetItem;
-use OCP\DashboardModel\WidgetItems;
-use OCP\DashboardModel\WidgetButton;
+use OCP\Dashboard\Model\WidgetItem;
+use OCP\Dashboard\Model\WidgetButton;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
