@@ -1,0 +1,785 @@
+/* css/style.css - Premium Interface for Nextcloud Countdown */
+
+/* Dashboard widget title icon — must be defined explicitly for the dashboard context.
+   Uses app-dark.svg (black) + invert filter so it's white in dark mode, black in light mode. */
+.icon-countdown {
+    background-image: url('../img/app-dark.svg');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: var(--background-invert-if-dark);
+}
+
+
+:root {
+    --cd-primary-color: var(--color-primary, #0082c9);
+    --cd-primary-gradient: linear-gradient(135deg, var(--color-primary, #0082c9), var(--color-primary-element, #005691));
+    --cd-border-radius: 20px;
+    --cd-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.countdown-app-container,
+.modal-overlay,
+.settings-panel {
+    /* Shadow and transition */
+    --cd-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --cd-card-shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.15);
+
+    /* Default semi-transparent backgrounds that work in most themes */
+    --cd-time-bg: rgba(127, 127, 127, 0.06);
+    --cd-box-border: var(--color-border);
+    --cd-border-width: 2px;
+}
+
+/* Explicit adjustments for Dark Theme */
+body.theme--dark .countdown-app-container,
+body.theme--dark .modal-overlay,
+body.theme--dark .settings-panel {
+    --cd-time-bg: rgba(255, 255, 255, 0.1);
+    --cd-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.countdown-app-container {
+    padding: 3rem 4rem;
+    max-width: none;
+    margin: 0 auto;
+    font-family: var(--font-family-main, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif);
+}
+
+/* Header Styling */
+.countdown-header {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 3.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.countdown-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--color-main-text);
+    margin: 0;
+    letter-spacing: -1.2px;
+    background: var(--cd-primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.new-countdown-btn {
+    border-radius: 30px !important;
+    padding: 14px 28px !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    background: var(--cd-primary-gradient) !important;
+    color: white !important;
+    border: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--cd-transition) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
+    cursor: pointer;
+}
+
+.new-countdown-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2) !important;
+    filter: brightness(1.1);
+}
+
+.new-countdown-btn::before {
+    content: '+';
+    font-size: 1.4rem;
+    line-height: 1;
+    font-weight: 400;
+    margin-right: 4px;
+}
+
+/* Grid and Cards */
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2.5rem;
+    zoom: var(--cd-zoom, 1);
+}
+
+.countdown-card {
+    background-color: var(--color-main-background);
+    border: var(--cd-border-width) solid var(--color-border);
+    border-radius: var(--cd-border-radius);
+    padding: 1.2rem 2rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--cd-transition);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+    box-shadow: var(--cd-card-shadow);
+}
+
+.countdown-card:hover {
+    box-shadow: var(--cd-card-shadow-hover);
+    transform: translateY(-6px);
+    border-color: var(--cd-box-border);
+}
+
+.countdown-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--cd-primary-gradient);
+    opacity: 0.5;
+    transition: var(--cd-transition);
+}
+
+.countdown-card:hover::before {
+    opacity: 1;
+    width: 8px;
+}
+
+.cd-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--color-main-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: -0.3px;
+}
+
+.cd-actions {
+    display: flex;
+    gap: 12px;
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+}
+
+.countdown-card:hover .cd-actions {
+    opacity: 1;
+}
+
+.cd-edit,
+.cd-delete {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--color-background-hover);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+}
+
+.cd-edit:hover,
+.cd-delete:hover {
+    opacity: 1;
+}
+
+.cd-edit:hover {
+    background-color: var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
+}
+
+.cd-delete:hover {
+    background-color: var(--color-error-light, rgba(231, 76, 60, 0.15));
+}
+
+/* Time Blocks */
+.cd-timer {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: auto;
+    gap: 10px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 10px;
+    background: var(--cd-time-bg);
+    border-radius: 14px;
+    flex: 1;
+    min-width: 65px;
+    border: 1.5px solid var(--color-border);
+    transition: var(--cd-transition);
+}
+
+.countdown-card:hover .time-box {
+    background: var(--color-background-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.time-val {
+    font-size: 1.9rem;
+    font-weight: 800;
+    background: var(--cd-primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 6px;
+    font-variant-numeric: tabular-nums;
+}
+
+.time-lbl {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-text-maxcontrast);
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.completed-box {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    border: var(--cd-border-width) solid rgba(46, 204, 113, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    transition: var(--cd-transition);
+}
+
+.countdown-card:hover .completed-box {
+    background: rgba(46, 204, 113, 0.15);
+    transform: translateY(-2px);
+}
+
+.completed-text {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #2ecc71;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Checkbox alignment */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 5px 0;
+}
+
+.checkbox-group input {
+    width: 20px !important;
+    height: 20px !important;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    margin-bottom: 0 !important;
+    cursor: pointer;
+}
+
+/* Confetti */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100000;
+}
+
+/* Modal and Glassmorphism */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+.glass-effect {
+    background: var(--color-main-background) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: var(--cd-border-width) solid var(--color-border);
+}
+
+.modal-content {
+    background: var(--color-main-background);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-width: 500px;
+    transform: translateY(0) scale(1);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.modal-overlay.hidden .modal-content {
+    transform: translateY(30px) scale(0.95);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+    color: var(--color-main-text);
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: var(--color-main-text);
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 2px solid var(--color-border);
+    background: var(--color-main-background);
+    color: var(--color-main-text);
+    font-family: inherit;
+    font-size: 1.05rem;
+    min-height: 52px;
+    transition: all 0.2s ease;
+    /* Force light scheme by default, dark mode will override via body class */
+    color-scheme: light;
+}
+
+/* Ultra-robust placeholder styling */
+.form-group input::placeholder {
+    color: var(--color-text-maxcontrast) !important;
+    opacity: 1 !important;
+}
+
+.form-group input::-webkit-input-placeholder {
+    color: var(--color-text-maxcontrast) !important;
+    opacity: 1 !important;
+}
+
+.form-group input:-ms-input-placeholder {
+    color: var(--color-text-maxcontrast) !important;
+    opacity: 1 !important;
+}
+
+.form-group input::-moz-placeholder {
+    color: var(--color-text-maxcontrast) !important;
+    opacity: 1 !important;
+}
+
+.form-group input::-webkit-calendar-picker-indicator:hover {
+    background-color: var(--color-background-hover);
+}
+
+/* Fix for date inputs having misaligned text in some browsers */
+.form-group input[type="datetime-local"],
+.form-group input[type="date"] {
+    display: flex;
+    align-items: center;
+    position: relative; /* Container for absolute indicator */
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 45px !important; /* Make room for absolute icon */
+    min-height: 52px;
+}
+
+/* Ensure common Chrome/Edge internal text centering */
+.form-group input::-webkit-date-and-time-value {
+    min-height: 1.5em;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+body.theme--dark .form-group input {
+    color-scheme: dark;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--cd-primary-color);
+    box-shadow: 0 0 0 4px var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
+    background: var(--color-main-background);
+}
+
+/* Ensure date/time picker icons are strictly pinned to the right */
+.form-group input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="black" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: var(--background-invert-if-dark);
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.form-group input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    background-color: var(--color-background-hover);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 2.5rem;
+}
+
+.modal-actions button {
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--cd-transition);
+}
+
+#cancel-btn {
+    background: transparent;
+    border: 2px solid var(--color-border);
+    color: var(--color-main-text);
+}
+
+#cancel-btn:hover {
+    background: var(--color-background-hover);
+    border-color: var(--color-text-maxcontrast);
+}
+
+#save-btn {
+    background: var(--cd-primary-gradient);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
+
+/* Empty State */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 6rem 2rem;
+    color: var(--color-text-maxcontrast);
+    font-size: 1.2rem;
+    font-weight: 500;
+    background: var(--cd-time-bg);
+    border-radius: var(--cd-border-radius);
+    border: 2px dashed var(--color-border);
+}
+
+/* Settings Panel */
+.settings-panel {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    padding: 1.2rem 1.5rem;
+    border-radius: 16px;
+    z-index: 9000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: var(--cd-card-shadow);
+    transition: var(--cd-transition);
+}
+
+.settings-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--cd-card-shadow-hover);
+}
+
+.settings-panel label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-main-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+.settings-panel input[type=range] {
+    width: 160px;
+    accent-color: var(--cd-primary-color);
+    cursor: pointer;
+}
+
+/* ============================================================
+   RESPONSIVE / MOBILE STYLES
+   ============================================================ */
+
+/* Tablet — up to 900px */
+@media (max-width: 900px) {
+    .countdown-app-container {
+        padding: 2rem 2.5rem;
+    }
+
+    .countdown-title {
+        font-size: 2.2rem;
+    }
+
+    .countdown-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.8rem;
+    }
+
+    .settings-panel {
+        bottom: 1.2rem;
+        left: 1.2rem;
+        padding: 1rem 1.2rem;
+    }
+
+    .settings-panel input[type=range] {
+        width: 130px;
+    }
+}
+
+/* Mobile — up to 600px */
+@media (max-width: 600px) {
+    .countdown-app-container {
+        padding: 1.2rem 1rem;
+    }
+
+    .countdown-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .countdown-title {
+        font-size: 1.8rem;
+        letter-spacing: -0.6px;
+    }
+
+    .new-countdown-btn {
+        width: 100% !important;
+        justify-content: center;
+        padding: 12px 20px !important;
+        font-size: 1rem !important;
+    }
+
+    .countdown-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .countdown-card {
+        height: auto;
+        min-height: 160px;
+        padding: 1rem 1.2rem 1.2rem 1.2rem;
+    }
+
+    /* On touch screens, hover never fires — always show card actions */
+    .cd-actions {
+        opacity: 1;
+    }
+
+    .cd-edit,
+    .cd-delete {
+        width: 38px;
+        height: 38px;
+    }
+
+    .time-val {
+        font-size: 1.5rem;
+    }
+
+    .time-lbl {
+        font-size: 0.65rem;
+        letter-spacing: 0.5px;
+    }
+
+    .time-box {
+        padding: 10px 6px;
+        border-radius: 10px;
+    }
+
+    .cd-name {
+        font-size: 1.2rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        padding: 1.5rem;
+        border-radius: 16px;
+        width: 95%;
+    }
+
+    .modal-content h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+        gap: 10px;
+        margin-top: 1.5rem;
+    }
+
+    .modal-actions button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Settings panel: anchor to bottom, full width on very small screens */
+    .settings-panel {
+        left: 1rem;
+        bottom: 1rem;
+        right: 1rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 0.8rem 1rem;
+    }
+
+    .settings-panel label {
+        white-space: nowrap;
+    }
+
+    .settings-panel input[type=range] {
+        width: 100%;
+    }
+
+    .empty-state {
+        padding: 3rem 1rem;
+        font-size: 1rem;
+    }
+
+    /* Push content up so the fixed settings panel doesn't overlap */
+    .countdown-app-container {
+        padding-bottom: 5rem;
+    }
+}
+
+/* Extra small — up to 400px */
+@media (max-width: 400px) {
+    .countdown-title {
+        font-size: 1.5rem;
+    }
+
+    .time-val {
+        font-size: 1.3rem;
+    }
+
+    .cd-timer {
+        gap: 6px;
+    }
+
+    .time-box {
+        padding: 8px 4px;
+        border-radius: 8px;
+    }
+}
+
+/* ============================================================
+   ACCESSIBILITY & THEMES
+   ============================================================ */
+
+/* High Contrast Mode */
+body.theme--highcontrast .countdown-app-container,
+body.theme--highcontrast .modal-overlay,
+body.theme--highcontrast .settings-panel {
+    --cd-card-shadow: none;
+    --cd-card-shadow-hover: none;
+    --cd-box-border: var(--color-border-maxcontrast, #000);
+    --cd-glass-border: var(--color-border-maxcontrast, #000);
+    --cd-time-bg: transparent;
+}
+
+body.theme--highcontrast .countdown-card,
+body.theme--highcontrast .time-box,
+body.theme--highcontrast .completed-box {
+    border: 2px solid var(--color-border-maxcontrast, #000);
+}
+
+body.theme--highcontrast .glass-effect {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--color-main-background) !important;
+    border: 2px solid var(--color-border-maxcontrast, #000) !important;
+}
+
+/* High Contrast Mode + Dark Theme */
+body.theme--dark.theme--highcontrast .countdown-app-container,
+body.theme--dark.theme--highcontrast .modal-overlay,
+body.theme--dark.theme--highcontrast .settings-panel {
+    --cd-box-border: var(--color-border-maxcontrast, #fff);
+    --cd-glass-border: var(--color-border-maxcontrast, #fff);
+}
+
+body.theme--dark.theme--highcontrast .countdown-card,
+body.theme--dark.theme--highcontrast .time-box,
+body.theme--dark.theme--highcontrast .completed-box,
+body.theme--dark.theme--highcontrast .glass-effect {
+    border: 2px solid var(--color-border-maxcontrast, #fff) !important;
+}
+
+/* OpenDyslexic Font Support */
+body.opendyslexic .countdown-app-container *,
+body.opendyslexic .modal-content *,
+body.opendyslexic .settings-panel * {
+    font-family: var(--font-family-opendyslexic, 'OpenDyslexic', sans-serif) !important;
+    letter-spacing: normal !important;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>countdown</id>
+    <name>Countdown</name>
+    <summary>Manage and display modern and customizable countdowns</summary>
+    <description><![CDATA[Track your most anticipated game releases, movie premieres, and TV series finales with style! Fuel the anticipation for major blockbusters, next-gen titles, and upcoming seasons.
+
+- 🕒 Track upcoming releases: Manage countdowns for your most hyped entertainment.
+- 🎨 Sleek glassmorphism UI: Fast, elegant, and native to Nextcloud.
+- 🏗️ Custom sizes (S/M/L): Highlight your most anticipated titles.
+- 📊 HUD Widgets: Track your release questline at a glance on the dashboard.
+- 🔔 Day-One notifications: Get alerts when the wait is finally over.
+- 🌗 Dark & Light modes: Matches your Nextcloud theme.
+]]></description>
+    <version>1.0.0</version>
+    <licence>AGPL-3.0-or-later</licence>
+    <author>Felt</author>
+    <namespace>Countdown</namespace>
+    <documentation>
+        <user>https://github.com/infinit7even/countdown/blob/master/README.md</user>
+    </documentation>
+
+    <category>games</category>
+    <category>tools</category>
+
+    <website>https://github.com/infinit7even/countdown</website>
+    <discussion>https://github.com/infinit7even/countdown/discussions</discussion>
+    <bugs>https://github.com/infinit7even/countdown/issues</bugs>
+    <repository type="git">https://github.com/infinit7even/countdown.git</repository>
+    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview.png</screenshot>    <dependencies>
+        <php min-version="8.0" />
+        <nextcloud min-version="25" max-version="33" />
+    </dependencies>
+    <navigations>
+        <navigation>
+            <id>countdown</id>
+            <name>Countdown</name>
+            <route>countdown.page.index</route>
+            <icon>app.svg</icon>
+            <order>90</order>
+        </navigation>
+    </navigations>
+</info>

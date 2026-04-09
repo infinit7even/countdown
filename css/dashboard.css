@@ -1,0 +1,10 @@
+/* css/dashboard.css - Styles loaded specifically on the Nextcloud Dashboard page */
+
+/* Widget title icon: black SVG inverted to white in dark mode via Nextcloud's CSS variable */
+.icon-countdown {
+    background-image: url('../img/app-dark.svg');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: var(--background-invert-if-dark);
+}
