@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = OC.generateUrl('/apps/countdown/api/countdowns');
     const notifyUrl = OC.generateUrl('/apps/countdown/api/notify');
 
+    // Confetti State
+    let confettiParticles = [];
+    let isConfettiRunning = false;
+    const confettiColors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#ffffff'];
+
     const placeholders = [
         "GTA VI Release", "The Last of Us Season 2", "Beyond Good & Evil 2",
         "Hollow Knight: Silksong", "Stranger Things Finale", "Dune: Part Three",
@@ -306,62 +311,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // PARTICLE EFFECT (CONFETTI)
-    function launchConfetti() {
+    function launchConfetti(intensity = 150) {
         const canvas = document.getElementById('confetti-canvas');
-        const ctx = canvas.getContext('2d');
+        if (!canvas) return;
+
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let particles = [];
-        const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#ffffff'];
-
-        for (let i = 0; i < 150; i++) {
-            particles.push({
+        for (let i = 0; i < intensity; i++) {
+            confettiParticles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height - canvas.height,
                 r: Math.random() * 6 + 4,
                 d: Math.random() * 150,
-                color: colors[Math.floor(Math.random() * colors.length)],
+                color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
                 tilt: Math.random() * 10 - 10,
                 tiltAngleIncremental: Math.random() * 0.07 + 0.05,
                 tiltAngle: 0
             });
         }
 
-        let animationId;
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p, i) => {
-                p.tiltAngle += p.tiltAngleIncremental;
-                p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
-                p.x += Math.sin(p.d);
-                p.tilt = Math.sin(p.tiltAngle) * 15;
-
-                ctx.beginPath();
-                ctx.lineWidth = p.r;
-                ctx.strokeStyle = p.color;
-                ctx.moveTo(p.x + p.tilt + p.r / 4, p.y);
-                ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 4);
-                ctx.stroke();
-
-                if (p.y > canvas.height) {
-                    particles[i] = { ...p, x: Math.random() * canvas.width, y: -20, tiltAngle: 0 };
-                }
-            });
+        if (!isConfettiRunning) {
+            isConfettiRunning = true;
+            requestAnimationFrame(confettiLoop);
         }
-
-        let start = Date.now();
-        function loop() {
-            draw();
-            if (Date.now() - start < 5000) { // Lasts 5 seconds
-                animationId = requestAnimationFrame(loop);
-            } else {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                cancelAnimationFrame(animationId);
-            }
-        }
-        loop();
     }
+
+    function confettiLoop() {
+        const canvas = document.getElementById('confetti-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (confettiParticles.length === 0) {
+            isConfettiRunning = false;
+            return;
+        }
+
+        confettiParticles.forEach((p, i) => {
+            p.tiltAngle += p.tiltAngleIncremental;
+            p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+            p.x += Math.sin(p.d);
+            p.tilt = Math.sin(p.tiltAngle) * 15;
+
+            ctx.beginPath();
+            ctx.lineWidth = p.r;
+            ctx.strokeStyle = p.color;
+            ctx.moveTo(p.x + p.tilt + p.r / 4, p.y);
+            ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 4);
+            ctx.stroke();
+        });
+
+        // Refilter particles table to remove those off-screen
+        confettiParticles = confettiParticles.filter(p => p.y <= canvas.height);
+
+        if (confettiParticles.length > 0) {
+            requestAnimationFrame(confettiLoop);
+        } else {
+            isConfettiRunning = false;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    window.addEventListener('resize', () => {
+        const canvas = document.getElementById('confetti-canvas');
+        if (canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+    });
 
     // Initialize application after all functions and constants are defined
     try {
@@ -369,6 +388,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedScale = localStorage.getItem('countdown-scale') || 1;
         sizeSlider.value = savedScale;
         grid.style.setProperty('--cd-zoom', savedScale);
+        // Easter Egg: Confetti on title click
+        const title = document.querySelector('.countdown-title');
+        if (title) {
+            title.style.cursor = 'pointer';
+            title.addEventListener('click', () => {
+                launchConfetti(100);
+            });
+        }
+
         loadCountdowns();
     } catch (e) {
         console.error('Final initialization error:', e);
