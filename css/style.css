@@ -378,6 +378,11 @@ body.theme--dark .settings-panel {
     margin-bottom: 1.4rem;
 }
 
+.modal-content .form-group:last-of-type,
+.modal-content .repeat-section {
+    margin-bottom: 0;
+}
+
 .form-group label {
     display: block;
     margin-bottom: 0.8rem;
@@ -851,7 +856,7 @@ body.opendyslexic .settings-panel * {
     background: var(--color-main-background);
     border-radius: 12px;
     border: 2px solid var(--color-border);
-    margin-bottom: 1.4rem;
+    margin-bottom: 0;
     transition: var(--cd-transition);
     display: flex;
     flex-direction: column;
