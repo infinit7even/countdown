@@ -9,10 +9,11 @@
 - 🎨 Sleek glassmorphism UI: Fast, elegant, and native to Nextcloud.
 - 🏗️ Custom sizes (S/M/L): Highlight your most anticipated titles.
 - 📊 HUD Widgets: Track your release questline at a glance on the dashboard.
-- 🔔 Day-One notifications: Get alerts when the wait is finally over.
+- 🔄 Recurrent Countdowns: Set events to repeat daily, weekly, monthly, or yearly.
+- 🔔 Notifications: Get alerted when the wait is finally over via Nextcloud Activity.
 - 🌗 Dark & Light modes: Matches your Nextcloud theme.
 ]]></description>
-    <version>1.0.26</version>
+    <version>1.0.27</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
