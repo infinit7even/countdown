@@ -289,6 +289,14 @@ body.theme--dark .settings-panel {
     height: 18px !important;
     cursor: pointer;
     accent-color: var(--cd-primary-color);
+    background: transparent !important;
+    border: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    appearance: checkbox !important; /* Ensure native appearance */
+    -webkit-appearance: checkbox !important;
 }
 
 .checkbox-group label {
