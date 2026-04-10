@@ -555,7 +555,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     position: fixed;
     bottom: 2rem;
     left: 2rem;
-    width: 200px; /* Consistent width */
+    width: 260px; /* Increased to fit new controls */
     padding: 1.2rem 1.5rem;
     border-radius: 16px;
     z-index: 9000;
@@ -658,7 +658,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 }
 
 .settings-panel input[type=range] {
-    width: 160px;
+    width: 100%;
     accent-color: var(--cd-primary-color);
     cursor: pointer;
 }
