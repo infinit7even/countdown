@@ -12,7 +12,7 @@
 - 🔔 Day-One notifications: Get alerts when the wait is finally over.
 - 🌗 Dark & Light modes: Matches your Nextcloud theme.
 ]]></description>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -27,7 +27,8 @@
     <discussion>https://github.com/infinit7even/countdown/discussions</discussion>
     <bugs>https://github.com/infinit7even/countdown/issues</bugs>
     <repository type="git">https://github.com/infinit7even/countdown.git</repository>
-    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview.png</screenshot>    <dependencies>
+    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview.png</screenshot>    
+    <dependencies>
         <php min-version="8.0" />
         <nextcloud min-version="25" max-version="33" />
     </dependencies>
