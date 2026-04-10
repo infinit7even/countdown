@@ -783,3 +783,50 @@ body.opendyslexic .settings-panel * {
     font-family: var(--font-family-opendyslexic, 'OpenDyslexic', sans-serif) !important;
     letter-spacing: normal !important;
 }
+
+/* Info Icon and Description Styles */
+.cd-info {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--color-background-hover);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+}
+
+.cd-info:hover {
+    opacity: 1;
+    background-color: var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
+}
+
+.icon-info-custom {
+    background-image: var(--icon-info-000);
+}
+
+body.theme--dark .icon-info-custom {
+    background-image: var(--icon-info-fff);
+}
+
+.info-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-value {
+    font-size: 1.15rem;
+    color: var(--color-main-text);
+    padding: 14px 16px;
+    background: var(--cd-time-bg);
+    border-radius: 12px;
+    border: 2px solid var(--color-border);
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+}

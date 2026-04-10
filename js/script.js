@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const allDayCheckbox = document.getElementById('cd-allday');
     const dateGroup = document.getElementById('date-group');
     const sizeSlider = document.getElementById('size-slider');
+    const descriptionInput = document.getElementById('cd-description');
+
+    const infoModal = document.getElementById('info-modal');
+    const infoCreated = document.getElementById('info-created');
+    const infoDescription = document.getElementById('info-description');
+    const closeInfoBtn = document.getElementById('close-info-btn');
 
     let countdowns = [];
     let intervals = [];
@@ -30,16 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const confettiColors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#ffffff'];
 
     const placeholders = [
-        "GTA VI Release", "The Last of Us Season 2", "Beyond Good & Evil 2",
-        "Hollow Knight: Silksong", "Stranger Things Finale", "Dune: Part Three",
-        "New Radiohead Album", "The Witcher 4", "Cyberpunk 2077 Sequel",
-        "Elden Ring DLC", "Spider-Man 4 Premiere", "New Kendrick Lamar Album",
-        "House of the Dragon S3", "Final Fantasy XVII", "Batman: Part II",
-        "New Tool Album", "Red Dead Redemption 3", "Fallout Season 2",
-        "Avatar 3 Premiere", "Metroid Prime 4", "Euphoria Season 3",
-        "Blade Runner 2099", "BioShock 4", "The Elder Scrolls VI",
-        "New Gorillaz Album", "Star Wars: New Jedi Order", "Tron: Ares Premiere",
-        "Death Stranding 2", "Doom: The Dark Ages", "Marvel's Wolverine"
+        "Spider-Man 4 Premiere", "Elder Scrolls VI", "New Daft Punk Album",
+        "Stranger Things Season 5", "Batman: Part II", "BioShock 4",
+        "Gorillaz New Tour", "The Last of Us Season 3", "Avatar 3 Release",
+        "Metal Gear Solid Delta", "Radiohead New Album", "Black Mirror Season 7",
+        "Joker: Folie à Deux", "Final Fantasy XVII", "Tool New Single",
+        "Euphoria Season 3", "Superman: Legacy", "Hollow Knight: Silksong",
+        "Kendrick Lamar Album", "House of the Dragon S3"
     ];
 
     const completionMessages = [
@@ -144,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dateInput.value = '';
         dateInput.type = 'datetime-local';
         allDayCheckbox.checked = false;
+        descriptionInput.value = '';
         modal.classList.remove('hidden');
     });
 
@@ -151,9 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('hidden');
     });
 
+    closeInfoBtn.addEventListener('click', () => {
+        infoModal.classList.add('hidden');
+    });
+
     saveBtn.addEventListener('click', async () => {
         const name = nameInput.value.trim();
         const dateVal = dateInput.value;
+        const description = descriptionInput.value.trim();
         if (!name || !dateVal) {
             OC.Notification.showTemporary('Please fill in all fields!');
             return;
@@ -178,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     name,
                     targetDate,
                     allDay: allDayCheckbox.checked,
+                    description: description,
                     notified: isFuture ? false : countdowns[index].notified
                 };
             }
@@ -188,6 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: name,
                 targetDate: targetDate,
                 allDay: allDayCheckbox.checked,
+                description: description,
+                createdAt: Date.now(),
                 notified: false
             });
         }
@@ -273,6 +285,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
+            const infoBtn = document.createElement('span');
+            infoBtn.className = 'cd-info icon-info-custom';
+            infoBtn.onclick = (e) => {
+                e.stopPropagation();
+                openInfoModal(cd);
+            };
+
+            actions.appendChild(infoBtn);
             actions.appendChild(editBtn);
             actions.appendChild(delBtn);
             titleRow.appendChild(actions);
@@ -292,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = 'Edit Countdown';
         idInput.value = cd.id;
         nameInput.value = cd.name;
+        descriptionInput.value = cd.description || '';
 
         const date = new Date(cd.targetDate);
         allDayCheckbox.checked = !!cd.allDay;
@@ -308,6 +329,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         modal.classList.remove('hidden');
+    }
+
+    function openInfoModal(cd) {
+        infoCreated.textContent = cd.createdAt ? new Date(cd.createdAt).toLocaleString() : 'Legacy Countdown';
+        infoDescription.textContent = cd.description || 'No description provided.';
+        infoModal.classList.remove('hidden');
     }
 
     // PARTICLE EFFECT (CONFETTI)

@@ -22,6 +22,10 @@
                     <label for="cd-name">Event Name</label>
                     <input type="text" id="cd-name" placeholder="GTA VI Release" />
                 </div>
+                <div class="form-group">
+                    <label for="cd-description">Description</label>
+                    <input type="text" id="cd-description" placeholder="A short description..." />
+                </div>
                  <div class="form-group" id="date-group">
                     <label for="cd-date">Event Date and Time</label>
                     <input type="datetime-local" id="cd-date" />
@@ -33,6 +37,26 @@
                 <div class="modal-actions">
                     <button id="cancel-btn" class="button">Cancel</button>
                     <button id="save-btn" class="button primary">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Modal -->
+        <div id="info-modal" class="modal-overlay hidden">
+            <div class="modal-content glass-effect">
+                <h2 id="info-title">Countdown Details</h2>
+                <div class="info-body">
+                    <div class="form-group">
+                        <label>Date Created</label>
+                        <div id="info-created" class="info-value"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <div id="info-description" class="info-value"></div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="close-info-btn" class="button primary">Close</button>
                 </div>
             </div>
         </div>
