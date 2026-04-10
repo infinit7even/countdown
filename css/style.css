@@ -833,18 +833,28 @@ body.opendyslexic .settings-panel * {
 
 /* Recurrent Countdown Styles */
 .repeat-section {
-    padding: 1rem 1.2rem;
-    background: rgba(var(--color-primary-rgb, 0, 130, 201), 0.04);
-    border-radius: 16px;
+    padding: 1.2rem;
+    background: var(--cd-time-bg);
+    border-radius: 14px;
     border: 1.5px solid var(--color-border);
-    margin-bottom: 1.6rem;
+    margin-bottom: 2rem;
     transition: var(--cd-transition);
 }
 
+.repeat-section:hover {
+    background: var(--color-background-hover);
+    border-color: var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
+}
+
 #repeat-options {
-    margin-top: 0.8rem;
-    padding-top: 0.8rem;
-    border-top: 1.2px solid var(--color-border);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1.5px solid var(--color-border);
+}
+
+.repeat-section .checkbox-group label {
+    font-weight: 700;
+    font-size: 1rem;
 }
 
 select {
