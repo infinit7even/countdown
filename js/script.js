@@ -572,14 +572,56 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedScale = localStorage.getItem('countdown-scale') || 1;
         sizeSlider.value = savedScale;
         grid.style.setProperty('--cd-zoom', savedScale);
-        // Easter Egg: Confetti and Notifications on title click
+        // Easter Egg: Massive 1000-click challenge with themed levels
         let titleClickCount = 0;
         const titleMessages = {
+            // Tutorial & Foundation
             5: "Stop clicking! 🙄",
             10: "You really like clicking, don't you? 🤨",
             15: "Something special is coming... eventually! 🎁",
             20: "Okay, you win! Here is more confetti! 🎉",
-            25: "Holy f, I'm coming Lois! 💦"
+            25: "Holy f, I'm coming Lois! 💦",
+            30: "Level Up! You are now a 'Clicker Initiate'. ⚔️",
+            50: "Achievement Unlocked: Mouse Abuse. 🖱️",
+
+            // Movie Quests
+            75: "Wait... there is no spoon. 🥄",
+            100: "May the Force be with you. Always. ✨",
+            125: "I'll be back. (Or you will, clicking more). 🦾",
+            150: "Houston, we have a clicker. 🚀",
+            175: "Frankly, my dear, I don't give a click. 🎩",
+            200: "You're gonna need a bigger mouse. 🦈",
+
+            // Video Game Bosses
+            250: "YOU DIED. (Just kidding, keep going). 🔥",
+            275: "Snake? SNAKE?! SNNNAAAKKKEEEE!!! 🐍",
+            300: "The cake is a lie. 🎂",
+            325: "Wasted. 💸",
+            350: "Finish him! 🥊",
+            375: "Ssssss... 💥",
+            400: "Hey you, you're finally awake. ❄️",
+            425: "It's-a me, Mario! 🍄",
+            450: "All your base are belong to us. 🤖",
+            500: "BOSS BATTLE: The Click King appeared! 👑",
+
+            // TV Series & Binge
+            550: "Winter is coming... and it's cold. ❄️",
+            600: "I am the one who knocks! 🚪",
+            650: "Bazinga! ⚡",
+            700: "Friends don't lie. (But this button might). 🧇",
+            750: "We were on a break! ☕",
+            800: "To infinity and beyond! ✨",
+
+            // Music & Pop Culture
+            850: "Never gonna give you up... 🎵",
+            875: "I came in like a wrecking ball! 🔨",
+            900: "Is this the real life? Is this just fantasy? 🌎",
+            925: "Harder, Better, Faster, Stronger. 🎧",
+            950: "In the end, it doesn't even matter... 💔",
+            975: "Look at me. I'm the captain now. ⚓",
+            990: "SO CLOSE. FEEL THE POWER. ⚡",
+            995: "995... 996... 997... 998... 999...",
+            1000: "LEGENDARY STATUS ACHIEVED! You are the Chosen One! 🏆🔥👑✨"
         };
 
         const title = document.querySelector('.countdown-title');
@@ -587,14 +629,16 @@ document.addEventListener('DOMContentLoaded', () => {
             title.style.cursor = 'pointer';
             title.addEventListener('click', () => {
                 titleClickCount++;
-                launchConfetti(titleClickCount * 10);
+                launchConfetti(Math.min(titleClickCount * 5, 500)); // Cap confetti for performance
                 
                 if (titleMessages[titleClickCount]) {
                     OC.Notification.showTemporary(titleMessages[titleClickCount]);
                 }
                 
-                // Reset after max
-                if (titleClickCount >= 30) titleClickCount = 0;
+                // Reset after the ultimate goal
+                if (titleClickCount >= 1000) {
+                    titleClickCount = 0;
+                }
             });
         }
 
