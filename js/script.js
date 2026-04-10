@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateVal = dateInput.value;
         const description = descriptionInput.value.trim();
         if (!name || !dateVal) {
-            OC.Notification.showTemporary('Please fill in all fields!');
+            OC.Notification.showTemporary('🚨 Please fill in all fields!');
             return;
         }
 
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCountdowns();
         await saveCountdowns();
         launchConfetti(50);
-        OC.Notification.showTemporary('Countdown saved successfully!');
+        OC.Notification.showTemporary('✅ Countdown saved successfully!');
     });
 
 
@@ -601,7 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reviewBtn) {
             reviewBtn.addEventListener('click', () => {
                 launchConfetti(80);
-                OC.Notification.showTemporary('Thank you! Your feedback is much appreciated!');
+                OC.Notification.showTemporary('🦊 Thank you!');
             });
         }
 
