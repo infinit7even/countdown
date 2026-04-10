@@ -5,16 +5,13 @@
     <summary>Manage and display modern and customizable countdowns</summary>
     <description><![CDATA[Track your most anticipated game releases, movie premieres, and TV series episodes!
 
-- 🕒 Track upcoming releases: Manage countdowns for your most hyped entertainment.
-- 🎨 Sleek glassmorphism UI: Fast, elegant, and native to Nextcloud.
-- 🏗️ Custom sizes (S/M/L): Highlight your most anticipated titles.
-- 📊 HUD Widgets: Track your release questline at a glance on the dashboard.
-- 🔄 Recurrent Countdowns: Set events to repeat daily, weekly, monthly, or yearly.
-- 🔔 Notifications: Get alerted when the wait is finally over via Nextcloud Activity.
-- 🌗 Dark & Light modes: Matches your Nextcloud theme.
-- 🖱️ Easter Egg: Click the title 1000 times to unlock a secret message!
+- 🕒 Manage countdowns for your most hyped entertainment.
+- 📊 Track your release questline at a glance on the dashboard.
+- 🔄 Set events to repeat daily, weekly, monthly, or yearly.
+- 🔔 Get alerted when the wait is finally over via Nextcloud Activity.
+- 🖱️ Click the title ???? times to unlock a secret message!
 ]]></description>
-    <version>1.0.48</version>
+    <version>1.0.49</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
