@@ -76,6 +76,10 @@ body.theme--dark .settings-panel {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .new-countdown-btn {

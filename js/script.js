@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateVal = dateInput.value;
         const description = descriptionInput.value.trim();
         if (!name || !dateVal) {
-            OC.Notification.showTemporary('🚨 Please fill in all fields!');
+            OC.Notification.showTemporary('Please fill in all fields! 🚨');
             return;
         }
 
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCountdowns();
         await saveCountdowns();
         launchConfetti(50);
-        OC.Notification.showTemporary('✅ Countdown saved successfully!');
+        OC.Notification.showTemporary('Countdown saved successfully! 🚀');
     });
 
 
@@ -575,11 +575,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Easter Egg: Confetti and Notifications on title click
         let titleClickCount = 0;
         const titleMessages = {
-            5: "ciao",
-            10: "You really like clicking, don't you?",
+            5: "Stop clicking! 🙄",
+            10: "You really like clicking, don't you? 🤨",
             15: "Something special is coming... eventually! 🎁",
             20: "Okay, you win! Here is more confetti! 🎉",
-            25: "System Overload! Just kidding. Have a nice day! 👋"
+            25: "Holy f, I'm coming Lois! 💦"
         };
 
         const title = document.querySelector('.countdown-title');
@@ -601,7 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reviewBtn) {
             reviewBtn.addEventListener('click', () => {
                 launchConfetti(80);
-                OC.Notification.showTemporary('🦊 Thank you!');
+                OC.Notification.showTemporary('Thank you! 🦊');
             });
         }
 
