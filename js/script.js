@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCountdowns();
         await saveCountdowns();
         launchConfetti(50);
+        OC.Notification.showTemporary('Countdown saved successfully!');
     });
 
 
