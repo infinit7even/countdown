@@ -178,6 +178,15 @@ document.addEventListener('DOMContentLoaded', () => {
         infoModal.classList.add('hidden');
     });
 
+    // Close on overlay click
+    [modal, infoModal].forEach(ov => {
+        ov.addEventListener('click', (e) => {
+            if (e.target === ov) {
+                ov.classList.add('hidden');
+            }
+        });
+    });
+
     saveBtn.addEventListener('click', async () => {
         const name = nameInput.value.trim();
         const dateVal = dateInput.value;

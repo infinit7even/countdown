@@ -379,7 +379,7 @@ body.theme--dark .settings-panel {
     opacity: 0.9;
 }
 
-.form-group input {
+.form-group input:not([type="checkbox"]) {
     width: 100%;
     padding: 14px 16px;
     border-radius: 12px;
@@ -395,27 +395,27 @@ body.theme--dark .settings-panel {
 }
 
 /* Ultra-robust placeholder styling */
-.form-group input::placeholder {
+.form-group input:not([type="checkbox"])::placeholder {
     color: var(--color-text-maxcontrast) !important;
     opacity: 1 !important;
 }
 
-.form-group input::-webkit-input-placeholder {
+.form-group input:not([type="checkbox"])::-webkit-input-placeholder {
     color: var(--color-text-maxcontrast) !important;
     opacity: 1 !important;
 }
 
-.form-group input:-ms-input-placeholder {
+.form-group input:not([type="checkbox"]):-ms-input-placeholder {
     color: var(--color-text-maxcontrast) !important;
     opacity: 1 !important;
 }
 
-.form-group input::-moz-placeholder {
+.form-group input:not([type="checkbox"])::-moz-placeholder {
     color: var(--color-text-maxcontrast) !important;
     opacity: 1 !important;
 }
 
-.form-group input::-webkit-calendar-picker-indicator:hover {
+.form-group input:not([type="checkbox"])::-webkit-calendar-picker-indicator:hover {
     background-color: var(--color-background-hover);
 }
 
@@ -439,11 +439,11 @@ body.theme--dark .settings-panel {
     flex-grow: 1;
 }
 
-body.theme--dark .form-group input {
+body.theme--dark .form-group input:not([type="checkbox"]) {
     color-scheme: dark;
 }
 
-.form-group input:focus {
+.form-group input:not([type="checkbox"]):focus {
     outline: none;
     border-color: var(--cd-primary-color);
     box-shadow: 0 0 0 4px var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
@@ -451,7 +451,7 @@ body.theme--dark .form-group input {
 }
 
 /* Ensure date/time picker icons are strictly pinned to the right */
-.form-group input::-webkit-calendar-picker-indicator {
+.form-group input:not([type="checkbox"])::-webkit-calendar-picker-indicator {
     position: absolute;
     right: 12px;
     cursor: pointer;
@@ -467,7 +467,7 @@ body.theme--dark .form-group input {
     z-index: 2;
 }
 
-.form-group input::-webkit-calendar-picker-indicator:hover {
+.form-group input:not([type="checkbox"])::-webkit-calendar-picker-indicator:hover {
     opacity: 1;
     transform: scale(1.05);
     background-color: var(--color-background-hover);
