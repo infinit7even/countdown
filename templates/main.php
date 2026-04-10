@@ -101,19 +101,23 @@
         </div>
         <!-- Settings Modal (Size) -->
         <div id="settings-panel" class="settings-panel glass-effect">
-            <label for="size-slider">Card Size</label>
-            <input type="range" id="size-slider" min="0.7" max="1.5" step="0.05" value="1">
+            <div class="settings-row">
+                <label for="size-slider">Size</label>
+                <input type="range" id="size-slider" min="0.7" max="1.5" step="0.05" value="1">
+            </div>
             
-            <label>Sort by</label>
-            <div class="sort-controls">
-                <div class="segmented-control">
-                    <button class="sort-opt active" data-sort="date" title="Sort by Date">📅</button>
-                    <button class="sort-opt" data-sort="name" title="Sort Alphabetical">abc</button>
-                    <button class="sort-opt" data-sort="newest" title="Sort by Newest">🆕</button>
+            <div class="settings-row">
+                <label>Sort</label>
+                <div class="sort-controls">
+                    <div class="segmented-control">
+                        <button class="sort-opt active" data-sort="date" title="Sort by Date">📅</button>
+                        <button class="sort-opt" data-sort="name" title="Sort Alphabetical">abc</button>
+                        <button class="sort-opt" data-sort="newest" title="Sort by Newest">🆕</button>
+                    </div>
+                    <button id="sort-direction-btn" class="sort-direction-btn" title="Toggle Direction">
+                        <span class="icon-toggle-arrow">↑</span>
+                    </button>
                 </div>
-                <button id="sort-direction-btn" class="sort-direction-btn" title="Toggle Direction">
-                    <span class="icon-toggle-arrow">↑</span>
-                </button>
             </div>
         </div>
         <canvas id="confetti-canvas"></canvas>

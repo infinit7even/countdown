@@ -680,6 +680,12 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     opacity: 0.8;
 }
 
+.settings-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .sort-controls {
     display: flex;
     gap: 8px;
@@ -781,11 +787,36 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     .settings-panel {
         bottom: 1.2rem;
         left: 1.2rem;
+        width: calc(100% - 2.4rem);
+        max-width: 380px;
         padding: 1rem 1.2rem;
+        gap: 15px;
     }
 
-    .settings-panel input[type=range] {
-        width: 130px;
+    .settings-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .settings-row label {
+        flex-shrink: 0;
+        min-width: 40px;
+    }
+
+    .settings-row input[type=range] {
+        width: 100%;
+        margin: 0;
+    }
+
+    .settings-row .sort-controls {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .segmented-control {
+        max-width: 160px;
     }
 }
 
