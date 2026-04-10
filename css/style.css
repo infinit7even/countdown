@@ -806,14 +806,6 @@ body.opendyslexic .settings-panel * {
     background-color: var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
 }
 
-.icon-info-custom {
-    background-image: var(--icon-info-000);
-}
-
-body.theme--dark .icon-info-custom {
-    background-image: var(--icon-info-fff);
-}
-
 .info-body {
     display: flex;
     flex-direction: column;
