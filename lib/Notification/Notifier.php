@@ -29,7 +29,7 @@ class Notifier implements INotifier {
         }
 
         if ($notification->getSubject() === 'timer_finished') {
-            $notification->setIcon($this->urlGenerator->getAbsoluteURL($this->urlGenerator->imagePath('countdown', 'notification.svg')));
+            $notification->setIcon($this->urlGenerator->getAbsoluteURL($this->urlGenerator->imagePath('countdown', 'app-dark.svg')));
             $notification->setParsedSubject(
                 (string)$this->l10n->t('A countdown has finished!')
             );
