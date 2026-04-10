@@ -55,7 +55,7 @@
                 <div class="modal-actions">
                     <div class="button-group">
                         <button id="cancel-btn" class="button">Cancel</button>
-                        <button id="save-btn" class="button primary">Save</button>
+                        <button id="save-btn" class="button primary">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -73,6 +73,10 @@
                     <div class="form-group">
                         <label>Description</label>
                         <div id="info-description" class="info-value"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Repetition</label>
+                        <div id="info-repeat" class="info-value"></div>
                     </div>
                 </div>
                 <div class="modal-actions">

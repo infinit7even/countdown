@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const infoModal = document.getElementById('info-modal');
     const infoCreated = document.getElementById('info-created');
     const infoDescription = document.getElementById('info-description');
+    const infoRepeat = document.getElementById('info-repeat');
     const closeInfoBtn = document.getElementById('close-info-btn');
 
     const repeatToggle = document.getElementById('cd-repeat-toggle');
@@ -373,6 +374,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function openInfoModal(cd) {
         infoCreated.textContent = cd.createdAt ? new Date(cd.createdAt).toLocaleString() : 'Legacy Countdown';
         infoDescription.textContent = cd.description || 'No description provided.';
+        
+        let repeatText = 'No';
+        if (cd.repeat && cd.repeat !== 'none') {
+            switch(cd.repeat) {
+                case 'daily': repeatText = 'Every Day'; break;
+                case 'weekly': repeatText = 'Every Week'; break;
+                case 'monthly': repeatText = 'Every Month'; break;
+                case 'yearly': repeatText = 'Every Year'; break;
+                case 'custom': 
+                    const val = cd.repeatValue || 1;
+                    repeatText = `Every ${val} Days`; 
+                    break;
+            }
+        }
+        infoRepeat.textContent = repeatText;
+        
         infoModal.classList.remove('hidden');
     }
 
