@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const infoDescription = document.getElementById('info-description');
     const infoRepeat = document.getElementById('info-repeat');
     const closeInfoBtn = document.getElementById('close-info-btn');
+    const reviewBtn = document.querySelector('.review-btn');
 
     const repeatToggle = document.getElementById('cd-repeat-toggle');
     const repeatOptions = document.getElementById('repeat-options');
@@ -214,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('hidden');
         renderCountdowns();
         await saveCountdowns();
+        launchConfetti(50);
     });
 
 
@@ -477,6 +479,12 @@ document.addEventListener('DOMContentLoaded', () => {
             title.style.cursor = 'pointer';
             title.addEventListener('click', () => {
                 launchConfetti(100);
+            });
+        }
+
+        if (reviewBtn) {
+            reviewBtn.addEventListener('click', () => {
+                launchConfetti(80);
             });
         }
 

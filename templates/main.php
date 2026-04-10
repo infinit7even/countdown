@@ -81,7 +81,7 @@
                 </div>
                 <div class="modal-actions">
                     <button id="close-info-btn" class="button">Close</button>
-                    <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button review-btn primary">Leave a review</a>
+                    <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button review-btn primary">Leave a review or comment</a>
                 </div>
             </div>
         </div>
