@@ -11,4 +11,4 @@ Track your most anticipated game releases, movie premieres, and TV series finale
 
 ## Screenshots
 
-![Countdown list view](screenshots/preview.png)
+![Countdown list view](screenshots/countdown.png)

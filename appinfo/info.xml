@@ -14,7 +14,7 @@
 - 🌗 Dark & Light modes: Matches your Nextcloud theme.
 - 🖱️ Easter Egg: Click the title 1000 times to unlock a secret message!
 ]]></description>
-    <version>1.0.46</version>
+    <version>1.0.47</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -29,7 +29,7 @@
     <discussion>https://github.com/infinit7even/countdown/discussions</discussion>
     <bugs>https://github.com/infinit7even/countdown/issues</bugs>
     <repository type="git">https://github.com/infinit7even/countdown.git</repository>
-    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview.png</screenshot>    
+    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/countdown.png</screenshot>    
     <dependencies>
         <php min-version="8.0" />
         <nextcloud min-version="25" max-version="33" />
