@@ -790,35 +790,44 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
         bottom: 1.2rem;
         left: 1.2rem;
         width: calc(100% - 2.4rem);
-        max-width: 380px;
-        padding: 1rem 1.2rem;
-        gap: 15px;
-    }
-
-    .settings-row {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        max-width: 400px;
+        padding: 1.2rem 1.4rem;
+        display: flex;
+        flex-direction: column; /* Force vertical stacking of rows */
         gap: 20px;
     }
 
+    .settings-row {
+        display: grid;
+        grid-template-columns: 50px 1fr; /* Fixed label column, flexible control column */
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
     .settings-row label {
-        flex-shrink: 0;
-        min-width: 40px;
+        flex: none;
+        width: 50px;
+        font-size: 0.8rem;
+        margin: 0;
     }
 
     .settings-row input[type=range] {
-        width: 100%;
+        width: 100% !important;
         margin: 0;
     }
 
     .settings-row .sort-controls {
-        flex: 1;
+        display: flex;
         justify-content: flex-end;
+        align-items: center;
+        width: 100%;
     }
 
     .segmented-control {
-        max-width: 160px;
+        flex: 1;
+        max-width: 180px;
     }
 }
 
