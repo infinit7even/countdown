@@ -486,6 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reviewBtn) {
             reviewBtn.addEventListener('click', () => {
                 launchConfetti(80);
+                OC.Notification.showTemporary('Thank you! Your feedback is much appreciated!');
             });
         }
 
