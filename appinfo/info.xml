@@ -3,17 +3,19 @@
     <id>countdown</id>
     <name>Countdown</name>
     <summary>Manage and display modern and customizable countdowns</summary>
-    <description><![CDATA[Track your most anticipated game releases, movie premieres, and TV series finales with style! Fuel the anticipation for major blockbusters, next-gen titles, and upcoming seasons.
+    <description><![CDATA[Level up your anticipation! Countdown is the ultimate tool for gamers and entertainment enthusiasts to track upcoming releases with a stunning, high-performance HUD interface.
 
-- 🕒 Track upcoming releases: Manage countdowns for your most hyped entertainment.
-- 🎨 Sleek glassmorphism UI: Fast, elegant, and native to Nextcloud.
-- 🏗️ Custom sizes (S/M/L): Highlight your most anticipated titles.
-- 📊 HUD Widgets: Track your release questline at a glance on the dashboard.
-- 🔄 Recurrent Countdowns: Set events to repeat daily, weekly, monthly, or yearly.
-- 🔔 Notifications: Get alerted when the wait is finally over via Nextcloud Activity.
-- 🌗 Dark & Light modes: Matches your Nextcloud theme.
+Whether it's the next big AAA game, a movie premiere, the new season of your favorite series, or a legendary concert, manage your hype like a pro.
+
+Features:
+- 🚀 Gaming HUD Interface: A high-tech, futuristic design for the ultimate experience.
+- 🗂️ Smart Sorting: Reorder your countdowns by date, name, or creation time in both directions.
+- 😃 Expressive Emojis: Personalize your events with an integrated emoji picker tailored for geeks.
+- 🔄 Recurrent Quests: Set countdowns to repeat daily, weekly, or yearly for your recurring adventures.
+- 🔔 Activity Integration: Get notified directly via Nextcloud Activity when your "Quest" is complete.
+- 🌗 Fully Responsive: Beautiful on desktop and mobile, with support for Dark and Light themes.
 ]]></description>
-    <version>1.0.38</version>
+    <version>1.0.39</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
