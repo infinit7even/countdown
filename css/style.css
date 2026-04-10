@@ -879,6 +879,11 @@ body.opendyslexic .settings-panel * {
     margin-right: 12px;
     cursor: pointer;
     accent-color: var(--cd-primary-color);
+    color-scheme: light;
+}
+
+body.theme--dark .repeat-section .checkbox-group input[type="checkbox"] {
+    color-scheme: dark;
 }
 
 .repeat-section:hover {
