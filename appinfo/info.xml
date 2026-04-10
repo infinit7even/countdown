@@ -13,7 +13,7 @@
 - 🔔 Notifications: Get alerted when the wait is finally over via Nextcloud Activity.
 - 🌗 Dark & Light modes: Matches your Nextcloud theme.
 ]]></description>
-    <version>1.0.34</version>
+    <version>1.0.35</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

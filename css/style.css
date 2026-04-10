@@ -407,6 +407,102 @@ body.theme--dark .settings-panel {
     color-scheme: light;
 }
 
+/* Input with Action Button (Emoji) */
+.input-with-action {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-action input {
+    padding-right: 50px !important;
+}
+
+.input-with-action .action-btn {
+    position: absolute;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-with-action .action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Emoji Picker HUD Style */
+.emoji-picker {
+    position: absolute;
+    z-index: 10000;
+    width: 280px;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 16px;
+    animation: fadeInSlide 0.2s ease-out;
+}
+
+.emoji-categories {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cat-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    filter: grayscale(1);
+    opacity: 0.5;
+    transition: all 0.2s ease;
+}
+
+.cat-btn.active, .cat-btn:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.emoji-item {
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    padding: 6px 0;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.emoji-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Ultra-robust placeholder styling */
 .form-group input:not([type="checkbox"])::placeholder {
     color: var(--color-text-maxcontrast) !important;

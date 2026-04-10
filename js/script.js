@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const sortOpts = document.querySelectorAll('.sort-opt');
     const directionBtn = document.getElementById('sort-direction-btn');
     const descriptionInput = document.getElementById('cd-description');
+    const emojiTrigger = document.getElementById('emoji-trigger');
+    const emojiPicker = document.getElementById('hud-emoji-picker');
+    const emojiGrid = document.getElementById('emoji-grid');
+    const catBtns = document.querySelectorAll('.cat-btn');
 
     const infoModal = document.getElementById('info-modal');
     const infoCreated = document.getElementById('info-created');
@@ -43,6 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let confettiParticles = [];
     let isConfettiRunning = false;
     const confettiColors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#ffffff'];
+
+    const EMOJI_DATA = {
+        faces: ["😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "🥰", "😗", "😙", "😚", "☺️", "🙂", "🤗", "🤩", "🤔", "🤨", "😐", "😑", "😶", "🙄", "😏", "😣", "😥", "😮", "🤐", "😯", "😪", "😫", "🥱", "😴", "😌", "😛", "😜", "😝", "🤤", "😒", "😓", "😔", "😕", "🙃", "🤑", "😲", "☹️", "🙁", "😖", "😞", "😟", "😤", "😢", "😭", "😦", "😧", "😨", "😩", "🤯", "😬", "😰", "😱", "🥵", "🥶", "😳", "🤪", "😵", "😡", "😠", "🤬", "😷", "🤒", "🤕", "🤢", "🤮", "🤧", "😇", "🥳", "🥺", "🤠", "🤡", "😈", "👿", "👹", "👺", "💀", "👻", "👽", "🤖", "💩", "😺", "😸", "😻", "😼", "😽", "🙀", "😿", "😾"],
+        gaming: ["🎮", "🕹️", "👾", "⌨️", "🖱️", "💻", "🖥️", "🖨️", "📀", "💿", "💾", "📻", "📺", "📸", "🎥", "🎬", "🎭", "🎫", "🥇", "🥈", "🥉", "🏅", "🎖️", "🏆", "🏎️", "🏍️", "🏎️", "🥊", "🥋", "🥋", "🤺", "🏹", "🛡️", "⚔️", "🔫", "💣", "🧨", "🔮", "🧿", "🕯️", "🧧", "🏮", "💰", "💎", "🔋", "🔌", "🔦", "💡", "📡", "🛸", "🚀", "🪐", "🌍", "🌕", "⭐", "🌟", "🔥", "💧", "⚡", "🌊", "🌈", "🌪️", "❄️", "☄️", "🍄", "🍄", "🌻", "🌲", "🌳", "🌵", "🐉", "🐲", "🦖", "🦕"],
+        objects: ["🍔", "🍟", "🍕", "🌭", "🥪", "🌮", "🌯", "🥚", "🍳", "🧀", "🥓", "🥩", "🍗", "🍖", "🍴", "🍽️", "🥤", "🧃", "🍺", "🍻", "🥂", "🍷", "🥃", "🍹", "🍸", "🧉", "☕", "🍵", "🍼", "🧂", "🍿", "🍨", "🍦", "🎂", "🍰", "🧁", "🥧", "🍫", "🍬", "🍭", "🍩", "🍪", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍈", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍅", "🥑", "🥦", "🥬", "🌽", "🥕", "🫒"],
+        symbols: ["❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤍", "🤎", "💔", "❣️", "💕", "💞", "💓", "💗", "💖", "🗂️", "📂", "📈", "📉", "📊", "📁", "🗄️", "📅", "📆", "🗓️", "🗑️", "🪦", "🧿", "🔔", "🔕", "📢", "📣", "💬", "💭", "🗯️", "🃏", "🎴", "🀄", "🔇", "🔈", "🔉", "🔊", "🔕", "📣", "📢", "✅", "❌", "❓", "❗", "➕", "➖", "✖️", "➕", "♾️", "🆔", "📌", "📍", "🚩", "🏁", "🎌", "🏳️", "🏴", "🏴‍☠️", "☢️", "☣️"]
+    };
 
     const placeholders = [
         "Spider-Man 4 Premiere", "Elder Scrolls VI", "New Daft Punk Album",
@@ -133,6 +144,57 @@ document.addEventListener('DOMContentLoaded', () => {
         directionBtn.classList.toggle('desc');
         localStorage.setItem('countdown-dir', directionBtn.classList.contains('desc') ? 'desc' : 'asc');
         renderCountdowns();
+    });
+
+    // Emoji Picker Logic
+    function renderEmojiCategory(category) {
+        emojiGrid.innerHTML = '';
+        const emojis = EMOJI_DATA[category] || [];
+        emojis.forEach(emoji => {
+            const btn = document.createElement('button');
+            btn.className = 'emoji-item';
+            btn.textContent = emoji;
+            btn.type = 'button';
+            btn.onclick = () => {
+                insertEmoji(emoji);
+                emojiPicker.classList.add('hidden');
+            };
+            emojiGrid.appendChild(btn);
+        });
+    }
+
+    function insertEmoji(emoji) {
+        const start = nameInput.selectionStart;
+        const end = nameInput.selectionEnd;
+        const text = nameInput.value;
+        const before = text.substring(0, start);
+        const after  = text.substring(end, text.length);
+        nameInput.value = before + emoji + after;
+        nameInput.selectionStart = nameInput.selectionEnd = start + emoji.length;
+        nameInput.focus();
+    }
+
+    emojiTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        emojiPicker.classList.toggle('hidden');
+        if (!emojiPicker.classList.contains('hidden')) {
+            renderEmojiCategory('faces');
+        }
+    });
+
+    catBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            catBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderEmojiCategory(btn.dataset.cat);
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!emojiPicker.contains(e.target) && e.target !== emojiTrigger) {
+            emojiPicker.classList.add('hidden');
+        }
     });
 
     repeatToggle.addEventListener('change', () => {

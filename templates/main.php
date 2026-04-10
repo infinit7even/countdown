@@ -20,7 +20,20 @@
                 <input type="hidden" id="cd-id">
                 <div class="form-group">
                     <label for="cd-name">Event Name</label>
-                    <input type="text" id="cd-name" placeholder="GTA VI Release" />
+                    <div class="input-with-action">
+                        <input type="text" id="cd-name" placeholder="GTA VI Release" />
+                        <button type="button" id="emoji-trigger" class="action-btn" title="Add Emoji">😃</button>
+                    </div>
+                    <!-- Emoji Picker Grid -->
+                    <div id="hud-emoji-picker" class="emoji-picker glass-effect hidden">
+                        <div class="emoji-categories">
+                            <button class="cat-btn active" data-cat="faces">😀</button>
+                            <button class="cat-btn" data-cat="gaming">🎮</button>
+                            <button class="cat-btn" data-cat="objects">💡</button>
+                            <button class="cat-btn" data-cat="symbols">✨</button>
+                        </div>
+                        <div id="emoji-grid" class="emoji-grid"></div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="cd-description">Description</label>
