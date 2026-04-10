@@ -584,6 +584,79 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     opacity: 0.8;
 }
 
+.sort-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.segmented-control {
+    flex: 1;
+    display: flex;
+    background: var(--cd-time-bg);
+    padding: 3px;
+    border-radius: 12px;
+    border: 1.5px solid var(--color-border);
+}
+
+.sort-opt {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 8px 0;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--color-main-text);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.6;
+}
+
+.sort-opt:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sort-opt.active {
+    opacity: 1;
+    background: var(--cd-primary-gradient);
+    color: white;
+    box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
+}
+
+.sort-direction-btn {
+    width: 44px;
+    height: 44px;
+    background: var(--cd-time-bg);
+    border: 1.5px solid var(--color-border);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: var(--color-main-text);
+}
+
+.sort-direction-btn:hover {
+    background: var(--color-background-hover);
+    border-color: var(--cd-primary-color);
+}
+
+.sort-direction-btn.desc .icon-toggle-arrow {
+    transform: rotate(180deg);
+}
+
+.icon-toggle-arrow {
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .settings-panel input[type=range] {
     width: 160px;
     accent-color: var(--cd-primary-color);

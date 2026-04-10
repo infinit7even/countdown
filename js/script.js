@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const dateInput = document.getElementById('cd-date');
     const dateGroup = document.getElementById('date-group');
     const sizeSlider = document.getElementById('size-slider');
-    const sortSelector = document.getElementById('sort-selector');
+    const sortOpts = document.querySelectorAll('.sort-opt');
+    const directionBtn = document.getElementById('sort-direction-btn');
     const descriptionInput = document.getElementById('cd-description');
 
     const infoModal = document.getElementById('info-modal');
@@ -119,8 +120,18 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('countdown-scale', scale);
     });
 
-    sortSelector.addEventListener('change', () => {
-        localStorage.setItem('countdown-sort', sortSelector.value);
+    sortOpts.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sortOpts.forEach(o => o.classList.remove('active'));
+            btn.classList.add('active');
+            localStorage.setItem('countdown-sort', btn.dataset.sort);
+            renderCountdowns();
+        });
+    });
+
+    directionBtn.addEventListener('click', () => {
+        directionBtn.classList.toggle('desc');
+        localStorage.setItem('countdown-dir', directionBtn.classList.contains('desc') ? 'desc' : 'asc');
         renderCountdowns();
     });
 
@@ -281,17 +292,24 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        const sortBy = sortSelector.value;
+        const activeSort = document.querySelector('.sort-opt.active');
+        const sortBy = activeSort ? activeSort.dataset.sort : 'date';
+        const isAscending = !directionBtn.classList.contains('desc');
+        
         const sorted = [...countdowns];
+        const multiplier = isAscending ? 1 : -1;
 
-        if (sortBy === 'name') {
-            sorted.sort((a, b) => a.name.localeCompare(b.name));
-        } else if (sortBy === 'newest') {
-            sorted.sort((a, b) => b.id - a.id);
-        } else {
-            // Closest date
-            sorted.sort((a, b) => a.targetDate - b.targetDate);
-        }
+        sorted.sort((a, b) => {
+            let res = 0;
+            if (sortBy === 'name') {
+                res = a.name.localeCompare(b.name);
+            } else if (sortBy === 'newest') {
+                res = b.id - a.id;
+            } else {
+                res = a.targetDate - b.targetDate;
+            }
+            return res * multiplier;
+        });
 
         sorted.forEach(cd => {
             const card = document.createElement('div');
@@ -512,8 +530,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Restore sort preference
         const savedSort = localStorage.getItem('countdown-sort');
+        const savedDir = localStorage.getItem('countdown-dir');
+        
         if (savedSort) {
-            sortSelector.value = savedSort;
+            sortOpts.forEach(btn => {
+                if (btn.dataset.sort === savedSort) {
+                    sortOpts.forEach(o => o.classList.remove('active'));
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        if (savedDir === 'desc') {
+            directionBtn.classList.add('desc');
         }
     } catch (e) {
         console.error('Final initialization error:', e);
