@@ -873,6 +873,14 @@ body.opendyslexic .settings-panel * {
     min-height: 48px;
 }
 
+.repeat-section .checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: var(--cd-primary-color);
+}
+
 .repeat-section:hover {
     background: var(--color-background-hover);
     border-color: var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
