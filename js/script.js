@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dateInput = document.getElementById('cd-date');
     const dateGroup = document.getElementById('date-group');
     const sizeSlider = document.getElementById('size-slider');
+    const sortSelector = document.getElementById('sort-selector');
     const descriptionInput = document.getElementById('cd-description');
 
     const infoModal = document.getElementById('info-modal');
@@ -116,6 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const scale = e.target.value;
         grid.style.setProperty('--cd-zoom', scale);
         localStorage.setItem('countdown-scale', scale);
+    });
+
+    sortSelector.addEventListener('change', () => {
+        localStorage.setItem('countdown-sort', sortSelector.value);
+        renderCountdowns();
     });
 
     repeatToggle.addEventListener('change', () => {
@@ -274,8 +280,20 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.innerHTML = '<div class="empty-state">You don\'t have any active countdowns.<br>Click above to create a new one.</div>';
             return;
         }
+        
+        const sortBy = sortSelector.value;
+        const sorted = [...countdowns];
 
-        countdowns.sort((a,b) => a.targetDate - b.targetDate).forEach(cd => {
+        if (sortBy === 'name') {
+            sorted.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (sortBy === 'newest') {
+            sorted.sort((a, b) => b.id - a.id);
+        } else {
+            // Closest date
+            sorted.sort((a, b) => a.targetDate - b.targetDate);
+        }
+
+        sorted.forEach(cd => {
             const card = document.createElement('div');
             card.className = 'countdown-card';
 
@@ -491,6 +509,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         loadCountdowns();
+
+        // Restore sort preference
+        const savedSort = localStorage.getItem('countdown-sort');
+        if (savedSort) {
+            sortSelector.value = savedSort;
+        }
     } catch (e) {
         console.error('Final initialization error:', e);
     }

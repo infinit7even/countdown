@@ -1,5 +1,5 @@
 <div id="app-content">
-	<div id="app-content-wrapper">
+    <div id="app-content-wrapper">
         <div class="countdown-app-container">
             <header class="countdown-header">
                 <h1 class="countdown-title">Countdown!</h1>
@@ -12,7 +12,7 @@
                 <!-- The list will be inserted via Javascript -->
             </div>
         </div>
-        
+
         <!-- New Item Modal -->
         <div id="countdown-modal" class="modal-overlay hidden">
             <div class="modal-content glass-effect">
@@ -26,14 +26,14 @@
                     <label for="cd-description">Description</label>
                     <input type="text" id="cd-description" placeholder="A short description..." />
                 </div>
-                 <div class="form-group" id="date-group">
+                <div class="form-group" id="date-group">
                     <label for="cd-date">Event Date and Time</label>
                     <input type="datetime-local" id="cd-date" />
                 </div>
                 <div class="repeat-section">
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="cd-repeat-toggle">
-                        <label for="cd-repeat-toggle">Repeat Countdown</label>
+                        <label for="cd-repeat-toggle">Repeat Countdown (NEW!)</label>
                     </div>
                     <div id="repeat-options" class="hidden">
                         <div class="form-group">
@@ -81,7 +81,8 @@
                 </div>
                 <div class="modal-actions">
                     <button id="close-info-btn" class="button">Close</button>
-                    <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button review-btn primary">Leave a review or comment</a>
+                    <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
+                        class="button review-btn primary">Leave a review or comment</a>
                 </div>
             </div>
         </div>
@@ -89,7 +90,14 @@
         <div id="settings-panel" class="settings-panel glass-effect">
             <label for="size-slider">Card Size</label>
             <input type="range" id="size-slider" min="0.7" max="1.5" step="0.05" value="1">
+            
+            <label for="sort-selector">Sort by</label>
+            <select id="sort-selector">
+                <option value="date">Closest Date</option>
+                <option value="name">Alphabetical (A-Z)</option>
+                <option value="newest">Newest Created</option>
+            </select>
         </div>
         <canvas id="confetti-canvas"></canvas>
-	</div>
+    </div>
 </div>

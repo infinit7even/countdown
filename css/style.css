@@ -555,6 +555,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     position: fixed;
     bottom: 2rem;
     left: 2rem;
+    width: 200px; /* Consistent width */
     padding: 1.2rem 1.5rem;
     border-radius: 16px;
     z-index: 9000;
@@ -563,6 +564,10 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     gap: 12px;
     box-shadow: var(--cd-card-shadow);
     transition: var(--cd-transition);
+}
+
+.settings-panel input[type="range"] {
+    cursor: pointer;
 }
 
 .settings-panel:hover {
