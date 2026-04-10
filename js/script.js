@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const idInput = document.getElementById('cd-id');
     const nameInput = document.getElementById('cd-name');
     const dateInput = document.getElementById('cd-date');
-    const allDayCheckbox = document.getElementById('cd-allday');
     const dateGroup = document.getElementById('date-group');
     const sizeSlider = document.getElementById('size-slider');
     const descriptionInput = document.getElementById('cd-description');
@@ -59,22 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "Achievement Unlocked", "K.O.!", "FATALITY", "Wasted", "You Died",
         "Legend Status", "End of an Era", "Launch Sequence Initiated", "Encore!", "To be continued..."
     ];
-
-    // Time visibility management for "All Day"
-    allDayCheckbox.addEventListener('change', () => {
-        const currentVal = dateInput.value;
-        if (allDayCheckbox.checked) {
-            dateInput.type = 'date';
-            if (currentVal && currentVal.includes('T')) {
-                dateInput.value = currentVal.split('T')[0];
-            }
-        } else {
-            dateInput.type = 'datetime-local';
-            if (currentVal && !currentVal.includes('T')) {
-                dateInput.value = currentVal + 'T12:00'; // Default to noon
-            }
-        }
-    });
 
     // Load Remote Data
     async function loadCountdowns() {
@@ -160,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         dateInput.value = '';
         dateInput.type = 'datetime-local';
-        allDayCheckbox.checked = false;
         descriptionInput.value = '';
         repeatToggle.checked = false;
         repeatOptions.classList.add('hidden');
@@ -196,13 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        let targetDate;
-        if (allDayCheckbox.checked) {
-            // If all day, set to the end of the selected day (23:59:59)
-            targetDate = new Date(dateVal + 'T23:59:59').getTime();
-        } else {
-            targetDate = new Date(dateVal).getTime();
-        }
+        const targetDate = new Date(dateVal).getTime();
 
         const editingId = idInput.value;
         if (editingId) {
@@ -214,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ...countdowns[index],
                     name,
                     targetDate,
-                    allDay: allDayCheckbox.checked,
                     description: description,
                     repeat: repeatToggle.checked ? repeatType.value : 'none',
                     repeatValue: parseFloat(customRepeatValue.value) || 1,
@@ -227,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: Date.now(),
                 name: name,
                 targetDate: targetDate,
-                allDay: allDayCheckbox.checked,
                 description: description,
                 repeat: repeatToggle.checked ? repeatType.value : 'none',
                 repeatValue: parseFloat(customRepeatValue.value) || 1,
@@ -387,19 +361,11 @@ document.addEventListener('DOMContentLoaded', () => {
         customRepeatGroup.classList.toggle('hidden', repeatType.value !== 'custom');
         customRepeatValue.value = cd.repeatValue || 1;
 
-        const date = new Date(cd.targetDate);
-        allDayCheckbox.checked = !!cd.allDay;
-
-        if (cd.allDay) {
-            dateInput.type = 'date';
-            dateInput.value = date.toISOString().split('T')[0];
-        } else {
-            dateInput.type = 'datetime-local';
-            // Format for datetime-local: YYYY-MM-DDTHH:mm
-            const tzoffset = (new Date()).getTimezoneOffset() * 60000;
-            const localISOTime = (new Date(cd.targetDate - tzoffset)).toISOString().slice(0, 16);
-            dateInput.value = localISOTime;
-        }
+        dateInput.type = 'datetime-local';
+        // Format for datetime-local: YYYY-MM-DDTHH:mm
+        const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+        const localISOTime = (new Date(cd.targetDate - tzoffset)).toISOString().slice(0, 16);
+        dateInput.value = localISOTime;
 
         modal.classList.remove('hidden');
     }

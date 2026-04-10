@@ -53,10 +53,6 @@
                     </div>
                 </div>
                 <div class="modal-actions">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="cd-allday">
-                        <label for="cd-allday">All Day</label>
-                    </div>
                     <div class="button-group">
                         <button id="cancel-btn" class="button">Cancel</button>
                         <button id="save-btn" class="button primary">Save</button>
