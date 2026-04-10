@@ -342,11 +342,13 @@ body.theme--dark .settings-panel {
 
 .modal-content {
     background: var(--color-main-background);
-    padding: 3rem;
+    padding: 2.2rem;
     border-radius: 24px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
     width: 90%;
     max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
     transform: translateY(0) scale(1);
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -365,7 +367,7 @@ body.theme--dark .settings-panel {
 }
 
 .form-group {
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.4rem;
 }
 
 .form-group label {
@@ -476,7 +478,7 @@ body.theme--dark .form-group input {
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
 }
 
 .button-group {
@@ -831,18 +833,18 @@ body.opendyslexic .settings-panel * {
 
 /* Recurrent Countdown Styles */
 .repeat-section {
-    padding: 1.5rem;
-    background: var(--cd-time-bg);
+    padding: 1rem 1.2rem;
+    background: rgba(var(--color-primary-rgb, 0, 130, 201), 0.04);
     border-radius: 16px;
     border: 1.5px solid var(--color-border);
-    margin-bottom: 2rem;
+    margin-bottom: 1.6rem;
     transition: var(--cd-transition);
 }
 
 #repeat-options {
-    margin-top: 1.2rem;
-    padding-top: 1.2rem;
-    border-top: 1.5px dashed var(--color-border);
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1.2px solid var(--color-border);
 }
 
 select {
