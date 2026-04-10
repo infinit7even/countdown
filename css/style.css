@@ -504,31 +504,28 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 }
 
 #cancel-btn,
-.review-btn {
+#close-info-btn {
     background: transparent;
     border: 2px solid var(--color-border);
     color: var(--color-main-text);
 }
 
 #cancel-btn:hover,
-.review-btn:hover {
+#close-info-btn:hover {
     background: var(--color-background-hover);
     border-color: var(--color-text-maxcontrast);
 }
 
-.review-btn:hover {
-    border-color: var(--cd-primary-color);
-    color: var(--cd-primary-color);
-}
-
-#save-btn {
+#save-btn,
+.review-btn.primary {
     background: var(--cd-primary-gradient);
     border: none;
     color: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#save-btn:hover {
+#save-btn:hover,
+.review-btn.primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     filter: brightness(1.1);

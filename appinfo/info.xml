@@ -12,7 +12,7 @@
 - 🔔 Day-One notifications: Get alerts when the wait is finally over.
 - 🌗 Dark & Light modes: Matches your Nextcloud theme.
 ]]></description>
-    <version>1.0.20</version>
+    <version>1.0.21</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
