@@ -30,13 +30,15 @@
                     <label for="cd-date">Event Date and Time</label>
                     <input type="datetime-local" id="cd-date" />
                 </div>
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="cd-allday">
-                    <label for="cd-allday">All Day</label>
-                </div>
                 <div class="modal-actions">
-                    <button id="cancel-btn" class="button">Cancel</button>
-                    <button id="save-btn" class="button primary">Save</button>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="cd-allday">
+                        <label for="cd-allday">All Day</label>
+                    </div>
+                    <div class="button-group">
+                        <button id="cancel-btn" class="button">Cancel</button>
+                        <button id="save-btn" class="button primary">Save</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -295,6 +295,7 @@ body.theme--dark .settings-panel {
 .checkbox-group label {
     margin-bottom: 0 !important;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 /* Confetti */
@@ -473,9 +474,15 @@ body.theme--dark .form-group input {
 
 .modal-actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     gap: 16px;
     margin-top: 2.5rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
 }
 
 .modal-actions button {
