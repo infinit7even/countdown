@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const infoDescription = document.getElementById('info-description');
     const closeInfoBtn = document.getElementById('close-info-btn');
 
+    const repeatToggle = document.getElementById('cd-repeat-toggle');
+    const repeatOptions = document.getElementById('repeat-options');
+    const repeatType = document.getElementById('cd-repeat-type');
+    const customRepeatGroup = document.getElementById('custom-repeat-group');
+    const customRepeatValue = document.getElementById('cd-repeat-value');
+
     let countdowns = [];
     let intervals = [];
 
@@ -127,6 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('countdown-scale', scale);
     });
 
+    repeatToggle.addEventListener('change', () => {
+        repeatOptions.classList.toggle('hidden', !repeatToggle.checked);
+    });
+
+    repeatType.addEventListener('change', () => {
+        customRepeatGroup.classList.toggle('hidden', repeatType.value !== 'custom');
+    });
+
 
     addBtn.addEventListener('click', () => {
         modalTitle.textContent = 'Create a new Countdown';
@@ -148,6 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
         dateInput.type = 'datetime-local';
         allDayCheckbox.checked = false;
         descriptionInput.value = '';
+        repeatToggle.checked = false;
+        repeatOptions.classList.add('hidden');
+        repeatType.value = 'daily';
+        customRepeatGroup.classList.add('hidden');
+        customRepeatValue.value = '1';
         modal.classList.remove('hidden');
     });
 
@@ -188,6 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     targetDate,
                     allDay: allDayCheckbox.checked,
                     description: description,
+                    repeat: repeatToggle.checked ? repeatType.value : 'none',
+                    repeatValue: parseFloat(customRepeatValue.value) || 1,
                     notified: isFuture ? false : countdowns[index].notified
                 };
             }
@@ -199,6 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetDate: targetDate,
                 allDay: allDayCheckbox.checked,
                 description: description,
+                repeat: repeatToggle.checked ? repeatType.value : 'none',
+                repeatValue: parseFloat(customRepeatValue.value) || 1,
                 createdAt: Date.now(),
                 notified: false
             });
@@ -225,6 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 cd.notified = true;
                 triggerNotification(cd.name);
                 launchConfetti();
+                
+                // If recurrent, calculate next date
+                if (cd.repeat && cd.repeat !== 'none') {
+                    const nextDate = calculateNextDate(cd.targetDate, cd.repeat, cd.repeatValue);
+                    cd.targetDate = nextDate;
+                    cd.notified = false; // Reset for next time
+                    console.log('Recurrent restart:', cd.name, 'Next:', new Date(nextDate).toLocaleString());
+                }
+                
                 saveCountdowns();
             }
             return;
@@ -308,11 +340,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function calculateNextDate(currentDate, type, value) {
+        const date = new Date(currentDate);
+        const now = Date.now();
+        
+        while (date.getTime() <= now) {
+            switch (type) {
+                case 'daily':
+                    date.setDate(date.getDate() + 1);
+                    break;
+                case 'weekly':
+                    date.setDate(date.getDate() + 7);
+                    break;
+                case 'monthly':
+                    date.setMonth(date.getMonth() + 1);
+                    break;
+                case 'yearly':
+                    date.setFullYear(date.getFullYear() + 1);
+                    break;
+                case 'custom':
+                    date.setTime(date.getTime() + (value * 86400000)); // Days to ms
+                    break;
+            }
+        }
+        return date.getTime();
+    }
+
     function openEditModal(cd) {
         modalTitle.textContent = 'Edit Countdown';
         idInput.value = cd.id;
         nameInput.value = cd.name;
         descriptionInput.value = cd.description || '';
+        
+        repeatToggle.checked = cd.repeat && cd.repeat !== 'none';
+        repeatOptions.classList.toggle('hidden', !repeatToggle.checked);
+        repeatType.value = cd.repeat || 'daily';
+        customRepeatGroup.classList.toggle('hidden', repeatType.value !== 'custom');
+        customRepeatValue.value = cd.repeatValue || 1;
 
         const date = new Date(cd.targetDate);
         allDayCheckbox.checked = !!cd.allDay;

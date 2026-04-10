@@ -281,15 +281,14 @@ body.theme--dark .settings-panel {
 .checkbox-group {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 5px 0;
+    gap: 12px;
 }
 
 .checkbox-group input {
-    width: 20px !important;
-    height: 20px !important;
+    width: 18px !important;
+    height: 18px !important;
     cursor: pointer;
+    accent-color: var(--cd-primary-color);
 }
 
 .checkbox-group label {
@@ -828,4 +827,52 @@ body.opendyslexic .settings-panel * {
     min-height: 52px;
     display: flex;
     align-items: center;
-}
+}
+
+/* Recurrent Countdown Styles */
+.repeat-section {
+    padding: 1.5rem;
+    background: var(--cd-time-bg);
+    border-radius: 16px;
+    border: 1.5px solid var(--color-border);
+    margin-bottom: 2rem;
+    transition: var(--cd-transition);
+}
+
+#repeat-options {
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1.5px dashed var(--color-border);
+}
+
+select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 2px solid var(--color-border);
+    background: var(--color-main-background);
+    color: var(--color-main-text);
+    font-family: inherit;
+    font-size: 1.05rem;
+    min-height: 52px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="grey" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 24px;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--cd-primary-color);
+    box-shadow: 0 0 0 4px var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
+}
+
+.hidden {
+    display: none !important;
+}
+

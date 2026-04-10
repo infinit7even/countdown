@@ -30,6 +30,28 @@
                     <label for="cd-date">Event Date and Time</label>
                     <input type="datetime-local" id="cd-date" />
                 </div>
+                <div class="repeat-section">
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="cd-repeat-toggle">
+                        <label for="cd-repeat-toggle">Repeat Countdown</label>
+                    </div>
+                    <div id="repeat-options" class="hidden">
+                        <div class="form-group">
+                            <label for="cd-repeat-type">Frequency</label>
+                            <select id="cd-repeat-type">
+                                <option value="daily">Every Day</option>
+                                <option value="weekly">Every Week</option>
+                                <option value="monthly">Every Month</option>
+                                <option value="yearly">Every Year</option>
+                                <option value="custom">Custom Period</option>
+                            </select>
+                        </div>
+                        <div class="form-group hidden" id="custom-repeat-group">
+                            <label for="cd-repeat-value">Days</label>
+                            <input type="number" id="cd-repeat-value" step="0.001" min="0.001" value="1" />
+                        </div>
+                    </div>
+                </div>
                 <div class="modal-actions">
                     <div class="checkbox-group">
                         <input type="checkbox" id="cd-allday">
