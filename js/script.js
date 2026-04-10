@@ -572,12 +572,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedScale = localStorage.getItem('countdown-scale') || 1;
         sizeSlider.value = savedScale;
         grid.style.setProperty('--cd-zoom', savedScale);
-        // Easter Egg: Confetti on title click
+        // Easter Egg: Confetti and Notifications on title click
+        let titleClickCount = 0;
+        const titleMessages = {
+            5: "ciao",
+            10: "You really like clicking, don't you?",
+            15: "Something special is coming... eventually! 🎁",
+            20: "Okay, you win! Here is more confetti! 🎉",
+            25: "System Overload! Just kidding. Have a nice day! 👋"
+        };
+
         const title = document.querySelector('.countdown-title');
         if (title) {
             title.style.cursor = 'pointer';
             title.addEventListener('click', () => {
-                launchConfetti(100);
+                titleClickCount++;
+                launchConfetti(titleClickCount * 10);
+                
+                if (titleMessages[titleClickCount]) {
+                    OC.Notification.showTemporary(titleMessages[titleClickCount]);
+                }
+                
+                // Reset after max
+                if (titleClickCount >= 30) titleClickCount = 0;
             });
         }
 
