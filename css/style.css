@@ -366,8 +366,7 @@ body.theme--dark .settings-panel {
 }
 
 .modal-content h2 {
-    margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1.4rem;
     font-weight: 800;
     font-size: 2rem;
     letter-spacing: -0.5px;
@@ -483,10 +482,10 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
 .modal-actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    gap: 16px;
-    margin-top: 1.5rem;
+    margin-top: 1.4rem;
+    gap: 1.2rem;
 }
 
 .button-group {
@@ -494,23 +493,32 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     gap: 16px;
 }
 
-.modal-actions button {
+.modal-actions button,
+.modal-actions .button {
     padding: 12px 24px;
     border-radius: 12px;
     font-weight: 600;
     font-size: 1rem;
     transition: var(--cd-transition);
+    text-decoration: none;
 }
 
-#cancel-btn {
+#cancel-btn,
+.review-btn {
     background: transparent;
     border: 2px solid var(--color-border);
     color: var(--color-main-text);
 }
 
-#cancel-btn:hover {
+#cancel-btn:hover,
+.review-btn:hover {
     background: var(--color-background-hover);
     border-color: var(--color-text-maxcontrast);
+}
+
+.review-btn:hover {
+    border-color: var(--cd-primary-color);
+    color: var(--cd-primary-color);
 }
 
 #save-btn {
