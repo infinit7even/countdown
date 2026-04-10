@@ -15,7 +15,7 @@ Features:
 - 🔔 Activity Integration: Get notified directly via Nextcloud Activity when your "Quest" is complete.
 - 🌗 Fully Responsive: Beautiful on desktop and mobile, with support for Dark and Light themes.
 ]]></description>
-    <version>1.0.39</version>
+    <version>1.0.40</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
