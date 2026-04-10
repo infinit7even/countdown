@@ -841,19 +841,25 @@ body.opendyslexic .settings-panel * {
 
 /* Recurrent Countdown Styles */
 .repeat-section {
-    padding: 0 1.2rem;
-    background: var(--cd-time-bg);
+    padding: 0 16px;
+    background: var(--color-main-background);
     border-radius: 12px;
-    border: 1.5px solid var(--color-border);
-    margin-bottom: 2rem;
+    border: 2px solid var(--color-border);
+    margin-bottom: 1.4rem;
     transition: var(--cd-transition);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    min-height: 52px;
+    box-sizing: border-box;
 }
 
 .repeat-section .checkbox-group {
-    min-height: 52px;
+    display: flex;
+    align-items: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 48px;
 }
 
 .repeat-section:hover {
@@ -867,6 +873,9 @@ body.opendyslexic .settings-panel * {
 }
 
 .repeat-section .checkbox-group label {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
     font-weight: 700;
     font-size: 1rem;
 }
