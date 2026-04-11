@@ -997,9 +997,9 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     flex-shrink: 0;
 }
 
-/* Expanded: || (2 vertical bars with wide gap) */
+/* Expanded: || (2 vertical bars with narrow gap) */
 .icon-expanded {
-    gap: 6px;
+    gap: 4px;
 }
 
 .icon-expanded span {
