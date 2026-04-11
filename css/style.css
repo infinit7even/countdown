@@ -168,8 +168,6 @@ body.theme--dark .settings-panel {
     .countdown-grid {
         display: grid !important;
         grid-template-columns: 1fr !important;
-        max-width: 100% !important;
-        padding: 0 1rem;
     }
 
     /* Reset potential List View overrides on mobile */
