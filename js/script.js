@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const customRepeatValue = document.getElementById('cd-repeat-value');
     const pwaRow = document.getElementById('pwa-install-row');
     const pwaBtn = document.getElementById('pwa-install-btn');
+    const settingsPanel = document.getElementById('settings-panel');
+    const settingsToggle = document.getElementById('settings-toggle');
 
     let countdowns = [];
     let intervals = [];
@@ -693,6 +695,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 deferredPrompt = null;
                 // Hide the install button
                 if (pwaRow) pwaRow.classList.add('hidden');
+            });
+        }
+
+        // Settings Panel Toggle Logic (Mobile)
+        if (settingsToggle && settingsPanel) {
+            const isCollapsed = localStorage.getItem('settings-collapsed') === 'true';
+            if (isCollapsed) {
+                settingsPanel.classList.add('collapsed');
+            }
+
+            settingsToggle.addEventListener('click', () => {
+                settingsPanel.classList.toggle('collapsed');
+                localStorage.setItem('settings-collapsed', settingsPanel.classList.contains('collapsed'));
             });
         }
     } catch (e) {

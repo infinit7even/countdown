@@ -101,6 +101,9 @@
         </div>
         <!-- Settings Modal (Size) -->
         <div id="settings-panel" class="settings-panel glass-effect">
+            <button id="settings-toggle" class="settings-toggle" title="Toggle Settings">
+                <span class="toggle-icon">▼</span>
+            </button>
             <div class="settings-row">
                 <label for="size-slider">Size</label>
                 <input type="range" id="size-slider" min="0.7" max="1.5" step="0.05" value="1">
@@ -121,7 +124,7 @@
                 <div id="pwa-install-row" class="settings-row hidden">
                 <label>PWA</label>
                 <button id="pwa-install-btn" class="button primary">
-                    Install App Shortcut
+                    Install web app
                 </button>
             </div>
         </div>
