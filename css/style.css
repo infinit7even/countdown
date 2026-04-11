@@ -965,15 +965,15 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     }
 
     .mobile-hidden-text {
-        display: none !important;
+        display: inline !important;
     }
 
     .new-countdown-btn {
         width: auto !important;
-        flex-shrink: 0 !important; /* Never let the button be squashed */
+        flex-shrink: 0 !important;
         padding: 8px 14px !important;
         font-size: 0.95rem !important;
-        gap: 4px;
+        gap: 6px;
     }
 
     .countdown-grid {
