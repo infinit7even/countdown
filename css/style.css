@@ -979,7 +979,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Perfected CSS Icons Engine (V2 - High Fidelity Refined) */
+/* Final Refined CSS Icons (V3 - Balanced Proportions) */
 .cd-layout-icon {
     display: flex;
     justify-content: center;
@@ -987,43 +987,45 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     width: 24px;
     height: 24px;
     position: relative;
-    gap: 4px; /* Slightly wider gap for better clarity */
+    gap: 2px; /* Base gap for multi-line icons */
 }
 
 .cd-layout-icon span {
     background-color: currentColor;
     border-radius: 1px;
     transition: inherit;
+    flex-shrink: 0;
 }
 
-/* icon-expanded: 2 long vertical lines (||) */
+/* Expanded: || (2 vertical bars with wide gap) */
+.icon-expanded {
+    gap: 6px;
+}
+
 .icon-expanded span {
     width: 2px;
-    height: 16px;
+    height: 12px;
 }
 
-/* icon-grid: 4 smaller bars in 2 columns (ii ii) */
+/* Grid: |||| (4 vertical bars with narrow gap) */
 .icon-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, auto);
-    gap: 3px 5px;
+    gap: 2px;
 }
 
 .icon-grid span {
-    display: block !important;
     width: 2px;
-    height: 6px;
+    height: 12px;
 }
 
-/* icon-compact: 3 horizontal lines (≡) - Matching expanded height in width */
+/* Compact: ≡ (3 horizontal bars matching weight/height) */
 .icon-compact {
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
 }
 
 .icon-compact span {
-    width: 18px; /* Slightly wider to match the visual footprint */
-    height: 2px;
+    width: 12px; /* Matches height of vertical bars */
+    height: 2px; /* Matches thickness of vertical bars */
 }
 
 
