@@ -946,8 +946,13 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     }
 
     .countdown-title {
-        font-size: 2rem;
-        letter-spacing: -1.2px;
+        flex-grow: 1;
+        font-size: clamp(1.8rem, 10vw, 2.5rem); /* Dynamic sizing based on viewport width */
+        letter-spacing: -1.5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 0.5rem;
     }
 
     .mobile-hidden-text {
