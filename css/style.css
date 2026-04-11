@@ -933,7 +933,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 /* Mobile — up to 600px */
 @media (max-width: 600px) {
     .countdown-app-container {
-        padding: 1.2rem 1rem;
+        padding: 1.2rem 0.6rem; /* Reduced padding for more horizontal space */
     }
 
     .countdown-header {
@@ -947,12 +947,13 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
     .countdown-title {
         flex-grow: 1;
-        font-size: clamp(1.8rem, 10vw, 2.5rem); /* Dynamic sizing based on viewport width */
-        letter-spacing: -1.5px;
+        font-size: clamp(2.2rem, 13vw, 3.2rem); /* Even more aggressive scaling */
+        letter-spacing: -2px;
+        line-height: 1;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        margin-right: 0.5rem;
+        margin-right: 0.2rem;
     }
 
     .mobile-hidden-text {
