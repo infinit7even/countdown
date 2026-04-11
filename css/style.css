@@ -426,6 +426,12 @@ body.theme--dark .settings-panel {
 
 .form-group {
     margin-bottom: 1.4rem;
+    position: relative; /* Essential for z-index management of children like emoji picker */
+}
+
+/* Ensure the first form-group (which contains the emoji picker) stays on top of others */
+.modal-content .form-group:first-of-type {
+    z-index: 10;
 }
 
 .modal-content .form-group:last-of-type,
@@ -491,14 +497,15 @@ body.theme--dark .settings-panel {
 /* Emoji Picker HUD Style */
 .emoji-picker {
     position: absolute;
-    z-index: 10000;
+    z-index: 10001; /* Higher than other form elements */
     width: 290px;
     padding: 15px;
     margin-top: 10px;
     border-radius: 20px;
     animation: emojiPickerIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     border: 1px solid var(--color-border);
+    left: 0; /* Align to the start of the form-group */
 }
 
 @keyframes emojiPickerIn {
