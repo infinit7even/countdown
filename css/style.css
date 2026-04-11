@@ -164,8 +164,36 @@ body.theme--dark .settings-panel {
 }
 
 @media only screen and (max-width: 800px) {
-    .countdown-grid.view-grid-2 {
-        grid-template-columns: 1fr;
+    /* Force 1-Col Grid (Expanded) on Mobile */
+    .countdown-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+        padding: 0 1rem;
+    }
+
+    /* Reset potential List View overrides on mobile */
+    .countdown-grid.view-list .countdown-card {
+        flex-direction: column !important;
+        height: 170px !important;
+        padding: 1.2rem 2rem 2rem 2rem !important;
+        align-items: stretch !important;
+    }
+    
+    .countdown-grid.view-list .cd-name {
+        width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .countdown-grid.view-list .cd-timer {
+        justify-content: flex-start !important;
+    }
+
+    .countdown-grid.view-list .cd-actions {
+        position: absolute !important;
+        top: 15px !important;
+        right: 15px !important;
+        opacity: 0 !important; /* Hide actions until hover as in standard expanded */
     }
 }
 
@@ -1589,6 +1617,19 @@ select:focus {
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    /* Hide Layout row on Mobile */
+    .settings-row:has(.layout-segmented) {
+        display: none !important;
+    }
+
+    .settings-panel {
+        width: calc(100% - 4rem) !important;
+        left: 2rem !important;
+        bottom: 1.5rem !important;
     }
 }
 

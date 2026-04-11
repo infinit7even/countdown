@@ -10,9 +10,9 @@
 - 🔄 Set events to repeat daily, weekly, monthly, or yearly.
 - 🔔 Get alerted when the wait is finally over.
 - 💬 Custom Interactive Notifications: Theme-aware and closeable.
-- 🖼️ Triple Layout System: Toggle between Expanded, Grid, and Compact views with refined unified icons.
+- 🖼️ Triple Layout System: Multi-layout support for Desktop, forced Expanded view for Mobile.
 ]]></description>
-    <version>1.0.87</version>
+    <version>1.0.88</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
