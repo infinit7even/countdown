@@ -121,13 +121,7 @@ body.theme--dark .settings-panel {
     filter: brightness(1.1);
 }
 
-.new-countdown-btn::before {
-    content: '+';
-    font-size: 1.4rem;
-    line-height: 1;
-    font-weight: 400;
-    margin-right: 4px;
-}
+
 
 /* Grid and Cards */
 .countdown-grid {
