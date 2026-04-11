@@ -183,22 +183,27 @@ body.theme--dark .settings-panel {
 .cd-info,
 .cd-edit,
 .cd-delete {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: 16px;
+    background-size: 18px;
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--color-background-hover);
     cursor: pointer;
     transition: all 0.2s ease;
     opacity: 0.7;
-    border: none;
-    padding: 0;
-    box-sizing: border-box;
+    border: none !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Specific adjustment for the info icon which has a built-in circle */
+.cd-info {
+    background-size: 20px;
 }
 
 .cd-info:hover,
