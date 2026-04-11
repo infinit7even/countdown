@@ -109,6 +109,15 @@
                 <label for="size-slider">Size</label>
                 <input type="range" id="size-slider" min="0.7" max="1.5" step="0.05" value="1">
             </div>
+
+            <div class="settings-row">
+                <label>Layout</label>
+                <div class="segmented-control layout-segmented">
+                    <button class="layout-opt active" data-layout="grid-1" title="Grid 1-Col (Vertical Stack)">‖</button>
+                    <button class="layout-opt" data-layout="grid-2" title="Grid 2-Col (Side by Side)">‖‖</button>
+                    <button class="layout-opt" data-layout="list" title="Horizontal List View">≡</button>
+                </div>
+            </div>
             
             <div class="settings-row">
                 <label>Sort</label>

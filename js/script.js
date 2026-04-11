@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dateGroup = document.getElementById('date-group');
     const sizeSlider = document.getElementById('size-slider');
     const sortOpts = document.querySelectorAll('.sort-opt');
+    const layoutOpts = document.querySelectorAll('.layout-opt');
     const directionBtn = document.getElementById('sort-direction-btn');
     const descriptionInput = document.getElementById('cd-description');
     const emojiTrigger = document.getElementById('emoji-trigger');
@@ -808,6 +809,47 @@ document.addEventListener('DOMContentLoaded', () => {
                         localStorage.setItem('settings-collapsed', 'true');
                     }
                 }
+            });
+        }
+        // Triple Layout Toggle Logic (Settings Panel)
+        if (layoutOpts.length > 0) {
+            const savedLayout = localStorage.getItem('countdown-view-layout') || 'grid-1';
+            
+            // Clean up possible old class from previous versions
+            grid.classList.remove('list-view');
+
+            // Apply initial state
+            layoutOpts.forEach(opt => {
+                const layoutSuffix = opt.dataset.layout;
+                if (layoutSuffix === savedLayout) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+
+            // Set container class (e.g., view-grid-1, view-grid-2, view-list)
+            grid.classList.add(`view-${savedLayout}`);
+
+            layoutOpts.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const layout = btn.dataset.layout;
+                    
+                    // UI Update
+                    layoutOpts.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Grid Layout Classes Update
+                    grid.classList.remove('view-grid-1', 'view-grid-2', 'view-list');
+                    grid.classList.add(`view-${layout}`);
+
+                    // Persistence
+                    localStorage.setItem('countdown-view-layout', layout);
+
+                    // Smooth transition feedback
+                    grid.style.opacity = '0.5';
+                    setTimeout(() => grid.style.opacity = '1', 200);
+                });
             });
         }
     } catch (e) {

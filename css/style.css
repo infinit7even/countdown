@@ -138,9 +138,35 @@ body.theme--dark .settings-panel {
 /* Grid and Cards */
 .countdown-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     gap: 2.5rem;
     zoom: var(--cd-zoom, 1);
+    transition: all 0.4s ease;
+}
+
+/* 1-Col Grid (Stacked) */
+.countdown-grid.view-grid-1 {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2-Col Grid (Side by Side) */
+.countdown-grid.view-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Slim List View */
+.countdown-grid.view-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .countdown-grid.view-grid-2 {
+        grid-template-columns: 1fr;
+    }
 }
 
 .countdown-card {
@@ -198,6 +224,67 @@ body.theme--dark .settings-panel {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* Slim List Mode Overrides */
+.view-list .countdown-card {
+    flex-direction: row;
+    height: auto;
+    min-height: 80px;
+    padding: 0 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.view-list .cd-name {
+    margin-bottom: 0;
+    width: 30%;
+    min-width: 180px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.view-list .cd-timer {
+    flex-grow: 1;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.view-list .timer-group {
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-bottom: 0;
+}
+
+.view-list .timer-item {
+    min-width: auto;
+}
+
+.view-list .cd-actions {
+    position: static;
+    opacity: 1;
+    width: 110px;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 650px) {
+    .view-list .countdown-card {
+        padding: 0.8rem 1.2rem;
+        gap: 0.5rem;
+    }
+    .view-list .cd-name {
+        min-width: 120px;
+        font-size: 1.05rem;
+    }
+    .view-list .timer-group {
+        gap: 0.8rem;
+    }
+    .view-list .time-val {
+        font-size: 1.1rem;
+    }
+    .view-list .time-label {
+        font-size: 0.6rem;
+    }
 }
 
 .cd-actions {
