@@ -936,7 +936,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 /* Mobile — up to 600px */
 @media (max-width: 600px) {
     .countdown-app-container {
-        padding: 1.2rem 0.6rem; /* Reduced padding for more horizontal space */
+        padding: 1.5rem; /* Balanced uniform margins on all sides */
     }
 
     .countdown-header {
@@ -965,15 +965,15 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     }
 
     .mobile-hidden-text {
-        display: inline !important;
+        display: none !important;
     }
 
     .new-countdown-btn {
         width: auto !important;
-        flex-shrink: 0 !important;
+        flex-shrink: 0 !important; /* Never let the button be squashed */
         padding: 8px 14px !important;
         font-size: 0.95rem !important;
-        gap: 6px;
+        gap: 4px;
     }
 
     .countdown-grid {
@@ -1129,7 +1129,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 /* Extra small — up to 400px */
 @media (max-width: 400px) {
     .countdown-app-container {
-        padding: 1rem 0.4rem;
+        padding: 1.2rem; /* Consistent balanced margins even on small screens */
     }
 
     .countdown-title {
