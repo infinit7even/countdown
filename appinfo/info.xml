@@ -10,9 +10,9 @@
 - 🔄 Set events to repeat daily, weekly, monthly, or yearly.
 - 🔔 Get alerted when the wait is finally over via Nextcloud Activity.
 - 💬 Custom Interactive Notifications: Theme-aware and closeable.
-- 🖼️ Triple Layout System: Toggle between Stacked, Side-by-Side, and Slim List views.
+- 🖼️ Triple Layout System: Toggle between Expanded, Grid, and Compact views.
 ]]></description>
-    <version>1.0.81</version>
+    <version>1.0.83</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

@@ -113,9 +113,9 @@
             <div class="settings-row">
                 <label>Layout</label>
                 <div class="segmented-control layout-segmented">
-                    <button class="layout-opt active" data-layout="grid-1" title="Grid 1-Col (Vertical Stack)">‖</button>
-                    <button class="layout-opt" data-layout="grid-2" title="Grid 2-Col (Side by Side)">‖‖</button>
-                    <button class="layout-opt" data-layout="list" title="Horizontal List View">≡</button>
+                    <button class="layout-opt active" data-layout="grid-1" title="Expanded Vertical View">Expanded</button>
+                    <button class="layout-opt" data-layout="grid-2" title="Grid 2-Col View">Grid</button>
+                    <button class="layout-opt" data-layout="list" title="Compact List View">Compact</button>
                 </div>
             </div>
             
