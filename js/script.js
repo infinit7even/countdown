@@ -47,6 +47,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const apiUrl = OC.generateUrl('/apps/countdown/api/countdowns');
     const notifyUrl = OC.generateUrl('/apps/countdown/api/notify');
+    const notificationContainer = document.getElementById('countdown-notification-container');
+
+    /**
+     * Show a custom interactive notification toast
+     * @param {string} message 
+     * @param {number} duration 
+     */
+    function showAppNotification(message, duration = 5000) {
+        if (!notificationContainer) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'notification-toast';
+        
+        const content = document.createElement('div');
+        content.className = 'notif-content';
+        content.textContent = message;
+
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'notif-close';
+        closeBtn.innerHTML = '&times;';
+        closeBtn.ariaLabel = 'Close notification';
+
+        toast.appendChild(content);
+        toast.appendChild(closeBtn);
+        notificationContainer.appendChild(toast);
+
+        const dismiss = () => {
+            if (toast.classList.contains('hide')) return;
+            toast.classList.add('hide');
+            setTimeout(() => toast.remove(), 400);
+        };
+
+        toast.onclick = dismiss;
+        closeBtn.onclick = (e) => {
+            e.stopPropagation();
+            dismiss();
+        };
+
+        if (duration > 0) {
+            setTimeout(dismiss, duration);
+        }
+    }
 
     // Confetti State
     let confettiParticles = [];
@@ -274,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateVal = dateInput.value;
         const description = descriptionInput.value.trim();
         if (!name || !dateVal) {
-            OC.Notification.showTemporary('Please fill in all fields! 🚨');
+            showAppNotification('Please fill in all fields! 🚨');
             return;
         }
 
@@ -314,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCountdowns();
         await saveCountdowns();
         launchConfetti(50);
-        OC.Notification.showTemporary('Countdown saved successfully! 🚀');
+        showAppNotification('Countdown saved successfully! 🚀');
     });
 
 
@@ -676,7 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 titleClickCount++;
                 launchConfetti(50);
                 if (titleMessages[titleClickCount]) {
-                    OC.Notification.showTemporary(titleMessages[titleClickCount]);
+                    showAppNotification(titleMessages[titleClickCount]);
                 }
                 
                 // Reset after the ultimate goal
@@ -697,7 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reviewBtn) {
             reviewBtn.addEventListener('click', () => {
                 launchConfetti(80);
-                OC.Notification.showTemporary('Thank you! 🦊');
+                showAppNotification('Thank you! 🦊');
             });
         }
 

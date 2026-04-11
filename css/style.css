@@ -17,6 +17,8 @@
                  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 }
 
+
+
 /* Hiding Nextcloud core skip links as requested by user */
 #skip-navigation, 
 .skip-navigation, 
@@ -1361,5 +1363,99 @@ select:focus {
 
 .hidden {
     display: none !important;
+}
+
+/* Custom Interactive Notifications */
+.notification-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    pointer-events: none;
+}
+
+.notification-toast {
+    background: rgba(41, 42, 46, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 5px solid var(--cd-primary-color);
+    color: white;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    min-width: 320px;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    pointer-events: auto;
+    cursor: pointer;
+    animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
+}
+
+.notification-toast:hover {
+    transform: translateX(-5px);
+    background: rgba(50, 52, 58, 0.95);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.notification-toast.hide {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.notif-content {
+    font-size: 1.05rem;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.notif-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.6rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
+    transition: color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notif-close:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .notification-container {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        align-items: center;
+    }
+    .notification-toast {
+        min-width: auto;
+        width: 100%;
+    }
 }
 

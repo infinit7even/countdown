@@ -130,6 +130,7 @@
             </div>
         </div>
         </div>
+        <div id="countdown-notification-container" class="notification-container"></div>
         <canvas id="confetti-canvas"></canvas>
     </div>
 </div>
