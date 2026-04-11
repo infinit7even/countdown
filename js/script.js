@@ -238,19 +238,33 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('hidden');
     });
 
-    cancelBtn.addEventListener('click', () => {
+    function closeAllModals() {
         modal.classList.add('hidden');
+        infoModal.classList.add('hidden');
+        emojiPicker.classList.add('hidden');
+    }
+
+    // Global ESC key listener to close everything
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeAllModals();
+            
+            // Also close settings if open (mobile)
+            if (settingsPanel && !settingsPanel.classList.contains('collapsed')) {
+                settingsPanel.classList.add('collapsed');
+                localStorage.setItem('settings-collapsed', 'true');
+            }
+        }
     });
 
-    closeInfoBtn.addEventListener('click', () => {
-        infoModal.classList.add('hidden');
-    });
+    cancelBtn.addEventListener('click', closeAllModals);
+    closeInfoBtn.addEventListener('click', closeAllModals);
 
     // Close on overlay click
     [modal, infoModal].forEach(ov => {
         ov.addEventListener('click', (e) => {
             if (e.target === ov) {
-                ov.classList.add('hidden');
+                closeAllModals();
             }
         });
     });
