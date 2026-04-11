@@ -102,11 +102,13 @@ body.theme--dark .settings-panel {
 }
 
 .btn-icon-plus {
-    font-size: 1.3rem; /* Scaled down to match text weight */
+    font-size: 1.3rem;
     font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 0 !important;
+    transform: translateY(-1.5px); /* Optical alignment correction */
 }
 
 .btn-label {
