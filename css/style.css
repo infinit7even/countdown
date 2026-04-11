@@ -17,6 +17,13 @@
                  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 }
 
+/* Hiding Nextcloud core skip links as requested by user */
+#skip-navigation, 
+.skip-navigation, 
+[id^="skip-"] {
+    display: none !important;
+}
+
 :root {
     --cd-primary-color: var(--color-primary, #0082c9);
     --cd-primary-gradient: linear-gradient(135deg, var(--color-primary, #0082c9), var(--color-primary-element, #005691));
@@ -198,8 +205,16 @@ body.theme--dark .settings-panel {
     transition: opacity 0.3s ease;
 }
 
-.countdown-card:hover .cd-actions {
+.countdown-card:hover .cd-actions,
+.countdown-card:focus-within .cd-actions {
     opacity: 1;
+}
+
+/* Specific focus state for the card itself */
+.countdown-card:focus-within {
+    border-color: var(--cd-primary-color) !important;
+    box-shadow: 0 0 20px rgba(155, 89, 182, 0.3) !important;
+    transform: translateY(-4px);
 }
 
 .cd-info,
@@ -343,6 +358,27 @@ body.theme--dark .settings-panel {
 }
 
 /* Confetti */
+/* Accessibility: High-Visibility Focus Indicators */
+:focus-visible {
+    outline: 3px solid var(--cd-primary-color) !important;
+    outline-offset: 4px;
+    box-shadow: 0 0 15px var(--cd-primary-color) !important;
+    border-radius: 4px;
+}
+
+.countdown-title:focus-visible {
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+/* Ensure buttons within cards maintain focus visibility */
+.cd-info:focus-visible,
+.cd-edit:focus-visible,
+.cd-delete:focus-visible {
+    opacity: 1 !important;
+    outline-offset: 2px !important;
+}
+
 #confetti-canvas {
     position: fixed;
     top: 0;

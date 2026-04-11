@@ -10,8 +10,9 @@
 - 🔄 Set events to repeat daily, weekly, monthly, or yearly.
 - 🔔 Get alerted when the wait is finally over via Nextcloud Activity.
 - 🖱️ Click the title ???? times to unlock a secret message!
+- ⌨️ Full Keyboard Navigation: Suppressed core skip-links for a cleaner experience and added custom high-visibility focus states.
 ]]></description>
-    <version>1.0.77</version>
+    <version>1.0.78</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

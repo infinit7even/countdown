@@ -405,13 +405,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const editBtn = document.createElement('span');
             editBtn.className = 'cd-edit icon-edit';
+            editBtn.tabIndex = 0;
+            editBtn.role = 'button';
+            editBtn.ariaLabel = 'Edit Countdown';
             editBtn.onclick = (e) => {
                 e.stopPropagation();
                 openEditModal(cd);
             };
+            editBtn.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    editBtn.onclick(e);
+                }
+            };
 
             const delBtn = document.createElement('span');
             delBtn.className = 'cd-delete icon-delete';
+            delBtn.tabIndex = 0;
+            delBtn.role = 'button';
+            delBtn.ariaLabel = 'Delete Countdown';
             delBtn.onclick = (e) => {
                 e.stopPropagation();
                 if (confirm('Delete this countdown?')) {
@@ -420,12 +432,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     saveCountdowns();
                 }
             };
+            delBtn.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    delBtn.onclick(e);
+                }
+            };
 
             const infoBtn = document.createElement('span');
             infoBtn.className = 'cd-info icon-info';
+            infoBtn.tabIndex = 0;
+            infoBtn.role = 'button';
+            infoBtn.ariaLabel = 'View Details';
             infoBtn.onclick = (e) => {
                 e.stopPropagation();
                 openInfoModal(cd);
+            };
+            infoBtn.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    infoBtn.onclick(e);
+                }
             };
 
             actions.appendChild(infoBtn);
@@ -643,13 +670,11 @@ document.addEventListener('DOMContentLoaded', () => {
             1000: "LEGENDARY STATUS ACHIEVED! You are the Chosen One! 🏆🔥👑✨"
         };
 
-        const title = document.querySelector('.countdown-title');
-        if (title) {
-            title.style.cursor = 'pointer';
-            title.addEventListener('click', () => {
+        const appTitle = document.querySelector('.countdown-title');
+        if (appTitle) {
+            const handleTitleInteration = () => {
                 titleClickCount++;
-                launchConfetti(Math.min(titleClickCount * 5, 500)); // Cap confetti for performance
-                
+                launchConfetti(50);
                 if (titleMessages[titleClickCount]) {
                     OC.Notification.showTemporary(titleMessages[titleClickCount]);
                 }
@@ -657,6 +682,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Reset after the ultimate goal
                 if (titleClickCount >= 1000) {
                     titleClickCount = 0;
+                }
+            };
+
+            appTitle.addEventListener('click', handleTitleInteration);
+            appTitle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleTitleInteration();
                 }
             });
         }

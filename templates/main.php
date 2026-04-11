@@ -2,7 +2,7 @@
     <div id="app-content-wrapper">
         <div class="countdown-app-container">
             <header class="countdown-header">
-                <h1 class="countdown-title">Countdown!</h1>
+                <h1 class="countdown-title" tabindex="0" role="button" aria-label="Countdown title - surprise inside!">Countdown!</h1>
                 <button id="add-countdown-btn" class="button primary new-countdown-btn">
                     <span class="btn-icon-plus">+</span>
                     <span class="btn-label">New <span class="mobile-hidden-text">Countdown</span></span>
