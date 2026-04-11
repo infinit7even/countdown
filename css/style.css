@@ -1027,9 +1027,9 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     flex-shrink: 0;
 }
 
-/* Expanded: || (2 vertical bars with tighter gap) */
+/* Expanded: || (2 vertical bars) */
 .icon-expanded {
-    gap: 4px;
+    gap: 2px;
 }
 
 .icon-expanded span {
@@ -1037,7 +1037,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     height: 12px;
 }
 
-/* Grid: |||| (4 vertical bars with narrow gap) */
+/* Grid: |||| (4 vertical bars) */
 .icon-grid {
     gap: 2px;
 }
@@ -1047,15 +1047,15 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     height: 12px;
 }
 
-/* Compact: ≡ (3 horizontal bars matching weight/height) */
+/* Compact: ≡ (3 horizontal bars) */
 .icon-compact {
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
 }
 
 .icon-compact span {
-    width: 12px; /* Matches height of vertical bars */
-    height: 2px; /* Matches thickness of vertical bars */
+    width: 14px; /* Matches total width of the 4-bar grid */
+    height: 2px;
 }
 
 
