@@ -36,9 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const repeatType = document.getElementById('cd-repeat-type');
     const customRepeatGroup = document.getElementById('custom-repeat-group');
     const customRepeatValue = document.getElementById('cd-repeat-value');
+    const pwaRow = document.getElementById('pwa-install-row');
+    const pwaBtn = document.getElementById('pwa-install-btn');
 
     let countdowns = [];
     let intervals = [];
+    let deferredPrompt;
 
     const apiUrl = OC.generateUrl('/apps/countdown/api/countdowns');
     const notifyUrl = OC.generateUrl('/apps/countdown/api/notify');
@@ -666,6 +669,31 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (savedDir === 'desc') {
             directionBtn.classList.add('desc');
+        }
+
+        // PWA Installation Logic
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI notify the user they can install the PWA
+            if (pwaRow) pwaRow.classList.remove('hidden');
+        });
+
+        if (pwaBtn) {
+            pwaBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                // We've used the prompt, and can't use it again, throw it away
+                deferredPrompt = null;
+                // Hide the install button
+                if (pwaRow) pwaRow.classList.add('hidden');
+            });
         }
     } catch (e) {
         console.error('Final initialization error:', e);

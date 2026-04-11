@@ -95,7 +95,7 @@
                 <div class="modal-actions">
                     <button id="close-info-btn" class="button">Close</button>
                     <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
-                        class="button review-btn primary">Leave a Review or Comment :D</a>
+                        class="button review-btn primary">Leave a review or comment :D</a>
                 </div>
             </div>
         </div>
@@ -118,7 +118,13 @@
                         <span class="icon-toggle-arrow">↑</span>
                     </button>
                 </div>
+                <div id="pwa-install-row" class="settings-row hidden">
+                <label>PWA</label>
+                <button id="pwa-install-btn" class="button primary">
+                    Install App Shortcut
+                </button>
             </div>
+        </div>
         </div>
         <canvas id="confetti-canvas"></canvas>
     </div>

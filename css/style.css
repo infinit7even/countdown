@@ -737,6 +737,33 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     box-shadow: var(--cd-card-shadow-hover);
 }
 
+#pwa-install-btn {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px !important;
+    font-size: 0.9rem !important;
+    border-radius: 10px !important;
+    background: var(--cd-primary-gradient) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 700 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+#pwa-install-btn::before {
+    content: '📥';
+    font-size: 1.1rem;
+}
+
+#pwa-install-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
 .settings-panel label {
     font-size: 0.85rem;
     font-weight: 700;
