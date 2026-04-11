@@ -705,9 +705,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 settingsPanel.classList.add('collapsed');
             }
 
-            settingsToggle.addEventListener('click', () => {
+            settingsToggle.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent immediate closing by the document listener
                 settingsPanel.classList.toggle('collapsed');
                 localStorage.setItem('settings-collapsed', settingsPanel.classList.contains('collapsed'));
+            });
+
+            // Auto-close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!settingsPanel.contains(e.target) && !settingsToggle.contains(e.target)) {
+                    if (!settingsPanel.classList.contains('collapsed')) {
+                        settingsPanel.classList.add('collapsed');
+                        localStorage.setItem('settings-collapsed', 'true');
+                    }
+                }
             });
         }
     } catch (e) {
