@@ -167,6 +167,14 @@ body.theme--dark .settings-panel {
     justify-content: space-between;
     align-items: center;
     letter-spacing: -0.3px;
+    gap: 10px;
+}
+
+.cd-name span {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .cd-actions {
