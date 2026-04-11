@@ -333,22 +333,30 @@ body.theme--dark .settings-panel {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 1;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    visibility: visible;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-overlay.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
+    display: flex !important; /* Override global .hidden for smooth exit */
+}
+
+.modal-overlay:not(.hidden) {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .glass-effect {
@@ -360,19 +368,46 @@ body.theme--dark .settings-panel {
 
 .modal-content {
     background: var(--color-main-background);
-    padding: 2.2rem;
-    border-radius: 24px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+    padding: 2.5rem;
+    border-radius: 28px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
     width: 90%;
-    max-width: 500px;
+    max-width: 520px;
     max-height: 90vh;
     overflow-y: auto;
     transform: translateY(0) scale(1);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* Elastic spring */
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-overlay.hidden .modal-content {
-    transform: translateY(30px) scale(0.95);
+    transform: translateY(40px) scale(0.92);
+    opacity: 0;
+}
+
+/* Staggered Element Entrance */
+.modal-overlay:not(.hidden) .modal-content > * {
+    animation: modalElementIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.modal-overlay:not(.hidden) .modal-content h2 { animation-delay: 0.1s; }
+.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(2) { animation-delay: 0.15s; }
+.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(3) { animation-delay: 0.20s; }
+.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(4) { animation-delay: 0.25s; }
+.modal-overlay:not(.hidden) .modal-content .repeat-section { animation-delay: 0.30s; }
+.modal-overlay:not(.hidden) .modal-content .info-body { animation-delay: 0.15s; }
+.modal-overlay:not(.hidden) .modal-content .modal-actions { animation-delay: 0.40s; }
+
+@keyframes modalElementIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .modal-content h2 {
@@ -452,11 +487,18 @@ body.theme--dark .settings-panel {
 .emoji-picker {
     position: absolute;
     z-index: 10000;
-    width: 280px;
-    padding: 12px;
-    margin-top: 8px;
-    border-radius: 16px;
-    animation: fadeInSlide 0.2s ease-out;
+    width: 290px;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 20px;
+    animation: emojiPickerIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 1px solid var(--color-border);
+}
+
+@keyframes emojiPickerIn {
+    from { opacity: 0; transform: translateY(-15px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .emoji-categories {
