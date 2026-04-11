@@ -376,6 +376,7 @@ body.theme--dark .settings-panel {
     text-align: center;
     margin-top: auto;
     gap: 10px;
+    flex-wrap: wrap; /* Allows wrapping on heavy mobile zoom so boxes don't overflow */
 }
 
 .time-box {
