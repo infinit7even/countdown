@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             const infoBtn = document.createElement('span');
-            infoBtn.className = 'cd-info icon-details';
+            infoBtn.className = 'cd-info icon-info';
             infoBtn.onclick = (e) => {
                 e.stopPropagation();
                 openInfoModal(cd);

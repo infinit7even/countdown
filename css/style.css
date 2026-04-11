@@ -189,8 +189,8 @@ body.theme--dark .settings-panel {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: 18px;
-    background-position: center;
+    background-size: 16px !important; /* Standardized size for all */
+    background-position: center !important;
     background-repeat: no-repeat;
     background-color: var(--color-background-hover);
     cursor: pointer;
@@ -199,11 +199,6 @@ body.theme--dark .settings-panel {
     border: none !important;
     padding: 0 !important;
     box-sizing: border-box !important;
-}
-
-/* Specific adjustment for the info icon which has a built-in circle */
-.cd-info {
-    background-size: 20px;
 }
 
 .cd-info:hover,
