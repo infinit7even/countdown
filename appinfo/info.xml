@@ -11,7 +11,7 @@
 - 🔔 Get alerted when the wait is finally over via Nextcloud Activity.
 - 🖱️ Click the title ???? times to unlock a secret message!
 ]]></description>
-    <version>1.0.76</version>
+    <version>1.0.77</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

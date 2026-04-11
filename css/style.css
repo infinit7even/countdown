@@ -115,6 +115,7 @@ body.theme--dark .settings-panel {
     display: flex;
     align-items: center;
     height: 100%;
+    gap: 4px; /* Space between 'New' and 'Countdown' on desktop */
 }
 
 .new-countdown-btn:hover {
