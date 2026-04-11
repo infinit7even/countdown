@@ -979,7 +979,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Perfected CSS Icons Engine */
+/* Perfected CSS Icons Engine (V2 - High Fidelity Refined) */
 .cd-layout-icon {
     display: flex;
     justify-content: center;
@@ -987,7 +987,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     width: 24px;
     height: 24px;
     position: relative;
-    gap: 3px;
+    gap: 4px; /* Slightly wider gap for better clarity */
 }
 
 .cd-layout-icon span {
@@ -996,33 +996,34 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     transition: inherit;
 }
 
-/* icon-expanded: 2 long vertical lines */
+/* icon-expanded: 2 long vertical lines (||) */
 .icon-expanded span {
     width: 2px;
-    height: 14px;
+    height: 16px;
 }
 
-/* icon-grid: 4 smaller bars in a block */
+/* icon-grid: 4 smaller bars in 2 columns (ii ii) */
 .icon-grid {
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(2, auto);
-    gap: 3px;
+    gap: 3px 5px;
 }
 
 .icon-grid span {
+    display: block !important;
     width: 2px;
     height: 6px;
 }
 
-/* icon-compact: 3 horizontal lines (matching thickness/length weight) */
+/* icon-compact: 3 horizontal lines (≡) - Matching expanded height in width */
 .icon-compact {
     flex-direction: column;
     gap: 4px;
 }
 
 .icon-compact span {
-    width: 14px; /* Matches height of expanded bars */
-    height: 2px; /* Matches thickness of expanded bars */
+    width: 18px; /* Slightly wider to match the visual footprint */
+    height: 2px;
 }
 
 
