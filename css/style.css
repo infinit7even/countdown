@@ -938,16 +938,19 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
     .countdown-header {
         flex-direction: row;
+        flex-wrap: nowrap !important; /* Never wrap to next line */
         justify-content: space-between !important;
         align-items: center;
-        gap: 1rem;
+        gap: 0.5rem; /* Reduced gap to save space */
         margin-bottom: 2rem;
         padding-bottom: 1rem;
     }
 
     .countdown-title {
         flex-grow: 1;
-        font-size: clamp(2.2rem, 13vw, 3.2rem); /* Even more aggressive scaling */
+        flex-shrink: 1; /* Allow title to shrink if needed */
+        min-width: 0; /* Important for ellipsis to work in flex */
+        font-size: clamp(1.8rem, 13vw, 3.2rem); 
         letter-spacing: -2px;
         line-height: 1;
         white-space: nowrap;
@@ -962,8 +965,9 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
     .new-countdown-btn {
         width: auto !important;
-        padding: 8px 16px !important;
-        font-size: 1rem !important;
+        flex-shrink: 0 !important; /* Never let the button be squashed */
+        padding: 8px 14px !important;
+        font-size: 0.95rem !important;
         gap: 4px;
     }
 
@@ -1117,8 +1121,17 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
 /* Extra small — up to 400px */
 @media (max-width: 400px) {
+    .countdown-app-container {
+        padding: 1rem 0.4rem;
+    }
+
     .countdown-title {
-        font-size: 1.5rem;
+        font-size: clamp(1.8rem, 15vw, 2.8rem);
+    }
+
+    .new-countdown-btn {
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
     }
 
     .time-val {
