@@ -183,8 +183,11 @@ body.theme--dark .settings-panel {
         margin-bottom: 1rem !important;
     }
 
-    .countdown-grid.view-list .cd-timer {
+    .countdown-grid.view-list .cd-timer,
+    .countdown-grid.view-list .completed-box {
         justify-content: flex-start !important;
+        width: 100% !important;
+        flex: 1 1 100% !important;
     }
 
     .countdown-grid.view-list .cd-actions {
@@ -271,9 +274,9 @@ body.theme--dark .settings-panel {
 }
 
 .view-list .cd-timer {
-    flex-grow: 0;
-    flex-shrink: 0;
-    justify-content: flex-end;
+    flex: 0 0 280px; /* Rigorously matching the completed box width */
+    width: 280px;
+    justify-content: space-between;
     margin-bottom: 0;
 }
 
@@ -297,12 +300,13 @@ body.theme--dark .settings-panel {
 
 /* Ensure the completed box aligns vertically with timer blocks */
 .view-list .completed-box {
-    min-width: 250px; /* Approximates the width of the 4 timer blocks */
+    flex: 0 0 280px; /* Exact match to cd-timer width */
+    width: 280px;
     height: 100%;
     padding: 10px 14px;
 }
 .view-list .completed-text {
-    font-size: 1.3rem; 
+    font-size: 1.4rem; 
 }
 
 @media only screen and (max-width: 650px) {
