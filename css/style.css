@@ -976,16 +976,30 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
         margin-bottom: 1.2rem;
     }
 
-    .modal-actions {
+    .modal-actions,
+    .button-group {
+        display: flex;
         flex-direction: column-reverse;
-        gap: 10px;
+        gap: 12px;
         margin-top: 1.5rem;
+        width: 100%;
     }
 
-    .modal-actions button {
-        width: 100%;
+    .modal-actions button,
+    .modal-actions .button,
+    .button-group button {
+        width: 100% !important;
         text-align: center;
         justify-content: center;
+        display: flex;
+        align-items: center;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Remove horizontal gap in group on mobile */
+    .button-group {
+        gap: 12px;
     }
 
     /* Settings panel: anchor to bottom, full width on very small screens */
