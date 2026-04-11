@@ -1378,15 +1378,16 @@ select:focus {
 }
 
 .notification-toast {
-    background: rgba(41, 42, 46, 0.85);
+    background: var(--color-main-background);
+    background-color: rgba(var(--color-main-background-rgb), 0.8) !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
     border-left: 5px solid var(--cd-primary-color);
-    color: white;
+    color: var(--color-main-text);
     padding: 16px 20px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     min-width: 320px;
     max-width: 450px;
     display: flex;
@@ -1401,8 +1402,8 @@ select:focus {
 
 .notification-toast:hover {
     transform: translateX(-5px);
-    background: rgba(50, 52, 58, 0.95);
-    border-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--color-main-background) !important;
+    border-color: var(--cd-primary-color);
 }
 
 .notification-toast.hide {
@@ -1419,19 +1420,21 @@ select:focus {
 .notif-close {
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-maxcontrast);
+    opacity: 0.6;
     font-size: 1.6rem;
     cursor: pointer;
     line-height: 1;
     padding: 0 5px;
-    transition: color 0.2s, transform 0.2s;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .notif-close:hover {
-    color: white;
+    color: var(--color-main-text);
+    opacity: 1;
     transform: scale(1.2);
 }
 
