@@ -948,15 +948,17 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
     .countdown-title {
         flex-grow: 1;
-        flex-shrink: 1; /* Allow title to shrink if needed */
-        min-width: 0; /* Important for ellipsis to work in flex */
-        font-size: clamp(1.8rem, 13vw, 3.2rem); 
-        letter-spacing: -2px;
-        line-height: 1;
+        flex-shrink: 1;
+        min-width: 0;
+        font-size: clamp(1.6rem, 10vw, 2.2rem); /* Capped to match button height */
+        letter-spacing: -1.5px;
+        line-height: 1.2;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         margin-right: 0.2rem;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     .mobile-hidden-text {
@@ -1126,7 +1128,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     }
 
     .countdown-title {
-        font-size: clamp(1.8rem, 15vw, 2.8rem);
+        font-size: clamp(1.4rem, 12vw, 2rem);
     }
 
     .new-countdown-btn {
