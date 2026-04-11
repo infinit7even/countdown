@@ -397,9 +397,9 @@ body.theme--dark .settings-panel {
 }
 
 .modal-overlay:not(.hidden) .modal-content h2 { animation-delay: 0.1s; }
-.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(2) { animation-delay: 0.15s; }
-.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(3) { animation-delay: 0.20s; }
-.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(4) { animation-delay: 0.25s; }
+.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(3) { animation-delay: 0.15s; }
+.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(4) { animation-delay: 0.20s; }
+.modal-overlay:not(.hidden) .modal-content .form-group:nth-child(5) { animation-delay: 0.25s; }
 .modal-overlay:not(.hidden) .modal-content .repeat-section { animation-delay: 0.30s; }
 .modal-overlay:not(.hidden) .modal-content .info-body { animation-delay: 0.15s; }
 .modal-overlay:not(.hidden) .modal-content .modal-actions { animation-delay: 0.40s; }
