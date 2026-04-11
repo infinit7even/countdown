@@ -84,7 +84,7 @@ body.theme--dark .settings-panel {
 
 .new-countdown-btn {
     border-radius: 30px !important;
-    padding: 14px 28px !important;
+    padding: 12px 28px 12px 42px !important; /* Adjusted for icon-add on the left */
     font-size: 1.05rem !important;
     font-weight: 700 !important;
     background: var(--cd-primary-gradient) !important;
@@ -92,11 +92,18 @@ body.theme--dark .settings-panel {
     border: none !important;
     display: inline-flex;
     align-items: center;
-    justify-content: center; /* Force centering */
+    justify-content: center;
+    line-height: 1 !important;
     gap: 8px;
     transition: var(--cd-transition) !important;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
     cursor: pointer;
+    background-position: 16px center !important; /* Position Nextcloud icon */
+}
+
+/* Ensure Nextcloud icon doesn't inherit background-color that hides it */
+.new-countdown-btn.icon-add {
+    background-repeat: no-repeat;
 }
 
 .new-countdown-btn:hover {

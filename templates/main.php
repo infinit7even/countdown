@@ -3,8 +3,8 @@
         <div class="countdown-app-container">
             <header class="countdown-header">
                 <h1 class="countdown-title">Countdown!</h1>
-                <button id="add-countdown-btn" class="button primary new-countdown-btn">
-                    + New <span class="mobile-hidden-text">Countdown</span>
+                <button id="add-countdown-btn" class="button primary new-countdown-btn icon-add">
+                    New <span class="mobile-hidden-text">Countdown</span>
                 </button>
             </header>
 
