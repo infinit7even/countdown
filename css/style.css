@@ -992,10 +992,12 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
         opacity: 1;
     }
 
+    .cd-info,
     .cd-edit,
     .cd-delete {
-        width: 38px;
-        height: 38px;
+        width: 38px !important;
+        height: 38px !important;
+        background-size: 20px !important;
     }
 
     .time-val {
