@@ -92,6 +92,7 @@ body.theme--dark .settings-panel {
     border: none !important;
     display: inline-flex;
     align-items: center;
+    justify-content: center; /* Force centering */
     gap: 8px;
     transition: var(--cd-transition) !important;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
@@ -973,6 +974,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
         flex-shrink: 0 !important; /* Never let the button be squashed */
         padding: 8px 14px !important;
         font-size: 0.95rem !important;
+        justify-content: center !important;
         gap: 4px;
     }
 
