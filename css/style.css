@@ -254,45 +254,47 @@ body.theme--dark .settings-panel {
     white-space: nowrap;
 }
 
-/* Slim List Mode Overrides */
+/* Slim List Mode Overrides (Desktop Compact) */
 .view-list .countdown-card {
     flex-direction: row;
     height: auto;
     min-height: 80px;
-    padding: 0 2rem;
+    padding: 1rem 150px 1rem 2rem; /* Right padding preserves room for absolute actions */
     align-items: center;
     justify-content: space-between;
 }
 
 .view-list .cd-name {
     margin-bottom: 0;
-    width: 30%;
-    min-width: 180px;
-    font-size: 1.2rem;
-    flex-shrink: 0;
+    flex: 1; /* Take up all available space */
+    min-width: 0; /* Crucial: allows text ellipsis to function correctly inside flex container */
+    font-size: 1.25rem;
+    padding-right: 2rem; /* Prevents text from striking the timer */
 }
 
 .view-list .cd-timer {
-    flex-grow: 1;
-    justify-content: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: flex-end;
     margin-bottom: 0;
 }
 
-.view-list .timer-group {
-    flex-direction: row;
-    gap: 1.5rem;
-    margin-bottom: 0;
-}
-
-.view-list .timer-item {
+/* Adjust time boxes to be slimmer/horizontal friendly */
+.view-list .time-box {
+    padding: 8px 14px;
     min-width: auto;
+    gap: 4px;
 }
 
 .view-list .cd-actions {
-    position: static;
-    opacity: 1;
-    width: 110px;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1; /* Always visible in compact view */
+    width: auto;
     justify-content: flex-end;
+    gap: 8px; /* Tighter button array */
 }
 
 @media only screen and (max-width: 650px) {
@@ -304,13 +306,13 @@ body.theme--dark .settings-panel {
         min-width: 120px;
         font-size: 1.05rem;
     }
-    .view-list .timer-group {
+    .view-list .cd-timer {
         gap: 0.8rem;
     }
     .view-list .time-val {
         font-size: 1.1rem;
     }
-    .view-list .time-label {
+    .view-list .time-lbl {
         font-size: 0.6rem;
     }
 }
