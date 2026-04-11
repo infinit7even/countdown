@@ -295,6 +295,16 @@ body.theme--dark .settings-panel {
     gap: 8px; /* Tighter button array */
 }
 
+/* Ensure the completed box aligns vertically with timer blocks */
+.view-list .completed-box {
+    min-width: 250px; /* Approximates the width of the 4 timer blocks */
+    height: 100%;
+    padding: 10px 14px;
+}
+.view-list .completed-text {
+    font-size: 1.3rem; 
+}
+
 @media only screen and (max-width: 650px) {
     .view-list .countdown-card {
         padding: 0.8rem 1.2rem;
