@@ -864,7 +864,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     position: fixed;
     bottom: 2rem;
     left: 2rem;
-    width: 290px;
+    width: 270px;
     padding: 1.2rem 1.5rem;
     border-radius: 16px;
     z-index: 9000;
@@ -950,7 +950,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     background: transparent;
     border: none;
     color: var(--color-main-text);
-    padding: 8px 10px;
+    padding: 10px;
     border-radius: 9px;
     font-size: 0.82rem;
     font-weight: 600;
@@ -978,6 +978,53 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     color: white !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Perfected CSS Icons Engine */
+.cd-layout-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    gap: 3px;
+}
+
+.cd-layout-icon span {
+    background-color: currentColor;
+    border-radius: 1px;
+    transition: inherit;
+}
+
+/* icon-expanded: 2 long vertical lines */
+.icon-expanded span {
+    width: 2px;
+    height: 14px;
+}
+
+/* icon-grid: 4 smaller bars in a block */
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 3px;
+}
+
+.icon-grid span {
+    width: 2px;
+    height: 6px;
+}
+
+/* icon-compact: 3 horizontal lines (matching thickness/length weight) */
+.icon-compact {
+    flex-direction: column;
+    gap: 4px;
+}
+
+.icon-compact span {
+    width: 14px; /* Matches height of expanded bars */
+    height: 2px; /* Matches thickness of expanded bars */
+}
+
 
 .sort-direction-btn {
     width: 44px;

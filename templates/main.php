@@ -113,9 +113,15 @@
             <div class="settings-row">
                 <label>Layout</label>
                 <div class="segmented-control layout-segmented">
-                    <button class="layout-opt active" data-layout="grid-1" title="Expanded Vertical View">Expanded</button>
-                    <button class="layout-opt" data-layout="grid-2" title="Grid 2-Col View">Grid</button>
-                    <button class="layout-opt" data-layout="list" title="Compact List View">Compact</button>
+                    <button class="layout-opt active" data-layout="grid-1" title="Expanded View">
+                        <div class="cd-layout-icon icon-expanded"><span></span><span></span></div>
+                    </button>
+                    <button class="layout-opt" data-layout="grid-2" title="Grid View">
+                        <div class="cd-layout-icon icon-grid"><span></span><span></span><span></span><span></span></div>
+                    </button>
+                    <button class="layout-opt" data-layout="list" title="Compact View">
+                        <div class="cd-layout-icon icon-compact"><span></span><span></span><span></span></div>
+                    </button>
                 </div>
             </div>
             

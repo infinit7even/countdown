@@ -8,11 +8,11 @@
 - 🕒 Manage countdowns for your most hyped entertainment.
 - 📊 Track your release questline at a glance on the dashboard.
 - 🔄 Set events to repeat daily, weekly, monthly, or yearly.
-- 🔔 Get alerted when the wait is finally over via Nextcloud Activity.
+- 🔔 Get alerted when the wait is finally over.
 - 💬 Custom Interactive Notifications: Theme-aware and closeable.
-- 🖼️ Triple Layout System: Toggle between Expanded, Grid, and Compact views.
+- 🖼️ Triple Layout System: Toggle between Expanded, Grid, and Compact views with pixel-perfect CSS icons.
 ]]></description>
-    <version>1.0.83</version>
+    <version>1.0.84</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
