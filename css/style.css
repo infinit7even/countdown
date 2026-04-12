@@ -684,8 +684,8 @@ body.theme--dark .settings-panel {
 }
 
 .input-with-action .action-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.1);
+    background: transparent;
+    transform: scale(1.2);
 }
 
 /* Emoji Picker HUD Style */
