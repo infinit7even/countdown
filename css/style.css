@@ -153,7 +153,8 @@ body.theme--dark .settings-panel {
 
 /* 2-Col Grid (Side by Side) */
 .countdown-grid.view-grid-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(320px, 450px));
+    justify-content: start;
 }
 
 /* Slim List View */
@@ -210,7 +211,9 @@ body.theme--dark .settings-panel {
     flex-direction: column;
     height: 170px;
     box-shadow: var(--cd-card-shadow);
-    min-width: 0; /* Prevents long flex children from expanding the CSS grid column */
+    min-width: 320px;
+    max-width: 450px;
+    width: 100%;
 }
 
 .countdown-card:hover {
