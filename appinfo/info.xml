@@ -12,7 +12,7 @@
 - 🖼️ Multi-layout support.
 - 📱 Mobile and PWA optimized.
 ]]></description>
-    <version>1.1.7</version>
+    <version>1.1.8</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

@@ -670,14 +670,15 @@ body.theme--dark .settings-panel {
 
 .emoji-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 icons per row is ideal for 340px width */
-    gap: 6px;
+    grid-template-columns: repeat(6, 1fr); /* Reduced to 6 columns to ensure plenty of horizontal room */
+    gap: 8px;
     max-height: 220px;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 2px 8px 2px 2px; /* Added right padding to prevent icons from hitting the scrollbar */
+    padding: 10px 12px; /* Generous padding all around, specifically on the right for the scrollbar */
     box-sizing: border-box;
     scroll-behavior: smooth;
+    width: 100%;
 }
 
 .emoji-item {
