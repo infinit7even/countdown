@@ -153,7 +153,7 @@ body.theme--dark .settings-panel {
 
 /* 2-Col Grid (Side by Side) */
 .countdown-grid.view-grid-2 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 /* Slim List View */
@@ -247,6 +247,8 @@ body.theme--dark .settings-panel {
     letter-spacing: -0.3px;
     gap: 10px;
     min-width: 0; /* Crucial to prevent organic flex item expansion */
+    width: 100%;
+    max-width: 100%;
 }
 
 .cd-name span {
