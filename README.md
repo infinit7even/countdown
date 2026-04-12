@@ -50,11 +50,17 @@ If you prefer to install it manually or want to use a specific version:
 
 ---
 
-## 🛠️ Configuration
-No complex configuration is needed! Once enabled, you'll see the **Countdown** icon in your top navigation bar. 
+## 🛠️ Configuration & Usage
+No complex configuration is needed! Once enabled, you'll see the **Countdown** icon in your top navigation bar.
+
+### Creating your first Countdown
+1. **Name & Date**: Simply click the "+" button, enter a title (e.g., "GTA VI Release"), and pick the target date and time.
+2. **Add some Magic**: You can choose a custom **emoji** to represent your event and add a **description** for more details.
+3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).
+4. **The Celebration**: When the timer reaches zero, you'll receive a **Nextcloud Notification** and be greeted by a **burst of confetti**! 🎉
 
 ### Dashboard Widget
-To add the countdowns to your Dashboard:
+To see your countdowns at a glance:
 1. Go to your **Nextcloud Dashboard**.
 2. Scroll to the bottom and click **Edit widgets**.
 3. Enable the **Countdown** widget.
