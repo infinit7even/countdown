@@ -24,24 +24,24 @@ Organize events by creation date, follow recurring schedules, and access everyth
 
 ### Main Dashboard
 <p align="center">
-  <img src="screenshots/home.png" width="100%" alt="Countdown main view" />
+  <img src="screenshots/preview1.png" width="100%" alt="Countdown main view" />
 </p>
 
 ### Dashboard Widget
 <p align="center">
-  <img src="screenshots/widget.png" width="100%" alt="Countdown widget view" />
-</p>
+  <img src="screenshots/preview2.png" width="100%" alt="Countdown widget view" />
+</p>  
 
 ### Edit Panel
 <p align="center">
-  <img src="screenshots/edit.png" width="100%" alt="Countdown edit view" />
+  <img src="screenshots/preview3.png" width="100%" alt="Countdown edit view" />
 </p>
 
 ### Mobile View
 <p align="center">
-  <img src="screenshots/home_mobile.png" width="35%" alt="Mobile Home" />
+  <img src="screenshots/preview4.png" width="35%" alt="Mobile Home" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="screenshots/widget_mobile.png" width="35%" alt="Mobile Widget" />
+  <img src="screenshots/preview5.png" width="35%" alt="Mobile Widget" />
 </p>
 
 ---

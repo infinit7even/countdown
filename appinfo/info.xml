@@ -39,10 +39,11 @@ Organize events by creation date, follow recurring schedules, and access everyth
     <bugs>https://github.com/infinit7even/countdown/issues</bugs>
     <repository type="git">https://github.com/infinit7even/countdown.git</repository>
     <screenshots>
-        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/countdown.png</screenshot>
-        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/widget.png</screenshot>
-        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/edit.png</screenshot>
-        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/mobile.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview1.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview2.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview3.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview4.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview5.png</screenshot>
     </screenshots>
     <dependencies>
         <php min-version="8.0" />
