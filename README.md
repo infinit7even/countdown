@@ -32,7 +32,10 @@ Organize events by creation date, follow recurring schedules, and access everyth
 ![Countdown edit view](screenshots/edit.png)
 
 ### Mobile View
-![Countdown mobile view](screenshots/mobile.png)
+<p align="left">
+  <img src="screenshots/home_mobile.png" width="32%" alt="Mobile Home" />
+  <img src="screenshots/widget_mobile.png" width="32%" alt="Mobile Widget" />
+</p>
 
 ---
 
@@ -97,4 +100,4 @@ Your support helps me keep improving the app and adding new "magic" features! �
 ---
 
 ## ⚖️ License
-This project is licensed under the **AGPL-3.0-or-later** license. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **AGPL-3.0-or-later** license. See the [LICENSE](LICENSE) file for details.
