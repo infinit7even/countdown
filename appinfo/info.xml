@@ -2,8 +2,8 @@
 <info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>countdown</id>
     <name>Countdown</name>
-    <summary>Track your most anticipated game releases, movie premieres, and TV episodes — all in one place.</summary>
-    <description><![CDATA[**Track your most anticipated game releases, movie premieres, and TV episodes — all in one place.**
+    <summary>Your most anticipated releases, in one place.</summary>
+    <description><![CDATA[**Your most anticipated releases, in one place.**
 
 **Built for Nextcloud**, this app keeps all your data fully private. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
 
@@ -19,7 +19,7 @@
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
 ]]></description>
-    <version>1.1.24</version>
+    <version>1.1.25</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
