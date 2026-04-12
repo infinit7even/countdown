@@ -260,7 +260,7 @@ body.theme--dark .settings-panel {
     flex-direction: row;
     height: auto;
     min-height: 80px;
-    padding: 1rem 150px 1rem 2rem; /* Right padding preserves room for absolute actions */
+    padding: 1rem 2rem; /* Uniform horizontal padding */
     align-items: center;
     justify-content: space-between;
 }
@@ -284,26 +284,26 @@ body.theme--dark .settings-panel {
 /* Adjust time boxes to be slimmer/horizontal friendly */
 .view-list .time-box {
     padding: 8px 14px;
+    height: 68px; /* Force an exact uniform height to mathematically match completed box */
     min-width: auto;
     gap: 4px;
 }
 
 .view-list .cd-actions {
-    position: absolute;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+    position: static;
+    transform: none;
     opacity: 1; /* Always visible in compact view */
     width: auto;
     justify-content: flex-end;
-    gap: 8px; /* Tighter button array */
+    gap: 12px; /* Slightly wider button array */
+    margin-left: auto; /* Ensure it sticks rightward toward the timer */
 }
 
 /* Ensure the completed box aligns vertically with timer blocks */
 .view-list .completed-box {
     flex: 0 0 320px; /* Exact match to cd-timer width */
     width: 320px;
-    height: 100%;
+    height: 68px; /* Force an exact uniform height to mathematically match time-box */
     padding: 10px 14px;
 }
 .view-list .completed-text {
