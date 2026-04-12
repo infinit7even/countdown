@@ -23,7 +23,7 @@
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
 ]]></description>
-    <version>1.1.18</version>
+    <version>1.1.19</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -39,6 +39,10 @@ Organize events by creation date, follow recurring schedules, and access everyth
     <bugs>https://github.com/infinit7even/countdown/issues</bugs>
     <repository type="git">https://github.com/infinit7even/countdown.git</repository>
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview1.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview2.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview3.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview4.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview5.png</screenshot>
     <dependencies>
         <php min-version="8.0" />
         <nextcloud min-version="25" max-version="33" />
