@@ -23,18 +23,25 @@ Organize events by creation date, follow recurring schedules, and access everyth
 ## 📸 Screenshots
 
 ### Main Dashboard
-![Countdown main view](screenshots/countdown.png)
+<p align="center">
+  <img src="screenshots/home.png" width="100%" alt="Countdown main view" />
+</p>
 
 ### Dashboard Widget
-![Countdown widget view](screenshots/widget.png)
+<p align="center">
+  <img src="screenshots/widget.png" width="100%" alt="Countdown widget view" />
+</p>
 
 ### Edit Panel
-![Countdown edit view](screenshots/edit.png)
+<p align="center">
+  <img src="screenshots/edit.png" width="100%" alt="Countdown edit view" />
+</p>
 
 ### Mobile View
-<p align="left">
-  <img src="screenshots/home_mobile.png" width="32%" alt="Mobile Home" />
-  <img src="screenshots/widget_mobile.png" width="32%" alt="Mobile Widget" />
+<p align="center">
+  <img src="screenshots/home_mobile.png" width="35%" alt="Mobile Home" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="screenshots/widget_mobile.png" width="35%" alt="Mobile Widget" />
 </p>
 
 ---
