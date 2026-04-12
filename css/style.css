@@ -274,10 +274,11 @@ body.theme--dark .settings-panel {
 }
 
 .view-list .cd-timer {
-    flex: 0 0 280px; /* Rigorously matching the completed box width */
-    width: 280px;
+    flex: 0 0 320px; /* Rigorously matching the completed box width, increased to comfortably fit large numbers */
+    width: 320px;
     justify-content: space-between;
     margin-bottom: 0;
+    flex-wrap: nowrap; /* Force 1-row display specifically for Desktop Compact layout */
 }
 
 /* Adjust time boxes to be slimmer/horizontal friendly */
@@ -300,8 +301,8 @@ body.theme--dark .settings-panel {
 
 /* Ensure the completed box aligns vertically with timer blocks */
 .view-list .completed-box {
-    flex: 0 0 280px; /* Exact match to cd-timer width */
-    width: 280px;
+    flex: 0 0 320px; /* Exact match to cd-timer width */
+    width: 320px;
     height: 100%;
     padding: 10px 14px;
 }
