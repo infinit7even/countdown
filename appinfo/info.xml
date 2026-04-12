@@ -12,7 +12,7 @@
 - 💬 Custom Interactive Notifications: Theme-aware and closeable.
 - 🖼️ Triple Layout System: Multi-layout support for Desktop, forced Expanded view for Mobile.
 ]]></description>
-    <version>1.0.96</version>
+    <version>1.0.97</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

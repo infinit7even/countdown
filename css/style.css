@@ -250,6 +250,7 @@ body.theme--dark .settings-panel {
 
 .cd-name span {
     flex: 1;
+    min-width: 0; /* Forces flex child to shrink properly, enabling ellipsis */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
