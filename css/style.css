@@ -1554,7 +1554,7 @@ select:focus {
 }
 
 /* Custom Interactive Notifications */
-.notification-container {
+#countdown-notification-container {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -1651,7 +1651,7 @@ select:focus {
 }
 
 @media only screen and (max-width: 600px) {
-    .notification-container {
+    #countdown-notification-container {
         bottom: 20px;
         right: 20px;
         left: 20px;
