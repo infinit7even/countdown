@@ -35,11 +35,11 @@ Organize events by creation date, follow recurring schedules, and access everyth
 
 ### Mobile View
 <p align="center">
-  <img src="screenshots/mobile_dashboard.png" width="35%" alt="Mobile Home" />
+  <img src="screenshots/mobile_dashboard.png" width="30%" alt="Mobile Home" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="screenshots/mobile_widget.png" width="35%" alt="Mobile Widget" />
+  <img src="screenshots/mobile_widget.png" width="30%" alt="Mobile Widget" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="screenshots/mobile_create.png" width="35%" alt="Mobile Create" />
+  <img src="screenshots/mobile_create.png" width="30%" alt="Mobile Create" />
 </p>
 
 ## 🚀 Installation & Download
