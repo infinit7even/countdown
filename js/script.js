@@ -947,24 +947,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-        // Triple Layout Toggle Logic (Settings Panel)
+        // Dual Layout Toggle Logic (Settings Panel)
         if (layoutOpts.length > 0) {
-            const savedLayout = localStorage.getItem('countdown-view-layout') || 'grid-1';
+            let savedLayout = localStorage.getItem('countdown-view-layout') || 'grid-1';
             
-            // Clean up possible old class from previous versions
-            grid.classList.remove('list-view');
+            // Sanitize: If user had 'list' view, reset to 'grid-1' (as 'list' is deprecated)
+            if (savedLayout === 'list') {
+                savedLayout = 'grid-1';
+                localStorage.setItem('countdown-view-layout', 'grid-1');
+            }
 
             // Apply initial state
             layoutOpts.forEach(opt => {
                 const layoutSuffix = opt.dataset.layout;
-                if (layoutSuffix === savedLayout) {
-                    opt.classList.add('active');
-                } else {
-                    opt.classList.remove('active');
-                }
+                opt.classList.toggle('active', layoutSuffix === savedLayout);
             });
 
-            // Set container class (e.g., view-grid-1, view-grid-2, view-list)
+            // Set container class (e.g., view-grid-1, view-grid-2)
             grid.classList.add(`view-${savedLayout}`);
 
             layoutOpts.forEach(btn => {
@@ -976,7 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.classList.add('active');
 
                     // Grid Layout Classes Update
-                    grid.classList.remove('view-grid-1', 'view-grid-2', 'view-list');
+                    grid.classList.remove('view-grid-1', 'view-grid-2');
                     grid.classList.add(`view-${layout}`);
 
                     // Persistence

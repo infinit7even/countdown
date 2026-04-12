@@ -124,9 +124,6 @@
                     <button class="layout-opt" data-layout="grid-2" title="Grid View">
                         <div class="cd-layout-icon icon-grid"><span></span><span></span><span></span><span></span></div>
                     </button>
-                    <button class="layout-opt" data-layout="list" title="Compact View">
-                        <div class="cd-layout-icon icon-compact"><span></span><span></span><span></span></div>
-                    </button>
                 </div>
             </div>
             

@@ -258,83 +258,10 @@ body.theme--dark .settings-panel {
     flex: 1;
     min-width: 0; /* Forces flex child to shrink properly, enabling ellipsis */
     overflow: hidden;
+    min-width: 0; /* Forces flex child to shrink properly, enabling ellipsis */
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-/* Slim List Mode Overrides (Desktop Compact) */
-.view-list .countdown-card {
-    flex-direction: row;
-    height: auto;
-    min-height: 80px;
-    padding: 1rem 2rem; /* Uniform horizontal padding */
-    align-items: center;
-    justify-content: space-between;
-}
-
-.view-list .cd-name {
-    margin-bottom: 0;
-    flex: 1; /* Take up all available space */
-    min-width: 0; /* Crucial: allows text ellipsis to function correctly inside flex container */
-    font-size: 1.25rem;
-    padding-right: 2rem; /* Prevents text from striking the timer */
-}
-
-.view-list .cd-timer {
-    flex: 0 0 320px; /* Rigorously matching the completed box width, increased to comfortably fit large numbers */
-    width: 320px;
-    justify-content: space-between;
-    margin-bottom: 0;
-    flex-wrap: nowrap; /* Force 1-row display specifically for Desktop Compact layout */
-}
-
-/* Adjust time boxes to be slimmer/horizontal friendly */
-.view-list .time-box {
-    padding: 8px 14px;
-    height: 68px; /* Force an exact uniform height to mathematically match completed box */
-    min-width: auto;
-    gap: 4px;
-}
-
-.view-list .cd-actions {
-    position: static;
-    transform: none;
-    opacity: 1; /* Always visible in compact view */
-    width: auto;
-    justify-content: flex-end;
-    gap: 12px; /* Slightly wider button array */
-    margin-left: auto; /* Ensure it sticks rightward toward the timer */
-}
-
-/* Ensure the completed box aligns vertically with timer blocks */
-.view-list .completed-box {
-    flex: 0 0 320px; /* Exact match to cd-timer width */
-    width: 320px;
-    height: 68px; /* Force an exact uniform height to mathematically match time-box */
-    padding: 10px 14px;
-}
-.view-list .completed-text {
-    font-size: 1.4rem; 
-}
-
-@media only screen and (max-width: 650px) {
-    .view-list .countdown-card {
-        padding: 0.8rem 1.2rem;
-        gap: 0.5rem;
-    }
-    .view-list .cd-name {
-        min-width: 120px;
-        font-size: 1.05rem;
-    }
-    .view-list .cd-timer {
-        gap: 0.8rem;
-    }
-    .view-list .time-val {
-        font-size: 1.1rem;
-    }
-    .view-list .time-lbl {
-        font-size: 0.6rem;
-    }
 }
 
 .cd-actions {
