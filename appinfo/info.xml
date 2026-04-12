@@ -3,16 +3,23 @@
     <id>countdown</id>
     <name>Countdown</name>
     <summary>Manage and display modern and customizable countdowns</summary>
-    <description><![CDATA[Track your most anticipated game releases, movie premieres, and TV series episodes!
+    <description><![CDATA[**Track your most anticipated game releases, movie premieres, and TV episodes — all in one place, fully under your control.**
 
-- 🕒 Manage countdowns for your most hyped entertainment.
-- 📊 Track your release questline at a glance on the dashboard.
-- 🔄 Set events to repeat daily, weekly, monthly, or yearly.
-- 🔔 Get alerted when the wait is finally over.
-- 🖼️ Multi-layout support.
-- 📱 Mobile and PWA optimized.
+**Built for Nextcloud**, this app keeps all your data fully private and under your control. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
+
+* 🕒 **Track countdowns for games, movies, series, and more.**
+* 📊 **View all your upcoming releases in a clear dashboard.**
+* 🔄 **Repeat events daily, weekly, monthly, or yearly.**
+* 🔔 **Receive notifications directly through Nextcloud.**
+* 🖼️ **Switch between multiple layouts to fit your style.**
+* 📱 **Install as a PWA and use it like a native app.**
+* 🎮 **Discover subtle easter eggs inspired by pop culture.**
+
+Organize events by creation date, follow recurring schedules (perfect for conventions, releases, or personal reminders), and access everything instantly through the integrated Dashboard widget.
+
+**Modern, responsive, and optimized for both light and dark themes**, the app is designed to feel natural within the entire Nextcloud ecosystem — whether you’re an individual user, a privacy enthusiast, or part of a larger organization managing deadlines, releases, and scheduled events.
 ]]></description>
-    <version>1.1.8</version>
+    <version>1.1.9</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -27,7 +34,7 @@
     <discussion>https://github.com/infinit7even/countdown/discussions</discussion>
     <bugs>https://github.com/infinit7even/countdown/issues</bugs>
     <repository type="git">https://github.com/infinit7even/countdown.git</repository>
-    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/countdown.png</screenshot>    
+    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/v2.png</screenshot>    
     <dependencies>
         <php min-version="8.0" />
         <nextcloud min-version="25" max-version="33" />
