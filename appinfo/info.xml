@@ -9,10 +9,10 @@
 - 📊 Track your release questline at a glance on the dashboard.
 - 🔄 Set events to repeat daily, weekly, monthly, or yearly.
 - 🔔 Get alerted when the wait is finally over.
-- 💬 Custom Interactive Notifications: Theme-aware and closeable.
-- 🖼️ Triple Layout System: Multi-layout support for Desktop, forced Expanded view for Mobile.
+- 🖼️ Multi-layout support.
+- 📱 Mobile and PWA optimized.
 ]]></description>
-    <version>1.1.6</version>
+    <version>1.1.7</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

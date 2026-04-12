@@ -624,14 +624,15 @@ body.theme--dark .settings-panel {
 .emoji-picker {
     position: absolute;
     z-index: 10001; /* Higher than other form elements */
-    width: 320px;
-    padding: 15px;
+    width: 340px; /* Increased to accommodate 7 icons comfortably */
+    padding: 18px;
     margin-top: 10px;
     border-radius: 20px;
     animation: emojiPickerIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
     border: 1px solid var(--color-border);
     left: 0; /* Align to the start of the form-group */
+    box-sizing: border-box;
 }
 
 @keyframes emojiPickerIn {
@@ -669,27 +670,35 @@ body.theme--dark .settings-panel {
 
 .emoji-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 4px;
-    max-height: 200px;
+    grid-template-columns: repeat(7, 1fr); /* 7 icons per row is ideal for 340px width */
+    gap: 6px;
+    max-height: 220px;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-right: 4px;
+    padding: 2px 8px 2px 2px; /* Added right padding to prevent icons from hitting the scrollbar */
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 .emoji-item {
     background: transparent;
     border: none;
-    font-size: 1.4rem;
-    padding: 6px 0;
+    font-size: 1.5rem; /* Slightly larger for better clarity */
+    width: 40px;
+    height: 40px;
+    padding: 0;
     cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.2s;
+    border-radius: 10px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .emoji-item:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(var(--color-primary-element-rgb), 0.15);
+    transform: scale(1.15);
+    z-index: 2;
 }
 
 @keyframes fadeInSlide {
