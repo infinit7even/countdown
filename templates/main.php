@@ -22,8 +22,8 @@
                 <div class="form-group">
                     <label for="cd-name">Event Name</label>
                     <div class="input-with-action">
-                        <input type="text" id="cd-name" placeholder="GTA VI Release" maxlength="30" />
                         <button type="button" id="emoji-trigger" class="action-btn" title="Add Emoji">😃</button>
+                        <input type="text" id="cd-name" placeholder="GTA VI Release" maxlength="30" />
                     </div>
                     <!-- Emoji Picker Grid -->
                     <div id="hud-emoji-picker" class="emoji-picker glass-effect hidden">

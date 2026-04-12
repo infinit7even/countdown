@@ -204,23 +204,15 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.textContent = emoji;
             btn.type = 'button';
             btn.onclick = () => {
-                insertEmoji(emoji);
+                emojiTrigger.textContent = emoji;
                 emojiPicker.classList.add('hidden');
             };
             emojiGrid.appendChild(btn);
         });
     }
 
-    function insertEmoji(emoji) {
-        const start = nameInput.selectionStart;
-        const end = nameInput.selectionEnd;
-        const text = nameInput.value;
-        const before = text.substring(0, start);
-        const after  = text.substring(end, text.length);
-        nameInput.value = before + emoji + after;
-        nameInput.selectionStart = nameInput.selectionEnd = start + emoji.length;
-        nameInput.focus();
-    }
+    // InsertEmoji function is retired since we no longer inject into the input directly.
+
 
     emojiTrigger.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -258,6 +250,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = 'Create a new Countdown';
         idInput.value = '';
         nameInput.value = '';
+        
+        // Random default emoji generator
+        const emojis = ["😀", "🎮", "💡", "✨", "🚀", "🎉", "🔥", "🎧", "🎬", "📅", "🎁", "✈️", "🍕", "🏆"];
+        emojiTrigger.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
         // Random placeholder and backup
         if (typeof placeholders !== 'undefined' && placeholders.length > 0) {
@@ -313,13 +309,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     saveBtn.addEventListener('click', async () => {
-        const name = nameInput.value.trim();
+        let rawName = nameInput.value.trim();
         const dateVal = dateInput.value;
         const description = descriptionInput.value.trim();
-        if (!name || !dateVal) {
+        const selectedEmoji = emojiTrigger.textContent;
+
+        if (!rawName || !dateVal) {
             showAppNotification('Please fill in all fields! 🚨');
             return;
         }
+
+        const name = `${selectedEmoji} ${rawName}`;
 
         const targetDate = new Date(dateVal).getTime();
 
@@ -543,7 +543,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function openEditModal(cd) {
         modalTitle.textContent = 'Edit Countdown';
         idInput.value = cd.id;
-        nameInput.value = cd.name;
+        
+        // Extract Emoji from the beginning of the title
+        const emojiRegex = /^([\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E6}-\u{1F1FF}\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}\u{2B50}\u{2B55}\u{23F0}-\u{23FA}])\s*/u;
+        const match = cd.name.match(emojiRegex);
+        if (match) {
+            emojiTrigger.textContent = match[1];
+            nameInput.value = cd.name.replace(emojiRegex, '');
+        } else {
+            const emojis = ["😀", "🎮", "💡", "✨", "🚀", "🎉", "🔥", "🎧", "🎬", "📅", "🎁"];
+            emojiTrigger.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            nameInput.value = cd.name;
+        }
         descriptionInput.value = cd.description || '';
         
         repeatToggle.checked = cd.repeat && cd.repeat !== 'none';

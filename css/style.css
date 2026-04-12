@@ -664,12 +664,13 @@ body.theme--dark .settings-panel {
 }
 
 .input-with-action input {
-    padding-right: 50px !important;
+    padding-left: 50px !important;
+    padding-right: 16px !important;
 }
 
 .input-with-action .action-btn {
     position: absolute;
-    right: 8px;
+    left: 8px;
     background: transparent;
     border: none;
     font-size: 1.4rem;
