@@ -22,7 +22,17 @@ Organize events by creation date, follow recurring schedules, and access everyth
 
 ## 📸 Screenshots
 
-![Countdown main view](screenshots/v2.png)
+### Main Dashboard
+![Countdown main view](screenshots/countdown.png)
+
+### Dashboard Widget
+![Countdown widget view](screenshots/widget.png)
+
+### Edit Panel
+![Countdown edit view](screenshots/edit.png)
+
+### Mobile View
+![Countdown mobile view](screenshots/mobile.png)
 
 ---
 
