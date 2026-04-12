@@ -146,7 +146,7 @@ body.theme--dark .settings-panel {
 /* 1-Col Grid (Stacked) */
 .countdown-grid.view-grid-1 {
     grid-template-columns: 1fr;
-    max-width: 800px;
+    max-width: 550px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -212,7 +212,7 @@ body.theme--dark .settings-panel {
     height: 170px;
     box-shadow: var(--cd-card-shadow);
     min-width: 320px;
-    max-width: 450px;
+    max-width: 550px;
     width: 100%;
 }
 
