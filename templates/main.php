@@ -28,10 +28,15 @@
                     <!-- Emoji Picker Grid -->
                     <div id="hud-emoji-picker" class="emoji-picker glass-effect hidden">
                         <div class="emoji-categories">
-                            <button class="cat-btn active" data-cat="faces">😀</button>
-                            <button class="cat-btn" data-cat="gaming">🎮</button>
-                            <button class="cat-btn" data-cat="objects">💡</button>
-                            <button class="cat-btn" data-cat="symbols">✨</button>
+                            <button class="cat-btn active" data-cat="faces" title="Faces">😀</button>
+                            <button class="cat-btn" data-cat="people" title="People">🧑</button>
+                            <button class="cat-btn" data-cat="animals" title="Animals">🐱</button>
+                            <button class="cat-btn" data-cat="food" title="Food">🍕</button>
+                            <button class="cat-btn" data-cat="activities" title="Activities">⚽</button>
+                            <button class="cat-btn" data-cat="travel" title="Travel">🚀</button>
+                            <button class="cat-btn" data-cat="objects" title="Objects">💡</button>
+                            <button class="cat-btn" data-cat="symbols" title="Symbols">✨</button>
+                            <button class="cat-btn" data-cat="flags" title="Flags">🏳️‍🌈</button>
                         </div>
                         <div id="emoji-grid" class="emoji-grid"></div>
                     </div>
