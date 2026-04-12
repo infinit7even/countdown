@@ -653,8 +653,8 @@ body.theme--dark .settings-panel {
 .emoji-picker {
     position: absolute;
     z-index: 10001; /* Higher than other form elements */
-    width: 340px; /* Increased to accommodate 7 icons comfortably */
-    padding: 18px;
+    width: min(340px, calc(100vw - 80px)); /* Responsive width to avoid cutting off on mobile */
+    padding: 12px;
     margin-top: 10px;
     border-radius: 20px;
     animation: emojiPickerIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -662,6 +662,7 @@ body.theme--dark .settings-panel {
     border: 1px solid var(--color-border);
     left: 0; /* Align to the start of the form-group */
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 @keyframes emojiPickerIn {
@@ -699,7 +700,7 @@ body.theme--dark .settings-panel {
 
 .emoji-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* Reduced to 6 columns to ensure plenty of horizontal room */
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); /* Adaptive columns */
     gap: 8px;
     max-height: 220px;
     overflow-y: auto;

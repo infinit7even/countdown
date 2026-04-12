@@ -7,7 +7,7 @@
 
 **Built for Nextcloud**, this app keeps all your data fully private. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
 
-## ✨ Features
+**✨ Features**
 
 * 🕒 **Hyped Tracking**: Manage countdowns for games, movies, series, and personal events.
 * 📊 **Dashboard Widget**: View all your upcoming releases directly on your Nextcloud Dashboard.
@@ -19,7 +19,7 @@
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
 ]]></description>
-    <version>1.1.20</version>
+    <version>1.1.21</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
