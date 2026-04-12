@@ -1,10 +1,8 @@
 # 🕒 Countdown for Nextcloud
 
-**Track your most anticipated game releases, movie premieres, and TV episodes all in one place.**
+**Your most anticipated releases, in one place.**
 
 **Built for Nextcloud**, this app keeps all your data fully private. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
-
----
 
 ## ✨ Features
 
@@ -17,8 +15,6 @@
 * 🎮 **Easter Eggs**: Keep clicking the title to discover secrets inspired by pop culture!
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
-
----
 
 ## 📸 Screenshots
 
@@ -44,8 +40,6 @@ Organize events by creation date, follow recurring schedules, and access everyth
   <img src="screenshots/preview5.png" width="35%" alt="Mobile Widget" />
 </p>
 
----
-
 ## 🚀 Installation & Download
 
 ### Option 1: Nextcloud App Store (Recommended)
@@ -68,8 +62,6 @@ If you prefer to install it manually or want to use a specific version:
    sudo -u www-data php /path/to/nextcloud/occ app:enable countdown
    ```
 
----
-
 ## 🛠️ Configuration & Usage
 No complex configuration is needed! Once enabled, you'll see the **Countdown** icon in your top navigation bar.
 
@@ -85,8 +77,6 @@ To see your countdowns at a glance:
 2. Scroll to the bottom and click **Edit widgets**.
 3. Enable the **Countdown** widget.
 
----
-
 ## ⭐ Support the Project
 
 If you find **Countdown** useful and want to support its development:
@@ -96,15 +86,11 @@ If you find **Countdown** useful and want to support its development:
 
 Your support helps me keep improving the app and adding new "magic" features! 🦊✨
 
----
-
 ## 🤝 Contributing & Feedback
 
 * **Bugs & Features**: Found a bug or have a great idea? Open an issue on [GitHub Issues](https://github.com/infinit7even/countdown/issues).
 * **Discussions**: Join the community for questions and tips on [GitHub Discussions](https://github.com/infinit7even/countdown/discussions).
 * **Source Code**: Explore the code or fork the project at [GitHub Repository](https://github.com/infinit7even/countdown).
-
----
 
 ## ⚖️ License
 This project is licensed under the **AGPL-3.0-or-later** license. See the [LICENSE](LICENSE) file for details.
