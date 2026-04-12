@@ -1,6 +1,6 @@
 # 🕒 Countdown for Nextcloud
 
-**Track your most anticipated game releases, movie premieres, and TV episodes — all in one place, fully under your control.**
+**Track your most anticipated game releases, movie premieres, and TV episodes all in one place.**
 
 **Built for Nextcloud**, this app keeps all your data fully private. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
 
