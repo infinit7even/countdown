@@ -67,6 +67,16 @@ To see your countdowns at a glance:
 
 ---
 
+## ⭐ Support the Project
+
+If you find **Countdown** useful and want to support its development:
+*   **Star the Project**: Give us a star on [GitHub](https://github.com/infinit7even/countdown) to help others discover it.
+*   **Leave a Review**: Share your experience and feedback on the [Nextcloud App Store](https://apps.nextcloud.com/apps/countdown). 
+
+Your support helps me keep improving the app and adding new "magic" features! 🦊✨
+
+---
+
 ## 🤝 Contributing & Feedback
 
 * **Bugs & Features**: Found a bug or have a great idea? Open an issue on [GitHub Issues](https://github.com/infinit7even/countdown/issues).
