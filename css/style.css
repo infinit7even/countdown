@@ -197,7 +197,6 @@ body.theme--dark .settings-panel {
         opacity: 0 !important; /* Hide actions until hover as in standard expanded */
     }
 }
-
 .countdown-card {
     background-color: var(--color-main-background);
     border: var(--cd-border-width) solid var(--color-border);
@@ -211,6 +210,7 @@ body.theme--dark .settings-panel {
     flex-direction: column;
     height: 170px;
     box-shadow: var(--cd-card-shadow);
+    min-width: 0; /* Prevents long flex children from expanding the CSS grid column */
 }
 
 .countdown-card:hover {
@@ -246,6 +246,7 @@ body.theme--dark .settings-panel {
     align-items: center;
     letter-spacing: -0.3px;
     gap: 10px;
+    min-width: 0; /* Crucial to prevent organic flex item expansion */
 }
 
 .cd-name span {
