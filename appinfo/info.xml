@@ -3,23 +3,27 @@
     <id>countdown</id>
     <name>Countdown</name>
     <summary>Manage and display modern and customizable countdowns</summary>
-    <description><![CDATA[**Track your most anticipated game releases, movie premieres, and TV episodes — all in one place, fully under your control.**
+    <description><![CDATA[# 🕒 Countdown for Nextcloud
 
-**Built for Nextcloud**, this app keeps all your data fully private and under your control. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
+**Track your most anticipated game releases, movie premieres, and TV episodes — all in one place, fully under your control.**
 
-* 🕒 **Track countdowns for games, movies, series, and more.**
-* 📊 **View all your upcoming releases in a clear dashboard.**
-* 🔄 **Repeat events daily, weekly, monthly, or yearly.**
-* 🔔 **Receive notifications directly through Nextcloud.**
-* 🖼️ **Switch between multiple layouts to fit your style.**
-* 📱 **Install as a PWA and use it like a native app.**
-* 🎮 **Discover subtle easter eggs inspired by pop culture.**
+**Built for Nextcloud**, this app keeps all your data fully private. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
 
-Organize events by creation date, follow recurring schedules (perfect for conventions, releases, or personal reminders), and access everything instantly through the integrated Dashboard widget.
+---
 
-**Modern, responsive, and optimized for both light and dark themes**, the app is designed to feel natural within the entire Nextcloud ecosystem — whether you’re an individual user, a privacy enthusiast, or part of a larger organization managing deadlines, releases, and scheduled events.
+## ✨ Features
+
+* 🕒 **Hyped Tracking**: Manage countdowns for games, movies, series, and personal events.
+* 📊 **Dashboard Widget**: View all your upcoming releases directly on your Nextcloud Dashboard.
+* 🔄 **Smart Recurrence**: Repeat events daily, weekly, monthly, or yearly (perfect for weekly show releases!).
+* 🔔 **Stay Notified**: Receive automatic alerts through the Nextcloud Activity stream when a countdown expires.
+* 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
+* 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
+* 🎮 **Easter Eggs**: Keep clicking the title to discover secrets inspired by pop culture!
+
+Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
 ]]></description>
-    <version>1.1.9</version>
+    <version>1.1.10</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

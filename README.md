@@ -43,7 +43,10 @@ If you prefer to install it manually or want to use a specific version:
    ```bash
    chown -R www-data:www-data /path/to/nextcloud/apps/countdown
    ```
-4. **Enable**: Go to the **Apps** section in your Nextcloud and click **Enable** on the Countdown app.
+4. **Enable**: Go to the **Apps** section in your Nextcloud and click **Enable** on the Countdown app, or use the command line:
+   ```bash
+   sudo -u www-data php /path/to/nextcloud/occ app:enable countdown
+   ```
 
 ---
 
