@@ -3,13 +3,9 @@
     <id>countdown</id>
     <name>Countdown</name>
     <summary>Track your most anticipated game releases, movie premieres, and TV episodes — all in one place.</summary>
-    <description><![CDATA[# 🕒 Countdown for Nextcloud
-
-**Track your most anticipated game releases, movie premieres, and TV episodes — all in one place.**
+    <description><![CDATA[**Track your most anticipated game releases, movie premieres, and TV episodes — all in one place.**
 
 **Built for Nextcloud**, this app keeps all your data fully private. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
-
----
 
 ## ✨ Features
 
@@ -23,7 +19,7 @@
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
 ]]></description>
-    <version>1.1.19</version>
+    <version>1.1.20</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -41,8 +37,6 @@ Organize events by creation date, follow recurring schedules, and access everyth
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview1.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview2.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview3.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview4.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/preview5.png</screenshot>
     <dependencies>
         <php min-version="8.0" />
         <nextcloud min-version="25" max-version="33" />

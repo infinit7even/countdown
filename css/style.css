@@ -56,9 +56,11 @@ body.theme--dark .settings-panel {
 
 .countdown-app-container {
     padding: 3rem 4rem;
-    max-width: none;
+    max-width: 100%;
     margin: 0 auto;
     font-family: var(--font-family-main, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif);
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 /* Header Styling */
@@ -169,26 +171,51 @@ body.theme--dark .settings-panel {
     .countdown-grid {
         display: grid !important;
         grid-template-columns: 1fr !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     /* Reset potential List View overrides on mobile */
     .countdown-grid.view-list .countdown-card {
         flex-direction: column !important;
-        height: 170px !important;
-        padding: 1.2rem 2rem 2rem 2rem !important;
+        height: auto !important;
+        min-height: 170px !important;
+        padding: 1.2rem 1.2rem 1.5rem 1.2rem !important;
         align-items: stretch !important;
     }
     
     .countdown-grid.view-list .cd-name {
         width: 100% !important;
-        margin-bottom: 1rem !important;
+        margin-bottom: 0.8rem !important;
     }
 
     .countdown-grid.view-list .cd-timer,
     .countdown-grid.view-list .completed-box {
-        justify-content: flex-start !important;
+        justify-content: center !important;
         width: 100% !important;
         flex: 1 1 100% !important;
+    }
+
+    /* Adaptive timer boxes for mobile to fit on one line */
+    .cd-timer {
+        gap: 6px !important;
+        flex-wrap: nowrap !important; /* Force one line as requested */
+    }
+
+    .time-box {
+        padding: 10px 4px !important;
+        min-width: 0 !important;
+        flex: 1 1 0 !important;
+    }
+
+    .time-val {
+        font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+        margin-bottom: 2px !important;
+    }
+
+    .time-lbl {
+        font-size: 0.6rem !important;
+        letter-spacing: 0.5px !important;
     }
 
     .countdown-grid.view-list .cd-actions {
@@ -209,11 +236,13 @@ body.theme--dark .settings-panel {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    height: 170px;
+    min-height: 170px;
+    height: auto;
     box-shadow: var(--cd-card-shadow);
-    min-width: 320px;
-    max-width: 550px;
+    min-width: 0;
+    max-width: 100%;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .countdown-card:hover {
