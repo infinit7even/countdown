@@ -636,17 +636,28 @@ body.theme--dark .settings-panel {
     border: none;
     font-size: 1.4rem;
     cursor: pointer;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
 }
 
-.input-with-action .action-btn:hover {
-    background: transparent;
-    transform: scale(1.2);
+.input-with-action .action-btn:hover,
+.input-with-action .action-btn:focus {
+    background: var(--color-background-hover);
+    transform: scale(1.1);
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input-with-action .action-btn:focus-visible {
+    outline: 2px solid var(--cd-primary-color) !important;
+    outline-offset: -2px !important; /* Inward outline to avoid overlapping text */
 }
 
 /* Emoji Picker HUD Style */
