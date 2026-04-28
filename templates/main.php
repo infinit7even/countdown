@@ -76,7 +76,7 @@
                 <div class="modal-actions">
                     <div class="button-group">
                         <button id="cancel-btn" class="button">Cancel</button>
-                        <button id="save-btn" class="button">Save Changes</button>
+                        <button id="save-btn" class="button primary">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                     <div class="button-group" style="display: flex; gap: 15px; justify-content: flex-end; width: 100%;">
                         <button id="close-info-btn" class="button">Close</button>
                         <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn">Give it a star on GitHub :D</a>
+                            class="button review-btn primary">Give it a star on GitHub :D</a>
                     </div>
                 </div>
             </div>
@@ -178,7 +178,7 @@
                 <div class="modal-actions">
                     <div class="button-group" style="display: flex; gap: 15px; justify-content: flex-end; width: 100%;">
                         <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn">Give it a star on GitHub :D</a>
+                            class="button review-btn primary">Give it a star on GitHub :D</a>
                         <button id="close-news-btn" class="button">Close Gazette</button>
                     </div>
                 </div>
