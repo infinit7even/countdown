@@ -944,8 +944,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     cursor: pointer;
 }
 
-.settings-panel:hover {
-    transform: translateY(-2px);
+.settings-panel:not(.collapsed):hover {
     box-shadow: var(--cd-card-shadow-hover);
 }
 
