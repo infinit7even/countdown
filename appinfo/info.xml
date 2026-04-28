@@ -21,17 +21,21 @@ Organize events by creation date, follow recurring schedules, and access everyth
 
 ## 🔔 How Notifications Work
 
-Countdown uses the **Nextcloud Background Job** system to send notifications server-side, so you receive alerts even when the app is not open — including on the Nextcloud mobile app.
+Countdown uses the **Nextcloud Background Job** system to send notifications server-side — so you receive alerts even when the app is not open, including on the Nextcloud mobile app.
 
-Notifications are checked automatically every **5 minutes** by a background job that runs alongside your Nextcloud instance.
+Notifications are checked automatically every **5 minutes** by a background job. The queue is processed automatically when the **system cron** background job mode is configured in Nextcloud.
 
-For notifications to work reliably, your Nextcloud instance must have **Background Jobs (cron) configured**. This is standard practice for any Nextcloud installation:
+Additionally, administrators may run the following command to process all pending notifications immediately:
+
+    occ countdown:check-timers
+
+For notifications to work reliably, make sure your Nextcloud instance has **Background Jobs (cron) configured**:
 
 * **Nextcloud AIO / managed hosting**: cron is already configured — notifications work out of the box ✅
 * **Self-hosted (VPS, NAS, server)**: make sure the system cron calls `cron.php` periodically. See the [Nextcloud Background Jobs documentation](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html).
 * **Default AJAX mode**: notifications will still fire, but only when any user is actively browsing the Nextcloud interface.
 ]]></description>
-    <version>1.1.31</version>
+    <version>1.1.32</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

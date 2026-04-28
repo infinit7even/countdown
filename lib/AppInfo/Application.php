@@ -10,6 +10,7 @@ use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCA\Countdown\Dashboard\CountdownWidget;
 use OCA\Countdown\Notification\Notifier;
 use OCA\Countdown\BackgroundJob\TimerJob;
+use OCA\Countdown\Command\CheckTimers;
 
 class Application extends App implements IBootstrap {
     public const APP_ID = 'countdown';
@@ -22,6 +23,7 @@ class Application extends App implements IBootstrap {
         $context->registerDashboardWidget(CountdownWidget::class);
         $context->registerNotifierService(Notifier::class);
         $context->registerBackgroundJob(TimerJob::class);
+        $context->registerCommand(CheckTimers::class);
     }
 
     public function boot(IBootContext $context): void {
