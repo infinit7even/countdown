@@ -93,25 +93,40 @@ body.theme--dark .settings-panel {
     -ms-user-select: none;
 }
 
-.button.primary,
+.button,
 .new-countdown-btn {
     border-radius: 30px !important;
     padding: 0 24px !important;
     font-size: 1rem !important;
     font-weight: 700 !important;
-    background: var(--cd-primary-gradient) !important;
-    color: white !important;
-    border: none !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     transition: var(--cd-transition) !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
     cursor: pointer;
     height: 44px !important;
     line-height: 1 !important;
     text-decoration: none !important;
+}
+
+.button:not(.primary) {
+    background: transparent !important;
+    border: 2px solid var(--color-border) !important;
+    color: var(--color-main-text) !important;
+}
+
+.button:not(.primary):hover {
+    background: var(--color-background-hover) !important;
+    border-color: var(--cd-primary-color) !important;
+}
+
+.button.primary,
+.new-countdown-btn {
+    background: var(--cd-primary-gradient) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
 }
 
 .button.primary:hover,
