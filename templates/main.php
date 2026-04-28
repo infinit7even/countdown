@@ -3,10 +3,15 @@
         <div class="countdown-app-container">
             <header class="countdown-header">
                 <h1 class="countdown-title" tabindex="0" role="button" aria-label="Countdown title - surprise inside!">Countdown!</h1>
-                <button id="add-countdown-btn" class="button primary new-countdown-btn">
-                    <span class="btn-icon-plus">+</span>
-                    <span class="btn-label">New <span class="mobile-hidden-text">Countdown</span></span>
-                </button>
+                <div class="header-actions">
+                    <button id="news-btn" class="button news-btn" title="What's New?">
+                        <span class="btn-icon">📰</span>
+                    </button>
+                    <button id="add-countdown-btn" class="button primary new-countdown-btn">
+                        <span class="btn-icon-plus">+</span>
+                        <span class="btn-label">New <span class="mobile-hidden-text">Countdown</span></span>
+                    </button>
+                </div>
             </header>
 
             <div id="countdown-grid" class="countdown-grid">
@@ -100,8 +105,8 @@
                 </div>
                 <div class="modal-actions">
                     <button id="close-info-btn" class="button">Close</button>
-                    <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
-                        class="button review-btn primary">Leave a review or comment :D</a>
+                    <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
+                        class="button review-btn primary">Give it a star on GitHub :D</a>
                 </div>
             </div>
         </div>
@@ -158,6 +163,22 @@
                 </button>
             </div>
         </div>
+        <!-- News Modal -->
+        <div id="news-modal" class="modal-overlay hidden">
+            <div class="modal-content news-content glass-effect">
+                <div class="news-header">
+                    <h2>🗞️ Countdown Times</h2>
+                    <p class="news-subtitle">Latest Updates & Features</p>
+                </div>
+                <div id="news-articles" class="news-articles">
+                    <!-- Articles will be inserted via Javascript -->
+                </div>
+                <div class="modal-actions">
+                    <button id="close-news-btn" class="button primary">Close Gazette</button>
+                </div>
+            </div>
+        </div>
+
         <div id="countdown-notification-container" class="notification-container"></div>
         <canvas id="confetti-canvas"></canvas>
     </div>

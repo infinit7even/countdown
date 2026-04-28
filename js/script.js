@@ -43,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const settingsToggle = document.getElementById('settings-toggle');
     const msgOpts = document.querySelectorAll('.msg-opt');
     const customMsgInput = document.getElementById('custom-completion-input');
+    const newsModal = document.getElementById('news-modal');
+    const newsBtn = document.getElementById('news-btn');
+    const closeNewsBtn = document.getElementById('close-news-btn');
+    const newsArticlesContainer = document.getElementById('news-articles');
 
     let countdowns = [];
     let intervals = [];
@@ -413,6 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('hidden');
         infoModal.classList.add('hidden');
         emojiPicker.classList.add('hidden');
+        if (newsModal) newsModal.classList.add('hidden');
     }
 
     // Global ESC key listener to close everything
@@ -430,9 +435,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cancelBtn.addEventListener('click', closeAllModals);
     closeInfoBtn.addEventListener('click', closeAllModals);
+    if (closeNewsBtn) closeNewsBtn.addEventListener('click', closeAllModals);
 
     // Close on overlay click
-    [modal, infoModal].forEach(ov => {
+    [modal, infoModal, newsModal].forEach(ov => {
         ov.addEventListener('click', (e) => {
             if (e.target === ov) {
                 closeAllModals();
@@ -1048,6 +1054,47 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderCountdowns();
                 });
             }
+        }
+
+        // News Center Logic
+        const newsItems = [
+            {
+                date: "April 28, 2026",
+                title: "V1.1.42: The Personal Touch",
+                content: "You can now customize your 'Time's Up' messages! Choose between standard, random surprises, or write your own custom victory message in the settings panel.",
+                tag: "NEW FEATURE"
+            },
+            {
+                date: "April 20, 2026",
+                title: "Precision Matters",
+                content: "Notifications are now more reliable than ever. We've optimized the server-side cron jobs to ensure your alerts arrive exactly when they should.",
+                tag: "UPDATE"
+            },
+            {
+                date: "April 10, 2026",
+                title: "Premium Aesthetics",
+                content: "Our UI has been redesigned with a modern 'glassmorphism' look, improved accessibility, and smoother animations for a truly premium experience.",
+                tag: "DESIGN"
+            }
+        ];
+
+        if (newsBtn && newsModal && newsArticlesContainer) {
+            newsBtn.addEventListener('click', () => {
+                newsArticlesContainer.innerHTML = '';
+                newsItems.forEach(item => {
+                    const article = document.createElement('div');
+                    article.className = 'news-article';
+                    article.innerHTML = `
+                        <div class="article-date">${item.date}</div>
+                        <h3>${item.title}</h3>
+                        <p>${item.content}</p>
+                        <span class="article-tag">${item.tag}</span>
+                    `;
+                    newsArticlesContainer.appendChild(article);
+                });
+                newsModal.classList.remove('hidden');
+                launchConfetti(30);
+            });
         }
     } catch (e) {
         console.error('Final initialization error:', e);
