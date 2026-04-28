@@ -1005,7 +1005,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     border: 1.5px solid var(--color-border);
 }
 
-.sort-opt, .layout-opt {
+.sort-opt, .layout-opt, .msg-opt {
     flex: 1;
     background: transparent;
     border: none;
@@ -1023,20 +1023,39 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     white-space: nowrap;
 }
 
-.sort-opt {
+.sort-opt, .msg-opt {
     font-size: 1.1rem; /* Emojis stay slightly larger */
 }
 
-.sort-opt:hover, .layout-opt:hover {
+.sort-opt:hover, .layout-opt:hover, .msg-opt:hover {
     opacity: 1;
     background: rgba(255, 255, 255, 0.05);
 }
 
-.sort-opt.active, .layout-opt.active {
+.sort-opt.active, .layout-opt.active, .msg-opt.active {
     opacity: 1;
     background: var(--cd-primary-gradient);
     color: white !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.settings-input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--color-border);
+    background: var(--cd-time-bg);
+    color: var(--color-main-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-top: 4px;
+    transition: all 0.3s ease;
+}
+
+.settings-input:focus {
+    outline: none;
+    border-color: var(--cd-primary-color);
+    box-shadow: 0 0 0 3px var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
 }
 
 /* Final Refined CSS Icons (V3 - Balanced Proportions) */

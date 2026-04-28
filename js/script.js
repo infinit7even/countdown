@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const pwaBtn = document.getElementById('pwa-install-btn');
     const settingsPanel = document.getElementById('settings-panel');
     const settingsToggle = document.getElementById('settings-toggle');
+    const msgOpts = document.querySelectorAll('.msg-opt');
+    const customMsgInput = document.getElementById('custom-completion-input');
 
     let countdowns = [];
     let intervals = [];
@@ -496,11 +498,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const distance = cd.targetDate - now;
 
         if (distance <= 0) {
+            const msgType = localStorage.getItem('countdown-msg-type') || 'default';
+            const customMsg = localStorage.getItem('countdown-msg-custom') || '';
             let msg = "Completed!";
-            if (typeof completionMessages !== 'undefined' && completionMessages.length > 0) {
+
+            if (msgType === 'random' && typeof completionMessages !== 'undefined' && completionMessages.length > 0) {
                 const numericId = Number(cd.id) || 0;
                 msg = completionMessages[numericId % completionMessages.length];
+            } else if (msgType === 'custom' && customMsg.trim() !== '') {
+                msg = customMsg.trim();
             }
+            
             timerElement.innerHTML = `<div class="completed-box"><div class="completed-text">${msg}</div></div>`;
             if (!cd.notified) { // Celebration fires the first time the expired event is viewed
                 cd.notified = true;
@@ -993,6 +1001,53 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => grid.style.opacity = '1', 200);
                 });
             });
+        }
+
+        // Completion Message Settings Logic
+        if (msgOpts.length > 0) {
+            const savedMsgType = localStorage.getItem('countdown-msg-type') || 'default';
+            const savedCustomMsg = localStorage.getItem('countdown-msg-custom') || '';
+            
+            if (customMsgInput) {
+                customMsgInput.value = savedCustomMsg;
+                if (savedMsgType === 'custom') {
+                    customMsgInput.classList.remove('hidden');
+                }
+            }
+
+            msgOpts.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.msg === savedMsgType);
+                
+                btn.addEventListener('click', () => {
+                    const type = btn.dataset.msg;
+                    msgOpts.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    localStorage.setItem('countdown-msg-type', type);
+                    
+                    if (customMsgInput) {
+                        if (type === 'custom') {
+                            customMsgInput.classList.remove('hidden');
+                            customMsgInput.focus();
+                        } else {
+                            customMsgInput.classList.add('hidden');
+                        }
+                    }
+                    
+                    // Re-render to show updated messages if any countdown is finished
+                    renderCountdowns();
+                });
+            });
+
+            if (customMsgInput) {
+                customMsgInput.addEventListener('input', () => {
+                    localStorage.setItem('countdown-msg-custom', customMsgInput.value);
+                });
+                
+                customMsgInput.addEventListener('change', () => {
+                    renderCountdowns();
+                });
+            }
         }
     } catch (e) {
         console.error('Final initialization error:', e);

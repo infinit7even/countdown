@@ -139,13 +139,24 @@
                         <span class="icon-toggle-arrow">↑</span>
                     </button>
                 </div>
-                <div id="pwa-install-row" class="settings-row hidden">
+            </div>
+
+            <div class="settings-row">
+                <label>Completion Message</label>
+                <div class="segmented-control completion-segmented">
+                    <button class="msg-opt active" data-msg="default" title="Default: Complete">📍</button>
+                    <button class="msg-opt" data-msg="random" title="Random Messages">🎲</button>
+                    <button class="msg-opt" data-msg="custom" title="Custom Message">✍️</button>
+                </div>
+                <input type="text" id="custom-completion-input" class="hidden settings-input" placeholder="Your custom message..." maxlength="30">
+            </div>
+
+            <div id="pwa-install-row" class="settings-row hidden">
                 <label>PWA</label>
                 <button id="pwa-install-btn" class="button primary">
                     Install web app
                 </button>
             </div>
-        </div>
         </div>
         <div id="countdown-notification-container" class="notification-container"></div>
         <canvas id="confetti-canvas"></canvas>
