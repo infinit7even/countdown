@@ -1737,14 +1737,14 @@ select:focus {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    z-index: 99;
+    z-index: 10001; /* Above settings and notifications */
     background: var(--color-main-background) !important;
-    border: 2.5px solid var(--color-border) !important;
+    border: 2px solid var(--color-border) !important;
     border-radius: 50% !important;
-    width: 64px !important;
-    height: 64px !important;
-    min-width: 64px !important;
-    max-width: 64px !important;
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
     padding: 0 !important;
     display: flex !important;
     justify-content: center !important;
@@ -1766,7 +1766,21 @@ select:focus {
     align-items: center !important;
     justify-content: center !important;
     line-height: 1 !important;
-    font-size: 3.5rem !important;
+    font-size: 2.2rem !important;
+}
+
+@media only screen and (max-width: 900px) {
+    .news-btn {
+        bottom: 120px !important; /* Move above settings panel on mobile */
+        right: 20px !important;
+        width: 52px !important;
+        height: 52px !important;
+        min-width: 52px !important;
+        max-width: 52px !important;
+    }
+    .news-btn .btn-icon {
+        font-size: 1.8rem !important;
+    }
 }
 
 /* News Modal Styling */
