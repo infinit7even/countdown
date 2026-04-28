@@ -112,9 +112,12 @@
             <button id="settings-toggle" class="settings-toggle" title="Toggle Settings">
                 <span class="toggle-icon">▼</span>
             </button>
-            <div class="settings-row">
-                <label for="size-slider">Size</label>
-                <input type="range" id="size-slider" min="0.7" max="1.5" step="0.05" value="1">
+            <div class="settings-row size-news-row">
+                <div class="size-container">
+                    <label>SIZE</label>
+                    <input type="range" id="size-slider" min="0.5" max="1.5" step="0.05" value="1">
+                </div>
+                <button id="news-btn" class="news-btn-inline" title="What's New?">📰</button>
             </div>
 
             <div class="settings-row">
@@ -175,10 +178,6 @@
                 </div>
             </div>
         </div>
-
-        <button id="news-btn" class="news-btn floating-news" title="What's New?">
-            <span class="btn-icon">📰</span>
-        </button>
 
         <div id="countdown-notification-container" class="notification-container"></div>
         <canvas id="confetti-canvas"></canvas>
