@@ -12,7 +12,7 @@
 * 🔔 **Stay Notified**: Receive automatic alerts through the Nextcloud Activity stream when a countdown expires.
 * 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
 * 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
-* 💬 **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
+* ✏️ **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
 * 🎮 **Easter Eggs**: Keep clicking the title to discover secrets inspired by pop culture!
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
@@ -24,6 +24,8 @@ Countdown uses the **Nextcloud Background Job** system to send notifications ser
 *   **Frequency**: Expired countdowns are checked automatically every **5 minutes**.
 *   **Trigger**: The check is performed by a server-side background job (`TimerJob`).
 *   **Reliability**: For notifications to fire, your Nextcloud instance must be configured to use the **System Cron** mode.
+
+Additionally, administrators may run the command **occ countdown:check-timers** to process all pending notifications immediately.
 
 ## 📸 Screenshots
 
@@ -51,7 +53,7 @@ Countdown uses the **Nextcloud Background Job** system to send notifications ser
   <img src="screenshots/mobile_create.png" width="30%" alt="Mobile Create" />
 </p>
 
-## 🚀 Installation & Download
+## 🚀 Installation
 
 ### Option 1: Nextcloud App Store (Recommended)
 You can find **Countdown** directly in your Nextcloud instance:
@@ -73,25 +75,18 @@ If you prefer to install it manually or want to use a specific version:
    sudo -u www-data php /path/to/nextcloud/occ app:enable countdown
    ```
 
-## 🛠️ Configuration & Usage
+## 🛠️ Configuration
 
 No complex configuration is needed to start! Once enabled, you'll see the **Countdown** icon in your top navigation bar.
 
 ### 🔔 Configuring Notifications (CRON)
 
-To receive notifications reliably when a countdown expires, you **must** have background jobs configured as "Cron" in your Nextcloud Basic Settings.
+To receive notifications accurately when a countdown expires, add a cron job to your host system that triggers the check every 5 minutes:
 
-#### 1. Setup Crontab
-On a standard Linux server, you can set this up by editing the crontab for your web server user (usually `www-data`):
-
+1. Open your crontab: `sudo crontab -e`
+2. Add the following line:
 ```bash
-sudo crontab -u www-data -e
-```
-
-Add the following line to run the Nextcloud background jobs every 5 minutes:
-
-```bash
-*/5 * * * * php -f /var/www/nextcloud/cron.php
+*/5 * * * * sudo docker exec --user www-data nextcloud php occ countdown:check-timers
 ```
 
 #### 2. Administrative Commands
@@ -107,7 +102,7 @@ Administrators can use the `occ` command line tool to manage countdowns and trig
     ```
 *   **Add/Delete countdowns**: Use `php occ countdown:add --help` or `php occ countdown:delete --help` for details.
 
-### 🥀 Creating your first Countdown
+### Creating your first Countdown
 1. **Name & Date**: Simply click the "+" button, enter a title (e.g., "GTA VI Release"), and pick the target date and time.
 2. **Add some Magic**: You can choose a custom **emoji** to represent your event and add a **description** for more details.
 3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).

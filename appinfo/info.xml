@@ -16,7 +16,7 @@
 * 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
 * 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
 * 💻 **OCC Integration**: Administrators can manage countdowns using the OCC command line interface.
-* 💬 **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
+* ✏️ **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
 * 🎮 **Easter Eggs**: Keep clicking the title to discover secrets inspired by pop culture!
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
@@ -25,9 +25,9 @@ Organize events by creation date, follow recurring schedules, and access everyth
 
 Countdown uses the **Nextcloud Background Job** system to send notifications server-side — so you receive alerts even when the app is not open, including on the Nextcloud mobile app.
 Notifications are checked automatically every **5 minutes** by a background job. The queue is processed automatically when the **system cron** background job mode is configured in Nextcloud.
-Additionally, administrators may run the command 🥀 **occ countdown:check-timers** to process all pending notifications immediately.
+Additionally, administrators may run the command **occ countdown:check-timers** to process all pending notifications immediately.
 ]]></description>
-    <version>1.1.40</version>
+    <version>1.1.41</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
