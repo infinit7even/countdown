@@ -14,6 +14,14 @@ const NEWS_ARTICLES = [
         content: "When a countdown hits zero, you now choose what it says. Pick the classic default, a random surprise from our curated list, or write your own personal message."
     },
     {
+        title: "OCC Command Integration",
+        content: "Administrators can now manage countdowns via the command line. Use OCC to list, add, or delete countdowns, and manually trigger notification checks."
+    },
+    {
+        title: "System Notifications v2",
+        content: "We've upgraded notifications to use the Nextcloud Background Job system. By configuring your system crontab, you'll now receive alerts even when the app is closed."
+    },
+    {
         title: "Collapsible Settings Panel",
         content: "The settings panel can now be hidden on both mobile and desktop, keeping your workspace clean when you don't need it."
     },
