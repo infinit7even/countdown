@@ -93,10 +93,11 @@ body.theme--dark .settings-panel {
     -ms-user-select: none;
 }
 
+.button.primary,
 .new-countdown-btn {
     border-radius: 30px !important;
-    padding: 0 20px !important; /* Vertically centered via height */
-    font-size: 1.05rem !important;
+    padding: 0 24px !important;
+    font-size: 1rem !important;
     font-weight: 700 !important;
     background: var(--cd-primary-gradient) !important;
     color: white !important;
@@ -104,12 +105,20 @@ body.theme--dark .settings-panel {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 8px;
     transition: var(--cd-transition) !important;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
     cursor: pointer;
-    height: 44px !important; /* Precise fixed height for perfect vertical center */
+    height: 44px !important;
     line-height: 1 !important;
+    text-decoration: none !important;
+}
+
+.button.primary:hover,
+.new-countdown-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2) !important;
+    filter: brightness(1.1);
 }
 
 .btn-icon-plus {
