@@ -3,6 +3,28 @@
  * Data saved via API (Nextcloud Backend DB)
  * Features: Edit, All Day, Particles and Notifications
  */
+  */
+const NEWS_ARTICLES = [
+    {
+        date: "April 28, 2026",
+        title: "V1.1.47: The News Gazette is Live!",
+        content: "We've introduced the News Center! Stay updated with all the latest changes and features directly from this new newspaper-style portal.",
+        tag: "NEW FEATURE"
+    },
+    {
+        date: "April 28, 2026",
+        title: "Custom Completion Messages",
+        content: "Personalize your victories! You can now set default, random, or custom messages for when your countdowns reach zero.",
+        tag: "UPDATE"
+    },
+    {
+        date: "April 25, 2026",
+        title: "Performance Boost",
+        content: "Under-the-hood optimizations make the app faster and the confetti smoother. Your experience is our priority.",
+        tag: "OPTIMIZATION"
+    }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('countdown-modal');
     const modalTitle = document.getElementById('modal-title');
@@ -1057,31 +1079,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // News Center Logic
-        const newsItems = [
-            {
-                date: "April 28, 2026",
-                title: "V1.1.42: The Personal Touch",
-                content: "You can now customize your 'Time's Up' messages! Choose between standard, random surprises, or write your own custom victory message in the settings panel.",
-                tag: "NEW FEATURE"
-            },
-            {
-                date: "April 20, 2026",
-                title: "Precision Matters",
-                content: "Notifications are now more reliable than ever. We've optimized the server-side cron jobs to ensure your alerts arrive exactly when they should.",
-                tag: "UPDATE"
-            },
-            {
-                date: "April 10, 2026",
-                title: "Premium Aesthetics",
-                content: "Our UI has been redesigned with a modern 'glassmorphism' look, improved accessibility, and smoother animations for a truly premium experience.",
-                tag: "DESIGN"
-            }
-        ];
-
         if (newsBtn && newsModal && newsArticlesContainer) {
             newsBtn.addEventListener('click', () => {
                 newsArticlesContainer.innerHTML = '';
-                newsItems.forEach(item => {
+                NEWS_ARTICLES.forEach(item => {
                     const article = document.createElement('div');
                     article.className = 'news-article';
                     article.innerHTML = `
