@@ -26,7 +26,7 @@ Countdown uses the **Nextcloud Background Job** system to send notifications ser
 Notifications are checked automatically every **5 minutes** by a background job. The queue is processed automatically when the **system cron** background job mode is configured in Nextcloud.
 Additionally, administrators may run the command 🥀 **occ countdown:check-timers** to process all pending notifications immediately.
 ]]></description>
-    <version>1.1.36</version>
+    <version>1.1.38</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
