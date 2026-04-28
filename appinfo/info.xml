@@ -7,6 +7,8 @@
 
 **Built for Nextcloud**, this app keeps all your data fully private. Your events and most anticipated releases stay exclusively on your instance — no tracking, no profiling, no third-party access.
 
+## ✨ Features
+
 * 🕒 **Hyped Tracking**: Manage countdowns for games, movies, series, and personal events.
 * 📊 **Dashboard Widget**: View all your upcoming releases directly on your Nextcloud Dashboard.
 * 🔄 **Smart Recurrence**: Repeat events daily, weekly, monthly, or yearly (perfect for weekly show releases!).
@@ -17,7 +19,7 @@
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
 ]]></description>
-    <version>1.1.27</version>
+    <version>1.1.28</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -36,8 +38,6 @@ Organize events by creation date, follow recurring schedules, and access everyth
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/desktop_widget.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/desktop_edit.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/mobile_dashboard.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/mobile_widget.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/mobile_create.png</screenshot>
     <dependencies>
         <php min-version="8.0" />
         <nextcloud min-version="25" max-version="33" />

@@ -942,12 +942,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('settings-collapsed', settingsPanel.classList.contains('collapsed'));
             });
 
-            // Auto-close when clicking outside
+            // Auto-close when clicking outside (mobile only)
             document.addEventListener('click', (e) => {
-                if (!settingsPanel.contains(e.target) && !settingsToggle.contains(e.target)) {
-                    if (!settingsPanel.classList.contains('collapsed')) {
-                        settingsPanel.classList.add('collapsed');
-                        localStorage.setItem('settings-collapsed', 'true');
+                if (window.innerWidth <= 900) {
+                    if (!settingsPanel.contains(e.target) && !settingsToggle.contains(e.target)) {
+                        if (!settingsPanel.classList.contains('collapsed')) {
+                            settingsPanel.classList.add('collapsed');
+                            localStorage.setItem('settings-collapsed', 'true');
+                        }
                     }
                 }
             });

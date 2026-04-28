@@ -908,7 +908,36 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 }
 
 .settings-toggle {
-    display: none; /* Hidden on desktop */
+    display: flex;
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cd-primary-gradient);
+    border: none;
+    width: 48px;
+    height: 32px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
+    z-index: 1;
+}
+
+.toggle-icon {
+    color: white;
+    font-size: 0.8rem;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.settings-panel.collapsed {
+    transform: translateY(calc(100% + 2rem - 16px));
+}
+
+.settings-panel.collapsed .toggle-icon {
+    transform: rotate(180deg);
 }
 
 .settings-panel input[type="range"] {
