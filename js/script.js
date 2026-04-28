@@ -6,22 +6,72 @@
 
 const NEWS_ARTICLES = [
     {
-        date: "April 28, 2026",
-        title: "V1.1.47: The News Gazette is Live!",
-        content: "We've introduced the News Center! Stay updated with all the latest changes and features directly from this new newspaper-style portal.",
-        tag: "NEW FEATURE"
+        title: "The News Gazette",
+        content: "We've added this News Center so you can keep up with what's new in Countdown — right from inside the app. Check back here for every major update."
     },
     {
-        date: "April 28, 2026",
         title: "Custom Completion Messages",
-        content: "Personalize your victories! You can now set default, random, or custom messages for when your countdowns reach zero.",
-        tag: "UPDATE"
+        content: "When a countdown hits zero, you now choose what it says. Pick the classic default, a random surprise from our curated list, or write your own personal message."
     },
     {
-        date: "April 25, 2026",
-        title: "Performance Boost",
-        content: "Under-the-hood optimizations make the app faster and the confetti smoother. Your experience is our priority.",
-        tag: "OPTIMIZATION"
+        title: "Collapsible Settings Panel",
+        content: "The settings panel can now be hidden on both mobile and desktop, keeping your workspace clean when you don't need it."
+    },
+    {
+        title: "Three Layout Views",
+        content: "Switch between Expanded (stacked cards), Grid (side-by-side) and the original compact view to display your countdowns exactly how you want them."
+    },
+    {
+        title: "Emoji Picker",
+        content: "Each countdown can now have its own emoji icon. A full categorized picker lets you browse hundreds of emojis — faces, animals, food, travel, and more — right from the creation form."
+    },
+    {
+        title: "Smart Sorting",
+        content: "Sort your countdowns by date, name, or newest first. A directional toggle lets you flip between ascending and descending order, with your preference remembered across sessions."
+    },
+    {
+        title: "Recurrent Countdowns",
+        content: "Set a countdown to automatically restart after it expires. Choose daily, weekly, monthly, yearly, or a custom interval in days — perfect for recurring events."
+    },
+    {
+        title: "System Notifications",
+        content: "When a countdown reaches zero, a Nextcloud system notification is triggered. You'll be alerted even if you're not looking at the app."
+    },
+    {
+        title: "Interactive Toast Notifications",
+        content: "In-app notifications now appear as sleek, dismissible toasts. Click anywhere on the toast or hit the × button to close them instantly."
+    },
+    {
+        title: "Confetti Celebrations",
+        content: "Every time you save a countdown or one expires, a confetti burst lights up the screen. Clicking the app title also triggers it — and hides a 1000-click Easter Egg challenge."
+    },
+    {
+        title: "Countdown Description Field",
+        content: "Add optional notes or context to any countdown via the description field. View them at a glance in the Details panel."
+    },
+    {
+        title: "PWA Install Support",
+        content: "Install Countdown as a Progressive Web App directly from the settings panel. Get it on your home screen for quick access without opening a browser."
+    },
+    {
+        title: "ESC Key & Click-Outside to Close",
+        content: "All modals and panels now close when you press ESC or click outside them — no need to hunt for a close button."
+    },
+    {
+        title: "Keyboard Accessibility",
+        content: "Every action button (edit, delete, info) is fully keyboard-navigable. High-visibility neon focus highlights make it easy to know where you are on the page."
+    },
+    {
+        title: "Dashboard Widget",
+        content: "Countdown integrates with the Nextcloud Dashboard. A compact widget shows your upcoming events at a glance from the home screen."
+    },
+    {
+        title: "Theme-Aware Design",
+        content: "The entire app adapts seamlessly to Nextcloud's light, dark, and high-contrast accessibility themes — including notifications, icons, and card colours."
+    },
+    {
+        title: "Mobile-First Responsive Layout",
+        content: "From the collapsible header to the adaptive grid and resized modals, every element has been refined for a smooth experience on phones and tablets."
     }
 ];
 
@@ -1086,10 +1136,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const article = document.createElement('div');
                     article.className = 'news-article';
                     article.innerHTML = `
-                        <div class="article-date">${item.date}</div>
                         <h3>${item.title}</h3>
                         <p>${item.content}</p>
-                        <span class="article-tag">${item.tag}</span>
                     `;
                     newsArticlesContainer.appendChild(article);
                 });
