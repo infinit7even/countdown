@@ -16,6 +16,14 @@
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
 
+## 🔔 How Notifications Work
+
+Countdown uses the **Nextcloud Background Job** system to send notifications server-side. This ensures you receive alerts even when the app is not open, which is essential for receiving notifications on the **Nextcloud mobile app**.
+
+*   **Frequency**: Expired countdowns are checked automatically every **5 minutes**.
+*   **Trigger**: The check is performed by a server-side background job (`TimerJob`).
+*   **Reliability**: For notifications to fire, your Nextcloud instance must be configured to use the **System Cron** mode.
+
 ## 📸 Screenshots
 
 ### Main Dashboard
@@ -65,7 +73,38 @@ If you prefer to install it manually or want to use a specific version:
    ```
 
 ## 🛠️ Configuration & Usage
-No complex configuration is needed! Once enabled, you'll see the **Countdown** icon in your top navigation bar.
+
+No complex configuration is needed to start! Once enabled, you'll see the **Countdown** icon in your top navigation bar.
+
+### 🔔 Configuring Notifications (CRON)
+
+To receive notifications reliably when a countdown expires, you **must** have background jobs configured as "Cron" in your Nextcloud Basic Settings.
+
+#### 1. Setup Crontab
+On a standard Linux server, you can set this up by editing the crontab for your web server user (usually `www-data`):
+
+```bash
+sudo crontab -u www-data -e
+```
+
+Add the following line to run the Nextcloud background jobs every 5 minutes:
+
+```bash
+*/5 * * * * php -f /var/www/nextcloud/cron.php
+```
+
+#### 2. Administrative Commands
+Administrators can use the `occ` command line tool to manage countdowns and trigger notification checks manually.
+
+*   **Check notifications immediately**:
+    ```bash
+    php occ countdown:check-timers
+    ```
+*   **List countdowns for a user**:
+    ```bash
+    php occ countdown:list <user_id>
+    ```
+*   **Add/Delete countdowns**: Use `php occ countdown:add --help` or `php occ countdown:delete --help` for details.
 
 ### Creating your first Countdown
 1. **Name & Date**: Simply click the "+" button, enter a title (e.g., "GTA VI Release"), and pick the target date and time.
