@@ -35,7 +35,7 @@ For notifications to work reliably, make sure your Nextcloud instance has **Back
 * **Self-hosted (VPS, NAS, server)**: make sure the system cron calls `cron.php` periodically. See the [Nextcloud Background Jobs documentation](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html).
 * **Default AJAX mode**: notifications will still fire, but only when any user is actively browsing the Nextcloud interface.
 ]]></description>
-    <version>1.1.32</version>
+    <version>1.1.33</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -67,4 +67,10 @@ For notifications to work reliably, make sure your Nextcloud instance has **Back
             <order>90</order>
         </navigation>
     </navigations>
+    <background-jobs>
+        <job>OCA\Countdown\BackgroundJob\TimerJob</job>
+    </background-jobs>
+    <commands>
+        <command>OCA\Countdown\Command\CheckTimers</command>
+    </commands>
 </info>

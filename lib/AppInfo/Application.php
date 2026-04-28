@@ -22,8 +22,6 @@ class Application extends App implements IBootstrap {
     public function register(IRegistrationContext $context): void {
         $context->registerDashboardWidget(CountdownWidget::class);
         $context->registerNotifierService(Notifier::class);
-        $context->registerBackgroundJob(TimerJob::class);
-        $context->registerCommand(CheckTimers::class);
     }
 
     public function boot(IBootContext $context): void {
