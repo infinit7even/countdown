@@ -19,13 +19,9 @@ Organize events by creation date, follow recurring schedules, and access everyth
 
 ## 🔔 How Notifications Work
 
-Countdown uses the **Nextcloud Background Job** system to send notifications server-side. This ensures you receive alerts even when the app is not open, which is essential for receiving notifications on the **Nextcloud mobile app**.
-
-*   **Frequency**: Expired countdowns are checked automatically every **5 minutes**.
-*   **Trigger**: The check is performed by a server-side background job (`TimerJob`).
-*   **Reliability**: For notifications to fire, your Nextcloud instance must be configured to use the **System Cron** mode.
-
-Additionally, administrators may run the command **occ countdown:check-timers** to process all pending notifications immediately.
+Countdown uses the **Nextcloud Background Job** system to send notifications server-side. This ensures you receive alerts even when the app is not open, including on the **Nextcloud mobile app**.
+Notifications are checked every **5 minutes** by a background job (`TimerJob`). For reliable delivery, your Nextcloud instance should use **System Cron** mode.
+Administrators can also trigger checks manually with: **occ countdown:check-timers**
 
 ## 📸 Screenshots
 
@@ -79,17 +75,33 @@ If you prefer to install it manually or want to use a specific version:
 
 No complex configuration is needed to start! Once enabled, you'll see the **Countdown** icon in your top navigation bar.
 
-### 🔔 Configuring Notifications (CRON)
+### Creating your first Countdown
+1. **Name & Date**: Simply click the "+" button, enter a title (e.g., "GTA VI Release"), and pick the target date and time.
+2. **Add some Magic**: You can choose a custom **emoji** to represent your event and add a **description** for more details.
+3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).
+4. **The Celebration**: When the timer reaches zero, you'll receive a **Nextcloud Notification** and be greeted by a **burst of confetti**! 🎉
 
-To receive notifications accurately when a countdown expires, add a cron job to your host system that triggers the check every 5 minutes:
+### Configuring Notifications (CRON)
 
-1. Open your crontab: `sudo crontab -e`
-2. Add the following line:
-```bash
-*/5 * * * * sudo docker exec --user www-data nextcloud php occ countdown:check-timers
-```
+To receive notifications accurately when a countdown expires, you need to add a cron job to your host system. The check frequency is **fully customizable**: while 5 minutes is usually enough, you can increase precision by running it every minute.
 
-#### 2. Administrative Commands
+#### Examples:
+*   **Every 5 minutes (Recommended)**:
+    ```bash
+    */5 * * * * sudo docker exec --user www-data nextcloud php occ countdown:check-timers
+    ```
+*   **Every minute (High precision)**:
+    ```bash
+    * * * * * sudo docker exec --user www-data nextcloud php occ countdown:check-timers
+    ```
+
+> [!TIP]
+> If you're new to cron syntax, use [crontab.guru](https://crontab.guru/) to verify your schedule or browse their [examples](https://crontab.guru/examples.html).
+
+1. Open your host crontab: `sudo crontab -e`
+2. Add the desired line from the examples above.
+
+### Administrative Commands
 Administrators can use the `occ` command line tool to manage countdowns and trigger notification checks manually.
 
 *   **Check notifications immediately**:
@@ -101,12 +113,6 @@ Administrators can use the `occ` command line tool to manage countdowns and trig
     php occ countdown:list <user_id>
     ```
 *   **Add/Delete countdowns**: Use `php occ countdown:add --help` or `php occ countdown:delete --help` for details.
-
-### Creating your first Countdown
-1. **Name & Date**: Simply click the "+" button, enter a title (e.g., "GTA VI Release"), and pick the target date and time.
-2. **Add some Magic**: You can choose a custom **emoji** to represent your event and add a **description** for more details.
-3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).
-4. **The Celebration**: When the timer reaches zero, you'll receive a **Nextcloud Notification** and be greeted by a **burst of confetti**! 🎉
 
 ### Dashboard Widget
 To see your countdowns at a glance:
