@@ -1739,34 +1739,34 @@ select:focus {
     right: 30px;
     z-index: 99;
     background: var(--color-main-background) !important;
-    border: 2px solid var(--color-border) !important;
+    border: 2.5px solid var(--color-border) !important;
     border-radius: 50% !important;
-    width: 56px !important;
-    height: 56px !important;
-    min-width: 56px !important;
-    max-width: 56px !important;
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    max-width: 64px !important;
     padding: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    font-size: 2.8rem;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 .news-btn:hover {
     transform: scale(1.1) rotate(5deg);
     background: var(--color-background-hover) !important;
     border-color: var(--cd-primary-color) !important;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .news-btn .btn-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    font-size: 3.5rem !important;
 }
 
 /* News Modal Styling */
