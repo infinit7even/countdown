@@ -1868,6 +1868,20 @@ select:focus {
     opacity: 0.85;
 }
 
+.news-article p a {
+    color: var(--cd-primary-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.news-article p a:hover {
+    color: var(--color-main-text);
+    text-decoration-thickness: 2.5px;
+}
+
 .news-article .article-tag {
     display: inline-block;
     padding: 2px 8px;
