@@ -7,79 +7,79 @@
 const NEWS_ARTICLES = [
     {
         title: "The News Gazette",
-        content: "We've added this News Center so you can keep up with what's new in Countdown — right from inside the app. Check back here for every major update."
+        content: "Dedicated portal for tracking updates and new features directly within the application."
     },
     {
         title: "Custom Completion Messages",
-        content: "When a countdown hits zero, you now choose what it says. Pick the classic default, a random surprise from our curated list, or write your own personal message."
+        content: "Configurable completion messages with support for default presets, random selections, or personalized text."
     },
     {
         title: "OCC Command Integration",
-        content: "Administrators can now manage countdowns via the command line. Use OCC to list, add, or delete countdowns, and manually trigger notification checks."
+        content: "Command-line management for administrators. Supports listing, adding, and deleting countdowns, as well as manual notification checks."
     },
     {
         title: "System Notifications v2",
-        content: "We've upgraded notifications to use the Nextcloud Background Job system. By configuring your system crontab, you'll now receive alerts even when the app is closed."
+        content: "Notification system upgraded to utilize Nextcloud Background Jobs. Integration with system crontab ensures delivery while the application is closed."
     },
     {
         title: "Collapsible Settings Panel",
-        content: "The settings panel can now be hidden on both mobile and desktop, keeping your workspace clean when you don't need it."
+        content: "Hideable settings panel on both mobile and desktop for an optimized workspace."
     },
     {
         title: "Three Layout Views",
-        content: "Switch between Expanded (stacked cards), Grid (side-by-side) and the original compact view to display your countdowns exactly how you want them."
+        content: "Multiple display modes: Expanded (stacked), Grid (side-by-side), and Compact. Layout preferences are preserved across sessions."
     },
     {
         title: "Emoji Picker",
-        content: "Each countdown can now have its own emoji icon. A full categorized picker lets you browse hundreds of emojis — faces, animals, food, travel, and more — right from the creation form."
+        content: "Integrated emoji support with a categorized picker. Allows selecting from hundreds of icons during countdown creation."
     },
     {
         title: "Smart Sorting",
-        content: "Sort your countdowns by date, name, or newest first. A directional toggle lets you flip between ascending and descending order, with your preference remembered across sessions."
+        content: "Sorting capabilities by date, name, or creation order. Includes a directional toggle for ascending or descending results."
     },
     {
         title: "Recurrent Countdowns",
-        content: "Set a countdown to automatically restart after it expires. Choose daily, weekly, monthly, yearly, or a custom interval in days — perfect for recurring events."
+        content: "Support for automatic countdown restarts. Available intervals include daily, weekly, monthly, yearly, or custom day counts."
     },
     {
         title: "System Notifications",
-        content: "When a countdown reaches zero, a Nextcloud system notification is triggered. You'll be alerted even if you're not looking at the app."
+        content: "Automated Nextcloud system notifications triggered upon countdown expiration."
     },
     {
         title: "Interactive Toast Notifications",
-        content: "In-app notifications now appear as sleek, dismissible toasts. Click anywhere on the toast or hit the × button to close them instantly."
+        content: "Sleek, interactive in-app toast notifications with click-to-dismiss support."
     },
     {
         title: "Confetti Celebrations",
-        content: "Every time you save a countdown or one expires, a confetti burst lights up the screen. Clicking the app title also triggers it — and hides a 1000-click Easter Egg challenge."
+        content: "Visual feedback via confetti bursts on save or expiration events. Includes a title-based interaction challenge."
     },
     {
         title: "Countdown Description Field",
-        content: "Add optional notes or context to any countdown via the description field. View them at a glance in the Details panel."
+        content: "Support for optional notes or context via a dedicated description field, viewable in the details panel."
     },
     {
         title: "PWA Install Support",
-        content: "Install Countdown as a Progressive Web App directly from the settings panel. Get it on your home screen for quick access without opening a browser."
+        content: "Direct Progressive Web App (PWA) installation from the settings panel for standalone home screen access."
     },
     {
         title: "ESC Key & Click-Outside to Close",
-        content: "All modals and panels now close when you press ESC or click outside them — no need to hunt for a close button."
+        content: "Global support for closing modals and panels via the ESC key or by clicking the backdrop."
     },
     {
         title: "Keyboard Accessibility",
-        content: "Every action button (edit, delete, info) is fully keyboard-navigable. High-visibility neon focus highlights make it easy to know where you are on the page."
+        content: "Full keyboard navigation support for all interactive elements, enhanced by high-visibility focus highlights."
     },
     {
         title: "Dashboard Widget",
-        content: "Countdown integrates with the Nextcloud Dashboard. A compact widget shows your upcoming events at a glance from the home screen."
+        content: "Seamless integration with the Nextcloud Dashboard via a dedicated summary widget."
     },
     {
         title: "Theme-Aware Design",
-        content: "The entire app adapts seamlessly to Nextcloud's light, dark, and high-contrast accessibility themes — including notifications, icons, and card colours."
+        content: "Full compatibility with Nextcloud light, dark, and accessibility themes."
     },
     {
         title: "Mobile-First Responsive Layout",
-        content: "From the collapsible header to the adaptive grid and resized modals, every element has been refined for a smooth experience on phones and tablets."
+        content: "Refined mobile experience featuring an adaptive header, responsive grid, and optimized modal windows."
     }
 ];
 
