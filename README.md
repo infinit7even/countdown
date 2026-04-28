@@ -12,6 +12,7 @@
 * 🔔 **Stay Notified**: Receive automatic alerts through the Nextcloud Activity stream when a countdown expires.
 * 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
 * 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
+* 💬 **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
 * 🎮 **Easter Eggs**: Keep clicking the title to discover secrets inspired by pop culture!
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
