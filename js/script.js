@@ -3,7 +3,7 @@
  * Data saved via API (Nextcloud Backend DB)
  * Features: Edit, All Day, Particles and Notifications
  */
-  */
+
 const NEWS_ARTICLES = [
     {
         date: "April 28, 2026",
