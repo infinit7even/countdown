@@ -1711,24 +1711,36 @@ select:focus {
 }
 
 .news-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
     background: var(--cd-time-bg) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1.5px solid var(--color-border) !important;
-    border-radius: 12px !important;
-    width: 44px;
-    height: 44px;
+    border-radius: 50% !important;
+    width: 60px;
+    height: 60px;
     padding: 0 !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .news-btn:hover {
-    transform: rotate(-10deg) scale(1.1);
-    background: var(--color-background-hover) !important;
+    transform: scale(1.1) rotate(12deg);
+    background: var(--cd-primary-gradient) !important;
+    border-color: transparent !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.news-btn:hover .btn-icon {
+    filter: brightness(0) invert(1);
 }
 
 /* News Modal Styling */

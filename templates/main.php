@@ -4,9 +4,6 @@
             <header class="countdown-header">
                 <h1 class="countdown-title" tabindex="0" role="button" aria-label="Countdown title - surprise inside!">Countdown!</h1>
                 <div class="header-actions">
-                    <button id="news-btn" class="button news-btn" title="What's New?">
-                        <span class="btn-icon">📰</span>
-                    </button>
                     <button id="add-countdown-btn" class="button primary new-countdown-btn">
                         <span class="btn-icon-plus">+</span>
                         <span class="btn-label">New <span class="mobile-hidden-text">Countdown</span></span>
@@ -178,6 +175,10 @@
                 </div>
             </div>
         </div>
+
+        <button id="news-btn" class="news-btn floating-news" title="What's New?">
+            <span class="btn-icon">📰</span>
+        </button>
 
         <div id="countdown-notification-container" class="notification-container"></div>
         <canvas id="confetti-canvas"></canvas>
