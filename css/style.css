@@ -1748,8 +1748,8 @@ select:focus {
 }
 
 .news-btn-inline {
-    background: var(--cd-time-bg);
-    border: 1.5px solid var(--color-border);
+    background: var(--cd-primary-gradient);
+    border: none;
     border-radius: 12px;
     width: 44px;
     height: 44px;
@@ -1760,12 +1760,13 @@ select:focus {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 15px; /* Align with slider */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .news-btn-inline:hover {
-    background: var(--color-background-hover);
-    border-color: var(--cd-primary-color);
     transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
 }
 
 @media only screen and (max-width: 900px) {
