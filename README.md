@@ -106,7 +106,7 @@ Administrators can use the `occ` command line tool to manage countdowns and trig
     ```
 *   **Add/Delete countdowns**: Use `php occ countdown:add --help` or `php occ countdown:delete --help` for details.
 
-### Creating your first Countdown
+### 🥀 Creating your first Countdown
 1. **Name & Date**: Simply click the "+" button, enter a title (e.g., "GTA VI Release"), and pick the target date and time.
 2. **Add some Magic**: You can choose a custom **emoji** to represent your event and add a **description** for more details.
 3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).
