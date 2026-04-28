@@ -1195,10 +1195,14 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
     .settings-row {
         display: flex;
-        flex-direction: column; /* Label above control on mobile */
-        align-items: flex-start;
-        gap: 6px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .segmented-control {
         width: 100%;
+        box-sizing: border-box;
     }
 
     .settings-row label {
