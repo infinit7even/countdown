@@ -100,6 +100,59 @@ class CountdownNotificationService {
         return $sent;
     }
 
+    /**
+     * Get all countdowns for a specific user.
+     */
+    public function getCountdowns(string $userId): array {
+        $data = $this->config->getUserValue($userId, 'countdown', 'countdowns_data', '[]');
+        return json_decode($data, true) ?: [];
+    }
+
+    /**
+     * Add a new countdown for a user.
+     *
+     * @return array The newly created countdown
+     */
+    public function addCountdown(string $userId, string $name, int $targetDateMs, string $repeat = 'none', float $repeatValue = 1.0): array {
+        $countdowns = $this->getCountdowns($userId);
+        
+        $newCd = [
+            'id' => uniqid('cd_', true),
+            'name' => $name,
+            'targetDate' => $targetDateMs,
+            'repeat' => $repeat,
+            'repeatValue' => $repeatValue,
+            'notified' => false,
+            'createdAt' => (int)(microtime(true) * 1000)
+        ];
+
+        $countdowns[] = $newCd;
+        $this->config->setUserValue($userId, 'countdown', 'countdowns_data', json_encode($countdowns));
+        
+        return $newCd;
+    }
+
+    /**
+     * Delete a specific countdown for a user.
+     *
+     * @return bool True if deleted, false if not found
+     */
+    public function deleteCountdown(string $userId, string $id): bool {
+        $countdowns = $this->getCountdowns($userId);
+        $initialCount = count($countdowns);
+        
+        $countdowns = array_filter($countdowns, function($cd) use ($id) {
+            return ($cd['id'] ?? '') !== $id;
+        });
+
+        if (count($countdowns) === $initialCount) {
+            return false;
+        }
+
+        $this->config->setUserValue($userId, 'countdown', 'countdowns_data', json_encode(array_values($countdowns)));
+        return true;
+    }
+
     private function sendNotification(string $userId, string $name): void {
         // Remove any previous unprocessed notification for this timer
         $existing = $this->notificationManager->createNotification();
