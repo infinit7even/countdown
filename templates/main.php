@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="modal-actions">
-                    <div class="button-group" style="display: flex; gap: 15px; justify-content: flex-end; width: 100%;">
+                    <div class="button-group">
                         <button id="close-info-btn" class="button">Close</button>
                         <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
                             class="button review-btn primary">Give it a star on GitHub :D</a>
@@ -176,7 +176,7 @@
                     <!-- Articles will be inserted via Javascript -->
                 </div>
                 <div class="modal-actions">
-                    <div class="button-group" style="display: flex; gap: 15px; justify-content: flex-end; width: 100%;">
+                    <div class="button-group">
                         <button id="close-news-btn" class="button">Close Gazette</button>
                         <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
                             class="button review-btn primary">Give it a star on GitHub :D</a>

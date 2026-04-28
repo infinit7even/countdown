@@ -136,6 +136,13 @@ body.theme--dark .settings-panel {
     filter: brightness(1.1);
 }
 
+.button-group {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    width: 100%;
+}
+
 .btn-icon-plus {
     font-size: 1.3rem;
     font-weight: 500;
