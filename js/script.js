@@ -6,23 +6,23 @@
 
 const NEWS_ARTICLES = [
     {
-        title: "The News Gazette",
-        content: "Dedicated portal for tracking updates and new features directly within the application."
+        title: "🆕The News Gazette",
+        content: "Added the Gazette to keep track of changes and all features."
     },
     {
-        title: "Custom Completion Messages",
+        title: "🆕Custom Completion Messages",
         content: "Configurable completion messages with support for default presets, random selections, or personalized text."
     },
     {
-        title: "OCC Command Integration",
+        title: "🆕OCC Command Integration",
         content: "Command-line management for administrators. Supports listing, adding, and deleting countdowns, as well as manual notification checks."
     },
     {
-        title: "System Notifications v2",
-        content: "Notification system upgraded to utilize Nextcloud Background Jobs. Integration with system crontab ensures delivery while the application is closed."
+        title: "🆕System Notifications v2",
+        content: "Notification system upgraded to utilize Nextcloud Background Jobs. Integration with system crontab ensures delivery while the application is closed. For more info read the [user documentation↗️](https://github.com/infinit7even/countdown/blob/master/README.md#configuring-notifications-cron)."
     },
     {
-        title: "Collapsible Settings Panel",
+        title: "🆕Collapsible Settings Panel",
         content: "Hideable settings panel on both mobile and desktop for an optimized workspace."
     },
     {
@@ -326,12 +326,12 @@ document.addEventListener('DOMContentLoaded', () => {
         "Metal Gear Solid Delta", "Radiohead New Album", "Black Mirror Season 7",
         "Joker: Folie à Deux", "Final Fantasy XVII", "Tool New Single",
         "Euphoria Season 3", "Superman: Legacy", "Hollow Knight: Silksong",
-        "Kendrick Lamar Album", "House of the Dragon S3"
+        "Kendrick Lamar Album", "House of the Dragon S3", "OwO", "UwU", "Nwn"
     ];
 
     const completionMessages = [
         "Mission Accomplished", "Victory Royale", "Game Over", "Time's Up!", "The End",
-        "Zero Hour", "Completed!", "Level Complete", "Quest Finished", "Finale",
+        "Zero Hour", "Level Complete", "Quest Finished", "Finale",
         "Curtain Call", "It's Time!", "Day One", "Welcome to the future", "Destination Reached",
         "Platinum Trophy", "Final Boss Defeated", "Fade to Black", "New Game+", "Winner Winner!",
         "Achievement Unlocked", "K.O.!", "FATALITY", "Wasted", "You Died",
@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (distance <= 0) {
             const msgType = localStorage.getItem('countdown-msg-type') || 'default';
             const customMsg = localStorage.getItem('countdown-msg-custom') || '';
-            let msg = "Completed!";
+            let msg = "Completed";
 
             if (msgType === 'random' && typeof completionMessages !== 'undefined' && completionMessages.length > 0) {
                 const numericId = Number(cd.id) || 0;
