@@ -1143,9 +1143,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 NEWS_ARTICLES.forEach(item => {
                     const article = document.createElement('div');
                     article.className = 'news-article';
+                    
+                    // Simple Markdown parser for basic formatting
+                    const parseMD = (text) => text
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/_(.*?)_/g, '<em>$1</em>')
+                        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+                        .replace(/`(.*?)`/g, '<code>$1</code>')
+                        .replace(/\n/g, '<br>');
+
                     article.innerHTML = `
-                        <h3>${item.title}</h3>
-                        <p>${item.content}</p>
+                        <h3>${parseMD(item.title)}</h3>
+                        <p>${parseMD(item.content)}</p>
                     `;
                     newsArticlesContainer.appendChild(article);
                 });
