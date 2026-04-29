@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const customRepeatValue = document.getElementById('cd-repeat-value');
     const pwaRow = document.getElementById('pwa-install-row');
     const pwaBtn = document.getElementById('pwa-install-btn');
+    const debugBtn = document.getElementById('debug-notif-btn');
     const settingsPanel = document.getElementById('settings-panel');
     const settingsToggle = document.getElementById('settings-toggle');
     const msgOpts = document.querySelectorAll('.msg-opt');
@@ -187,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const debugBtn = document.getElementById('debug-notif-btn');
     if (debugBtn) {
         debugBtn.addEventListener('click', async () => {
             showAppNotification("🚀 Starting Debug Trigger...");
@@ -1090,6 +1090,8 @@ document.addEventListener('DOMContentLoaded', () => {
             deferredPrompt = e;
             // Update UI notify the user they can install the PWA
             if (pwaBtn) pwaBtn.classList.remove('hidden');
+            if (debugBtn) debugBtn.classList.remove('hidden');
+            if (pwaRow) pwaRow.classList.remove('hidden');
         });
 
         if (pwaBtn) {
