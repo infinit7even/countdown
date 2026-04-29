@@ -190,6 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const debugBtn = document.getElementById('debug-notif-btn');
     if (debugBtn) {
         debugBtn.addEventListener('click', async () => {
+            alert("Questo bottone serve per testare l'invio delle notifiche");
+            if (!confirm("Vuoi procedere con il test delle notifiche?")) {
+                return;
+            }
+
             showAppNotification("🚀 Starting Debug Trigger...");
 
             // 1. Browser Notification
@@ -1064,7 +1069,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Stash the event so it can be triggered later.
             deferredPrompt = e;
             // Update UI notify the user they can install the PWA
-            if (pwaRow) pwaRow.classList.remove('hidden');
+            if (pwaBtn) pwaBtn.classList.remove('hidden');
         });
 
         if (pwaBtn) {
@@ -1078,7 +1083,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // We've used the prompt, and can't use it again, throw it away
                 deferredPrompt = null;
                 // Hide the install button
-                if (pwaRow) pwaRow.classList.add('hidden');
+                if (pwaBtn) pwaBtn.classList.add('hidden');
             });
         }
 

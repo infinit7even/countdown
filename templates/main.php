@@ -158,16 +158,14 @@
                 <input type="text" id="custom-completion-input" class="hidden settings-input" placeholder="Your custom message..." maxlength="30">
             </div>
 
-            <div id="pwa-install-row" class="settings-row hidden">
-                <label>PWA</label>
-                <button id="pwa-install-btn" class="button primary">
-                    Install web app
-                </button>
-            </div>
-
-            <!-- Easter Egg Debug Button -->
-            <div class="debug-footer">
-                <button id="debug-notif-btn" class="debug-btn" title="Test all notifications (Web/Android/Server)">🛠️</button>
+            <div id="pwa-install-row" class="settings-row">
+                <label>App & Debug</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button id="pwa-install-btn" class="button primary hidden">
+                        Install web app
+                    </button>
+                    <button id="debug-notif-btn" class="debug-btn" title="Test all notifications (Web/Android/Server)">🛠️</button>
+                </div>
             </div>
         </div>
         <!-- News Modal -->
