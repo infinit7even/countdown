@@ -195,10 +195,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Browser Notification
             if ("Notification" in window) {
                 if (Notification.permission === "granted") {
-                    new Notification("Debug: System Notification", {
-                        body: "If you see this, Chrome/Windows notifications are working! ✅",
-                        icon: OC.generateUrl('/apps/countdown/img/app.svg')
-                    });
+                    try {
+                        new Notification("Debug: System Notification", {
+                            body: "If you see this, Chrome/Windows notifications are working! ✅",
+                            icon: OC.generateUrl('/apps/countdown/img/app.svg')
+                        });
+                    } catch (err) {
+                        console.warn("new Notification() not supported (likely Android Chrome).", err);
+                        // Fallback to service worker if available
+                        if (navigator.serviceWorker) {
+                            navigator.serviceWorker.ready.then(function(registration) {
+                                registration.showNotification("Debug: System Notification", {
+                                    body: "If you see this, Chrome/Windows notifications are working! ✅",
+                                    icon: OC.generateUrl('/apps/countdown/img/app.svg')
+                                });
+                            }).catch(function(e) { console.warn("ServiceWorker showNotification failed", e); });
+                        }
+                    }
                 } else {
                     showAppNotification("⚠️ Browser notifications NOT allowed. Check site settings!");
                     Notification.requestPermission();
@@ -216,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     method: 'POST',
                     headers: { 'requesttoken': oc_requesttoken }
                 });
-                showAppNotification("📡 Server notification requested! Check your bell icon.");
+                showAppNotification("📡 Server notification requested!");
             } catch (e) {
                 console.error("Debug Error:", e);
                 showAppNotification("❌ Server notification failed.");
@@ -646,10 +659,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!cd.notified) { // Celebration fires the first time the expired event is viewed
                 // Show native browser notification
                 if ("Notification" in window && Notification.permission === "granted") {
-                    new Notification("Countdown Finished! 🎉", {
-                        body: `The timer "${cd.name}" has completed!`,
-                        icon: OC.generateUrl('/apps/countdown/img/app.svg')
-                    });
+                    try {
+                        new Notification("Countdown Finished! 🎉", {
+                            body: `The timer "${cd.name}" has completed!`,
+                            icon: OC.generateUrl('/apps/countdown/img/app.svg')
+                        });
+                    } catch (err) {
+                        console.warn("new Notification() not supported.", err);
+                        if (navigator.serviceWorker) {
+                            navigator.serviceWorker.ready.then(function(registration) {
+                                registration.showNotification("Countdown Finished! 🎉", {
+                                    body: `The timer "${cd.name}" has completed!`,
+                                    icon: OC.generateUrl('/apps/countdown/img/app.svg')
+                                });
+                            }).catch(function(e) {});
+                        }
+                    }
                 }
 
                 cd.notified = true;
