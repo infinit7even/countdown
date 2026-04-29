@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (Notification.permission === "granted") {
                     try {
                         new Notification("Debug: System Notification", {
-                            body: "If you see this, notifications are working! ✅",
+                            body: "If you see this, notifications are working! ✅ Consider install the PWA for the best experience",
                             icon: OC.generateUrl('/apps/countdown/img/app.svg')
                         });
                     } catch (err) {
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (navigator.serviceWorker) {
                             navigator.serviceWorker.ready.then(function(registration) {
                                 registration.showNotification("Debug: System Notification", {
-                                    body: "If you see this, notifications are working! ✅",
+                                    body: "If you see this, notifications are working! ✅ Consider install the PWA for the best experience",
                                     icon: OC.generateUrl('/apps/countdown/img/app.svg')
                                 });
                             }).catch(function(e) { console.warn("ServiceWorker showNotification failed", e); });
