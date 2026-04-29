@@ -190,11 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const debugBtn = document.getElementById('debug-notif-btn');
     if (debugBtn) {
         debugBtn.addEventListener('click', async () => {
-            alert("Questo bottone serve per testare l'invio delle notifiche");
-            if (!confirm("Vuoi procedere con il test delle notifiche?")) {
-                return;
-            }
-
             showAppNotification("🚀 Starting Debug Trigger...");
 
             // 1. Browser Notification
