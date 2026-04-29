@@ -12,13 +12,13 @@
 * 🕒 **Hyped Tracking**: Manage countdowns for games, movies, series, and personal events.
 * 📊 **Dashboard Widget**: View all your upcoming releases directly on your Nextcloud Dashboard.
 * 🔄 **Smart Recurrence**: Repeat events daily, weekly, monthly, or yearly (perfect for weekly show releases!).
-* 🔔 **Stay Notified**: Receive automatic alerts through the Nextcloud Activity stream when a countdown expires.
+* 🔔 **Stay Notified**: Receive automatic alerts via Nextcloud Activity and System Notifications when a timer expires.
 * 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
 * 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
 * 💻 **OCC Integration**: Administrators can manage countdowns using the OCC command line interface.
 * ✏️ **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
 * 🗞️ **News Center**: Stay updated with the latest features and changes directly inside the app.
-* 🎮 **Easter Eggs**: Keep clicking the title to discover secrets inspired by pop culture!
+* 🎮 **Easter Eggs**: Discover secrets hidden inside the app inspired by pop culture!
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
 
@@ -31,7 +31,7 @@ Administrators can also trigger checks manually with: **occ countdown:check-time
 ## ⚙️ Configuring Notifications (CRON)
 To configure automatic notification sending via crontab, read the [user documentation](https://github.com/infinit7even/countdown/blob/master/README.md#configuring-notifications-cron)
 ]]></description>
-    <version>1.1.80</version>
+    <version>1.1.81</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

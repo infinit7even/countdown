@@ -9,24 +9,15 @@
 * 🕒 **Hyped Tracking**: Manage countdowns for games, movies, series, and personal events.
 * 📊 **Dashboard Widget**: View all your upcoming releases directly on your Nextcloud Dashboard.
 * 🔄 **Smart Recurrence**: Repeat events daily, weekly, monthly, or yearly (perfect for weekly show releases!).
-* 🔔 **Stay Notified**: Receive automatic alerts via Nextcloud Activity or System Notifications when a timer expires.
-* 🖼️ **Triple Layout**: Switch between **Expanded**, **Grid**, and **Compact** views to fit your workspace.
+* 🔔 **Stay Notified**: Receive automatic alerts via Nextcloud Activity and System Notifications when a timer expires.
+* 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
 * 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
-* 😃 **Emoji Picker**: Integrated emoji support with a categorized picker for hundreds of icons.
+* 💻 **OCC Integration**: Administrators can manage countdowns using the OCC command line interface.
 * ✏️ **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
-* 🗒️ **Description Field**: Support for optional notes or context via a dedicated description field.
-* 🎚️ **Collapsible Settings**: Hideable settings panel on both mobile and desktop for an optimized view.
-* 🎊 **Visual Feedback**: Confetti celebrations and interactive toast notifications for every milestone.
-* 🗞️ **News Center**: Stay updated with the latest features and changes directly inside the app Gazette.
-* 🎮 **Easter Eggs**: Keep clicking the title to discover secrets inspired by pop culture!
+* 🗞️ **News Center**: Stay updated with the latest features and changes directly inside the app.
+* 🎮 **Easter Eggs**: Discover secrets hidden inside the app inspired by pop culture!
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
-
-## 🔔 How Notifications Work
-
-Countdown uses the **Nextcloud Background Job** system to send notifications server-side. This ensures you receive alerts even when the app is not open, including on the **Nextcloud mobile app**.
-Notifications are checked every **5 minutes** by a background job (`TimerJob`). For reliable delivery, your Nextcloud instance should use **System Cron** mode.
-Administrators can also trigger checks manually with: **occ countdown:check-timers**
 
 ## 📸 Screenshots
 
@@ -86,9 +77,10 @@ No complex configuration is needed to start! Once enabled, you'll see the **Coun
 3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).
 4. **The Celebration**: When the timer reaches zero, you'll receive a **Nextcloud Notification** and be greeted by a **burst of confetti**! 🎉
 
-### 🔔 Configuring Notifications (CRON)
+### Configuring Notifications (CRON)
 
-To receive notifications accurately when a countdown expires—even when you don't have the app open—you need to ensure Nextcloud's background jobs are running correctly.
+Countdown uses the **Nextcloud Background Job** system to send notifications server-side. This ensures you receive alerts even when the app is not open, including on the **Countdowns PWA app**.
+Notifications are checked every **5 minutes** by a background job (`TimerJob`). For reliable delivery, your Nextcloud instance should use **System Cron** mode.
 
 #### 1. Nextcloud Background Jobs
 First, ensure your Nextcloud instance is set to **Cron** mode (Recommended) rather than AJAX:
@@ -109,7 +101,8 @@ sudo crontab -u www-data -e
 | Environment | Frequency | Command |
 | :--- | :--- | :--- |
 | **Standard / Bare Metal** | Every minute | `* * * * * php /path/to/nextcloud/occ countdown:check-timers` |
-| **Docker** | Every minute | `* * * * * docker exec --user www-data nextcloud php occ countdown:check-timers` |
+| **Docker Container** | Every minute | `* * * * * docker exec --user www-data nextcloud php occ countdown:check-timers` |
+| **Nextcloud All-in-One** | Every minute | `* * * * * docker exec --user www-data nextcloud-aio-nextcloud php occ countdown:check-timers` |
 | **Snap** | Every minute | `* * * * * nextcloud.occ countdown:check-timers` |
 
 > [!TIP]
