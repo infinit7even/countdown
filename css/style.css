@@ -1897,4 +1897,30 @@ select:focus {
     border-radius: 4px;
     margin-top: 10px;
 }
-
+
+/* --- Native Android App Overrides --- */
+/* Hide Nextcloud Header and reset background when loaded inside the Android wrapper */
+html.is-native body,
+html.is-native #body-user {
+    background-image: none !important;
+    background-color: var(--color-main-background, #181818) !important;
+}
+
+html.is-native #header {
+    display: none !important;
+}
+
+html.is-native #content {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+html.is-native .countdown-app-container {
+    padding-top: 1rem !important; /* Reduced padding since header is gone */
+}
+
+/* Easter Egg Debug styles */
+.debug-footer { margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: flex-end; opacity: 0.3; transition: opacity 0.3s; }
+.debug-footer:hover { opacity: 1; }
+.debug-btn { background: transparent; border: none; cursor: pointer; font-size: 1rem; padding: 5px; border-radius: 5px; filter: grayscale(1); }
+.debug-btn:hover { background: rgba(255,255,255,0.1); filter: grayscale(0); }

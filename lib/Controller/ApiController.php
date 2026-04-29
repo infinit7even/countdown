@@ -28,7 +28,7 @@ class ApiController extends Controller {
     /**
      * @NoAdminRequired
      */
-    public function notify(string $name): DataResponse {
+    public function notify(string $name = 'Debug Test'): DataResponse {
         $userId = $this->getUserId();
         if ($userId === null) {
             return new DataResponse([], 403);
@@ -41,7 +41,6 @@ class ApiController extends Controller {
             ->setObject('timer', $name)
             ->setSubject('timer_finished', ['name' => $name]);
 
-        $this->notificationManager->markProcessed($notification);
         $this->notificationManager->notify($notification);
 
         return new DataResponse(['status' => 'success']);

@@ -83,6 +83,11 @@ const NEWS_ARTICLES = [
     }
 ];
 
+// Native app detection to hide Nextcloud top bar and background immediately
+if (navigator.userAgent.includes('CountdownNative') || (typeof window !== 'undefined' && window.nativex)) {
+    document.documentElement.classList.add('is-native');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('countdown-modal');
     const modalTitle = document.getElementById('modal-title');
@@ -127,6 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsBtn = document.getElementById('news-btn');
     const closeNewsBtn = document.getElementById('close-news-btn');
     const newsArticlesContainer = document.getElementById('news-articles');
+
+    // Request Browser Notification Permission
+    if ("Notification" in window && Notification.permission === "default") {
+        Notification.requestPermission();
+    }
 
     let countdowns = [];
     let intervals = [];
@@ -175,6 +185,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (duration > 0) {
             setTimeout(dismiss, duration);
         }
+    }
+
+    const debugBtn = document.getElementById('debug-notif-btn');
+    if (debugBtn) {
+        debugBtn.addEventListener('click', async () => {
+            showAppNotification("🚀 Starting Debug Trigger...");
+
+            // 1. Browser Notification
+            if ("Notification" in window) {
+                if (Notification.permission === "granted") {
+                    new Notification("Debug: System Notification", {
+                        body: "If you see this, Chrome/Windows notifications are working! ✅",
+                        icon: OC.generateUrl('/apps/countdown/img/app.svg')
+                    });
+                } else {
+                    showAppNotification("⚠️ Browser notifications NOT allowed. Check site settings!");
+                    Notification.requestPermission();
+                }
+            }
+
+            // 2. Android Notification (via JS Bridge)
+            if (window.CountdownJsBridge) {
+                window.CountdownJsBridge.triggerNotification("Debug: Android System Notification ✅");
+            }
+
+            // 3. Server Notification (via API)
+            try {
+                await fetch(OC.generateUrl('/apps/countdown/api/notify'), {
+                    method: 'POST',
+                    headers: { 'requesttoken': oc_requesttoken }
+                });
+                showAppNotification("📡 Server notification requested! Check your bell icon.");
+            } catch (e) {
+                console.error("Debug Error:", e);
+                showAppNotification("❌ Server notification failed.");
+            }
+        });
     }
 
     // Confetti State
@@ -597,6 +644,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             timerElement.innerHTML = `<div class="completed-box"><div class="completed-text">${msg}</div></div>`;
             if (!cd.notified) { // Celebration fires the first time the expired event is viewed
+                // Show native browser notification
+                if ("Notification" in window && Notification.permission === "granted") {
+                    new Notification("Countdown Finished! 🎉", {
+                        body: `The timer "${cd.name}" has completed!`,
+                        icon: OC.generateUrl('/apps/countdown/img/app.svg')
+                    });
+                }
+
                 cd.notified = true;
                 triggerNotification(cd.name);
                 launchConfetti();
@@ -634,6 +689,10 @@ document.addEventListener('DOMContentLoaded', () => {
         intervals.forEach(id => clearInterval(id));
         intervals = [];
         grid.innerHTML = '';
+
+        if (window.nativex && window.nativex.syncAlarms) {
+            window.nativex.syncAlarms(JSON.stringify(countdowns));
+        }
 
         if (countdowns.length === 0) {
             grid.innerHTML = '<div class="empty-state">You don\'t have any active countdowns.<br>Click above to create a new one.</div>';
@@ -892,7 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize application after all functions and constants are defined
     try {
-        console.log("%c--- COUNTDOWN APP INITIALIZED v1.1.12 ---", "color: #3498db; font-size: 20px; font-weight: bold;");
+        console.log("%c--- COUNTDOWN APP INITIALIZED ---", "color: #3498db; font-size: 20px; font-weight: bold;");
         const savedScale = localStorage.getItem('countdown-scale') || 1;
         sizeSlider.value = savedScale;
         grid.style.setProperty('--cd-zoom', savedScale);

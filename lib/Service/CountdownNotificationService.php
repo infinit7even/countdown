@@ -154,13 +154,6 @@ class CountdownNotificationService {
     }
 
     private function sendNotification(string $userId, string $name): void {
-        // Remove any previous unprocessed notification for this timer
-        $existing = $this->notificationManager->createNotification();
-        $existing->setApp('countdown')
-                 ->setUser($userId)
-                 ->setObject('timer', $name);
-        $this->notificationManager->markProcessed($existing);
-
         $notification = $this->notificationManager->createNotification();
         $notification->setApp('countdown')
                      ->setUser($userId)

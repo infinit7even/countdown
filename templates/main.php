@@ -54,7 +54,7 @@
                 <div class="repeat-section">
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="cd-repeat-toggle">
-                        <label for="cd-repeat-toggle">Repeat Countdown (NEW!)</label>
+                        <label for="cd-repeat-toggle">Repeat Countdown</label>
                     </div>
                     <div id="repeat-options" class="hidden">
                         <div class="form-group">
@@ -163,6 +163,11 @@
                 <button id="pwa-install-btn" class="button primary">
                     Install web app
                 </button>
+            </div>
+
+            <!-- Easter Egg Debug Button -->
+            <div class="debug-footer">
+                <button id="debug-notif-btn" class="debug-btn" title="Test all notifications (Web/Android/Server)">🛠️</button>
             </div>
         </div>
         <!-- News Modal -->
