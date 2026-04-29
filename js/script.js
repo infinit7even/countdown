@@ -197,16 +197,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (Notification.permission === "granted") {
                     try {
                         new Notification("Debug: System Notification", {
-                            body: "If you see this, Chrome/Windows notifications are working! ✅",
+                            body: "If you see this, notifications are working! ✅",
                             icon: OC.generateUrl('/apps/countdown/img/app.svg')
                         });
                     } catch (err) {
-                        console.warn("new Notification() not supported (likely Android Chrome).", err);
+                        console.warn("new Notification() not supported", err);
                         // Fallback to service worker if available
                         if (navigator.serviceWorker) {
                             navigator.serviceWorker.ready.then(function(registration) {
                                 registration.showNotification("Debug: System Notification", {
-                                    body: "If you see this, Chrome/Windows notifications are working! ✅",
+                                    body: "If you see this, notifications are working! ✅",
                                     icon: OC.generateUrl('/apps/countdown/img/app.svg')
                                 });
                             }).catch(function(e) { console.warn("ServiceWorker showNotification failed", e); });
