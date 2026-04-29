@@ -9,11 +9,15 @@
 * 🕒 **Hyped Tracking**: Manage countdowns for games, movies, series, and personal events.
 * 📊 **Dashboard Widget**: View all your upcoming releases directly on your Nextcloud Dashboard.
 * 🔄 **Smart Recurrence**: Repeat events daily, weekly, monthly, or yearly (perfect for weekly show releases!).
-* 🔔 **Stay Notified**: Receive automatic alerts through the Nextcloud Activity stream when a countdown expires.
-* 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
+* 🔔 **Stay Notified**: Receive automatic alerts via Nextcloud Activity or System Notifications when a timer expires.
+* 🖼️ **Triple Layout**: Switch between **Expanded**, **Grid**, and **Compact** views to fit your workspace.
 * 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
+* 😃 **Emoji Picker**: Integrated emoji support with a categorized picker for hundreds of icons.
 * ✏️ **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
-* 🗞️ **News Center**: Stay updated with the latest features and changes directly inside the app.
+* 🗒️ **Description Field**: Support for optional notes or context via a dedicated description field.
+* 🎚️ **Collapsible Settings**: Hideable settings panel on both mobile and desktop for an optimized view.
+* 🎊 **Visual Feedback**: Confetti celebrations and interactive toast notifications for every milestone.
+* 🗞️ **News Center**: Stay updated with the latest features and changes directly inside the app Gazette.
 * 🎮 **Easter Eggs**: Keep clicking the title to discover secrets inspired by pop culture!
 
 Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
@@ -82,38 +86,53 @@ No complex configuration is needed to start! Once enabled, you'll see the **Coun
 3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).
 4. **The Celebration**: When the timer reaches zero, you'll receive a **Nextcloud Notification** and be greeted by a **burst of confetti**! 🎉
 
-### Configuring Notifications (CRON)
+### 🔔 Configuring Notifications (CRON)
 
-To receive notifications accurately when a countdown expires, you need to add a cron job to your host system. The check frequency is **fully customizable**: while 5 minutes is usually enough, you can increase precision by running it every minute.
+To receive notifications accurately when a countdown expires—even when you don't have the app open—you need to ensure Nextcloud's background jobs are running correctly.
 
-#### Examples:
-*   **Every 5 minutes (Recommended)**:
-    ```bash
-    */5 * * * * sudo docker exec --user www-data nextcloud php occ countdown:check-timers
-    ```
-*   **Every minute (High precision)**:
-    ```bash
-    * * * * * sudo docker exec --user www-data nextcloud php occ countdown:check-timers
-    ```
+#### 1. Nextcloud Background Jobs
+First, ensure your Nextcloud instance is set to **Cron** mode (Recommended) rather than AJAX:
+1. Go to **Settings** > **Basic settings**.
+2. Under **Background jobs**, select **Cron**.
+
+#### 2. System Crontab
+The app includes a background job that runs every 5 minutes, but you can achieve **per-minute precision** by adding a manual entry to your system's crontab. This ensures notifications arrive the exact second a timer expires.
+
+**To edit your crontab:**
+```bash
+# For standard installations (e.g., Ubuntu/Debian)
+sudo crontab -u www-data -e
+```
+
+**Add the appropriate line for your setup:**
+
+| Environment | Frequency | Command |
+| :--- | :--- | :--- |
+| **Standard / Bare Metal** | Every minute | `* * * * * php /path/to/nextcloud/occ countdown:check-timers` |
+| **Docker** | Every minute | `* * * * * docker exec --user www-data nextcloud php occ countdown:check-timers` |
+| **Snap** | Every minute | `* * * * * nextcloud.occ countdown:check-timers` |
 
 > [!TIP]
-> If you're new to cron syntax, use [crontab.guru](https://crontab.guru/) to verify your schedule or browse their [examples](https://crontab.guru/examples.html).
+> Use [crontab.guru](https://crontab.guru/) to experiment with different schedules or to understand the cron syntax better.
 
-1. Open your host crontab: `sudo crontab -e`
-2. Add the desired line from the examples above.
+### 🛠️ Administrative Commands (OCC)
 
-### Administrative Commands
-Administrators can use the `occ` command line tool to manage countdowns and trigger notification checks manually.
+Administrators can use the `occ` command line tool to manage countdowns and trigger notification checks manually from the terminal.
 
-*   **Check notifications immediately**:
-    ```bash
-    php occ countdown:check-timers
-    ```
-*   **List countdowns for a user**:
-    ```bash
-    php occ countdown:list <user_id>
-    ```
-*   **Add/Delete countdowns**: Use `php occ countdown:add --help` or `php occ countdown:delete --help` for details.
+| Command | Purpose |
+| :--- | :--- |
+| `countdown:check-timers` | Manually trigger an immediate notification check for all users. |
+| `countdown:list <user_id>` | List all active countdowns for a specific user (including IDs). |
+| `countdown:add <user_id> <name> <target_date>` | Add a new countdown programmatically. |
+| `countdown:delete <user_id> <id>` | Delete a specific countdown using its numeric ID. |
+
+**Example: Adding a countdown via Docker**
+```bash
+docker exec --user www-data nextcloud php occ countdown:add "user_id" "Event Name" "2026-12-25 00:00:00"
+```
+
+> [!NOTE]
+> Use the `--help` flag with any command (e.g., `php occ countdown:add --help`) to see all available options, such as setting emojis or descriptions via CLI.
 
 ### Dashboard Widget
 To see your countdowns at a glance:

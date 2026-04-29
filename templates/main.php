@@ -182,7 +182,7 @@
                 </div>
                 <div class="modal-actions">
                     <div class="button-group">
-                        <button id="close-news-btn" class="button">Close Gazette</button>
+                        <button id="close-news-btn" class="button">Close</button>
                         <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
                             class="button review-btn primary">Give it a star on GitHub :D</a>
                     </div>
