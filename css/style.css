@@ -996,10 +996,10 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
 #pwa-install-btn {
     width: 100%;
-    margin-top: 5px;
-    padding: 10px !important;
-    font-size: 0.9rem !important;
-    border-radius: 10px !important;
+    height: 44px !important;
+    padding: 0 16px !important;
+    font-size: 0.95rem !important;
+    border-radius: 12px !important;
     background: var(--cd-primary-gradient) !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
     color: white !important;
@@ -1008,6 +1008,8 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box !important;
+    margin: 0 !important;
     gap: 8px;
 }
 
@@ -1922,5 +1924,26 @@ html.is-native .countdown-app-container {
 /* Easter Egg Debug styles */
 .debug-footer { margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: flex-end; opacity: 0.3; transition: opacity 0.3s; }
 .debug-footer:hover { opacity: 1; }
-.debug-btn { background: transparent; border: none; cursor: pointer; font-size: 1rem; padding: 5px; border-radius: 5px; filter: grayscale(1); }
-.debug-btn:hover { background: rgba(255,255,255,0.1); filter: grayscale(0); }
+.debug-btn { 
+    background: var(--cd-time-bg); 
+    border: 1.5px solid var(--color-border); 
+    cursor: pointer; 
+    font-size: 1.4rem; 
+    padding: 0 !important; 
+    border-radius: 12px !important; 
+    filter: grayscale(1); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    height: 44px !important;
+    width: 44px !important;
+    flex-shrink: 0;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+.debug-btn:hover { 
+    background: var(--color-background-hover); 
+    border-color: var(--cd-primary-color);
+    filter: grayscale(0); 
+}

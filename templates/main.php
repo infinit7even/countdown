@@ -143,7 +143,9 @@
                         <button class="sort-opt" data-sort="newest" title="Sort by Newest">🆕</button>
                     </div>
                     <button id="sort-direction-btn" class="sort-direction-btn" title="Toggle Direction">
-                        <span class="icon-toggle-arrow">↑</span>
+                        <svg class="icon-toggle-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 19V5M5 12l7-7 7 7"/>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -160,9 +162,9 @@
 
             <div id="pwa-install-row" class="settings-row">
                 <label>App & Debug</label>
-                <div style="display: flex; gap: 10px; align-items: center;">
+                <div style="display: flex; gap: 10px; align-items: stretch; margin-top: 5px;">
                     <button id="pwa-install-btn" class="button primary hidden">
-                        Install web app
+                        Install PWA
                     </button>
                     <button id="debug-notif-btn" class="debug-btn" title="Test all notifications (Web/Android/Server)">🛠️</button>
                 </div>
