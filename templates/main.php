@@ -163,8 +163,8 @@
             <div id="app-debug-row" class="settings-row">
                 <label>Extra & Debug</label>
                 <div style="display: flex; gap: 10px; align-items: stretch; margin-top: 5px;">
-                    <button id="pwa-install-btn" class="button primary hidden">Install PWA</button>
-                    <a id="pwa-review-btn" href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button primary hidden">Leave a review</a>
+                    <button id="pwa-install-btn" class="button primary hidden">Install PWA 📥</button>
+                    <a id="pwa-review-btn" href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button primary hidden">Review 🧁</a>
                     <button id="debug-notif-btn" class="debug-btn" title="Test notifications">🛠️</button>
                 </div>
             </div>

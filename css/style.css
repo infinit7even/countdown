@@ -1013,10 +1013,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     gap: 8px;
 }
 
-#pwa-install-btn::before {
-    content: '📥';
-    font-size: 1.1rem;
-}
+
 
 #pwa-install-btn:hover {
     transform: translateY(-2px);
