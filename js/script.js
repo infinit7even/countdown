@@ -426,6 +426,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Send System Notification
+    /**
+     * Send a signal to the server to trigger a Nextcloud system notification (the Bell)
+     * @param {string} name 
+     */
     async function triggerNotification(name) {
         try {
             await fetch(notifyUrl, {
@@ -436,8 +440,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({ name: name })
             });
+            console.log("Server notification triggered for:", name);
         } catch (e) {
-            console.error('Error sending notification', e);
+            console.error('Error sending server notification', e);
+            // Fallback: try simple POST if JSON fails (though it shouldn't)
+            try {
+                await fetch(notifyUrl, {
+                    method: 'POST',
+                    headers: { 'requesttoken': OC.requestToken }
+                });
+            } catch(e2) {}
         }
     }
 
@@ -653,20 +665,31 @@ document.addEventListener('DOMContentLoaded', () => {
             
             timerElement.innerHTML = `<div class="completed-box"><div class="completed-text">${msg}</div></div>`;
             if (!cd.notified) { // Celebration fires the first time the expired event is viewed
-                // Show native browser notification
+                // 1. Show in-app interactive toast (Always works while tab is open)
+                showAppNotification(`🎉 ${cd.name} is finished!`);
+
+                // 2. Show native browser notification (Might be blocked by browser without user gesture)
                 if ("Notification" in window && Notification.permission === "granted") {
                     try {
-                        new Notification("Countdown Finished! 🎉", {
+                        const notif = new Notification("Countdown Finished! 🎉", {
                             body: `The timer "${cd.name}" has completed!`,
-                            icon: OC.generateUrl('/apps/countdown/img/app.svg')
+                            icon: OC.generateUrl('/apps/countdown/img/app.svg'),
+                            requireInteraction: true
                         });
+                        
+                        notif.onclick = () => {
+                            window.focus();
+                            notif.close();
+                        };
                     } catch (err) {
-                        console.warn("new Notification() not supported.", err);
-                        if (navigator.serviceWorker) {
+                        console.warn("new Notification() blocked or not supported.", err);
+                        // Fallback to service worker if one was registered (PWA mode)
+                        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
                             navigator.serviceWorker.ready.then(function(registration) {
                                 registration.showNotification("Countdown Finished! 🎉", {
                                     body: `The timer "${cd.name}" has completed!`,
-                                    icon: OC.generateUrl('/apps/countdown/img/app.svg')
+                                    icon: OC.generateUrl('/apps/countdown/img/app.svg'),
+                                    tag: 'countdown-' + cd.id
                                 });
                             }).catch(function(e) {});
                         }
