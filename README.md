@@ -77,10 +77,12 @@ No complex configuration is needed to start! Once enabled, you'll see the **Coun
 3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).
 4. **The Celebration**: When the timer reaches zero, you'll receive a **Nextcloud Notification** and be greeted by a **burst of confetti**! 🎉
 
-### Configuring Notifications (CRON)
+### How Notifications Work
 
-Countdown uses the **Nextcloud Background Job** system to send notifications server-side. This ensures you receive alerts even when the app is not open, including on the **Countdowns PWA app**.
-Notifications are checked every **5 minutes** by a background job (`TimerJob`). For reliable delivery, your Nextcloud instance should use **System Cron** mode.
+Countdown is designed to keep you updated in real-time through the Nextcloud internal notification system.
+
+*   **Instant Internal Notifications**: When the Countdown page is open in your browser or active as a PWA, notifications are triggered instantly. This is because the app leverages the active session to display alerts through the "bell" icon and browser popups.
+*   **Limitation**: Please note that notifications **will not arrive if the page is not open**, even if the PWA is installed on your device. Background delivery requires complex server-side Web Push configurations that are outside the scope of this application.
 
 #### 1. Nextcloud Background Jobs
 First, ensure your Nextcloud instance is set to **Cron** mode (Recommended) rather than AJAX:

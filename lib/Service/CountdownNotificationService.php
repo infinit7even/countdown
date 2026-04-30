@@ -158,8 +158,14 @@ class CountdownNotificationService {
         $notification->setApp('countdown')
                      ->setUser($userId)
                      ->setDateTime(new \DateTime())
-                     ->setObject('timer', $name)
+                     // Unique object ID with microtime ensures instant delivery without deduplication
+                     ->setObject('timer', $name . '_' . microtime(true))
                      ->setSubject('timer_finished', ['name' => $name]);
+
+        // Trigger high priority for immediate browser popup delivery
+        if (method_exists($notification, 'setPriority')) {
+            $notification->setPriority(1); // PRIORITY_HIGH
+        }
 
         $this->notificationManager->notify($notification);
     }

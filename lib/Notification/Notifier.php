@@ -28,19 +28,18 @@ class Notifier implements INotifier {
             throw new \InvalidArgumentException();
         }
 
+        // Set icon and link for maximum visibility in the browser
+        $notification->setIcon($this->urlGenerator->getAbsoluteURL($this->urlGenerator->imagePath('countdown', 'app-dark.svg')));
+        $notification->setLink($this->urlGenerator->linkToRouteAbsolute('countdown.page.index'));
+
         if ($notification->getSubject() === 'timer_finished') {
-            $notification->setIcon($this->urlGenerator->getAbsoluteURL($this->urlGenerator->imagePath('countdown', 'app-dark.svg')));
-            $notification->setLink($this->urlGenerator->linkToRouteAbsolute('countdown.page.index'));
-            $notification->setParsedSubject(
-                (string)$this->l10n->t('A countdown has finished!')
-            );
-            
             $params = $notification->getSubjectParameters();
-            if (isset($params['name'])) {
-                $notification->setParsedSubject(
-                    (string)$this->l10n->t('Countdown "%s" has finished!', [$params['name']])
-                );
-            }
+            $name = $params['name'] ?? 'Countdown';
+
+            $notification->setParsedSubject((string)$this->l10n->t('Countdown finished! 🎉'));
+            $notification->setParsedMessage((string)$this->l10n->t('The timer "%s" has completed.', [$name]));
+            
+            return $notification;
         }
 
         return $notification;
