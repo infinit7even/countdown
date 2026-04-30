@@ -28,9 +28,9 @@ Countdown uses the **Nextcloud Background Job** system to send notifications ser
 Notifications are checked every **5 minutes** by a background job (`TimerJob`). For reliable delivery, your Nextcloud instance should use **System Cron** mode.
 
 ## ⚙️ Configuring Notifications (CRON)
-To configure automatic notification sending via crontab, read the [user documentation](https://github.com/infinit7even/countdown/blob/master/README.md#configuring-notifications-cron)
+To configure automatic notification sending via crontab, read the [user documentation](https://github.com/infinit7even/countdown/blob/master/README.md#how-notifications-work)
 ]]></description>
-    <version>1.1.90</version>
+    <version>1.1.91</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

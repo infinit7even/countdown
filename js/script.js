@@ -7,7 +7,7 @@
 const NEWS_ARTICLES = [
     {
         title: "🚨Fixed System Notifications v2",
-        content: "Notification system upgraded to utilize Nextcloud Background Jobs. Integration with system crontab ensures delivery while the application is closed. For more info read the [user documentation↗️](https://github.com/infinit7even/countdown/blob/master/README.md#configuring-notifications-cron)."
+        content: "Notification system upgraded to utilize Nextcloud Background Jobs. Integration with system crontab ensures delivery while the application is closed. For more info read the [user documentation↗️](https://github.com/infinit7even/countdown/blob/master/README.md#how-notifications-work)."
     },
     {
         title: "🆕Custom Completion Messages",
