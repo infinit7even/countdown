@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const repeatType = document.getElementById('cd-repeat-type');
     const customRepeatGroup = document.getElementById('custom-repeat-group');
     const customRepeatValue = document.getElementById('cd-repeat-value');
-    const pwaRow = document.getElementById('pwa-install-row');
+    const pwaRow = document.getElementById('app-debug-row');
     const pwaBtn = document.getElementById('pwa-install-btn');
     const debugBtn = document.getElementById('debug-notif-btn');
     const settingsPanel = document.getElementById('settings-panel');
@@ -186,14 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (debugBtn) {
         debugBtn.addEventListener('click', async () => {
-            showAppNotification("🚀 Starting Debug Trigger...");
+            showAppNotification("🚀 Starting Test Notification...");
 
             // 1. Browser Notification
             if ("Notification" in window) {
                 if (Notification.permission === "granted") {
                     try {
-                        new Notification("Debug: System Notification", {
-                            body: "If you see this, desktop notifications are working! Consider install the PWA for the best experience ✅",
+                        new Notification("Countdown Test Notification! 🎉", {
+                            body: "Browser notifications are working correctly on this device. ✅",
                             icon: OC.generateUrl('/apps/countdown/img/app.svg')
                         });
                     } catch (err) {
@@ -201,8 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Fallback to service worker if available
                         if (navigator.serviceWorker) {
                             navigator.serviceWorker.ready.then(function(registration) {
-                                registration.showNotification("Debug: System Notification", {
-                                    body: "If you see this, mobile notifications are working! Consider install the PWA for the best experience ✅",
+                                registration.showNotification("Countdown Test Notification! 🎉", {
+                                    body: "Mobile PWA notifications are working correctly. ✅",
                                     icon: OC.generateUrl('/apps/countdown/img/app.svg')
                                 });
                             }).catch(function(e) { console.warn("ServiceWorker showNotification failed", e); });
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 2. Android Notification (via JS Bridge)
             if (window.CountdownJsBridge) {
-                window.CountdownJsBridge.triggerNotification("Debug: Android System Notification ✅");
+                window.CountdownJsBridge.triggerNotification("Test Notification: Android System ✅");
             }
 
             // 3. Server Notification (via API)
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 showAppNotification("📡 Server notification sent!");
             } catch (e) {
-                console.error("Debug Error:", e);
+                console.error("Test Error:", e);
                 showAppNotification("❌ Server notification failed.");
             }
         });
