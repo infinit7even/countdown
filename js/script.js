@@ -431,6 +431,17 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {string} name 
      */
     async function triggerNotification(name) {
+        // 1. Android Native Bridge (Immediate mobile notification if running in app)
+        if (window.CountdownJsBridge) {
+            try {
+                window.CountdownJsBridge.triggerNotification(name);
+                console.log("Android Bridge notification triggered for:", name);
+            } catch (e) {
+                console.warn("Android Bridge failed", e);
+            }
+        }
+
+        // 2. Server Notification (Nextcloud Bell / Push)
         try {
             await fetch(notifyUrl, {
                 method: 'POST',
@@ -443,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Server notification triggered for:", name);
         } catch (e) {
             console.error('Error sending server notification', e);
-            // Fallback: try simple POST if JSON fails (though it shouldn't)
+            // Fallback: try simple POST if JSON fails
             try {
                 await fetch(notifyUrl, {
                     method: 'POST',
