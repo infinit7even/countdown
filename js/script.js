@@ -1116,15 +1116,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateAppButtons = () => {
             const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
             if (isStandalone) {
+                // Running as PWA
                 if (pwaBtn) pwaBtn.classList.add('hidden');
                 if (reviewAppBtn) reviewAppBtn.classList.remove('hidden');
             } else if (deferredPrompt) {
+                // Not installed yet, can be installed
                 if (pwaBtn) pwaBtn.classList.remove('hidden');
                 if (reviewAppBtn) reviewAppBtn.classList.add('hidden');
             } else {
-                // Default fallback: show review if not installable and not standalone (might be already installed but in browser)
-                // However, per user request, we'll keep it simple
+                // Already installed or browser doesn't support PWA prompt
+                // In this case, we show the Review button as the default
                 if (pwaBtn) pwaBtn.classList.add('hidden');
+                if (reviewAppBtn) reviewAppBtn.classList.remove('hidden');
             }
         };
 
