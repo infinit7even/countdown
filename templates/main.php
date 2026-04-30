@@ -160,13 +160,12 @@
                 <input type="text" id="custom-completion-input" class="hidden settings-input" placeholder="Your custom message..." maxlength="30">
             </div>
 
-            <div id="pwa-install-row" class="settings-row hidden">
-                <label>App & Debug</label>
+            <div id="app-debug-row" class="settings-row">
+                <label>Test & App</label>
                 <div style="display: flex; gap: 10px; align-items: stretch; margin-top: 5px;">
-                    <button id="pwa-install-btn" class="button primary hidden">
-                        Install PWA
-                    </button>
-                    <button id="debug-notif-btn" class="debug-btn hidden" title="Test notifications">🛠️</button>
+                    <button id="pwa-install-btn" class="button primary hidden">Install PWA</button>
+                    <a id="pwa-review-btn" href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button primary hidden">Leave a review</a>
+                    <button id="debug-notif-btn" class="debug-btn" title="Test notifications">🛠️</button>
                 </div>
             </div>
         </div>

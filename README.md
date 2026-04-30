@@ -81,8 +81,8 @@ No complex configuration is needed to start! Once enabled, you'll see the **Coun
 
 Countdown is designed to keep you updated in real-time through the Nextcloud internal notification system.
 
-*   **Instant Internal Notifications**: When the Countdown page is open in your browser or active as a PWA, notifications are triggered instantly. This is because the app leverages the active session to display alerts through the "bell" icon and browser popups.
-*   **Limitation**: Please note that notifications **will not arrive if the page is not open**, even if the PWA is installed on your device. Background delivery requires complex server-side Web Push configurations that are outside the scope of this application.
+*   **Instant Internal Notifications**: When the Countdown page is open in your browser or PWA, notifications are triggered instantly. This is because the app leverages the active session to display alerts through the "bell" icon and browser popups.
+*   **Limitation**: Please note that notifications **will not arrive if the page or PWA is not open on your device**.
 
 #### 1. Nextcloud Background Jobs
 First, ensure your Nextcloud instance is set to **Cron** mode (Recommended) rather than AJAX:

@@ -1112,30 +1112,48 @@ document.addEventListener('DOMContentLoaded', () => {
             directionBtn.classList.add('desc');
         }
 
+        const reviewAppBtn = document.getElementById('pwa-review-btn');
+        const updateAppButtons = () => {
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+            if (isStandalone) {
+                if (pwaBtn) pwaBtn.classList.add('hidden');
+                if (reviewAppBtn) reviewAppBtn.classList.remove('hidden');
+            } else if (deferredPrompt) {
+                if (pwaBtn) pwaBtn.classList.remove('hidden');
+                if (reviewAppBtn) reviewAppBtn.classList.add('hidden');
+            } else {
+                // Default fallback: show review if not installable and not standalone (might be already installed but in browser)
+                // However, per user request, we'll keep it simple
+                if (pwaBtn) pwaBtn.classList.add('hidden');
+            }
+        };
+
+        // Check on load
+        updateAppButtons();
+
         // PWA Installation Logic
         window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent the mini-infobar from appearing on mobile
             e.preventDefault();
-            // Stash the event so it can be triggered later.
             deferredPrompt = e;
-            // Update UI notify the user they can install the PWA
-            if (pwaBtn) pwaBtn.classList.remove('hidden');
-            if (debugBtn) debugBtn.classList.remove('hidden');
-            if (pwaRow) pwaRow.classList.remove('hidden');
+            updateAppButtons();
+        });
+
+        window.addEventListener('appinstalled', (e) => {
+            console.log('PWA was installed');
+            deferredPrompt = null;
+            updateAppButtons();
+            launchConfetti(100);
+            showAppNotification("App installed successfully! 🎉");
         });
 
         if (pwaBtn) {
             pwaBtn.addEventListener('click', async () => {
                 if (!deferredPrompt) return;
-                // Show the install prompt
                 deferredPrompt.prompt();
-                // Wait for the user to respond to the prompt
                 const { outcome } = await deferredPrompt.userChoice;
                 console.log(`User response to the install prompt: ${outcome}`);
-                // We've used the prompt, and can't use it again, throw it away
                 deferredPrompt = null;
-                // Hide the install button
-                if (pwaBtn) pwaBtn.classList.add('hidden');
+                updateAppButtons();
             });
         }
 
