@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 await fetch(OC.generateUrl('/apps/countdown/api/notify'), {
                     method: 'POST',
-                    headers: { 'requesttoken': oc_requesttoken }
+                    headers: { 'requesttoken': OC.requestToken }
                 });
                 showAppNotification("📡 Server notification sent!");
             } catch (e) {
