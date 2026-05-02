@@ -198,8 +198,8 @@
                 <div class="modal-actions">
                     <div class="button-group">
                         <button id="close-news-btn" class="button">Close</button>
-                        <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn primary">Leave a review</a>
+                        <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
+                            class="button review-btn primary">⭐ Star this project on GitHub</a>
                     </div>
                 </div>
             </div>
