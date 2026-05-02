@@ -104,7 +104,7 @@
                     <div class="button-group">
                         <button id="close-info-btn" class="button">Close</button>
                         <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn primary">🧁 Give Review</a>
+                            class="button review-btn primary">Give Review</a>
                     </div>
                 </div>
             </div>
@@ -199,7 +199,7 @@
                     <div class="button-group">
                         <button id="close-news-btn" class="button">Close</button>
                         <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn primary">🧁 Give Review</a>
+                            class="button review-btn primary">Give Review</a>
                     </div>
                 </div>
             </div>
