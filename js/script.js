@@ -6,8 +6,8 @@
 
 const NEWS_ARTICLES = [
     {
-        title: "✨Massive Emoji Update",
-        content: "We've massively expanded the emoji picker library! Now you have hundreds of new icons across all categories to perfectly match your countdowns."
+        title: "🌈Massive Emoji Update",
+        content: "Expanded the emoji picker library! Now you have hundreds of new icons across all categories to perfectly match your countdowns."
     },
     {
         title: "🔄Cross-Tab Synchronization",
@@ -18,7 +18,7 @@ const NEWS_ARTICLES = [
         content: "Notification system upgraded to utilize Nextcloud Background Jobs integration with system crontab. For more info read the [user documentation↗️](https://github.com/infinit7even/countdown/blob/master/README.md#how-notifications-work)."
     },
     {
-        title: "🆕Custom Completion Messages",
+        title: "✨Custom Completion Messages",
         content: "Configurable completion messages with support for default presets, random selections, or personalized text."
     },
     {
@@ -26,65 +26,53 @@ const NEWS_ARTICLES = [
         content: "Command-line management for administrators. Supports listing, adding, and deleting countdowns, as well as manual notification checks."
     },
     {
-        title: "🆕Collapsible Settings Panel",
+        title: "⚙️Collapsible Settings Panel",
         content: "Hideable settings panel on both mobile and desktop for an optimized workspace."
     },
     {
-        title: "✅Three Layout Views",
+        title: "📊Three Layout Views",
         content: "Multiple display modes: Expanded (stacked), Grid (side-by-side), and Compact. Layout preferences are preserved across sessions."
     },
     {
-        title: "✅Emoji Picker",
+        title: "🎯Emoji Picker",
         content: "Integrated emoji support with a categorized picker. Allows selecting from hundreds of icons during countdown creation."
     },
     {
-        title: "✅Smart Sorting",
+        title: "↕️Smart Sorting",
         content: "Sorting capabilities by date, name, or creation order. Includes a directional toggle for ascending or descending results."
     },
     {
-        title: "✅Recurrent Countdowns",
+        title: "📅Recurrent Countdowns",
         content: "Support for automatic countdown restarts. Available intervals include daily, weekly, monthly, yearly, or custom day counts."
     },
     {
-        title: "✅System Notifications",
+        title: "🔔System Notifications",
         content: "Automated Nextcloud system notifications triggered upon countdown expiration."
     },
     {
-        title: "✅Interactive Toast Notifications",
-        content: "Sleek, interactive in-app toast notifications with click-to-dismiss support."
-    },
-    {
-        title: "✅Confetti Celebrations",
+        title: "🎉Confetti Celebrations",
         content: "Visual feedback via confetti bursts on save or expiration events. Includes a title-based interaction challenge."
     },
     {
-        title: "✅Countdown Description Field",
+        title: "📝Countdown Description Field",
         content: "Support for optional notes or context via a dedicated description field, viewable in the details panel."
     },
     {
-        title: "✅PWA Install Support",
+        title: "📱PWA Install Support",
         content: "Direct Progressive Web App (PWA) installation from the settings panel for standalone home screen access."
     },
     {
-        title: "✅ESC Key & Click-Outside to Close",
-        content: "Global support for closing modals and panels via the ESC key or by clicking the backdrop."
-    },
-    {
-        title: "✅Keyboard Accessibility",
+        title: "⌨️Keyboard Accessibility",
         content: "Full keyboard navigation support for all interactive elements, enhanced by high-visibility focus highlights."
     },
     {
-        title: "✅Dashboard Widget",
+        title: "⛩️Dashboard Widget",
         content: "Seamless integration with the Nextcloud Dashboard via a dedicated summary widget."
     },
     {
-        title: "✅Theme-Aware Design",
+        title: "🎨Theme-Aware Design",
         content: "Full compatibility with Nextcloud light, dark, and accessibility themes."
     },
-    {
-        title: "✅Mobile-First Responsive Layout",
-        content: "Refined mobile experience featuring an adaptive header, responsive grid, and optimized modal windows."
-    }
 ];
 
 // Native app detection to hide Nextcloud top bar and background immediately
