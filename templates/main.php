@@ -76,7 +76,7 @@
                 <div class="modal-actions">
                     <div class="button-group">
                         <button id="cancel-btn" class="button">Cancel</button>
-                        <button id="save-btn" class="button primary">✅ Save Changes</button>
+                        <button id="save-btn" class="button primary">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
             <div class="modal-content glass-effect">
                 <h2 id="delete-title">Delete Countdown?</h2>
                 <div class="info-body">
-                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--color-main-text);">Are you sure you want to delete this countdown? This action cannot be undone.</p>
+                    <p style="margin-bottom: 0; font-size: 1.1rem; color: var(--color-main-text);">Are you sure you want to delete this countdown? This action cannot be undone.</p>
                 </div>
                 <div class="modal-actions">
                     <div class="button-group">
