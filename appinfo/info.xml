@@ -30,7 +30,7 @@ Notifications are checked every **5 minutes** by a background job (`TimerJob`). 
 ## ⚙️ Configuring Notifications (CRON)
 To configure automatic notification sending via crontab, read the [user documentation](https://github.com/infinit7even/countdown/blob/master/README.md#how-notifications-work)
 ]]></description>
-    <version>1.1.99</version>
+    <version>1.2.0</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -52,7 +52,6 @@ To configure automatic notification sending via crontab, read the [user document
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/desktop_dashboard.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/desktop_widget.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/desktop_edit.png</screenshot>
-    <screenshot>https://raw.githubusercontent.com/infinit7even/countdown/master/screenshots/mobile_dashboard.png</screenshot>
     <dependencies>
         <php min-version="8.0" />
         <nextcloud min-version="25" max-version="33" />

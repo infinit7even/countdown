@@ -23,17 +23,17 @@ Organize events by creation date, follow recurring schedules, and access everyth
 
 ### Main Dashboard
 <p align="center">
-  <img src="screenshots/desktop_dashboard.png" width="100%" alt="Countdown main view" />
+  <img src="screenshots/desktop_dashboard.png" width="100%" alt="Countdown Dashboard view" />
 </p>
 
 ### Dashboard Widget
 <p align="center">
-  <img src="screenshots/desktop_widget.png" width="100%" alt="Countdown widget view" />
+  <img src="screenshots/desktop_widget.png" width="100%" alt="Countdown Widget view" />
 </p>  
 
 ### Edit Panel
 <p align="center">
-  <img src="screenshots/desktop_edit.png" width="100%" alt="Countdown edit view" />
+  <img src="screenshots/desktop_edit.png" width="100%" alt="Countdown Edit view" />
 </p>
 
 ### Mobile View
@@ -42,7 +42,7 @@ Organize events by creation date, follow recurring schedules, and access everyth
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="screenshots/mobile_widget.png" width="30%" alt="Mobile Widget" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="screenshots/mobile_create.png" width="30%" alt="Mobile Create" />
+  <img src="screenshots/mobile_edit.png" width="30%" alt="Mobile Edit" />
 </p>
 
 ## 🚀 Installation
@@ -79,10 +79,10 @@ No complex configuration is needed to start! Once enabled, you'll see the **Coun
 
 ### How Notifications Work
 
-Countdown is designed to keep you updated in real-time through the Nextcloud internal notification system.
+The app utilizes a dual mechanism to ensure you never miss an event:
 
-*   **Instant Internal Notifications**: When the Countdown page is open in your browser or PWA, notifications are triggered instantly. This is because the app leverages the active session to display alerts through the "bell" icon and browser popups.
-*   **Limitation**: Please note that notifications **will not arrive if the page or PWA is not open on your device**.
+*   **Instant Active Notifications**: If you have the Countdown app or dashboard widget actively open in your browser (or PWA), the notification is **100% instantaneous**. A JavaScript watcher triggers the confetti and sends a request to the server the exact second the timer reaches zero, triggering the Nextcloud "bell" alert and your native browser push notification.
+*   **Background Cron Notifications**: If the app is closed and you have no active session, notifications are handled by the Nextcloud Background Jobs system (`Cron`). The system periodically checks for expired countdowns and sends the notifications. The precision of these background notifications depends on your server's Cron interval (typically every 5-15 minutes).
 
 #### 1. Nextcloud Background Jobs
 First, ensure your Nextcloud instance is set to **Cron** mode (Recommended) rather than AJAX:
