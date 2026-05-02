@@ -21,26 +21,26 @@
 
 ### Main Dashboard
 <p align="center">
-  <img src="screenshots/desktop_dashboard.png" width="100%" alt="Countdown Dashboard view" />
+  <img src="screenshots/desktop_dashboard.png" width="100%" style="border: 1px solid rgba(128,128,128,0.4); border-radius: 8px;" alt="Countdown Dashboard view" />
 </p>
 
 ### Dashboard Widget
 <p align="center">
-  <img src="screenshots/desktop_widget.png" width="100%" alt="Countdown Widget view" />
+  <img src="screenshots/desktop_widget.png" width="100%" style="border: 1px solid rgba(128,128,128,0.4); border-radius: 8px;" alt="Countdown Widget view" />
 </p>  
 
 ### Edit Panel
 <p align="center">
-  <img src="screenshots/desktop_edit.png" width="100%" alt="Countdown Edit view" />
+  <img src="screenshots/desktop_edit.png" width="100%" style="border: 1px solid rgba(128,128,128,0.4); border-radius: 8px;" alt="Countdown Edit view" />
 </p>
 
 ### Mobile PWA View
 <p align="center">
-  <img src="screenshots/mobile_dashboard.png" width="30%" alt="Mobile Home" />
+  <img src="screenshots/mobile_dashboard.png" width="30%" style="border: 1px solid rgba(128,128,128,0.4); border-radius: 8px;" alt="Mobile Home" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="screenshots/mobile_widget.png" width="30%" alt="Mobile Widget" />
+  <img src="screenshots/mobile_widget.png" width="30%" style="border: 1px solid rgba(128,128,128,0.4); border-radius: 8px;" alt="Mobile Widget" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="screenshots/mobile_edit.png" width="30%" alt="Mobile Edit" />
+  <img src="screenshots/mobile_edit.png" width="30%" style="border: 1px solid rgba(128,128,128,0.4); border-radius: 8px;" alt="Mobile Edit" />
 </p>
 
 ## 🚀 Installation
