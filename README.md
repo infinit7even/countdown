@@ -75,8 +75,11 @@ If you prefer to install it manually or want to use a specific version:
 
 The app ensures you never miss an event using two methods:
 
-*   **Instant Notifications**: If the app or dashboard widget is open, you get alerted the exact second the countdown ends (with confetti! 🎉).
-*   **Background Notifications**: If the app is closed, Nextcloud's Background Jobs (`Cron`) will notify you based on your server's schedule (usually every 5-15 minutes).
+*   **Instant Notifications**: If the app or dashboard widget is actively open in a browser tab or installed PWA, you get alerted the exact second the countdown ends (with confetti! 🎉).
+*   **Background Notifications**: If the app is closed, Nextcloud's Background Jobs (`Cron`) will notify you based on your server's schedule (usually every 5-15 minutes). 
+
+> [!NOTE]
+> All notifications are pushed globally across your devices! You will receive them not only in the web interface, but also via the **Nextcloud Official Desktop Sync Client** and the **Nextcloud Mobile App**.
 
 #### 1. Nextcloud Background Jobs
 First, ensure your Nextcloud instance is set to **Cron** mode (Recommended) rather than AJAX:
