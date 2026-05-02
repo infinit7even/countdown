@@ -104,7 +104,7 @@
                     <div class="button-group">
                         <button id="close-info-btn" class="button">Close</button>
                         <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn primary">Give Review</a>
+                            class="button review-btn primary">Leave a review</a>
                     </div>
                 </div>
             </div>
@@ -180,7 +180,7 @@
                 <label>Extra & Debug</label>
                 <div style="display: flex; gap: 10px; align-items: stretch; margin-top: 5px;">
                     <button id="pwa-install-btn" class="button primary hidden">📥 Install PWA</button>
-                    <a id="pwa-review-btn" href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button primary hidden">🧁 Give Review</a>
+                    <a id="pwa-review-btn" href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button primary hidden">🧁 Leave a review</a>
                     <button id="debug-notif-btn" class="debug-btn" title="Test notifications">🛠️</button>
                 </div>
             </div>
@@ -199,7 +199,7 @@
                     <div class="button-group">
                         <button id="close-news-btn" class="button">Close</button>
                         <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn primary">Give Review</a>
+                            class="button review-btn primary">Leave a review</a>
                     </div>
                 </div>
             </div>

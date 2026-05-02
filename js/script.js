@@ -14,7 +14,7 @@ const NEWS_ARTICLES = [
         content: "If you have the app open in multiple tabs, creating, editing, or deleting a countdown will now instantly sync across all of them without needing to refresh."
     },
     {
-        title: "🚨Fixed System Notifications v2",
+        title: "🚨System Notifications v2",
         content: "Notification system upgraded to utilize Nextcloud Background Jobs integration with system crontab. For more info read the [user documentation↗️](https://github.com/infinit7even/countdown/blob/master/README.md#how-notifications-work)."
     },
     {
@@ -54,7 +54,7 @@ const NEWS_ARTICLES = [
         content: "Visual feedback via confetti bursts on save or expiration events. Includes a title-based interaction challenge."
     },
     {
-        title: "📝Countdown Description Field",
+        title: "🪀Countdown Description Field",
         content: "Support for optional notes or context via a dedicated description field, viewable in the details panel."
     },
     {
@@ -62,11 +62,11 @@ const NEWS_ARTICLES = [
         content: "Direct Progressive Web App (PWA) installation from the settings panel for standalone home screen access."
     },
     {
-        title: "⌨️Keyboard Accessibility",
+        title: "❤️Keyboard Accessibility",
         content: "Full keyboard navigation support for all interactive elements, enhanced by high-visibility focus highlights."
     },
     {
-        title: "⛩️Dashboard Widget",
+        title: "😊Dashboard Widget",
         content: "Seamless integration with the Nextcloud Dashboard via a dedicated summary widget."
     },
     {
