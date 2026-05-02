@@ -6,6 +6,14 @@
 
 const NEWS_ARTICLES = [
     {
+        title: "✨Massive Emoji Update",
+        content: "We've massively expanded the emoji picker library! Now you have hundreds of new icons across all categories to perfectly match your countdowns."
+    },
+    {
+        title: "🔄Cross-Tab Synchronization",
+        content: "If you have the app open in multiple tabs, creating, editing, or deleting a countdown will now instantly sync across all of them without needing to refresh."
+    },
+    {
         title: "🚨Fixed System Notifications v2",
         content: "Notification system upgraded to utilize Nextcloud Background Jobs integration with system crontab. For more info read the [user documentation↗️](https://github.com/infinit7even/countdown/blob/master/README.md#how-notifications-work)."
     },
