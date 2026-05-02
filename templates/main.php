@@ -76,7 +76,7 @@
                 <div class="modal-actions">
                     <div class="button-group">
                         <button id="cancel-btn" class="button">Cancel</button>
-                        <button id="save-btn" class="button primary">Save Changes</button>
+                        <button id="save-btn" class="button primary">✅ Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -103,8 +103,24 @@
                 <div class="modal-actions">
                     <div class="button-group">
                         <button id="close-info-btn" class="button">Close</button>
-                        <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn primary">Give it a star on GitHub :D</a>
+                        <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
+                            class="button review-btn primary">🧁 Give Review</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div id="delete-modal" class="modal-overlay hidden">
+            <div class="modal-content glass-effect">
+                <h2 id="delete-title">Delete Countdown?</h2>
+                <div class="info-body">
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--color-main-text);">Are you sure you want to delete this countdown? This action cannot be undone.</p>
+                </div>
+                <div class="modal-actions">
+                    <div class="button-group">
+                        <button id="cancel-delete-btn" class="button">Cancel</button>
+                        <button id="confirm-delete-btn" class="button primary" style="background: var(--color-error, #e9322d) !important;">Delete</button>
                     </div>
                 </div>
             </div>
@@ -182,8 +198,8 @@
                 <div class="modal-actions">
                     <div class="button-group">
                         <button id="close-news-btn" class="button">Close</button>
-                        <a href="https://github.com/infinit7even/countdown" target="_blank" rel="noreferrer"
-                            class="button review-btn primary">Give it a star on GitHub :D</a>
+                        <a href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer"
+                            class="button review-btn primary">🧁 Give Review</a>
                     </div>
                 </div>
             </div>

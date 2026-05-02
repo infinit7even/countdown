@@ -130,6 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeNewsBtn = document.getElementById('close-news-btn');
     const newsArticlesContainer = document.getElementById('news-articles');
 
+    const deleteModal = document.getElementById('delete-modal');
+    const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+    const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+    let countdownToDelete = null;
+
     // Request Browser Notification Permission
     if ("Notification" in window && Notification.permission === "default") {
         Notification.requestPermission();
@@ -577,6 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
         infoModal.classList.add('hidden');
         emojiPicker.classList.add('hidden');
         if (newsModal) newsModal.classList.add('hidden');
+        if (deleteModal) deleteModal.classList.add('hidden');
     }
 
     // Global ESC key listener to close everything
@@ -595,15 +601,30 @@ document.addEventListener('DOMContentLoaded', () => {
     cancelBtn.addEventListener('click', closeAllModals);
     closeInfoBtn.addEventListener('click', closeAllModals);
     if (closeNewsBtn) closeNewsBtn.addEventListener('click', closeAllModals);
+    if (cancelDeleteBtn) cancelDeleteBtn.addEventListener('click', closeAllModals);
 
     // Close on overlay click
-    [modal, infoModal, newsModal].forEach(ov => {
-        ov.addEventListener('click', (e) => {
-            if (e.target === ov) {
-                closeAllModals();
-            }
-        });
+    [modal, infoModal, newsModal, deleteModal].forEach(ov => {
+        if (ov) {
+            ov.addEventListener('click', (e) => {
+                if (e.target === ov) {
+                    closeAllModals();
+                }
+            });
+        }
     });
+
+    if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener('click', () => {
+            if (countdownToDelete) {
+                countdowns = countdowns.filter(item => item.id !== countdownToDelete);
+                renderCountdowns();
+                saveCountdowns();
+                countdownToDelete = null;
+            }
+            closeAllModals();
+        });
+    }
 
     saveBtn.addEventListener('click', async () => {
         let rawName = nameInput.value.trim();
@@ -807,11 +828,8 @@ document.addEventListener('DOMContentLoaded', () => {
             delBtn.ariaLabel = 'Delete Countdown';
             delBtn.onclick = (e) => {
                 e.stopPropagation();
-                if (confirm('Delete this countdown?')) {
-                    countdowns = countdowns.filter(item => item.id !== cd.id);
-                    renderCountdowns();
-                    saveCountdowns();
-                }
+                countdownToDelete = cd.id;
+                if (deleteModal) deleteModal.classList.remove('hidden');
             };
             delBtn.onkeydown = (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
