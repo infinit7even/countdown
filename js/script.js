@@ -482,6 +482,15 @@ const EMOJI_DATA = {
         }
     }
 
+    // Setting up BroadcastChannel for cross-tab synchronization
+    const countdownChannel = new BroadcastChannel('countdown_sync_channel');
+    
+    countdownChannel.onmessage = (event) => {
+        if (event.data === 'RELOAD_COUNTDOWNS') {
+            loadCountdowns();
+        }
+    };
+
     // Save to Database
     async function saveCountdowns() {
         try {
@@ -493,6 +502,7 @@ const EMOJI_DATA = {
                 },
                 body: JSON.stringify({ countdowns: countdowns })
             });
+            countdownChannel.postMessage('RELOAD_COUNTDOWNS');
         } catch (e) {
             console.error('Error saving data', e);
         }
