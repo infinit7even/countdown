@@ -22,21 +22,21 @@
 ### Main Dashboard
 <p align="center">
   <a href="https://apps.nextcloud.com/apps/countdown">
-    <img src="screenshots/desktop_dashboard.png" width="100%" style="border: 3px solid rgba(128,128,128,0.6); border-radius: 8px;" alt="Countdown Dashboard view" />
+    <img src="screenshots/desktop_dashboard.png" width="100%" style="border-radius: 8px;" alt="Countdown Dashboard view" />
   </a>
 </p>
 
 ### Dashboard Widget
 <p align="center">
   <a href="https://apps.nextcloud.com/apps/countdown">
-    <img src="screenshots/desktop_widget.png" width="100%" style="border: 3px solid rgba(128,128,128,0.6); border-radius: 8px;" alt="Countdown Widget view" />
+    <img src="screenshots/desktop_widget.png" width="100%" style="border-radius: 8px;" alt="Countdown Widget view" />
   </a>
 </p>  
 
 ### Edit Panel
 <p align="center">
   <a href="https://apps.nextcloud.com/apps/countdown">
-    <img src="screenshots/desktop_edit.png" width="100%" style="border: 3px solid rgba(128,128,128,0.6); border-radius: 8px;" alt="Countdown Edit view" />
+    <img src="screenshots/desktop_edit.png" width="100%" style="border-radius: 8px;" alt="Countdown Edit view" />
   </a>
 </p>
 
