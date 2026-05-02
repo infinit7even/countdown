@@ -17,8 +17,6 @@
 * 🗞️ **News Center**: Stay updated with the latest features and changes directly inside the app.
 * 🎮 **Easter Eggs**: Discover secrets hidden inside the app inspired by pop culture!
 
-Organize events by creation date, follow recurring schedules, and access everything instantly. Designed to feel natural in both **Light and Dark themes**.
-
 ## 📸 Screenshots
 
 ### Main Dashboard
@@ -36,7 +34,7 @@ Organize events by creation date, follow recurring schedules, and access everyth
   <img src="screenshots/desktop_edit.png" width="100%" alt="Countdown Edit view" />
 </p>
 
-### Mobile View
+### Mobile PWA View
 <p align="center">
   <img src="screenshots/mobile_dashboard.png" width="30%" alt="Mobile Home" />
   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -67,22 +65,18 @@ If you prefer to install it manually or want to use a specific version:
    sudo -u www-data php /path/to/nextcloud/occ app:enable countdown
    ```
 
-## 🛠️ Configuration
-
-No complex configuration is needed to start! Once enabled, you'll see the **Countdown** icon in your top navigation bar.
-
-### Creating your first Countdown
+## 🛠️ Creating your first Countdown
 1. **Name & Date**: Simply click the "+" button, enter a title (e.g., "GTA VI Release"), and pick the target date and time.
 2. **Add some Magic**: You can choose a custom **emoji** to represent your event and add a **description** for more details.
 3. **Go Recurrent**: Enable the **Repeat** toggle if you want the countdown to restart automatically (Daily, Weekly, Monthly, or Yearly).
 4. **The Celebration**: When the timer reaches zero, you'll receive a **Nextcloud Notification** and be greeted by a **burst of confetti**! 🎉
 
-### How Notifications Work
+## 🔔 How Notifications Work
 
-The app utilizes a dual mechanism to ensure you never miss an event:
+The app ensures you never miss an event using two methods:
 
-*   **Instant Active Notifications**: If you have the Countdown app or dashboard widget actively open in your browser (or PWA), the notification is **100% instantaneous**. A JavaScript watcher triggers the confetti and sends a request to the server the exact second the timer reaches zero, triggering the Nextcloud "bell" alert and your native browser push notification.
-*   **Background Cron Notifications**: If the app is closed and you have no active session, notifications are handled by the Nextcloud Background Jobs system (`Cron`). The system periodically checks for expired countdowns and sends the notifications. The precision of these background notifications depends on your server's Cron interval (typically every 5-15 minutes).
+*   **Instant Notifications**: If the app or dashboard widget is open, you get alerted the exact second the countdown ends (with confetti! 🎉).
+*   **Background Notifications**: If the app is closed, Nextcloud's Background Jobs (`Cron`) will notify you based on your server's schedule (usually every 5-15 minutes).
 
 #### 1. Nextcloud Background Jobs
 First, ensure your Nextcloud instance is set to **Cron** mode (Recommended) rather than AJAX:
@@ -110,7 +104,7 @@ sudo crontab -u www-data -e
 > [!TIP]
 > Use [crontab.guru](https://crontab.guru/) to experiment with different schedules or to understand the cron syntax better.
 
-### 🛠️ Administrative Commands (OCC)
+## 💻  Administrative Commands (OCC)
 
 Administrators can use the `occ` command line tool to manage countdowns and trigger notification checks manually from the terminal.
 
@@ -129,13 +123,13 @@ docker exec --user www-data nextcloud php occ countdown:add "user_id" "Event Nam
 > [!NOTE]
 > Use the `--help` flag with any command (e.g., `php occ countdown:add --help`) to see all available options, such as setting emojis or descriptions via CLI.
 
-### Dashboard Widget
+## 🪀Dashboard Widget
 To see your countdowns at a glance:
 1. Go to your **Nextcloud Dashboard**.
 2. Scroll to the bottom and click **Edit widgets**.
 3. Enable the **Countdown** widget.
 
-## ⭐ Support the Project
+## ❤️ Support the Project
 
 If you find **Countdown** useful and want to support its development:
 *   **Star the Project**: Give us a star on [GitHub](https://github.com/infinit7even/countdown) to help others discover it.
@@ -144,7 +138,7 @@ If you find **Countdown** useful and want to support its development:
 
 Your support helps me keep improving the app and adding new "magic" features! 🦊✨
 
-## 🤝 Contributing & Feedback
+## 😊 Contributing & Feedback
 
 * **Bugs & Features**: Found a bug or have a great idea? Open an issue on [GitHub Issues](https://github.com/infinit7even/countdown/issues).
 * **Discussions**: Join the community for questions and tips on [GitHub Discussions](https://github.com/infinit7even/countdown/discussions).
