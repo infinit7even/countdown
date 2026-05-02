@@ -1943,4 +1943,14 @@ html.is-native .countdown-app-container {
     background: var(--color-background-hover); 
     border-color: var(--cd-primary-color);
     filter: grayscale(0); 
+}
+
+#pwa-install-btn,
+#pwa-review-btn {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
