@@ -29,6 +29,11 @@
                     </div>
                     <!-- Emoji Picker Grid -->
                     <div id="hud-emoji-picker" class="emoji-picker glass-effect hidden">
+                        <div class="emoji-search-wrapper">
+                            <span class="emoji-search-icon">🔍</span>
+                            <input type="text" id="emoji-search-input" placeholder="Search emoji..." autocomplete="off" />
+                            <button type="button" id="emoji-search-clear" class="emoji-search-clear hidden" title="Clear search">✕</button>
+                        </div>
                         <div class="emoji-categories">
                             <button class="cat-btn active" data-cat="faces" title="Faces">😀</button>
                             <button class="cat-btn" data-cat="people" title="People">🧑</button>
