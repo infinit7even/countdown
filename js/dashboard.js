@@ -28,6 +28,10 @@
                         throw new Error('Invalid data format');
                     }
                     
+                                        const t = (typeof window.t === 'function') 
+                        ? (app, text, vars) => window.t(app, text, vars) 
+                        : (app, text) => text;
+
                     const activeCountdowns = countdowns.filter(c => !c.archived);
 
                     if (activeCountdowns.length === 0) {
@@ -35,7 +39,7 @@
                         empty.style.padding = '20px';
                         empty.style.textAlign = 'center';
                         empty.style.color = 'var(--color-text-maxcontrast)';
-                        empty.textContent = 'No active countdowns.';
+                        empty.textContent = t('countdown', 'No active countdowns.');
                         container.appendChild(empty);
                         return;
                     }
@@ -60,7 +64,7 @@
                             li.style.borderBottom = 'none';
                         }
 
-                        let subtitle = 'Already expired!';
+                        let subtitle = t('countdown', 'Already expired!');
                         const targetDate = cd.targetDate || 0;
                         const distance = targetDate - now;
                         if (distance >= 0) {

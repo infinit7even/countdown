@@ -108,6 +108,11 @@ if (navigator.userAgent.includes('CountdownNative') || (typeof window !== 'undef
     document.documentElement.classList.add('is-native');
 }
 
+// Translation helper
+const t = (typeof window.t === 'function') 
+    ? (app, text, vars) => window.t(app, text, vars) 
+    : (app, text) => text;
+
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('countdown-modal');
     const modalTitle = document.getElementById('modal-title');
@@ -813,11 +818,11 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         if (!unitSelectionHint) return;
         const selected = getSelectedUnits();
         if (selected.length === 0) {
-            unitSelectionHint.textContent = 'Please select at least 1 unit';
+            unitSelectionHint.textContent = t('countdown', 'Please select at least 1 unit');
             return;
         }
         const names = selected.map(u => UNIT_CONFIG[u] ? UNIT_CONFIG[u].plural : u);
-        unitSelectionHint.textContent = `Display order: ${names.join(' · ')}`;
+        unitSelectionHint.textContent = t('countdown', 'Display order: %s').replace('%s', names.join(' · '));
     }
 
     unitChips.forEach(chip => {
@@ -827,13 +832,13 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
 
             if (isCurrentlyActive) {
                 if (currentSelected.length <= 1) {
-                    showAppNotification('At least 1 unit must be selected! ⏱️');
+                    showAppNotification(t('countdown', 'At least 1 unit must be selected! ⏱️'));
                     return;
                 }
                 chip.classList.remove('active');
             } else {
                 if (currentSelected.length >= 4) {
-                    showAppNotification('Maximum 4 display units allowed! ⚠️');
+                    showAppNotification(t('countdown', 'Maximum 4 display units allowed! ⚠️'));
                     return;
                 }
                 chip.classList.add('active');
@@ -845,15 +850,15 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
     if (duplicateBtn) {
         duplicateBtn.addEventListener('click', () => {
             idInput.value = '';
-            modalTitle.textContent = 'Create a new Countdown';
+            modalTitle.textContent = t('countdown', 'Create a new Countdown');
             duplicateBtn.classList.add('hidden');
-            showAppNotification('Countdown duplicated! 📋 Edit details and save as new.');
+            showAppNotification(t('countdown', 'Countdown duplicated! 📋 Edit details and save as new.'));
             nameInput.focus();
         });
     }
 
     addBtn.addEventListener('click', () => {
-        modalTitle.textContent = 'Create a new Countdown';
+        modalTitle.textContent = t('countdown', 'Create a new Countdown');
         idInput.value = '';
         nameInput.value = '';
         if (duplicateBtn) duplicateBtn.classList.add('hidden');
@@ -918,7 +923,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         archiveList.innerHTML = '';
 
         if (archived.length === 0) {
-            archiveList.innerHTML = '<div class="archive-empty-state">No archived countdowns.<br>Completed countdowns can be archived using the 📦 button.</div>';
+            archiveList.innerHTML = '<div class="archive-empty-state">' + t('countdown', 'No archived countdowns.<br>Completed countdowns can be archived using the 📦 button.') + '</div>';
             return;
         }
 
@@ -951,13 +956,13 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             unarchiveBtn.type = 'button';
             unarchiveBtn.className = 'archive-action-btn unarchive';
             unarchiveBtn.title = 'Restore countdown to active list';
-            unarchiveBtn.innerHTML = '<span>↩️</span> Restore';
+            unarchiveBtn.innerHTML = '<span>↩️</span> ' + t('countdown', 'Restore');
             unarchiveBtn.onclick = async () => {
                 cd.archived = false;
                 await saveCountdowns();
                 renderArchiveList();
                 renderCountdowns();
-                showAppNotification('Countdown restored! 🚀');
+                showAppNotification(t('countdown', 'Countdown restored! 🚀'));
             };
 
             // Edit / Duplicate button
@@ -965,7 +970,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             editBtn.type = 'button';
             editBtn.className = 'archive-action-btn';
             editBtn.title = 'Edit or Duplicate countdown';
-            editBtn.innerHTML = '<span>✏️</span> Edit';
+            editBtn.innerHTML = '<span>✏️</span> ' + t('countdown', 'Edit');
             editBtn.onclick = () => {
                 closeAllModals();
                 openEditModal(cd);
@@ -1056,7 +1061,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
                 updateArchiveCounter();
                 saveCountdowns();
                 countdownToDelete = null;
-                showAppNotification('Countdown deleted successfully! 🗑️');
+                showAppNotification(t('countdown', 'Countdown deleted successfully! 🗑️'));
             }
             if (deleteModal) deleteModal.classList.add('hidden');
         });
@@ -1250,7 +1255,7 @@ function updateTimeLeft(cd, timerElement, cardElement) {
                     await saveCountdowns();
                     renderCountdowns();
                     updateArchiveCounter();
-                    showAppNotification('Countdown archived! 📦');
+                    showAppNotification(t('countdown', 'Countdown archived! 📦'));
                 };
                 archiveBtn.onkeydown = (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -1372,7 +1377,7 @@ function updateTimeLeft(cd, timerElement, cardElement) {
         const activeCountdowns = countdowns.filter(c => !c.archived);
 
         if (activeCountdowns.length === 0) {
-            grid.innerHTML = '<div class="empty-state">You don\'t have any active countdowns.<br>Click above to create a new one.</div>';
+            grid.innerHTML = '<div class="empty-state">' + t('countdown', 'You don\'t have any active countdowns.<br>Click above to create a new one.') + '</div>';
             return;
         }
         
@@ -1487,7 +1492,7 @@ function updateTimeLeft(cd, timerElement, cardElement) {
                     await saveCountdowns();
                     renderCountdowns();
                     updateArchiveCounter();
-                    showAppNotification('Countdown archived! 📦');
+                    showAppNotification(t('countdown', 'Countdown archived! 📦'));
                 };
                 archiveBtn.onkeydown = (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -1539,7 +1544,7 @@ function updateTimeLeft(cd, timerElement, cardElement) {
     }
 
     function openEditModal(cd) {
-        modalTitle.textContent = 'Edit Countdown';
+        modalTitle.textContent = t('countdown', 'Edit Countdown');
         idInput.value = cd.id;
         
         // Extract Emoji from the beginning of the title
@@ -1591,15 +1596,15 @@ function updateTimeLeft(cd, timerElement, cardElement) {
 
     function openInfoModal(cd) {
         infoCreated.textContent = cd.createdAt ? new Date(cd.createdAt).toLocaleString() : 'Legacy Countdown';
-        infoDescription.textContent = cd.description || 'No description provided.';
+        infoDescription.textContent = cd.description || t('countdown', 'No description provided.');
         
         let repeatText = 'No';
         if (cd.repeat && cd.repeat !== 'none') {
             switch(cd.repeat) {
-                case 'daily': repeatText = 'Every Day'; break;
-                case 'weekly': repeatText = 'Every Week'; break;
-                case 'monthly': repeatText = 'Every Month'; break;
-                case 'yearly': repeatText = 'Every Year'; break;
+                case 'daily': repeatText = t('countdown', 'Every Day'); break;
+                case 'weekly': repeatText = t('countdown', 'Every Week'); break;
+                case 'monthly': repeatText = t('countdown', 'Every Month'); break;
+                case 'yearly': repeatText = t('countdown', 'Every Year'); break;
                 case 'custom': 
                     const val = cd.repeatValue || 1;
                     repeatText = `Every ${val} Days`; 
