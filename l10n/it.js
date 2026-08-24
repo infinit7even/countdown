@@ -69,6 +69,7 @@ OC.L10N.register(
     "Are you sure you want to delete this countdown? This action cannot be undone.": "Sei sicuro di voler eliminare questo Countdown? L'azione non può essere annullata.",
     "Delete": "Elimina",
     "SIZE": "DIMENSIONE",
+    "Toggle Settings": "Mostra/nascondi impostazioni",
     "What's New?": "Novità",
     "Layout": "Disposizione",
     "Expanded View": "Vista estesa",

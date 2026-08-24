@@ -219,6 +219,9 @@ msgstr ""
 msgid "SIZE"
 msgstr ""
 
+msgid "Toggle Settings"
+msgstr ""
+
 msgid "What's New?"
 msgstr ""
 

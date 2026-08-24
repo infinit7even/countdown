@@ -69,6 +69,7 @@ OC.L10N.register(
     "Are you sure you want to delete this countdown? This action cannot be undone.": "Bu Countdown'ı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
     "Delete": "Sil",
     "SIZE": "BOYUT",
+    "Toggle Settings": "Ayarları aç/kapat",
     "What's New?": "Yenilikler",
     "Layout": "Düzen",
     "Expanded View": "Genişletilmiş Görünüm",

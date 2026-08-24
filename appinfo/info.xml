@@ -34,7 +34,7 @@ To configure automatic notification sending via crontab, read the [user document
 ## 🌐 Translations & Contributing
 Countdown is translated into 18+ languages. Community contributions to improve translations or add new languages are warmly welcome via GitHub Pull Requests (editing files in the `l10n/` folder or using the Gettext PO template in `translationfiles/templates/countdown.pot`). Read the [translation documentation](https://github.com/infinit7even/countdown/blob/master/l10n/README.md) for full details.
 ]]></description>
-    <version>1.2.32</version>
+    <version>1.2.33</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

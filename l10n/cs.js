@@ -69,6 +69,7 @@ OC.L10N.register(
     "Are you sure you want to delete this countdown? This action cannot be undone.": "Opravdu chcete tento Countdown smazat? Tuto akci nelze vrátit zpět.",
     "Delete": "Smazat",
     "SIZE": "VELIKOST",
+    "Toggle Settings": "Přepnout nastavení",
     "What's New?": "Co je nového?",
     "Layout": "Rozvržení",
     "Expanded View": "Rozšířené zobrazení",

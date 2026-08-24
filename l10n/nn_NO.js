@@ -69,6 +69,7 @@ OC.L10N.register(
     "Are you sure you want to delete this countdown? This action cannot be undone.": "Er du sikker på at du vil slette denne Countdown? Denne handlingen kan ikke angres.",
     "Delete": "Slett",
     "SIZE": "STØRRELSE",
+    "Toggle Settings": "Veksle innstillinger",
     "What's New?": "Hva er nytt?",
     "Layout": "Oppsett",
     "Expanded View": "Utvidet visning",

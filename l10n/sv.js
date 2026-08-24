@@ -69,6 +69,7 @@ OC.L10N.register(
     "Are you sure you want to delete this countdown? This action cannot be undone.": "Är du säker på att du vill ta bort denna Countdown? Denna åtgärd kan inte ångras.",
     "Delete": "Ta bort",
     "SIZE": "STORLEK",
+    "Toggle Settings": "Växla inställningar",
     "What's New?": "Vad är nytt?",
     "Layout": "Layout",
     "Expanded View": "Utökad vy",

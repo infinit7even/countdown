@@ -69,6 +69,7 @@ OC.L10N.register(
     "Are you sure you want to delete this countdown? This action cannot be undone.": "この Countdown を削除してもよろしいですか？この操作は元に戻せません。",
     "Delete": "削除",
     "SIZE": "サイズ",
+    "Toggle Settings": "設定を切り替え",
     "What's New?": "新着情報",
     "Layout": "レイアウト",
     "Expanded View": "拡張表示",

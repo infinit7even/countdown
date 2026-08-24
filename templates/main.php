@@ -2,7 +2,7 @@
     <div id="app-content-wrapper">
         <div class="countdown-app-container">
             <header class="countdown-header">
-                <h1 class="countdown-title" tabindex="0" role="button" aria-label="<?php p($l->t('Countdown title - surprise inside!')); ?>"><?php p($l->t('Countdown!')); ?></h1>
+                <h1 class="countdown-title" tabindex="0" role="button" aria-label="<?php p($l->t('Countdown!')); ?>"><?php p($l->t('Countdown!')); ?></h1>
                 <div class="header-actions">
                     <button id="add-countdown-btn" class="button primary new-countdown-btn">
                         <span class="btn-icon-plus">+</span>

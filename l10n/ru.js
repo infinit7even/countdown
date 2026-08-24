@@ -69,6 +69,7 @@ OC.L10N.register(
     "Are you sure you want to delete this countdown? This action cannot be undone.": "Вы уверены, что хотите удалить этот Countdown? Это действие нельзя отменить.",
     "Delete": "Удалить",
     "SIZE": "РАЗМЕР",
+    "Toggle Settings": "Переключить настройки",
     "What's New?": "Что нового?",
     "Layout": "Вид",
     "Expanded View": "Развернутый вид",

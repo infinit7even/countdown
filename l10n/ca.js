@@ -69,6 +69,7 @@ OC.L10N.register(
     "Are you sure you want to delete this countdown? This action cannot be undone.": "Esteu segur que voleu suprimir aquest Countdown? Aquesta acció no es pot desfer.",
     "Delete": "Suprimeix",
     "SIZE": "MIDA",
+    "Toggle Settings": "Commuta la configuració",
     "What's New?": "Què hi ha de nou?",
     "Layout": "Disposició",
     "Expanded View": "Visualització ampliada",
