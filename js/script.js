@@ -906,7 +906,9 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
 
             const date = document.createElement('div');
             date.className = 'archive-item-date';
-            const formattedDate = new Date(cd.targetDate).toLocaleDateString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+            const formattedDate = cd.allDay
+                ? new Date(cd.targetDate).toLocaleDateString(undefined, { dateStyle: 'medium' })
+                : new Date(cd.targetDate).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
             date.textContent = `${formattedDate}${cd.description ? ' · ' + cd.description : ''}`;
 
             info.appendChild(title);
