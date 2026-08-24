@@ -16,6 +16,7 @@
 * 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
 * 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
 * 💻 **OCC Integration**: Administrators can manage countdowns using the OCC command line interface.
+* 🌐 **Global Localization**: Available in 18+ languages with community translation support.
 * ✏️ **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
 * 🗞️ **News Center**: Stay updated with the latest features and changes directly inside the app.
 * 🎮 **Easter Eggs**: Discover secrets hidden inside the app inspired by pop culture!
@@ -30,7 +31,7 @@ Notifications are checked every **5 minutes** by a background job (`TimerJob`). 
 ## ⚙️ Configuring Notifications (CRON)
 To configure automatic notification sending via crontab, read the [user documentation](https://github.com/infinit7even/countdown/blob/master/README.md#-how-notifications-work)
 ]]></description>
-    <version>1.2.28</version>
+    <version>1.2.29</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>

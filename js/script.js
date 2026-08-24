@@ -6,6 +6,10 @@
 
 const NEWS_ARTICLES = [
     {
+        title: "🌐Multilingual & Global Translations",
+        content: "Countdown is now localized into 18+ languages (English, German, French, Spanish, Portuguese, Chinese, Japanese, Russian, Turkish, Dutch, Polish, Swedish, Danish, Norwegian, Arabic, Czech, Catalan, Italian) with community translation support."
+    },
+    {
         title: "🗄️Countdown Archive Hub",
         content: "Completed countdowns can now be archived with a single click. Access your archived countdowns anytime via the bottom-right floating hub to restore, modify, duplicate, or delete them."
     },

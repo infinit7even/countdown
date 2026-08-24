@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Countdown 1.2.27\n"
+"Project-Id-Version: Countdown 1.2.29\n"
 "Report-Msgid-Bugs-To: https://github.com/infinit7even/countdown/issues\n"
-"POT-Creation-Date: 2026-08-24 18:40+0200\n"
+"POT-Creation-Date: 2026-08-24 18:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
