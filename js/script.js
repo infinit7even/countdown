@@ -6,6 +6,34 @@
 
 const NEWS_ARTICLES = [
     {
+        title: "🗄️Countdown Archive Hub",
+        content: "Completed countdowns can now be archived with a single click. Access your archived countdowns anytime via the bottom-right floating hub to restore, modify, duplicate, or delete them."
+    },
+    {
+        title: "📑One-Click Duplicate",
+        content: "Quickly duplicate existing countdowns directly from the Edit window. All settings, descriptions, dates, and custom display units are cloned into a new countdown for seamless editing."
+    },
+    {
+        title: "⏳Customizable Display Units",
+        content: "Take control of how time is presented! Select up to 4 units per countdown (Years, Months, Weeks, Days, Hours, Minutes, Seconds) with automatic hierarchical calendar decomposition."
+    },
+    {
+        title: "🌅All-Day Events & Target Timing",
+        content: "Set date-only all-day events and choose whether the countdown ends at the Start of the Day (00:00) or End of the Day (23:59)."
+    },
+    {
+        title: "🔍Emoji Search & Auto-Sync",
+        content: "Find the ideal icon instantly with real-time emoji keyword search across 1,400+ emojis, plus smart automatic category synchronization when reopening the picker."
+    },
+    {
+        title: "🎂Anniversary & Milestone Tracking",
+        content: "Attach an original starting or birth year to yearly recurring countdowns to display custom ordinal badges (e.g. 21st, 50th) on cards and in notifications."
+    },
+    {
+        title: "🛡️Nextcloud & PHP 8.4 Compatibility",
+        content: "Updated notification system to conform with modern Nextcloud server standards and PHP 8.4 exception handling specifications."
+    },
+    {
         title: "🌈Massive Emoji Update",
         content: "Expanded the emoji picker library! Now you have hundreds of new icons across all categories to perfectly match your countdowns."
     },
