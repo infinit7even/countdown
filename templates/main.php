@@ -53,8 +53,21 @@
                     <input type="text" id="cd-description" placeholder="A short description..." />
                 </div>
                 <div class="form-group" id="date-group">
-                    <label for="cd-date">Event Date and Time</label>
+                    <div class="date-label-row">
+                        <label for="cd-date">Event Date and Time</label>
+                        <div class="all-day-toggle">
+                            <input type="checkbox" id="cd-all-day-toggle" />
+                            <label for="cd-all-day-toggle">All-day event</label>
+                        </div>
+                    </div>
                     <input type="datetime-local" id="cd-date" />
+                    <div class="form-group hidden" id="all-day-timing-group" style="margin-top: 10px; margin-bottom: 0;">
+                        <label for="cd-all-day-timing">Target Time</label>
+                        <select id="cd-all-day-timing">
+                            <option value="start">Start of Day (00:00)</option>
+                            <option value="end">End of Day (23:59)</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="repeat-section">
                     <div class="form-group checkbox-group">
@@ -108,6 +121,10 @@
                     <div class="form-group">
                         <label>Repetition</label>
                         <div id="info-repeat" class="info-value"></div>
+                    </div>
+                    <div class="form-group hidden" id="info-allday-group">
+                        <label>Event Type</label>
+                        <div id="info-allday" class="info-value"></div>
                     </div>
                     <div class="form-group hidden" id="info-milestone-group">
                         <label>Milestone / Age</label>

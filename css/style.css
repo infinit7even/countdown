@@ -688,6 +688,40 @@ body.theme--dark .completed-text {
     opacity: 0.9;
 }
 
+.date-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.date-label-row label {
+    margin-bottom: 0 !important;
+}
+
+.all-day-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.all-day-toggle input[type="checkbox"] {
+    margin: 0;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.all-day-toggle label {
+    font-weight: 500 !important;
+    font-size: 0.88rem !important;
+    cursor: pointer;
+    opacity: 0.85;
+}
+
 .form-group input:not([type="checkbox"]) {
     width: 100%;
     padding: 14px 16px;

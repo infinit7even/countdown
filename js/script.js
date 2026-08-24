@@ -91,6 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const idInput = document.getElementById('cd-id');
     const nameInput = document.getElementById('cd-name');
     const dateInput = document.getElementById('cd-date');
+    const allDayToggle = document.getElementById('cd-all-day-toggle');
+    const allDayTimingGroup = document.getElementById('all-day-timing-group');
+    const allDayTiming = document.getElementById('cd-all-day-timing');
     const dateGroup = document.getElementById('date-group');
     const sizeSlider = document.getElementById('size-slider');
     const sortOpts = document.querySelectorAll('.sort-opt');
@@ -109,6 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const infoCreated = document.getElementById('info-created');
     const infoDescription = document.getElementById('info-description');
     const infoRepeat = document.getElementById('info-repeat');
+    const infoAllDayGroup = document.getElementById('info-allday-group');
+    const infoAllDay = document.getElementById('info-allday');
     const infoMilestoneGroup = document.getElementById('info-milestone-group');
     const infoMilestone = document.getElementById('info-milestone');
     const closeInfoBtn = document.getElementById('close-info-btn');
@@ -713,6 +718,26 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         yearlyRepeatGroup.classList.toggle('hidden', repeatType.value !== 'yearly');
     });
 
+    if (allDayToggle) {
+        allDayToggle.addEventListener('change', () => {
+            if (allDayToggle.checked) {
+                if (allDayTimingGroup) allDayTimingGroup.classList.remove('hidden');
+                const currentVal = dateInput.value;
+                dateInput.type = 'date';
+                if (currentVal && currentVal.includes('T')) {
+                    dateInput.value = currentVal.split('T')[0];
+                }
+            } else {
+                if (allDayTimingGroup) allDayTimingGroup.classList.add('hidden');
+                const currentVal = dateInput.value;
+                dateInput.type = 'datetime-local';
+                if (currentVal && !currentVal.includes('T')) {
+                    const timePart = allDayTiming && allDayTiming.value === 'end' ? '23:59' : '00:00';
+                    dateInput.value = `${currentVal}T${timePart}`;
+                }
+            }
+        });
+    }
 
     addBtn.addEventListener('click', () => {
         modalTitle.textContent = 'Create a new Countdown';
@@ -734,6 +759,9 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             nameInput.setAttribute('placeholder', "GTA VI Release");
         }
 
+        if (allDayToggle) allDayToggle.checked = false;
+        if (allDayTimingGroup) allDayTimingGroup.classList.add('hidden');
+        if (allDayTiming) allDayTiming.value = 'start';
         dateInput.value = '';
         dateInput.type = 'datetime-local';
         descriptionInput.value = '';
@@ -811,7 +839,20 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
 
         const name = `${selectedEmoji} ${rawName}`;
 
-        const targetDate = new Date(dateVal).getTime();
+        let targetDate;
+        const isAllDay = !!(allDayToggle && allDayToggle.checked);
+        const timingChoice = isAllDay && allDayTiming ? allDayTiming.value : 'start';
+
+        if (isAllDay) {
+            const [y, m, d] = dateVal.split('-').map(Number);
+            if (timingChoice === 'end') {
+                targetDate = new Date(y, m - 1, d, 23, 59, 59, 999).getTime();
+            } else {
+                targetDate = new Date(y, m - 1, d, 0, 0, 0, 0).getTime();
+            }
+        } else {
+            targetDate = new Date(dateVal).getTime();
+        }
 
         const isYearly = repeatToggle.checked && repeatType.value === 'yearly';
         const startingYearVal = isYearly ? (parseInt(startingYearInput.value, 10) || null) : null;
@@ -827,6 +868,8 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
                     name,
                     targetDate,
                     description: description,
+                    allDay: isAllDay,
+                    allDayTiming: isAllDay ? timingChoice : null,
                     repeat: repeatToggle.checked ? repeatType.value : 'none',
                     repeatValue: parseFloat(customRepeatValue.value) || 1,
                     startingYear: startingYearVal,
@@ -840,6 +883,8 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
                 name: name,
                 targetDate: targetDate,
                 description: description,
+                allDay: isAllDay,
+                allDayTiming: isAllDay ? timingChoice : null,
                 repeat: repeatToggle.checked ? repeatType.value : 'none',
                 repeatValue: parseFloat(customRepeatValue.value) || 1,
                 startingYear: startingYearVal,
@@ -1146,11 +1191,26 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         yearlyRepeatGroup.classList.toggle('hidden', repeatType.value !== 'yearly' || !repeatToggle.checked);
         startingYearInput.value = cd.startingYear || '';
 
-        dateInput.type = 'datetime-local';
-        // Format for datetime-local: YYYY-MM-DDTHH:mm
-        const tzoffset = (new Date()).getTimezoneOffset() * 60000;
-        const localISOTime = (new Date(cd.targetDate - tzoffset)).toISOString().slice(0, 16);
-        dateInput.value = localISOTime;
+        if (cd.allDay) {
+            if (allDayToggle) allDayToggle.checked = true;
+            if (allDayTimingGroup) allDayTimingGroup.classList.remove('hidden');
+            if (allDayTiming) allDayTiming.value = cd.allDayTiming || 'start';
+            dateInput.type = 'date';
+            const d = new Date(cd.targetDate);
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            dateInput.value = `${y}-${m}-${day}`;
+        } else {
+            if (allDayToggle) allDayToggle.checked = false;
+            if (allDayTimingGroup) allDayTimingGroup.classList.add('hidden');
+            if (allDayTiming) allDayTiming.value = 'start';
+            dateInput.type = 'datetime-local';
+            // Format for datetime-local: YYYY-MM-DDTHH:mm
+            const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+            const localISOTime = (new Date(cd.targetDate - tzoffset)).toISOString().slice(0, 16);
+            dateInput.value = localISOTime;
+        }
 
         modal.classList.remove('hidden');
     }
@@ -1173,6 +1233,14 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             }
         }
         infoRepeat.textContent = repeatText;
+
+        if (cd.allDay) {
+            const timingText = cd.allDayTiming === 'end' ? 'End of Day (23:59)' : 'Start of Day (00:00)';
+            if (infoAllDay) infoAllDay.textContent = `All-day event (${timingText})`;
+            if (infoAllDayGroup) infoAllDayGroup.classList.remove('hidden');
+        } else {
+            if (infoAllDayGroup) infoAllDayGroup.classList.add('hidden');
+        }
 
         if (cd.repeat === 'yearly' && cd.startingYear) {
             const milestone = calculateMilestone(cd.startingYear, cd.targetDate);
