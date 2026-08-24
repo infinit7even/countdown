@@ -973,7 +973,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             const editBtn = document.createElement('button');
             editBtn.type = 'button';
             editBtn.className = 'archive-action-btn';
-            editBtn.title = 'Edit or Duplicate countdown';
+            editBtn.title = t('countdown', 'Edit / Duplicate');
             editBtn.innerHTML = '<span>✏️</span> ' + t('countdown', 'Edit');
             editBtn.onclick = () => {
                 closeAllModals();

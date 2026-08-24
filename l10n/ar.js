@@ -66,7 +66,7 @@ OC.L10N.register(
     "Close": "إغلاق",
     "Leave a review": "ترك تقييم",
     "Delete Countdown?": "حذف Countdown؟",
-    "Are you sure you want to delete this countdown? This action cannot be undone.": "هل أنت متأكد من رغبتك في حذف هذا ה-Countdown؟ لا يمكن التراجع عن هذا الإجراء.",
+    "Are you sure you want to delete this countdown? This action cannot be undone.": "هل أنت متأكد من رغبتك في حذف هذا الـ Countdown؟ لا يمكن التراجع عن هذا الإجراء.",
     "Delete": "حذف",
     "SIZE": "الحجم",
     "What's New?": "ما الجديد؟",
