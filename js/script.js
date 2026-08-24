@@ -87,6 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelBtn = document.getElementById('cancel-btn');
     const duplicateBtn = document.getElementById('duplicate-btn');
     const saveBtn = document.getElementById('save-btn');
+    const archiveFloatingBtn = document.getElementById('archive-floating-btn');
+    const archiveCountBadge = document.getElementById('archive-count-badge');
+    const archiveModal = document.getElementById('archive-modal');
+    const archiveList = document.getElementById('archive-list');
+    const archiveTotalCount = document.getElementById('archive-total-count');
+    const closeArchiveBtn = document.getElementById('close-archive-btn');
     const grid = document.getElementById('countdown-grid');
 
     const idInput = document.getElementById('cd-id');
@@ -860,9 +866,112 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         infoModal.classList.add('hidden');
         emojiPicker.classList.add('hidden');
         resetEmojiSearch();
+        if (archiveModal) archiveModal.classList.add('hidden');
         if (newsModal) newsModal.classList.add('hidden');
         if (deleteModal) deleteModal.classList.add('hidden');
     }
+
+    function updateArchiveCounter() {
+        const archivedCount = countdowns.filter(c => c.archived).length;
+        if (archiveCountBadge) {
+            archiveCountBadge.textContent = archivedCount;
+            archiveCountBadge.classList.toggle('hidden', archivedCount === 0);
+        }
+        if (archiveTotalCount) {
+            archiveTotalCount.textContent = `${archivedCount} item${archivedCount === 1 ? '' : 's'}`;
+        }
+    }
+
+    function renderArchiveList() {
+        if (!archiveList) return;
+        const archived = countdowns.filter(c => c.archived);
+        updateArchiveCounter();
+        archiveList.innerHTML = '';
+
+        if (archived.length === 0) {
+            archiveList.innerHTML = '<div class="archive-empty-state">No archived countdowns.<br>Completed countdowns can be archived using the 📦 button.</div>';
+            return;
+        }
+
+        archived.forEach(cd => {
+            const item = document.createElement('div');
+            item.className = 'archive-item';
+
+            const info = document.createElement('div');
+            info.className = 'archive-item-info';
+
+            const title = document.createElement('div');
+            title.className = 'archive-item-title';
+            title.textContent = cd.name;
+
+            const date = document.createElement('div');
+            date.className = 'archive-item-date';
+            const formattedDate = new Date(cd.targetDate).toLocaleDateString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+            date.textContent = `${formattedDate}${cd.description ? ' · ' + cd.description : ''}`;
+
+            info.appendChild(title);
+            info.appendChild(date);
+
+            const actions = document.createElement('div');
+            actions.className = 'archive-item-actions';
+
+            // Restore button
+            const unarchiveBtn = document.createElement('button');
+            unarchiveBtn.type = 'button';
+            unarchiveBtn.className = 'archive-action-btn unarchive';
+            unarchiveBtn.title = 'Restore countdown to active list';
+            unarchiveBtn.innerHTML = '<span>↩️</span> Restore';
+            unarchiveBtn.onclick = async () => {
+                cd.archived = false;
+                await saveCountdowns();
+                renderArchiveList();
+                renderCountdowns();
+                showAppNotification('Countdown restored! 🚀');
+            };
+
+            // Edit / Duplicate button
+            const editBtn = document.createElement('button');
+            editBtn.type = 'button';
+            editBtn.className = 'archive-action-btn';
+            editBtn.title = 'Edit or Duplicate countdown';
+            editBtn.innerHTML = '<span>✏️</span> Edit';
+            editBtn.onclick = () => {
+                closeAllModals();
+                openEditModal(cd);
+            };
+
+            // Delete button
+            const delBtn = document.createElement('button');
+            delBtn.type = 'button';
+            delBtn.className = 'archive-action-btn delete';
+            delBtn.title = 'Delete permanently';
+            delBtn.innerHTML = '<span>🗑️</span>';
+            delBtn.onclick = () => {
+                countdownToDelete = cd.id;
+                if (deleteModal) deleteModal.classList.remove('hidden');
+            };
+
+            actions.appendChild(unarchiveBtn);
+            actions.appendChild(editBtn);
+            actions.appendChild(delBtn);
+
+            item.appendChild(info);
+            item.appendChild(actions);
+            archiveList.appendChild(item);
+        });
+    }
+
+    if (archiveFloatingBtn) {
+        archiveFloatingBtn.addEventListener('click', () => {
+            renderArchiveList();
+            if (archiveModal) archiveModal.classList.remove('hidden');
+        });
+    }
+
+    if (closeArchiveBtn) {
+        closeArchiveBtn.addEventListener('click', closeAllModals);
+    }
+
 
     // Global ESC key listener to close everything
     window.addEventListener('keydown', (e) => {
@@ -898,6 +1007,8 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             if (countdownToDelete) {
                 countdowns = countdowns.filter(item => item.id !== countdownToDelete);
                 renderCountdowns();
+                renderArchiveList();
+                updateArchiveCounter();
                 saveCountdowns();
                 countdownToDelete = null;
                 showAppNotification('Countdown deleted successfully! 🗑️');
@@ -1078,6 +1189,36 @@ function updateTimeLeft(cd, timerElement, cardElement) {
             }
             
             timerElement.innerHTML = `<div class="completed-box"><div class="completed-text">${msg}</div></div>`;
+            const actionsEl = cardElement ? cardElement.querySelector('.cd-actions') : null;
+            if (actionsEl && !actionsEl.querySelector('.cd-archive')) {
+                const delEl = actionsEl.querySelector('.cd-delete');
+                const archiveBtn = document.createElement('span');
+                archiveBtn.className = 'cd-archive';
+                archiveBtn.tabIndex = 0;
+                archiveBtn.role = 'button';
+                archiveBtn.ariaLabel = 'Archive Countdown';
+                archiveBtn.title = 'Archive Countdown';
+                archiveBtn.textContent = '📦';
+                archiveBtn.onclick = async (e) => {
+                    e.stopPropagation();
+                    cd.archived = true;
+                    await saveCountdowns();
+                    renderCountdowns();
+                    updateArchiveCounter();
+                    showAppNotification('Countdown archived! 📦');
+                };
+                archiveBtn.onkeydown = (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        archiveBtn.onclick(e);
+                    }
+                };
+                if (delEl) {
+                    actionsEl.insertBefore(archiveBtn, delEl);
+                } else {
+                    actionsEl.appendChild(archiveBtn);
+                }
+            }
             if (!cd.notified) { // Celebration fires the first time the expired event is viewed
                 let milestoneTag = '';
                 if (cd.repeat === 'yearly' && cd.startingYear) {
@@ -1181,7 +1322,11 @@ function updateTimeLeft(cd, timerElement, cardElement) {
             window.nativex.syncAlarms(JSON.stringify(countdowns));
         }
 
-        if (countdowns.length === 0) {
+        updateArchiveCounter();
+
+        const activeCountdowns = countdowns.filter(c => !c.archived);
+
+        if (activeCountdowns.length === 0) {
             grid.innerHTML = '<div class="empty-state">You don\'t have any active countdowns.<br>Click above to create a new one.</div>';
             return;
         }
@@ -1190,7 +1335,7 @@ function updateTimeLeft(cd, timerElement, cardElement) {
         const sortBy = activeSort ? activeSort.dataset.sort : 'date';
         const isAscending = !directionBtn.classList.contains('desc');
         
-        const sorted = [...countdowns];
+        const sorted = [...activeCountdowns];
         const multiplier = isAscending ? 1 : -1;
 
         sorted.sort((a, b) => {
@@ -1282,6 +1427,32 @@ function updateTimeLeft(cd, timerElement, cardElement) {
 
             actions.appendChild(infoBtn);
             actions.appendChild(editBtn);
+
+            if (cd.targetDate <= Date.now()) {
+                const archiveBtn = document.createElement('span');
+                archiveBtn.className = 'cd-archive';
+                archiveBtn.tabIndex = 0;
+                archiveBtn.role = 'button';
+                archiveBtn.ariaLabel = 'Archive Countdown';
+                archiveBtn.title = 'Archive Countdown';
+                archiveBtn.textContent = '📦';
+                archiveBtn.onclick = async (e) => {
+                    e.stopPropagation();
+                    cd.archived = true;
+                    await saveCountdowns();
+                    renderCountdowns();
+                    updateArchiveCounter();
+                    showAppNotification('Countdown archived! 📦');
+                };
+                archiveBtn.onkeydown = (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        archiveBtn.onclick(e);
+                    }
+                };
+                actions.appendChild(archiveBtn);
+            }
+
             actions.appendChild(delBtn);
             titleRow.appendChild(actions);
 

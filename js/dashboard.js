@@ -28,7 +28,9 @@
                         throw new Error('Invalid data format');
                     }
                     
-                    if (countdowns.length === 0) {
+                    const activeCountdowns = countdowns.filter(c => !c.archived);
+
+                    if (activeCountdowns.length === 0) {
                         const empty = document.createElement('div');
                         empty.style.padding = '20px';
                         empty.style.textAlign = 'center';
@@ -46,10 +48,10 @@
                     const now = new Date().getTime();
                     
                     // Sort by targetDate
-                    countdowns.sort((a,b) => (a.targetDate || 0) - (b.targetDate || 0));
+                    activeCountdowns.sort((a,b) => (a.targetDate || 0) - (b.targetDate || 0));
                     
                     // Limit to 7 items as the backend did
-                    const items = countdowns.slice(0, 7);
+                    const items = activeCountdowns.slice(0, 7);
 
                     items.forEach(cd => {
                         const li = document.createElement('li');

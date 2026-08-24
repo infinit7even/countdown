@@ -254,6 +254,30 @@
             </div>
         </div>
 
+        <!-- Floating Archive Button (Bottom Right) -->
+        <button type="button" id="archive-floating-btn" class="archive-floating-btn glass-effect" title="Archived Countdowns">
+            <span class="archive-icon">📦</span>
+            <span id="archive-count-badge" class="archive-count-badge hidden">0</span>
+        </button>
+
+        <!-- Archive Modal -->
+        <div id="archive-modal" class="modal-overlay hidden">
+            <div class="modal-content glass-effect archive-modal-content">
+                <div class="archive-modal-header">
+                    <h2>📦 Archived Countdowns</h2>
+                    <span id="archive-total-count" class="archive-total-count">0 items</span>
+                </div>
+                <div id="archive-list" class="archive-list">
+                    <!-- Rendered dynamically -->
+                </div>
+                <div class="modal-actions">
+                    <div class="button-group">
+                        <button type="button" id="close-archive-btn" class="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="countdown-notification-container" class="notification-container"></div>
         <canvas id="confetti-canvas"></canvas>
     </div>

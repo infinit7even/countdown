@@ -63,8 +63,9 @@ class CountdownNotificationService {
         foreach ($countdowns as &$cd) {
             $targetDate = isset($cd['targetDate']) ? (int)$cd['targetDate'] : 0;
             $notified   = isset($cd['notified']) ? (bool)$cd['notified'] : false;
+            $archived   = isset($cd['archived']) ? (bool)$cd['archived'] : false;
 
-            if ($targetDate <= 0 || $notified) {
+            if ($targetDate <= 0 || $notified || $archived) {
                 continue;
             }
 

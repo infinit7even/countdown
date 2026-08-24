@@ -390,6 +390,7 @@ body.theme--dark .cd-milestone-badge {
 
 .cd-info,
 .cd-edit,
+.cd-archive,
 .cd-delete {
     width: 32px;
     height: 32px;
@@ -407,16 +408,24 @@ body.theme--dark .cd-milestone-badge {
     border: none !important;
     padding: 0 !important;
     box-sizing: border-box !important;
+    font-size: 0.95rem;
+    line-height: 1;
 }
 
 .cd-info:hover,
 .cd-edit:hover,
+.cd-archive:hover,
 .cd-delete:hover {
     opacity: 1;
 }
 
 .cd-edit:hover {
     background-color: var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
+}
+
+.cd-archive:hover {
+    background-color: rgba(241, 196, 15, 0.2);
+    transform: scale(1.1);
 }
 
 .cd-delete:hover {
@@ -1123,6 +1132,182 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     background: var(--cd-time-bg);
     border-radius: var(--cd-border-radius);
     border: 2px dashed var(--color-border);
+}
+
+/* Floating Archive Button */
+.archive-floating-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    z-index: 9000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid var(--color-border);
+    cursor: pointer;
+    box-shadow: var(--cd-card-shadow);
+    transition: var(--cd-transition), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+    background: var(--color-main-background);
+}
+
+.archive-floating-btn:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-color: var(--cd-primary-color);
+}
+
+.archive-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.archive-count-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--cd-primary-gradient, #0082c9);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Archive Modal */
+.archive-modal-content {
+    max-width: 600px;
+    width: min(600px, calc(100vw - 40px));
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.archive-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.archive-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.archive-total-count {
+    font-size: 0.88rem;
+    color: var(--color-text-maxcontrast);
+    font-weight: 600;
+}
+
+.archive-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 50vh;
+    padding-right: 4px;
+}
+
+.archive-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--color-main-background);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    gap: 12px;
+}
+
+.archive-item:hover {
+    border-color: var(--cd-primary-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.archive-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.archive-item-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-main-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.archive-item-date {
+    font-size: 0.82rem;
+    color: var(--color-text-maxcontrast);
+    margin-top: 2px;
+}
+
+.archive-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.archive-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-main-text);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.archive-action-btn:hover {
+    background: var(--color-background-hover);
+    border-color: var(--cd-primary-color);
+}
+
+.archive-action-btn.unarchive:hover {
+    background: rgba(46, 204, 113, 0.15);
+    border-color: #2ecc71;
+    color: #27ae60;
+}
+
+.archive-action-btn.delete {
+    padding: 6px 8px;
+    color: var(--color-error, #e74c3c);
+}
+
+.archive-action-btn.delete:hover {
+    background: rgba(231, 76, 60, 0.15);
+    border-color: var(--color-error, #e74c3c);
+}
+
+.archive-empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-text-maxcontrast);
+    font-size: 1rem;
 }
 
 /* Settings Panel */
