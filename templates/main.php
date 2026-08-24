@@ -111,8 +111,9 @@
                 </div>
                 <div class="modal-actions">
                     <div class="button-group">
-                        <button id="cancel-btn" class="button">Cancel</button>
-                        <button id="save-btn" class="button primary">Save Changes</button>
+                        <button type="button" id="duplicate-btn" class="button hidden" title="Duplicate as new countdown">Duplicate</button>
+                        <button type="button" id="cancel-btn" class="button">Cancel</button>
+                        <button type="button" id="save-btn" class="button primary">Save Changes</button>
                     </div>
                 </div>
             </div>

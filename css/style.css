@@ -1082,6 +1082,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     text-decoration: none;
 }
 
+#duplicate-btn,
 #cancel-btn,
 #close-info-btn {
     background: transparent;
@@ -1089,6 +1090,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     color: var(--color-main-text);
 }
 
+#duplicate-btn:hover,
 #cancel-btn:hover,
 #close-info-btn:hover {
     background: var(--color-background-hover);

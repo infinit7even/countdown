@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modal-title');
     const addBtn = document.getElementById('add-countdown-btn');
     const cancelBtn = document.getElementById('cancel-btn');
+    const duplicateBtn = document.getElementById('duplicate-btn');
     const saveBtn = document.getElementById('save-btn');
     const grid = document.getElementById('countdown-grid');
 
@@ -806,10 +807,21 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         });
     });
 
+    if (duplicateBtn) {
+        duplicateBtn.addEventListener('click', () => {
+            idInput.value = '';
+            modalTitle.textContent = 'Create a new Countdown';
+            duplicateBtn.classList.add('hidden');
+            showAppNotification('Countdown duplicated! 📋 Edit details and save as new.');
+            nameInput.focus();
+        });
+    }
+
     addBtn.addEventListener('click', () => {
         modalTitle.textContent = 'Create a new Countdown';
         idInput.value = '';
         nameInput.value = '';
+        if (duplicateBtn) duplicateBtn.classList.add('hidden');
         
         // Random default emoji generator
         const emojis = ["😀", "🎮", "💡", "✨", "🚀", "🎉", "🔥", "🎧", "🎬", "📅", "🎁", "✈️", "🍕", "🏆"];
@@ -1357,6 +1369,7 @@ function updateTimeLeft(cd, timerElement, cardElement) {
             dateInput.value = localISOTime;
         }
 
+        if (duplicateBtn) duplicateBtn.classList.remove('hidden');
         modal.classList.remove('hidden');
     }
 
