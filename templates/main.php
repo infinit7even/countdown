@@ -228,8 +228,8 @@
             <div id="app-debug-row" class="settings-row">
                 <label><?php p($l->t('Extra & Debug')); ?></label>
                 <div style="display: flex; gap: 10px; align-items: stretch; margin-top: 5px;">
-                    <button id="pwa-install-btn" class="button primary hidden"><?php p($l->t('Install PWA')); ?></button>
-                    <a id="pwa-review-btn" href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button primary hidden"><?php p($l->t('Leave a review')); ?></a>
+                    <button id="pwa-install-btn" class="button primary hidden">📥 <?php p($l->t('Install PWA')); ?></button>
+                    <a id="pwa-review-btn" href="https://apps.nextcloud.com/apps/countdown" target="_blank" rel="noreferrer" class="button primary hidden">🧁 <?php p($l->t('Leave a review')); ?></a>
                     <button id="debug-notif-btn" class="debug-btn" title="<?php p($l->t('Test notifications')); ?>">🛠️</button>
                 </div>
             </div>
