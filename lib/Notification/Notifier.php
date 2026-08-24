@@ -3,6 +3,7 @@ namespace OCA\Countdown\Notification;
 
 use OCP\Notification\INotifier;
 use OCP\Notification\INotification;
+use OCP\Notification\UnknownNotificationException;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 
@@ -25,6 +26,9 @@ class Notifier implements INotifier {
 
     public function prepare(INotification $notification, string $languageCode): INotification {
         if ($notification->getApp() !== 'countdown') {
+            if (class_exists(UnknownNotificationException::class)) {
+                throw new UnknownNotificationException();
+            }
             throw new \InvalidArgumentException();
         }
 
@@ -42,6 +46,9 @@ class Notifier implements INotifier {
             return $notification;
         }
 
-        return $notification;
+        if (class_exists(UnknownNotificationException::class)) {
+            throw new UnknownNotificationException();
+        }
+        throw new \InvalidArgumentException();
     }
 }
