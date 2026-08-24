@@ -992,7 +992,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
     if (cancelDeleteBtn) cancelDeleteBtn.addEventListener('click', closeAllModals);
 
     // Close on overlay click
-    [modal, infoModal, newsModal, deleteModal].forEach(ov => {
+    [modal, infoModal, newsModal, deleteModal, archiveModal].forEach(ov => {
         if (ov) {
             ov.addEventListener('click', (e) => {
                 if (e.target === ov) {

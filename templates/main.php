@@ -257,6 +257,7 @@
         <!-- Floating Archive Button (Bottom Right) -->
         <button type="button" id="archive-floating-btn" class="archive-floating-btn glass-effect" title="Archived Countdowns">
             <span class="archive-icon">📦</span>
+            <span class="archive-label">Archive</span>
             <span id="archive-count-badge" class="archive-count-badge hidden">0</span>
         </button>
 
