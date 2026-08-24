@@ -2119,20 +2119,61 @@ select:focus {
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
     /* Hide Layout row on Mobile */
     .settings-row:has(.layout-segmented) {
         display: none !important;
     }
 
     .settings-panel {
-        width: calc(100% - 4rem) !important;
-        left: 2rem !important;
+        width: calc(100% - 3rem) !important;
+        left: 1.5rem !important;
         bottom: 1.5rem !important;
+        border-radius: 20px !important;
+    }
+
+    .settings-panel.collapsed {
+        transform: translateY(calc(100% + 1.5rem - 16px)) !important;
+    }
+
+    /* Elevated Archive Button on Mobile when menu is collapsed to prevent overlapping */
+    .archive-floating-btn {
+        bottom: 4rem !important;
+        right: 1.5rem !important;
+        height: 46px !important;
+        padding: 0 16px 0 12px !important;
+        border-radius: 14px !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+        transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease !important;
+    }
+
+    /* Hide Archive Button when Settings Menu is expanded upward on Mobile */
+    #settings-panel:not(.collapsed) ~ .archive-floating-btn,
+    .settings-panel:not(.collapsed) ~ .archive-floating-btn,
+    body:has(#settings-panel:not(.collapsed)) .archive-floating-btn {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(24px) scale(0.8) !important;
     }
 }
 
 @media only screen and (max-width: 600px) {
+    .settings-panel {
+        width: calc(100% - 2rem) !important;
+        left: 1rem !important;
+        bottom: 1.2rem !important;
+    }
+
+    .settings-panel.collapsed {
+        transform: translateY(calc(100% + 1.2rem - 16px)) !important;
+    }
+
+    .archive-floating-btn {
+        bottom: 3.8rem !important;
+        right: 1rem !important;
+    }
+
     #countdown-notification-container {
         bottom: 20px;
         right: 20px;
