@@ -926,6 +926,7 @@ const EMOJI_DATA = {
             titleRow.className = 'cd-name';
 
             const titleSpan = document.createElement('span');
+            titleSpan.className = 'cd-title-text';
             titleSpan.textContent = cd.name;
             titleRow.appendChild(titleSpan);
 
