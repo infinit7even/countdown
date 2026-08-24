@@ -578,6 +578,17 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
     });
 
     // Emoji Picker Logic
+    function findCategoryForEmoji(emoji) {
+        if (!emoji) return 'faces';
+        const clean = emoji.trim();
+        for (const [category, list] of Object.entries(EMOJI_DATA)) {
+            if (list.includes(clean)) {
+                return category;
+            }
+        }
+        return 'faces';
+    }
+
     function renderEmojiItems(emojiList) {
         emojiGrid.innerHTML = '';
         if (!emojiList || emojiList.length === 0) {
@@ -593,6 +604,8 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
                 emojiTrigger.textContent = emoji;
                 emojiPicker.classList.add('hidden');
                 resetEmojiSearch();
+                const targetCat = findCategoryForEmoji(emoji);
+                catBtns.forEach(b => b.classList.toggle('active', b.dataset.cat === targetCat));
             };
             emojiGrid.appendChild(btn);
         });
@@ -661,8 +674,10 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         emojiPicker.classList.toggle('hidden');
         if (willShow) {
             resetEmojiSearch();
-            catBtns.forEach((b, i) => b.classList.toggle('active', i === 0));
-            renderEmojiCategory('faces');
+            const currentEmoji = emojiTrigger.textContent.trim();
+            const targetCat = findCategoryForEmoji(currentEmoji);
+            catBtns.forEach(b => b.classList.toggle('active', b.dataset.cat === targetCat));
+            renderEmojiCategory(targetCat);
             setTimeout(() => {
                 if (emojiSearchInput) emojiSearchInput.focus();
             }, 50);
