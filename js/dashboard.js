@@ -109,8 +109,31 @@
                         textDiv.style.flexDirection = 'column';
                         textDiv.style.overflow = 'hidden';
 
+                        function getOrdinal(n) {
+                            const abs = Math.abs(n);
+                            const lastTwo = abs % 100;
+                            if (lastTwo >= 11 && lastTwo <= 13) return n + 'th';
+                            const lastOne = abs % 10;
+                            if (lastOne === 1) return n + 'st';
+                            if (lastOne === 2) return n + 'nd';
+                            if (lastOne === 3) return n + 'rd';
+                            return n + 'th';
+                        }
+
+                        let displayName = cd.name || 'Unknown';
+                        if (cd.repeat === 'yearly' && cd.startingYear) {
+                            const startYear = parseInt(cd.startingYear, 10);
+                            if (!isNaN(startYear) && startYear > 0) {
+                                const eventYear = new Date(targetDate).getFullYear();
+                                const count = eventYear - startYear;
+                                if (count > 0) {
+                                    displayName += ` (${getOrdinal(count)})`;
+                                }
+                            }
+                        }
+
                         const title = document.createElement('strong');
-                        title.textContent = cd.name || 'Unknown';
+                        title.textContent = displayName;
                         title.style.fontSize = '15px';
                         title.style.lineHeight = '1.3';
                         title.style.marginBottom = '4px';

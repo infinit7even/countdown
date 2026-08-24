@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const infoCreated = document.getElementById('info-created');
     const infoDescription = document.getElementById('info-description');
     const infoRepeat = document.getElementById('info-repeat');
+    const infoMilestoneGroup = document.getElementById('info-milestone-group');
+    const infoMilestone = document.getElementById('info-milestone');
     const closeInfoBtn = document.getElementById('close-info-btn');
     const reviewBtn = document.querySelector('.review-btn');
 
@@ -114,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const repeatType = document.getElementById('cd-repeat-type');
     const customRepeatGroup = document.getElementById('custom-repeat-group');
     const customRepeatValue = document.getElementById('cd-repeat-value');
+    const yearlyRepeatGroup = document.getElementById('yearly-repeat-group');
+    const startingYearInput = document.getElementById('cd-starting-year');
     const pwaRow = document.getElementById('app-debug-row');
     const pwaBtn = document.getElementById('pwa-install-btn');
     const debugBtn = document.getElementById('debug-notif-btn');
@@ -613,10 +617,15 @@ const EMOJI_DATA = {
 
     repeatToggle.addEventListener('change', () => {
         repeatOptions.classList.toggle('hidden', !repeatToggle.checked);
+        if (repeatToggle.checked) {
+            customRepeatGroup.classList.toggle('hidden', repeatType.value !== 'custom');
+            yearlyRepeatGroup.classList.toggle('hidden', repeatType.value !== 'yearly');
+        }
     });
 
     repeatType.addEventListener('change', () => {
         customRepeatGroup.classList.toggle('hidden', repeatType.value !== 'custom');
+        yearlyRepeatGroup.classList.toggle('hidden', repeatType.value !== 'yearly');
     });
 
 
@@ -648,6 +657,8 @@ const EMOJI_DATA = {
         repeatType.value = 'daily';
         customRepeatGroup.classList.add('hidden');
         customRepeatValue.value = '1';
+        yearlyRepeatGroup.classList.add('hidden');
+        startingYearInput.value = '';
         modal.classList.remove('hidden');
     });
 
@@ -716,6 +727,9 @@ const EMOJI_DATA = {
 
         const targetDate = new Date(dateVal).getTime();
 
+        const isYearly = repeatToggle.checked && repeatType.value === 'yearly';
+        const startingYearVal = isYearly ? (parseInt(startingYearInput.value, 10) || null) : null;
+
         const editingId = idInput.value;
         if (editingId) {
             // Existing modification
@@ -729,6 +743,7 @@ const EMOJI_DATA = {
                     description: description,
                     repeat: repeatToggle.checked ? repeatType.value : 'none',
                     repeatValue: parseFloat(customRepeatValue.value) || 1,
+                    startingYear: startingYearVal,
                     notified: isFuture ? false : countdowns[index].notified
                 };
             }
@@ -741,6 +756,7 @@ const EMOJI_DATA = {
                 description: description,
                 repeat: repeatToggle.checked ? repeatType.value : 'none',
                 repeatValue: parseFloat(customRepeatValue.value) || 1,
+                startingYear: startingYearVal,
                 createdAt: Date.now(),
                 notified: false
             });
@@ -772,14 +788,20 @@ const EMOJI_DATA = {
             
             timerElement.innerHTML = `<div class="completed-box"><div class="completed-text">${msg}</div></div>`;
             if (!cd.notified) { // Celebration fires the first time the expired event is viewed
+                let milestoneTag = '';
+                if (cd.repeat === 'yearly' && cd.startingYear) {
+                    const milestone = calculateMilestone(cd.startingYear, cd.targetDate);
+                    if (milestone) milestoneTag = ` (${milestone.text})`;
+                }
+
                 // 1. Show in-app interactive toast (Always works while tab is open)
-                showAppNotification(`🎉 ${cd.name} is finished!`);
+                showAppNotification(`🎉 ${cd.name}${milestoneTag} is finished!`);
 
                 // 2. Show native browser notification (Might be blocked by browser without user gesture)
                 if ("Notification" in window && Notification.permission === "granted") {
                     try {
                         const notif = new Notification("Countdown Finished! 🎉", {
-                            body: `The timer "${cd.name}" has completed!`,
+                            body: `The timer "${cd.name}${milestoneTag}" has completed!`,
                             icon: OC.generateUrl('/apps/countdown/img/app.svg'),
                             requireInteraction: true
                         });
@@ -794,7 +816,7 @@ const EMOJI_DATA = {
                         if (navigator.serviceWorker && navigator.serviceWorker.controller) {
                             navigator.serviceWorker.ready.then(function(registration) {
                                 registration.showNotification("Countdown Finished! 🎉", {
-                                    body: `The timer "${cd.name}" has completed!`,
+                                    body: `The timer "${cd.name}${milestoneTag}" has completed!`,
                                     icon: OC.generateUrl('/apps/countdown/img/app.svg'),
                                     tag: 'countdown-' + cd.id
                                 });
@@ -804,7 +826,7 @@ const EMOJI_DATA = {
                 }
 
                 cd.notified = true;
-                triggerNotification(cd.name);
+                triggerNotification(cd.name + milestoneTag);
                 launchConfetti();
                 
                 // If recurrent, calculate next date
@@ -833,6 +855,33 @@ const EMOJI_DATA = {
                 <div class="time-box"><div class="time-val">${seconds}</div><div class="time-lbl">Sec</div></div>
             </div>
         `;
+    }
+
+    function getOrdinal(n) {
+        const abs = Math.abs(n);
+        const lastTwo = abs % 100;
+        if (lastTwo >= 11 && lastTwo <= 13) return n + 'th';
+        const lastOne = abs % 10;
+        if (lastOne === 1) return n + 'st';
+        if (lastOne === 2) return n + 'nd';
+        if (lastOne === 3) return n + 'rd';
+        return n + 'th';
+    }
+
+    function calculateMilestone(startingYear, targetDate) {
+        if (!startingYear) return null;
+        const yearNum = parseInt(startingYear, 10);
+        if (isNaN(yearNum) || yearNum <= 0) return null;
+        const eventYear = new Date(targetDate).getFullYear();
+        const count = eventYear - yearNum;
+        if (count > 0) {
+            return {
+                count,
+                text: getOrdinal(count),
+                startingYear: yearNum
+            };
+        }
+        return null;
     }
 
     function renderCountdowns() {
@@ -875,7 +924,21 @@ const EMOJI_DATA = {
 
             const titleRow = document.createElement('div');
             titleRow.className = 'cd-name';
-            titleRow.innerHTML = `<span>${cd.name}</span>`;
+
+            const titleSpan = document.createElement('span');
+            titleSpan.textContent = cd.name;
+            titleRow.appendChild(titleSpan);
+
+            if (cd.repeat === 'yearly' && cd.startingYear) {
+                const milestone = calculateMilestone(cd.startingYear, cd.targetDate);
+                if (milestone) {
+                    const badge = document.createElement('span');
+                    badge.className = 'cd-milestone-badge';
+                    badge.title = `Starting / Birth Year: ${milestone.startingYear}`;
+                    badge.textContent = milestone.text;
+                    titleRow.appendChild(badge);
+                }
+            }
 
             const actions = document.createElement('div');
             actions.className = 'cd-actions';
@@ -993,6 +1056,8 @@ const EMOJI_DATA = {
         repeatType.value = cd.repeat || 'daily';
         customRepeatGroup.classList.toggle('hidden', repeatType.value !== 'custom');
         customRepeatValue.value = cd.repeatValue || 1;
+        yearlyRepeatGroup.classList.toggle('hidden', repeatType.value !== 'yearly' || !repeatToggle.checked);
+        startingYearInput.value = cd.startingYear || '';
 
         dateInput.type = 'datetime-local';
         // Format for datetime-local: YYYY-MM-DDTHH:mm
@@ -1021,6 +1086,18 @@ const EMOJI_DATA = {
             }
         }
         infoRepeat.textContent = repeatText;
+
+        if (cd.repeat === 'yearly' && cd.startingYear) {
+            const milestone = calculateMilestone(cd.startingYear, cd.targetDate);
+            if (milestone) {
+                infoMilestone.textContent = `${milestone.text} (Starting Year: ${milestone.startingYear})`;
+                if (infoMilestoneGroup) infoMilestoneGroup.classList.remove('hidden');
+            } else {
+                if (infoMilestoneGroup) infoMilestoneGroup.classList.add('hidden');
+            }
+        } else {
+            if (infoMilestoneGroup) infoMilestoneGroup.classList.add('hidden');
+        }
         
         infoModal.classList.remove('hidden');
     }

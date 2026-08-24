@@ -48,11 +48,15 @@ class ListCountdowns extends Command {
 
         foreach ($countdowns as $cd) {
             $targetDate = isset($cd['targetDate']) ? date('Y-m-d H:i:s', (int)($cd['targetDate'] / 1000)) : 'N/A';
+            $repeatStr = $cd['repeat'] ?? 'none';
+            if ($repeatStr === 'yearly' && !empty($cd['startingYear'])) {
+                $repeatStr .= ' (Year: ' . $cd['startingYear'] . ')';
+            }
             $table->addRow([
                 $cd['id'] ?? 'N/A',
                 $cd['name'] ?? 'N/A',
                 $targetDate,
-                $cd['repeat'] ?? 'none',
+                $repeatStr,
                 (isset($cd['notified']) && $cd['notified']) ? 'Yes' : 'No'
             ]);
         }

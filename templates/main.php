@@ -71,6 +71,11 @@
                             <label for="cd-repeat-value">Days</label>
                             <input type="number" id="cd-repeat-value" step="0.001" min="0.001" value="1" />
                         </div>
+                        <div class="form-group hidden" id="yearly-repeat-group">
+                            <label for="cd-starting-year">Starting / Birth Year <span class="label-optional">(Optional)</span></label>
+                            <input type="number" id="cd-starting-year" min="1" max="9999" placeholder="e.g. 1995" />
+                            <small class="form-hint">Automatically calculates and displays age or anniversary milestone (e.g. 30th).</small>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-actions">
@@ -98,6 +103,10 @@
                     <div class="form-group">
                         <label>Repetition</label>
                         <div id="info-repeat" class="info-value"></div>
+                    </div>
+                    <div class="form-group hidden" id="info-milestone-group">
+                        <label>Milestone / Age</label>
+                        <div id="info-milestone" class="info-value"></div>
                     </div>
                 </div>
                 <div class="modal-actions">

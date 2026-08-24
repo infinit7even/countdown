@@ -70,14 +70,25 @@ class CountdownNotificationService {
 
             if ($nowMs >= $targetDate) {
                 $name = $cd['name'] ?? 'Countdown';
-                $this->sendNotification($userId, $name);
+                $repeat = $cd['repeat'] ?? 'none';
+                $startingYear = isset($cd['startingYear']) ? (int)$cd['startingYear'] : 0;
+
+                $notifName = $name;
+                if ($repeat === 'yearly' && $startingYear > 0) {
+                    $eventYear = (int)(new \DateTime('@' . (int)($targetDate / 1000)))->format('Y');
+                    $count = $eventYear - $startingYear;
+                    if ($count > 0) {
+                        $notifName .= " ({$count}" . $this->getOrdinalSuffix($count) . ")";
+                    }
+                }
+
+                $this->sendNotification($userId, $notifName);
                 $sent++;
 
                 if ($log !== null) {
-                    $log("  → Notified [{$userId}]: {$name}");
+                    $log("  → Notified [{$userId}]: {$notifName}");
                 }
 
-                $repeat      = $cd['repeat'] ?? 'none';
                 $repeatValue = isset($cd['repeatValue']) ? (float)$cd['repeatValue'] : 1.0;
 
                 if ($repeat !== 'none') {
@@ -113,7 +124,7 @@ class CountdownNotificationService {
      *
      * @return array The newly created countdown
      */
-    public function addCountdown(string $userId, string $name, int $targetDateMs, string $repeat = 'none', float $repeatValue = 1.0): array {
+    public function addCountdown(string $userId, string $name, int $targetDateMs, string $repeat = 'none', float $repeatValue = 1.0, ?int $startingYear = null): array {
         $countdowns = $this->getCountdowns($userId);
         
         $newCd = [
@@ -122,6 +133,7 @@ class CountdownNotificationService {
             'targetDate' => $targetDateMs,
             'repeat' => $repeat,
             'repeatValue' => $repeatValue,
+            'startingYear' => $startingYear,
             'notified' => false,
             'createdAt' => (int)(microtime(true) * 1000)
         ];
@@ -198,5 +210,18 @@ class CountdownNotificationService {
         }
 
         return $date->getTimestamp() * 1000;
+    }
+
+    private function getOrdinalSuffix(int $n): string {
+        $abs = abs($n);
+        $lastTwo = $abs % 100;
+        if ($lastTwo >= 11 && $lastTwo <= 13) {
+            return 'th';
+        }
+        $lastOne = $abs % 10;
+        if ($lastOne === 1) return 'st';
+        if ($lastOne === 2) return 'nd';
+        if ($lastOne === 3) return 'rd';
+        return 'th';
     }
 }

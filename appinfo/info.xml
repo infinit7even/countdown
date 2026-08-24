@@ -30,7 +30,7 @@ Notifications are checked every **5 minutes** by a background job (`TimerJob`). 
 ## ⚙️ Configuring Notifications (CRON)
 To configure automatic notification sending via crontab, read the [user documentation](https://github.com/infinit7even/countdown/blob/master/README.md#-how-notifications-work)
 ]]></description>
-    <version>1.2.12</version>
+    <version>1.2.13</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -45,7 +45,7 @@ To configure automatic notification sending via crontab, read the [user document
     <category>organization</category>
     <category>workflow</category>
 
-    <website>https://github.com/infinit7even/countdown</website>
+    <website>https://7fx.it/projects/countdown</website>
     <discussion>https://github.com/infinit7even/countdown/discussions</discussion>
     <bugs>https://github.com/infinit7even/countdown/issues</bugs>
     <repository type="git">https://github.com/infinit7even/countdown.git</repository>
