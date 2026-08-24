@@ -408,8 +408,7 @@ body.theme--dark .cd-milestone-badge {
     border: none !important;
     padding: 0 !important;
     box-sizing: border-box !important;
-    font-size: 0.95rem;
-    line-height: 1;
+    color: var(--color-main-text);
 }
 
 .cd-info:hover,
@@ -423,8 +422,20 @@ body.theme--dark .cd-milestone-badge {
     background-color: var(--color-primary-element-light, rgba(0, 164, 255, 0.15));
 }
 
+.cd-archive svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--color-main-text);
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
 .cd-archive:hover {
-    background-color: rgba(241, 196, 15, 0.2);
+    background-color: rgba(241, 196, 15, 0.18);
+}
+
+.cd-archive:hover svg {
+    stroke: #f39c12;
     transform: scale(1.1);
 }
 

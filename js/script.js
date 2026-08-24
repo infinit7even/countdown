@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const archiveList = document.getElementById('archive-list');
     const archiveTotalCount = document.getElementById('archive-total-count');
     const closeArchiveBtn = document.getElementById('close-archive-btn');
+    const ARCHIVE_ICON_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>';
     const grid = document.getElementById('countdown-grid');
 
     const idInput = document.getElementById('cd-id');
@@ -1214,7 +1215,7 @@ function updateTimeLeft(cd, timerElement, cardElement) {
                 archiveBtn.role = 'button';
                 archiveBtn.ariaLabel = 'Archive Countdown';
                 archiveBtn.title = 'Archive Countdown';
-                archiveBtn.textContent = '📦';
+                archiveBtn.innerHTML = ARCHIVE_ICON_SVG;
                 archiveBtn.onclick = async (e) => {
                     e.stopPropagation();
                     cd.archived = true;
@@ -1451,7 +1452,7 @@ function updateTimeLeft(cd, timerElement, cardElement) {
                 archiveBtn.role = 'button';
                 archiveBtn.ariaLabel = 'Archive Countdown';
                 archiveBtn.title = 'Archive Countdown';
-                archiveBtn.textContent = '📦';
+                archiveBtn.innerHTML = ARCHIVE_ICON_SVG;
                 archiveBtn.onclick = async (e) => {
                     e.stopPropagation();
                     cd.archived = true;
