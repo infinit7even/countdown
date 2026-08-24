@@ -13,6 +13,7 @@
 * 🖼️ **Dual Layout**: Switch between **Stacked** (compact) and **Grid** (side-by-side) views to fit your style.
 * 📱 **PWA Ready**: Install the app on your phone or desktop for a native-like, full-screen experience.
 * 💻 **OCC Integration**: Administrators can manage countdowns using the OCC command line interface.
+* 🌐 **Global Localization**: Available in 18+ languages with community translation support.
 * ✏️ **Custom Completion**: Choose between default, random, or custom messages when a countdown finishes.
 * 🗞️ **News Center**: Stay updated with the latest features and changes directly inside the app.
 * 🎮 **Easter Eggs**: Discover secrets hidden inside the app inspired by pop culture!
@@ -144,6 +145,19 @@ To see your countdowns at a glance:
 2. Scroll to the bottom and click **Edit widgets**.
 3. Enable the **Countdown** widget.
 
+## 🌐 Translations & Localization
+
+**Countdown** supports 18+ languages out of the box:
+🇬🇧 English, 🇩🇪 German, 🇫🇷 French, 🇪🇸 Spanish, 🇧🇷/🇵🇹 Portuguese, 🇨🇳 Chinese (Simplified), 🇯🇵 Japanese, 🇷🇺 Russian, 🇹🇷 Turkish, 🇳🇱 Dutch, 🇵🇱 Polish, 🇸🇪 Swedish, 🇩🇰 Danish, 🇳🇴 Norwegian, 🇸🇦 Arabic, 🇨🇿 Czech, 🏴 Catalan, 🇮🇹 Italian.
+
+### 🛠️ Contributing Translations
+We warmly welcome community contributions to improve translations or add new languages:
+1. **Direct Edit**: Add or update key-value pairs in `l10n/<language_code>.json` and `l10n/<language_code>.js`.
+2. **Gettext PO Template**: Use `translationfiles/templates/countdown.pot` with [Poedit](https://poedit.net/) or any translation editor.
+3. Submit a Pull Request on [GitHub](https://github.com/infinit7even/countdown/pulls) with your language code in the title!
+
+For full details, check out the [L10N Translation Guide](l10n/README.md).
+
 ## ❤️ Support the Project
 
 If you find **Countdown** useful and want to support its development:
@@ -157,6 +171,7 @@ Your support helps me keep improving the app and adding new "magic" features! �
 
 * **Bugs & Features**: Found a bug or have a great idea? Open an issue on [GitHub Issues](https://github.com/infinit7even/countdown/issues).
 * **Discussions**: Join the community for questions and tips on [GitHub Discussions](https://github.com/infinit7even/countdown/discussions).
+* **Translations**: Submit translation improvements via [Pull Requests](https://github.com/infinit7even/countdown/pulls).
 * **Source Code**: Explore the code or fork the project at [GitHub Repository](https://github.com/infinit7even/countdown).
 
 ## ⚖️ License
