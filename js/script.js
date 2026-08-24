@@ -114,8 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const infoRepeat = document.getElementById('info-repeat');
     const infoAllDayGroup = document.getElementById('info-allday-group');
     const infoAllDay = document.getElementById('info-allday');
+    const infoUnitsGroup = document.getElementById('info-units-group');
+    const infoUnits = document.getElementById('info-units');
     const infoMilestoneGroup = document.getElementById('info-milestone-group');
     const infoMilestone = document.getElementById('info-milestone');
+    const unitChips = document.querySelectorAll('.unit-chip');
+    const unitSelectionHint = document.getElementById('unit-selection-hint');
     const closeInfoBtn = document.getElementById('close-info-btn');
     const reviewBtn = document.querySelector('.review-btn');
 
@@ -739,6 +743,69 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         });
     }
 
+    const UNIT_HIERARCHY = ['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds'];
+    const UNIT_CONFIG = {
+        years: { singular: 'Year', plural: 'Years' },
+        months: { singular: 'Month', plural: 'Months' },
+        weeks: { singular: 'Week', plural: 'Weeks' },
+        days: { singular: 'Day', plural: 'Days' },
+        hours: { singular: 'Hour', plural: 'Hours' },
+        minutes: { singular: 'Min', plural: 'Min' },
+        seconds: { singular: 'Sec', plural: 'Sec' }
+    };
+
+    function getSelectedUnits() {
+        const active = [];
+        unitChips.forEach(chip => {
+            if (chip.classList.contains('active')) {
+                active.push(chip.dataset.unit);
+            }
+        });
+        const sorted = UNIT_HIERARCHY.filter(u => active.includes(u));
+        return sorted.length > 0 ? sorted : ['days', 'hours', 'minutes', 'seconds'];
+    }
+
+    function setSelectedUnits(units) {
+        const list = Array.isArray(units) && units.length > 0 ? units : ['days', 'hours', 'minutes', 'seconds'];
+        unitChips.forEach(chip => {
+            chip.classList.toggle('active', list.includes(chip.dataset.unit));
+        });
+        updateUnitHint();
+    }
+
+    function updateUnitHint() {
+        if (!unitSelectionHint) return;
+        const selected = getSelectedUnits();
+        if (selected.length === 0) {
+            unitSelectionHint.textContent = 'Please select at least 1 unit';
+            return;
+        }
+        const names = selected.map(u => UNIT_CONFIG[u] ? UNIT_CONFIG[u].plural : u);
+        unitSelectionHint.textContent = `Display order: ${names.join(' · ')}`;
+    }
+
+    unitChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const isCurrentlyActive = chip.classList.contains('active');
+            const currentSelected = getSelectedUnits();
+
+            if (isCurrentlyActive) {
+                if (currentSelected.length <= 1) {
+                    showAppNotification('At least 1 unit must be selected! ⏱️');
+                    return;
+                }
+                chip.classList.remove('active');
+            } else {
+                if (currentSelected.length >= 4) {
+                    showAppNotification('Maximum 4 display units allowed! ⚠️');
+                    return;
+                }
+                chip.classList.add('active');
+            }
+            updateUnitHint();
+        });
+    });
+
     addBtn.addEventListener('click', () => {
         modalTitle.textContent = 'Create a new Countdown';
         idInput.value = '';
@@ -762,6 +829,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         if (allDayToggle) allDayToggle.checked = false;
         if (allDayTimingGroup) allDayTimingGroup.classList.add('hidden');
         if (allDayTiming) allDayTiming.value = 'start';
+        setSelectedUnits(['days', 'hours', 'minutes', 'seconds']);
         dateInput.value = '';
         dateInput.type = 'datetime-local';
         descriptionInput.value = '';
@@ -856,6 +924,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
 
         const isYearly = repeatToggle.checked && repeatType.value === 'yearly';
         const startingYearVal = isYearly ? (parseInt(startingYearInput.value, 10) || null) : null;
+        const displayUnits = getSelectedUnits();
 
         const editingId = idInput.value;
         if (editingId) {
@@ -870,6 +939,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
                     description: description,
                     allDay: isAllDay,
                     allDayTiming: isAllDay ? timingChoice : null,
+                    displayUnits: displayUnits,
                     repeat: repeatToggle.checked ? repeatType.value : 'none',
                     repeatValue: parseFloat(customRepeatValue.value) || 1,
                     startingYear: startingYearVal,
@@ -885,6 +955,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
                 description: description,
                 allDay: isAllDay,
                 allDayTiming: isAllDay ? timingChoice : null,
+                displayUnits: displayUnits,
                 repeat: repeatToggle.checked ? repeatType.value : 'none',
                 repeatValue: parseFloat(customRepeatValue.value) || 1,
                 startingYear: startingYearVal,
@@ -901,7 +972,84 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
     });
 
 
-    function updateTimeLeft(cd, timerElement, cardElement) {
+        function calculateTimeUnits(nowTs, targetTs, selectedUnits) {
+        const rawUnits = Array.isArray(selectedUnits) && selectedUnits.length > 0
+            ? selectedUnits
+            : ['days', 'hours', 'minutes', 'seconds'];
+        
+        const sorted = UNIT_HIERARCHY.filter(u => rawUnits.includes(u));
+        const activeUnits = sorted.length > 0 ? sorted.slice(0, 4) : ['days', 'hours', 'minutes', 'seconds'];
+
+        const targetDate = new Date(targetTs);
+        let cur = new Date(nowTs);
+        const results = {};
+
+        if (activeUnits.includes('years')) {
+            let y = targetDate.getFullYear() - cur.getFullYear();
+            let testDate = new Date(cur);
+            testDate.setFullYear(cur.getFullYear() + y);
+            if (testDate.getTime() > targetTs) {
+                y--;
+                testDate = new Date(cur);
+                testDate.setFullYear(cur.getFullYear() + y);
+            }
+            results['years'] = Math.max(0, y);
+            cur = testDate;
+        }
+
+        if (activeUnits.includes('months')) {
+            let m = 0;
+            while (true) {
+                let nextCur = new Date(cur);
+                nextCur.setMonth(nextCur.getMonth() + 1);
+                if (nextCur.getTime() <= targetTs) {
+                    cur = nextCur;
+                    m++;
+                } else {
+                    break;
+                }
+            }
+            results['months'] = m;
+        }
+
+        let remMs = Math.max(0, targetTs - cur.getTime());
+
+        if (activeUnits.includes('weeks')) {
+            const msInWeek = 7 * 24 * 60 * 60 * 1000;
+            results['weeks'] = Math.floor(remMs / msInWeek);
+            remMs %= msInWeek;
+        }
+
+        if (activeUnits.includes('days')) {
+            const msInDay = 24 * 60 * 60 * 1000;
+            results['days'] = Math.floor(remMs / msInDay);
+            remMs %= msInDay;
+        }
+
+        if (activeUnits.includes('hours')) {
+            const msInHour = 60 * 60 * 1000;
+            results['hours'] = Math.floor(remMs / msInHour);
+            remMs %= msInHour;
+        }
+
+        if (activeUnits.includes('minutes')) {
+            const msInMinute = 60 * 1000;
+            results['minutes'] = Math.floor(remMs / msInMinute);
+            remMs %= msInMinute;
+        }
+
+        if (activeUnits.includes('seconds')) {
+            results['seconds'] = Math.floor(remMs / 1000);
+        }
+
+        return activeUnits.map(unit => ({
+            unit,
+            value: results[unit] !== undefined ? results[unit] : 0,
+            label: UNIT_CONFIG[unit] ? UNIT_CONFIG[unit].plural : unit
+        }));
+    }
+
+function updateTimeLeft(cd, timerElement, cardElement) {
         const now = new Date().getTime();
         const distance = cd.targetDate - now;
 
@@ -973,19 +1121,15 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             return;
         }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        timerElement.innerHTML = `
-            <div class="cd-timer">
-                <div class="time-box"><div class="time-val">${days}</div><div class="time-lbl">Days</div></div>
-                <div class="time-box"><div class="time-val">${hours}</div><div class="time-lbl">Hours</div></div>
-                <div class="time-box"><div class="time-val">${minutes}</div><div class="time-lbl">Min</div></div>
-                <div class="time-box"><div class="time-val">${seconds}</div><div class="time-lbl">Sec</div></div>
+        const units = calculateTimeUnits(now, cd.targetDate, cd.displayUnits);
+        const unitBoxes = units.map(u => `
+            <div class="time-box">
+                <div class="time-val">${u.value}</div>
+                <div class="time-lbl">${u.label}</div>
             </div>
-        `;
+        `).join('');
+
+        timerElement.innerHTML = `<div class="cd-timer">${unitBoxes}</div>`;
     }
 
     function getOrdinal(n) {
@@ -1182,6 +1326,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             nameInput.value = cd.name;
         }
         descriptionInput.value = cd.description || '';
+        setSelectedUnits(cd.displayUnits || ['days', 'hours', 'minutes', 'seconds']);
         
         repeatToggle.checked = cd.repeat && cd.repeat !== 'none';
         repeatOptions.classList.toggle('hidden', !repeatToggle.checked);
@@ -1241,6 +1386,10 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         } else {
             if (infoAllDayGroup) infoAllDayGroup.classList.add('hidden');
         }
+
+        const displayUnits = cd.displayUnits || ['days', 'hours', 'minutes', 'seconds'];
+        const unitNames = UNIT_HIERARCHY.filter(u => displayUnits.includes(u)).map(u => UNIT_CONFIG[u] ? UNIT_CONFIG[u].plural : u);
+        if (infoUnits) infoUnits.textContent = unitNames.join(' · ');
 
         if (cd.repeat === 'yearly' && cd.startingYear) {
             const milestone = calculateMilestone(cd.startingYear, cd.targetDate);

@@ -69,6 +69,19 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group" id="units-section">
+                    <label>Display Units <span class="label-optional">(Select up to 4)</span></label>
+                    <div class="unit-chips-container" id="unit-chips">
+                        <button type="button" class="unit-chip" data-unit="years">Years</button>
+                        <button type="button" class="unit-chip" data-unit="months">Months</button>
+                        <button type="button" class="unit-chip" data-unit="weeks">Weeks</button>
+                        <button type="button" class="unit-chip active" data-unit="days">Days</button>
+                        <button type="button" class="unit-chip active" data-unit="hours">Hours</button>
+                        <button type="button" class="unit-chip active" data-unit="minutes">Minutes</button>
+                        <button type="button" class="unit-chip active" data-unit="seconds">Seconds</button>
+                    </div>
+                    <div id="unit-selection-hint" class="unit-selection-hint">Display order: Days · Hours · Min · Sec</div>
+                </div>
                 <div class="repeat-section">
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="cd-repeat-toggle">
@@ -125,6 +138,10 @@
                     <div class="form-group hidden" id="info-allday-group">
                         <label>Event Type</label>
                         <div id="info-allday" class="info-value"></div>
+                    </div>
+                    <div class="form-group" id="info-units-group">
+                        <label>Display Units</label>
+                        <div id="info-units" class="info-value"></div>
                     </div>
                     <div class="form-group hidden" id="info-milestone-group">
                         <label>Milestone / Age</label>

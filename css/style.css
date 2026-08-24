@@ -722,6 +722,52 @@ body.theme--dark .completed-text {
     opacity: 0.85;
 }
 
+/* Unit Chips Selector */
+.unit-chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.unit-chip {
+    background: var(--color-main-background);
+    border: 1.5px solid var(--color-border);
+    color: var(--color-main-text);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.unit-chip:hover {
+    border-color: var(--cd-primary-color);
+    background: rgba(var(--color-primary-element-rgb), 0.08);
+}
+
+.unit-chip.active {
+    background: var(--cd-primary-gradient, var(--cd-primary-color));
+    border-color: transparent;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 130, 201, 0.3);
+    transform: scale(1.02);
+}
+
+.unit-selection-hint {
+    font-size: 0.82rem;
+    color: var(--color-text-maxcontrast);
+    margin-top: 6px;
+    font-style: italic;
+    opacity: 0.85;
+}
+
 .form-group input:not([type="checkbox"]) {
     width: 100%;
     padding: 14px 16px;
