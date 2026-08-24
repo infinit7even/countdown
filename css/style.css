@@ -1162,9 +1162,9 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    border: 2px solid var(--cd-primary-color, #0082c9) !important;
+    border: var(--cd-border-width) solid var(--color-border) !important;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 130, 201, 0.15);
+    box-shadow: var(--cd-card-shadow);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--color-main-background) !important;
     color: var(--color-main-text);
@@ -1172,7 +1172,8 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
 .archive-floating-btn:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25), 0 0 0 2px var(--cd-primary-color);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+    border-color: var(--cd-primary-color) !important;
     background: var(--color-background-hover) !important;
 }
 
@@ -1220,7 +1221,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     align-items: center;
     margin-bottom: 1.2rem;
     padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--cd-border-width) solid var(--color-border);
 }
 
 .archive-modal-header h2 {
@@ -1249,7 +1250,7 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     align-items: center;
     padding: 12px 16px;
     background: var(--color-main-background);
-    border: 1px solid var(--color-border);
+    border: var(--cd-border-width) solid var(--color-border);
     border-radius: 12px;
     transition: all 0.2s ease;
     gap: 12px;
