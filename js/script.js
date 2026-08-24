@@ -991,10 +991,15 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
     cancelBtn.addEventListener('click', closeAllModals);
     closeInfoBtn.addEventListener('click', closeAllModals);
     if (closeNewsBtn) closeNewsBtn.addEventListener('click', closeAllModals);
-    if (cancelDeleteBtn) cancelDeleteBtn.addEventListener('click', closeAllModals);
+    if (cancelDeleteBtn) {
+        cancelDeleteBtn.addEventListener('click', () => {
+            if (deleteModal) deleteModal.classList.add('hidden');
+            countdownToDelete = null;
+        });
+    }
 
     // Close on overlay click
-    [modal, infoModal, newsModal, deleteModal, archiveModal].forEach(ov => {
+    [modal, infoModal, newsModal, archiveModal].forEach(ov => {
         if (ov) {
             ov.addEventListener('click', (e) => {
                 if (e.target === ov) {
@@ -1003,6 +1008,15 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
             });
         }
     });
+
+    if (deleteModal) {
+        deleteModal.addEventListener('click', (e) => {
+            if (e.target === deleteModal) {
+                deleteModal.classList.add('hidden');
+                countdownToDelete = null;
+            }
+        });
+    }
 
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', () => {
@@ -1015,7 +1029,7 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
                 countdownToDelete = null;
                 showAppNotification('Countdown deleted successfully! 🗑️');
             }
-            closeAllModals();
+            if (deleteModal) deleteModal.classList.add('hidden');
         });
     }
 

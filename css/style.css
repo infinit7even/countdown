@@ -599,6 +599,10 @@ body.theme--dark .completed-text {
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+#delete-modal {
+    z-index: 12000 !important;
+}
+
 .modal-overlay.hidden {
     opacity: 0;
     visibility: hidden;
@@ -1147,19 +1151,18 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    border: 2px solid var(--color-border);
+    border: 2px solid var(--cd-primary-color, #0082c9) !important;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 130, 201, 0.15);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    background: var(--color-main-background);
+    background: var(--color-main-background) !important;
     color: var(--color-main-text);
 }
 
 .archive-floating-btn:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
-    border-color: var(--cd-primary-color);
-    background: var(--color-background-hover);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25), 0 0 0 2px var(--cd-primary-color);
+    background: var(--color-background-hover) !important;
 }
 
 .archive-icon {
