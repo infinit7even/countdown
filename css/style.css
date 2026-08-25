@@ -1717,10 +1717,16 @@ body.theme--dark .form-group input:not([type="checkbox"]) {
 
     .cd-info,
     .cd-edit,
+    .cd-archive,
     .cd-delete {
         width: 38px !important;
         height: 38px !important;
         background-size: 20px !important;
+    }
+
+    .cd-archive svg {
+        width: 20px !important;
+        height: 20px !important;
     }
 
     .time-val {
