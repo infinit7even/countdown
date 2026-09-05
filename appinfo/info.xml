@@ -34,7 +34,7 @@ To configure automatic notification sending via crontab, read the [user document
 ## 🌐 Translations & Contributing
 Countdown is translated into 18+ languages. Community contributions to improve translations or add new languages are warmly welcome via GitHub Pull Requests (editing files in the `l10n/` folder or using the Gettext PO template in `translationfiles/templates/countdown.pot`). Read the [translation documentation](https://github.com/infinit7even/countdown/blob/master/l10n/README.md) for full details.
 ]]></description>
-    <version>1.2.35</version>
+    <version>1.2.36</version>
     <licence>AGPL-3.0-or-later</licence>
     <author>Felt</author>
     <namespace>Countdown</namespace>
@@ -49,7 +49,7 @@ Countdown is translated into 18+ languages. Community contributions to improve t
     <category>organization</category>
     <category>workflow</category>
 
-    <website>https://7fx.it/projects/countdown</website>
+    <website>https://7fx.it/projects/countdown?utm_source=apps.nextcloud.com</website>
     <discussion>https://github.com/infinit7even/countdown/discussions</discussion>
     <bugs>https://github.com/infinit7even/countdown/issues</bugs>
     <repository type="git">https://github.com/infinit7even/countdown.git</repository>

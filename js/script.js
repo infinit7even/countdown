@@ -513,8 +513,12 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         "Gorillaz New Tour", "The Last of Us Season 3", "Avatar 3 Release",
         "Metal Gear Solid Delta", "Radiohead New Album", "Black Mirror Season 7",
         "Joker: Folie à Deux", "Final Fantasy XVII", "Tool New Single",
-        "Euphoria Season 3", "Superman: Legacy", "Hollow Knight: Silksong",
-        "Kendrick Lamar Album", "House of the Dragon S3", "OwO", "UwU", "Nwn"
+        "Superman: Legacy", "Hollow Knight: Silksong",
+        "Kendrick Lamar Album", "House of the Dragon S3", "GTA VI Launch",
+        "Half-Life 3", "The Witcher 4", "Kingdom Hearts IV",
+        "Mass Effect 5", "Fallout Season 2", "Severance Season 2", "Arcane Season 2",
+        "Dune: Part Three", "Avengers: Secret Wars", "Frank Ocean New Album",
+        "Nintendo Switch 2 Launch", "Steam Summer Sale", "OwO", "UwU", "Nwn"
     ];
 
     const completionMessages = [
@@ -523,7 +527,10 @@ const EMOJI_KEYWORDS = {"😀": "faces grinning face smile happy laugh joy cheer
         "Curtain Call", "It's Time!", "Day One", "Welcome to the future", "Destination Reached",
         "Platinum Trophy", "Final Boss Defeated", "Fade to Black", "New Game+", "Winner Winner!",
         "Achievement Unlocked", "K.O.!", "FATALITY", "Wasted", "You Died",
-        "Legend Status", "End of an Era", "Launch Sequence Initiated", "Encore!", "To be continued..."
+        "Legend Status", "End of an Era", "Launch Sequence Initiated", "Encore!", "To be continued...",
+        "The Wait is Over", "Here We Go!", "Liftoff!", "Mission Success", "GG WP",
+        "Flawless Victory", "Showtime!", "Roll Credits", "Ready Player One", "Game, Set, Match",
+        "Houston, We Have Landed", "Checkmate", "Stage Cleared", "Level Up!", "That's All, Folks!"
     ];
 
     // Load Remote Data
